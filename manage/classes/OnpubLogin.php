@@ -1,0 +1,173 @@
+<?php
+
+/**
+ * @author {@link mailto:corey@onpub.com Corey H.M. Taylor}
+ * @copyright Onpub (TM). Copyright 2010, Onpub.com.
+ * {@link http://onpub.com/}
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * Version 2
+ * @package onpubgui
+ */
+class OnpubLogin
+{
+  private $pdoDatabase;
+  private $pdoHost;
+  private $pdoUser;
+  private $pdoPassword;
+  private $logout;
+  private $target;
+  private $rememberLogin;
+  private $exception;
+
+  function __construct($pdoDatabase = "", $pdoHost = "localhost", $pdoUser = "", $pdoPassword = "", $logout = FALSE, $target = NULL, $rememberLogin = FALSE, $exception = NULL)
+  {
+    $this->pdoDatabase = trim($pdoDatabase);
+    $this->pdoHost = trim($pdoHost);
+    $this->pdoUser = trim($pdoUser);
+    $this->pdoPassword = trim($pdoPassword);
+    $this->logout = $logout;
+    $this->target = $target;
+    $this->rememberLogin = $rememberLogin;
+    $this->exception = $exception;
+  }
+
+  public function display()
+  {
+    en('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">');
+    en('<html>');
+    en('<head>');
+    en('<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">');
+    en('<title>Onpub (on ' . $_SERVER['SERVER_NAME'] . ')</title>');
+    en('<link rel="stylesheet" type="text/css" href="../yui/build/cssreset/reset-min.css">');
+    en('<link rel="stylesheet" type="text/css" href="../yui/build/cssfonts/fonts-min.css">');
+    en('<link rel="stylesheet" type="text/css" href="../yui/build/cssgrids/grids-min.css">');
+    en('<link rel="stylesheet" type="text/css" href="../yui/build/cssbase/base-min.css">');
+    en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
+    en('</head>');
+    en('<body>');
+
+    en('<div id="onpub-page" class="yui3-d1">');
+    en('<div id="onpub-header"></div>');
+    en('<div id="onpub-body">');
+
+    en('<div id="yui3-main">');
+    en('<div class="yui3-b">');
+
+    en('<div class="yui3-gb">');
+    en('<div class="yui3-u first">&nbsp;</div>');
+
+    en('<form action="index.php" method="post">');
+    en('<div class="yui3-u">');
+
+    en('<p><a href="index.php"><img src="images/onpub.png" width="162" height="34" alt="Onpub" title="Onpub"></a></p>');
+
+    if ($this->pdoDatabase === NULL) {
+      en('<p><b>Database</b><br><input type="text" maxlength="255" size="25" name="pdoDatabase" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');
+    }
+    else {
+      en('<p><b>Database</b><br><input type="text" maxlength="255" size="25" name="pdoDatabase" value="'. htmlentities($this->pdoDatabase) . '"></p>');
+    }
+
+    if (defined('ONPUBGUI_PDO_HOST')) {
+      en('<input type="hidden" name="pdoHost" value="' . ONPUBGUI_PDO_HOST . '">');
+    }
+    else {
+      en('<p><b>Host</b><br><input type="text" maxlength="255" size="25" name="pdoHost" value="' . htmlentities($this->pdoHost) . '"></p>');
+    }
+
+    en('<p><b>Username</b><br><input type="text" maxlength="255" size="25" name="pdoUser" value="' . htmlentities($this->pdoUser) . '"></p>');
+
+    en('<p><b>Password</b><br><input type="password" maxlength="255" size="25" name="pdoPassword" value=""></p>');
+
+    en('<p><input type="submit" value="Login"> <a href="http://onpub.com/index.php?articleID=66&amp;sectionID=8" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'help.png" align="top" alt="Help" title="Help"></a></p>');
+
+    if ($this->exception) {
+      en('<p class="onpub-error">' . $this->exception->getMessage() . '</p>');
+    }
+
+    if ($this->target) {
+      $newTarget = "";
+
+      if (is_array($this->target)) {
+        $keys = array_keys($this->target);
+
+        for ($i = 0; $i < sizeof($keys); $i++) {
+          $newTarget .= $keys[$i] . "=" . $this->target[$keys[$i]];
+
+          if (($i + 1) != sizeof($keys)) {
+            $newTarget .= "&";
+          }
+        }
+
+        $this->target = $newTarget;
+      }
+
+      en('<input type="hidden" name="target" value="' . $this->target . '">');
+    }
+
+    en('<input type="hidden" name="onpub" value="LoginProcess">');
+
+    en('</div>');
+    en('</form>');
+
+    en('<div class="yui3-u">&nbsp;</div>');
+
+    en('</div>');
+    en('</div>');
+    en('</div>');
+    en('</div>');
+    en('</div>');
+
+    en('</body>');
+    en('</html>');
+  }
+
+  public function validate()
+  {
+    if (!$this->pdoDatabase) {
+      $this->pdoDatabase = NULL;
+      return FALSE;
+    }
+
+    try {
+      $pdo = new PDO("mysql:host=" . $this->pdoHost . ";dbname=$this->pdoDatabase", $this->pdoUser, $this->pdoPassword);
+    }
+    catch (PDOException $e) {
+      throw $e;
+    }
+
+    $pdo = NULL;
+    return TRUE;
+  }
+
+  public function process()
+  {
+    if ($this->logout) {
+      $_SESSION = array ();
+
+      if (isset($_COOKIE[session_name()])) {
+        setcookie(session_name(), "", (time() - 42000), "/");
+      }
+
+      session_destroy();
+    }
+
+    session_regenerate_id();
+
+    $_SESSION['PDO_HOST'] = $this->pdoHost;
+    $_SESSION['PDO_USER'] = $this->pdoUser;
+    $_SESSION['PDO_PASSWORD'] = $this->pdoPassword;
+    $_SESSION['PDO_DATABASE'] = $this->pdoDatabase;
+  }
+
+  public function getTarget()
+  {
+    return $this->target;
+  }
+
+  public function setException($exception)
+  {
+    $this->exception = $exception;
+  }
+}
+?>

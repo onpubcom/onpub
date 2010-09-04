@@ -1,0 +1,116 @@
+/* Onpub (TM)
+ * Copyright (C) 2010 Onpub.com <http://onpub.com/>
+ * Author: Corey H.M. Taylor <corey@onpub.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2.
+ */
+
+a:link { color: #1e79de; text-decoration: none; }
+a:visited { color: #1e79de; text-decoration: none; }
+a:hover { color: #1e79de; text-decoration: underline; }
+a:active { color: #1e79de; text-decoration: underline; }
+
+html {
+background-color: #636363;
+}
+
+body {
+}
+
+#onpub-page {
+background-color: #F9F9F9;
+border: 1px solid #5c5c5c;
+margin-top: 0.5em;
+margin-bottom: 0.5em;
+-moz-box-shadow: 0px 0px 5px #51565E;
+-webkit-box-shadow: 0px 0px 5px #51565E;
+box-shadow: 0px 0px 5px #51565E;
+}
+
+#onpub-header {
+text-align: left;
+padding-top: 1em;
+margin-left: 1em;
+margin-right: 1em;
+}
+
+#onpub-logo {
+font-size: 197%;
+font-weight: bold;
+}
+
+#onpub-menubar {
+margin-top: 0.5em;
+font-size: 108%;
+}
+
+#onpub-body {
+margin-left: 1em;
+margin-right: 1em;
+color: #393d43;
+}
+
+#onpub-footer {
+margin-top: .75em;
+margin-left: 1em;
+margin-right: 1em;
+padding-top: 1em;
+padding-bottom: .25em;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D8D8DA;
+font-size: 93%;
+color: #393d43;
+}
+
+.yui3-loading #onpub-menubar {
+display: none;
+}
+
+.onpub-error {
+color: red;
+}
+
+input[type=text],input[type=password],textarea {
+width:auto;*width:auto;
+}
+
+div.onpub-section-nav {
+background-color: #eff0f0;
+padding-left: .5em;
+border: 0px solid #5A5A5A;
+border-top-width: 0px;
+color: #3F3F3F;
+}
+
+ul.onpub-section-nav {
+font-size: 93%;
+}
+
+th, td {
+border-color: #EDEDED;
+}
+
+h1 {
+color: #e0811e;
+}
+
+h2, h3, h4, h5, h6, b, strong {
+color: #51565E;
+}
+
+td.onpub-highlight1 {
+background-color: #F7F8FD;
+}
+
+td.onpub-highlight2 {
+background-color: #DEE5F8;
+}
+
+div.onpub-article-info {
+font-size: 93%;
+color: #86919D;
+margin-bottom: 1.75em;
+}

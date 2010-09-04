@@ -1,0 +1,60 @@
+/* Onpub (TM)
+ * Copyright (C) 2010 Onpub.com <http://onpub.com/>
+ * Author: Corey H.M. Taylor <corey@onpub.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2.
+ */
+
+/* Menu content border */
+.yui3-skin-sam .yui3-menu-content {
+border: 1px solid #D8D8DA;
+}
+
+/* Menu content bg image */
+.yui3-skin-sam .yui3-menu-horizontal .yui3-menu-content {
+/* background: none; */
+}
+
+/* Menu button right borders */
+.yui3-skin-sam .yui3-menubuttonnav li {
+border-right: 1px solid #D8D8DA;
+}
+
+/* Menu item text and border */
+.yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-content {
+color: #393d43;
+border-color: #D8D8DA;
+}
+
+/* Menu item active text and borders */
+.yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-active .yui3-menuitem-content {
+color: #393d43;
+border-color:#D8D8DA;
+}
+
+/* Menu label top and bottom borders */
+.yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label {
+border-color: #D8D8DA;
+}
+
+/* Submenu content border */
+.yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-content {
+border: 1px solid #D8D8DA;
+}
+
+/* Menu label text */
+.yui3-skin-sam .yui3-menubuttonnav .yui3-menu-label em {
+color: #393d43;
+}
+
+/* Submenu item text */
+.yui3-skin-sam .yui3-menu .yui3-menu .yui3-menuitem-content {
+color: #393d43;
+}
+
+/* Submenu label text */
+.yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label {
+color: #393d43;
+}
