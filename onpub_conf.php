@@ -35,7 +35,7 @@ $onpub_dir_local = 'local/';
 // variable are included/referenced relative to the path defined here.
 $onpub_dir_root = '';
 // Path to YUI directory.
-$onpub_dir_yui = 'yui/';
+$onpub_dir_yui = 'yui/build/';
 // Path to OnpubAPI directory.
 $onpub_dir_api = 'api/';
 // Path to default Onpub frontend directory.

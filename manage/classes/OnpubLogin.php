@@ -38,10 +38,17 @@ class OnpubLogin
     en('<head>');
     en('<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">');
     en('<title>Onpub (on ' . $_SERVER['SERVER_NAME'] . ')</title>');
-    en('<link rel="stylesheet" type="text/css" href="../yui/build/cssreset/reset-min.css">');
-    en('<link rel="stylesheet" type="text/css" href="../yui/build/cssfonts/fonts-min.css">');
-    en('<link rel="stylesheet" type="text/css" href="../yui/build/cssgrids/grids-min.css">');
-    en('<link rel="stylesheet" type="text/css" href="../yui/build/cssbase/base-min.css">');
+
+    if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
+      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssreset/reset-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssfonts/fonts-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssbase/base-min.css">');
+    }
+    else {
+      en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?3.1.2/build/cssreset/reset-min.css&3.1.2/build/cssfonts/fonts-min.css&3.1.2/build/cssgrids/grids-min.css&3.1.2/build/cssbase/base-min.css">');
+    }
+
     en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
     en('</head>');
     en('<body>');
