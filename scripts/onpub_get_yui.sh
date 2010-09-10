@@ -2,7 +2,7 @@
 GUIDIR="../"
 DLDIR="yui"
 DLURL="http://yuilibrary.com/downloads/yui3/"
-FNAME="yui_3.1.2.zip"
+FNAME="yui_3.2.0.zip"
 
 if [ "$1" = "-f" ]; then
     rm -r "${GUIDIR}${DLDIR}"

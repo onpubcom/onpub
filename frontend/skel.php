@@ -30,7 +30,7 @@ if (file_exists($onpub_dir_root . $onpub_dir_yui)) {
 }
 else {
   $onpub_dir_yui = null;
-  en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?3.1.2/build/cssreset/reset-min.css&3.1.2/build/cssfonts/fonts-min.css&3.1.2/build/cssgrids/grids-min.css&3.1.2/build/cssbase/base-min.css">');
+  en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?3.2.0/build/cssreset/reset-min.css&3.2.0/build/cssfonts/fonts-min.css&3.2.0/build/cssgrids/grids-min.css&3.2.0/build/cssbase/base-min.css">');
 }
 
 if (file_exists($onpub_dir_local . $onpub_inc_css)) {
@@ -63,7 +63,9 @@ else {
 
 <body class="yui3-skin-sam">
 
-<div id="onpub-page" class="<?php echo $onpub_yui_page_width; ?>">
+<!-- <div id="onpub-page" class="<?php echo $onpub_yui_page_width; ?>"> -->
+
+<div id="onpub-page">
 
 <div id="onpub-header">
 <?php include $onpub_dir_root . $onpub_dir_frontend . 'hd.php'; ?>
@@ -108,7 +110,7 @@ if ($onpub_dir_yui) {
   en('<script type="text/javascript" src="' . $onpub_dir_root . $onpub_dir_yui . 'yui/yui-min.js"></script>');
 }
 else {
-  en('<script type="text/javascript" src="http://yui.yahooapis.com/combo?3.1.2/build/yui/yui-min.js"></script>');
+  en('<script type="text/javascript" src="http://yui.yahooapis.com/combo?3.2.0/build/yui/yui-min.js"></script>');
 }
 
 ?>

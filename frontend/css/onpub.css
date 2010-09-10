@@ -20,6 +20,8 @@ body {
 }
 
 #onpub-page {
+width: 960px;
+margin: auto;
 background-color: #F9F9F9;
 border: 1px solid #5c5c5c;
 margin-top: 0.5em;

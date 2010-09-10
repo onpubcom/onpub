@@ -28,7 +28,7 @@ class OnpubWidgetFooter
       en('<script type="text/javascript" src="' . ONPUBGUI_YUI_DIRECTORY . 'yui/yui-min.js"></script>');
     }
     else {
-      en('<script type="text/javascript" src="http://yui.yahooapis.com/combo?3.1.2/build/yui/yui-min.js"></script>');
+      en('<script type="text/javascript" src="http://yui.yahooapis.com/combo?3.2.0/build/yui/yui-min.js"></script>');
     }
 
     en('<script type="text/javascript" src="js/onpub.js"></script>');

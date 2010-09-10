@@ -10,10 +10,8 @@
  */
 
 if ($onpub_section) {
-  en('<div class="yui3-main">');
-  en('<div class="yui3-b">');
-  en('<div class="yui3-ge">');
-  en('<div class="yui3-u first">');
+  en('<div class="yui3-g">');
+  en('<div class="yui3-u-1-2">');
 
   en('<h1>' . $onpub_section->name . '</h1>');
 
@@ -38,10 +36,9 @@ if ($onpub_section) {
     else {
       en('</p>');
     }
-  }
-
+  }   
   en('</div>');
-  en('<div class="yui3-u onpub-section-nav">');
+  en('<div class="yui3-u-1-2 onpub-section-nav">');
 
   if ($onpub_section_parent) {
     if ($onpub_section_parent->url) {
@@ -112,8 +109,6 @@ if ($onpub_section) {
     }
   }
 
-  en('</div>');
-  en('</div>');
   en('</div>');
   en('</div>');
 }
