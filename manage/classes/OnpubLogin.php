@@ -53,18 +53,16 @@ class OnpubLogin
     en('</head>');
     en('<body>');
 
-    en('<div id="onpub-page" class="yui3-d1">');
-    en('<div id="onpub-header"></div>');
+    en('<div id="onpub-page">');
+    en('<div id="onpub-header">&nbsp;</div>');
     en('<div id="onpub-body">');
 
-    en('<div id="yui3-main">');
-    en('<div class="yui3-b">');
+    en('<div class="yui3-g">');
 
-    en('<div class="yui3-gb">');
-    en('<div class="yui3-u first">&nbsp;</div>');
+    en('<div class="yui3-u-1-3">&nbsp;</div>');
 
+    en('<div class="yui3-u-1-3">');
     en('<form action="index.php" method="post">');
-    en('<div class="yui3-u">');
 
     en('<p><a href="index.php"><img src="images/onpub.png" width="162" height="34" alt="Onpub" title="Onpub"></a></p>');
 
@@ -114,15 +112,15 @@ class OnpubLogin
 
     en('<input type="hidden" name="onpub" value="LoginProcess">');
 
-    en('</div>');
     en('</form>');
+    en('</div>');
 
-    en('<div class="yui3-u">&nbsp;</div>');
+    en('<div class="yui3-u-1-3">&nbsp;</div>');
 
     en('</div>');
+
     en('</div>');
-    en('</div>');
-    en('</div>');
+    en('<div id="onpub-foot">&nbsp;</div>');
     en('</div>');
 
     en('</body>');

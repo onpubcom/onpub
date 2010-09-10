@@ -11,7 +11,7 @@
 
 if ($onpub_section) {
   en('<div class="yui3-g">');
-  en('<div class="yui3-u-1-2">');
+  en('<div class="yui3-u-2-3">');
 
   en('<h1>' . $onpub_section->name . '</h1>');
 
@@ -38,14 +38,14 @@ if ($onpub_section) {
     }
   }   
   en('</div>');
-  en('<div class="yui3-u-1-2 onpub-section-nav">');
+  en('<div class="yui3-u-1-3 onpub-section-nav">');
 
   if ($onpub_section_parent) {
     if ($onpub_section_parent->url) {
-      en('<h1><a href="' . $onpub_section_parent->url . '">' . $onpub_section_parent->name . '</a></h1>');
+      en('<h1 class="onpub-section-nav"><a href="' . $onpub_section_parent->url . '">' . $onpub_section_parent->name . '</a></h1>');
     }
     else {
-      en('<h1><a href="index.php?sectionID=' . $onpub_section_parent->ID . '">' . $onpub_section_parent->name . '</a></h1>');
+      en('<h1 class="onpub-section-nav"><a href="index.php?sectionID=' . $onpub_section_parent->ID . '">' . $onpub_section_parent->name . '</a></h1>');
     }
 
     $articles = $onpub_articles->select(null, $onpub_section_parent->ID);
@@ -86,10 +86,10 @@ if ($onpub_section) {
 
     foreach ($sections as $s) {
       if ($s->url) {
-        en('<h1><a href="' . $s->url . '">' . $s->name . '</a></h1>');
+        en('<h1 class="onpub-section-nav"><a href="' . $s->url . '">' . $s->name . '</a></h1>');
       }
       else {
-        en('<h1><a href="index.php?sectionID=' . $s->ID . '">' . $s->name . '</a></h1>');
+        en('<h1 class="onpub-section-nav"><a href="index.php?sectionID=' . $s->ID . '">' . $s->name . '</a></h1>');
       }
 
       $articles = $onpub_articles->select(null, $s->ID);

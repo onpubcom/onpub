@@ -63,8 +63,6 @@ else {
 
 <body class="yui3-skin-sam">
 
-<!-- <div id="onpub-page" class="<?php echo $onpub_yui_page_width; ?>"> -->
-
 <div id="onpub-page">
 
 <div id="onpub-header">

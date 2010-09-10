@@ -20,6 +20,8 @@ body {
 }
 
 #onpub-page {
+width: 960px;
+margin: auto;
 background-color: #F9F9F9;
 border: 1px solid #5c5c5c;
 margin-top: 0.5em;
@@ -79,10 +81,11 @@ width:auto;*width:auto;
 
 div.onpub-section-nav {
 background-color: #eff0f0;
-padding-left: .5em;
-border: 0px solid #5A5A5A;
-border-top-width: 0px;
 color: #3F3F3F;
+}
+
+h1.onpub-section-nav {
+padding-left: 0.5em;
 }
 
 ul.onpub-section-nav {
@@ -109,7 +112,7 @@ td.onpub-highlight2 {
 background-color: #DEE5F8;
 }
 
-div.onpub-article-info {
+p.onpub-article-info {
 font-size: 93%;
 color: #86919D;
 margin-bottom: 1.75em;

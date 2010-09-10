@@ -12,10 +12,9 @@
 if ($onpub_article) {
   en('<h1>' . $onpub_article->title . '</h1>');
 
-  en('<div class="yui3-main">');
-  en('<div class="yui3-b">');
-  en('<div class="yui3-gc onpub-article-info">');
-  en('<div class="yui3-u first">');
+  en('<div class="yui3-g">');
+  en('<div class="yui3-u-2-3">');
+  en('<p class="onpub-article-info">');
 
   $created = $onpub_article->getCreated();
   $modified = $onpub_article->getModified();
@@ -53,13 +52,12 @@ if ($onpub_article) {
     }
   }
 
+  en('</p>');
   en('</div>');
-  en('<div class="yui3-u" style="margin: 0px; text-align: right;">');
+  en('<div class="yui3-u-1-3" style="margin: 0px; text-align: right;">');
 
   if (file_exists($onpub_dir_local . $onpub_inc_article_info)) include $onpub_dir_local . $onpub_inc_article_info;
 
-  en('</div>');
-  en('</div>');
   en('</div>');
   en('</div>');
 
