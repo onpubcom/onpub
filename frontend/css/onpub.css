@@ -95,11 +95,12 @@ color: #3F3F3F;
 }
 
 h1.onpub-section-nav {
-padding-left: 0.5em;
+padding-left: 1em;
 }
 
 ul.onpub-section-nav {
 font-size: 93%;
+padding-left: 1em;
 }
 
 th, td {

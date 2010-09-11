@@ -11,7 +11,7 @@
 
 if ($onpub_section && $onpub_article) {
   en('<div class="yui3-g">');
-  en('<div class="yui3-u-2-3">');
+  en('<div class="yui3-u-3-4">');
 
   en('<h1>' . $onpub_article->title . '</h1>');
 
@@ -69,7 +69,7 @@ if ($onpub_section && $onpub_article) {
   if (file_exists($onpub_dir_local . $onpub_inc_article_foot)) include $onpub_dir_local . $onpub_inc_article_foot;
 
   en('</div>');
-  en('<div class="yui3-u-1-3 onpub-section-nav">');
+  en('<div class="yui3-u-1-4 onpub-section-nav">');
 
   en('<h1 class="onpub-section-nav"><a href="index.php?sectionID=' . $onpub_section->ID . '">' . $onpub_section->name . '</a></h1>');
 
