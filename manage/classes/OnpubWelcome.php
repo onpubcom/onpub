@@ -65,12 +65,7 @@ class OnpubWelcome
         $result .= '</span><br><a href="index.php?onpub=SchemaInstall">Install missing tables</a> (required)';
       }
       else {
-        if ($_SERVER['SERVER_NAME'] == 'newbeast') {
-          $result = '<br>All tables are installed.<!--<br><a href="index.php?onpub=DataBackup">Backup the database</a><br><a href="index.php?onpub=DataRestore">Restore a previous backup</a>--><br><a href="index.php?onpub=DataDelete">Delete all tables</a>';
-        }
-        else {
-          $result = '<br>All tables are installed.<!--<br><a href="index.php?onpub=DataBackup">Backup the database</a><br><a href="index.php?onpub=DataRestore">Restore a previous backup</a>-->';
-        }
+        $result = '<br>All tables are installed.<!--<br><a href="index.php?onpub=DataBackup">Backup the database</a><br><a href="index.php?onpub=DataRestore">Restore a previous backup</a>-->';
       }
 
       en('<b>Database Tables</b>');
@@ -105,12 +100,7 @@ class OnpubWelcome
         $result .= '</span><br><a href="index.php?onpub=SchemaInstall">Install missing tables</a> (required)';
       }
       else {
-        if ($_SERVER['SERVER_NAME'] == 'newbeast') {
-          $result = '<br>All tables are installed.<!--<br><a href="index.php?onpub=DataBackup">Backup the database</a><br><a href="index.php?onpub=DataRestore">Restore a previous backup</a>--><br><a href="index.php?onpub=DataDelete">Delete all tables</a>';
-        }
-        else {
-          $result = '<br>All tables are installed.<!--<br><a href="index.php?onpub=DataBackup">Backup the database</a><br><a href="index.php?onpub=DataRestore">Restore a previous backup</a>-->';
-        }
+        $result = '<br>All tables are installed.<!--<br><a href="index.php?onpub=DataBackup">Backup the database</a><br><a href="index.php?onpub=DataRestore">Restore a previous backup</a>-->';
       }
 
       en('<b>Database Tables</b>');
