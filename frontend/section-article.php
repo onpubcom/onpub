@@ -57,7 +57,7 @@ if ($onpub_section && $onpub_article) {
 
   en('</p>');
   en('</div>');
-  en('<div class="yui3-u-1-3" style="margin: 0px; text-align: right;">');
+  en('<div class="yui3-u-1-3">');
 
   if (file_exists($onpub_dir_local . $onpub_inc_article_info)) include $onpub_dir_local . $onpub_inc_article_info;
 
