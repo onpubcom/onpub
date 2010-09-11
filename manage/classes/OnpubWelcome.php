@@ -32,9 +32,9 @@ class OnpubWelcome
     $widget->display();
 
     if ($status == ONPUBAPI_SCHEMA_VERSION) {
-      en('<div class="yui3-gb">');
+      en('<div class="yui3-g">');
 
-      en('<div class="yui3-u first">');
+      en('<div class="yui3-u-1-3">');
       en('<b>Connection Info</b><br>');
       en('Database: ' . $_SESSION['PDO_DATABASE'], 1, 1);
       en('User: ' . $_SESSION['PDO_USER'], 1, 1);
@@ -44,7 +44,7 @@ class OnpubWelcome
       en('Server: ' . $this->pdo->getAttribute(PDO::ATTR_SERVER_VERSION), 1, 1);
       en('</div>');
 
-      en('<div class="yui3-u">');
+      en('<div class="yui3-u-1-3">');
       en('<b>Content Stats</b><br>');
       en('Articles: ' . $oarticles->count(), 1, 1);
       en('Authors: ' . $oauthors->count(), 1, 1);
@@ -53,7 +53,7 @@ class OnpubWelcome
       en('Websites: ' . $owebsites->count());
       en('</div>');
 
-      en('<div class="yui3-u">');
+      en('<div class="yui3-u-1-3">');
 
       if (is_array($status)) {
         $result = '<span class="onpub-error">';
@@ -83,7 +83,7 @@ class OnpubWelcome
     else {
       en('<div class="yui3-g">');
 
-      en('<div class="yui3-u first">');
+      en('<div class="yui3-u-1-2">');
       en('<b>Connection Info</b><br>');
       en('Database: ' . $_SESSION['PDO_DATABASE'], 1, 1);
       en('User: ' . $_SESSION['PDO_USER'], 1, 1);
@@ -93,7 +93,7 @@ class OnpubWelcome
       en('Server: ' . $this->pdo->getAttribute(PDO::ATTR_SERVER_VERSION), 1, 1);
       en('</div>');
 
-      en('<div class="yui3-u">');
+      en('<div class="yui3-u-1-2">');
 
       if (is_array($status)) {
         $result = '<span class="onpub-error">';
@@ -125,7 +125,7 @@ class OnpubWelcome
 
     en('<div class="yui3-g">');
 
-    en('<div class="yui3-u first">');
+    en('<div class="yui3-u-1-2">');
     en('<b>PHP Configuration</b><br>');
 
     if (get_magic_quotes_gpc()) {
@@ -158,7 +158,7 @@ class OnpubWelcome
 
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-2">');
 
     en('</div>');
 

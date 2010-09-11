@@ -99,13 +99,13 @@ class OnpubEditWebsite
 
     en('<b>Images URL</b>' . $message . '<br><input type="text" maxlength="255" size="75" name="imagesURL" value="' . htmlentities($this->owebsite->imagesURL) . '">' . $go, 1, 2);
 
-    en('<div class="yui3-gd">');
+    en('<div class="yui3-g">');
 
-    en('<div class="yui3-u first">');
+    en('<div class="yui3-u-1-2">');
     en('<b>Created</b><br>' . $this->owebsite->getCreated()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-2">');
     en('<b>Modified</b><br>' . $this->owebsite->getModified()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 

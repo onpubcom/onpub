@@ -64,13 +64,13 @@ class OnpubEditArticle
 
     en('<div class="yui3-g">');
 
-    en('<div class="yui3-u first">');
+    en('<div class="yui3-u-1-2">');
 
     en('<b>Title</b><br><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '">', 1, 2);
 
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-2">');
 
     en('<b>Author</b><br><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($author->displayAs) . '">', 1, 2);
 

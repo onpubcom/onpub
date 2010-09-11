@@ -13,29 +13,30 @@ a:hover { color: #1e79de; text-decoration: underline; }
 a:active { color: #1e79de; text-decoration: underline; }
 
 html {
-background-color: #636363;
+background-color: #6b6b6b;
 }
 
 body {
 }
 
 #onpub-page {
-width: 960px;
+width: 970px;
 margin: auto;
-background-color: #F9F9F9;
-border: 1px solid #5c5c5c;
+background-color: #fcfcfc;
+border: 1px solid #636363;
 margin-top: 0.5em;
 margin-bottom: 0.5em;
--moz-box-shadow: 0px 0px 5px #51565E;
--webkit-box-shadow: 0px 0px 5px #51565E;
-box-shadow: 0px 0px 5px #51565E;
+padding: 1em;
+padding-bottom: .25em;
+
+-moz-box-shadow: 0px 0px 5px #636363;
+-webkit-box-shadow: 0px 0px 5px #636363;
+box-shadow: 0px 0px 5px #636363;
+
 }
 
 #onpub-header {
 text-align: left;
-padding-top: 1em;
-margin-left: 1em;
-margin-right: 1em;
 }
 
 #onpub-logo {
@@ -46,20 +47,29 @@ font-weight: bold;
 #onpub-menubar {
 margin-top: 0.5em;
 font-size: 108%;
+-moz-box-shadow: 0px 0px 5px #f0f0f0;
+-webkit-box-shadow: 0px 0px 5px #f0f0f0;
+box-shadow: 0px 0px 5px #f0f0f0;
 }
 
 #onpub-body {
-margin-left: 1em;
-margin-right: 1em;
 color: #393d43;
+background-color: #ffffff;
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #D8D8DA;
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #D8D8DA;
+padding-left: 1em;
+padding-bottom: 1.5em;
+-moz-box-shadow: 0px 0px 5px #f0f0f0;
+-webkit-box-shadow: 0px 0px 5px #f0f0f0;
+box-shadow: 0px 0px 5px #f0f0f0;
 }
 
 #onpub-footer {
-margin-top: .75em;
-margin-left: 1em;
-margin-right: 1em;
 padding-top: 1em;
-padding-bottom: .25em;
 border-top-style: solid;
 border-top-width: 1px;
 border-top-color: #D8D8DA;

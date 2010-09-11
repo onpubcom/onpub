@@ -45,7 +45,7 @@ class OnpubUploadImages
 
     en('<div class="yui3-g">');
 
-    en('<div class="yui3-u first">');
+    en('<div class="yui3-u-1-2">');
 
     if ($this->imageFiles === NULL) {
       en('<b>Image File</b><br><input type="file" size="30" name="imageFiles[]"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"><br><br>');
@@ -56,7 +56,7 @@ class OnpubUploadImages
 
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-2">');
 
     en('<b>Image File</b><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
 
@@ -66,13 +66,13 @@ class OnpubUploadImages
 
     en('<div class="yui3-g">');
 
-    en('<div class="yui3-u first">');
+    en('<div class="yui3-u-1-2">');
 
     en('<b>Image File</b><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
 
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-2">');
 
     en('<b>Image File</b><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
 

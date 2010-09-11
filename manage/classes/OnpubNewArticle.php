@@ -13,6 +13,7 @@ class OnpubNewArticle
   private $pdo;
   private $oarticle;
   private $oauthor;
+
   function __construct(PDO $pdo, OnpubArticle $oarticle, OnpubAuthor $oauthor)
   {
     $this->pdo = $pdo;
@@ -47,19 +48,18 @@ class OnpubNewArticle
 
     en('<div class="yui3-g">');
 
-    en('<div class="yui3-u first">');
+    en('<div class="yui3-u-1-2">');
 
     if ($this->oarticle->title === NULL) {
       en('<b>Title</b><br><input type="text" maxlength="255" size="40" name="title" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
     }
     else {
-      en('<b>Title</b><br><input type="text" maxlength="255" size="40" name="title" value="'
-        . htmlentities($this->oarticle->title) . '">', 1, 2);
+      en('<b>Title</b><br><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '">', 1, 2);
     }
 
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-2">');
 
     en('<b>Author</b><br><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($this->oauthor->displayAs) . '">', 1, 2);
 

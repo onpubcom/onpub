@@ -116,13 +116,13 @@ class OnpubEditSection
       br (2);
     }
 
-    en('<div class="yui3-gd">');
+    en('<div class="yui3-g">');
 
-    en('<div class="yui3-u first">');
+    en('<div class="yui3-u-1-2">');
     en('<b>Created</b><br>' . $this->osection->getCreated()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-2">');
     en('<b>Modified</b><br>' . $this->osection->getModified()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 

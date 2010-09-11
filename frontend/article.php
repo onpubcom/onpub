@@ -9,6 +9,9 @@
  * as published by the Free Software Foundation; version 2.
  */
 
+en('<div class="yui3-g">');
+en('<div class="yui3-u-23-24">');
+
 if ($onpub_article) {
   en('<h1>' . $onpub_article->title . '</h1>');
 
@@ -68,5 +71,9 @@ if ($onpub_article) {
 else {
   en('<h1>Article ' . $_GET['articleID'] . ' not found... <a href="index.php">Home</a></h1>');
 }
+
+en('</div>');
+en('<div class="yui3-u-1-24"></div>');
+en('</div>');
 
 ?>

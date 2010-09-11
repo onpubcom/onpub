@@ -9,6 +9,9 @@
  * as published by the Free Software Foundation; version 2.
  */
 
+en('<div class="yui3-g">');
+en('<div class="yui3-u-23-24">');
+
 if ($onpub_website) {
   if ($onpub_disp_article) {
     $onpub_article = $onpub_articles->get($onpub_disp_article);
@@ -22,7 +25,6 @@ if ($onpub_website) {
       en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_blank">Create a new article</a> to customize this page.</p>');
     }
   }
-
   if ($onpub_disp_updates) {
     $qo = new OnpubQueryOptions();
     $qo->includeContent = true;
@@ -88,5 +90,8 @@ else {
   en('<p>Onpub\'s installed. <a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewWebsite" target="_blank">Create a new website</a> and then reload this page to get started.</p>');
 }
 
+en('</div>');
+en('<div class="yui3-u-1-24"></div>');
+en('</div>');
 
 ?>

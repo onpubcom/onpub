@@ -66,74 +66,74 @@ class OnpubEditImage
     en('<form action="index.php" method="post">');
     en('<div>');
 
-    en('<div class="yui3-gb">');
+    en('<div class="yui3-g">');
 
-    en('<div class="yui3-u first">');
+    en('<div class="yui3-u-1-3">');
     en('<b>File Name</b><br><input type="text" maxlength="255" size="' . 30 . '" name="fileName" value="' . htmlentities($this->oimage->fileName) . '">', 1, 2);
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-3">');
     en('<b>Description</b><br><input type="text" maxlength="255" size="' . 30 . '" name="description" value="'
       . htmlentities($this->oimage->description) . '">', 1, 2);
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-3">');
     en('<b>Website</b><br><a href="index.php?onpub=EditWebsite&amp;websiteID='
       . $website->ID . '" title="Edit">' . $website->name . '</a>', 1, 2);
     en('</div>');
 
     en('</div>');
 
-    en('<div class="yui3-gb">');
+    en('<div class="yui3-g">');
 
-    en('<div class="yui3-u first">');
+    en('<div class="yui3-u-1-3">');
     en('<b>URL</b><br><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">'
       . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a>', 1, 2);
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-3">');
 
     if ($fileExists) {
       en('<b>File Path</b><br>' . addTrailingSlash($website->imagesDirectory) . $this->oimage->fileName . ' (on <i>' . $_SERVER['SERVER_NAME'] . '</i>)', 1, 2);
     }
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-3">');
     en('</div>');
 
     en('</div>');
 
-    en('<div class="yui3-gb">');
+    en('<div class="yui3-g">');
 
-    en('<div class="yui3-u first">');
+    en('<div class="yui3-u-1-3">');
     en('<b>Created</b><br>'
       . $this->oimage->getCreated()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-3">');
     en('<b>Modified</b><br>'
       . $this->oimage->getModified()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u-1-3">');
     en('</div>');
 
     en('</div>');
 
     if ($fileExists) {
-      en('<div class="yui3-gb">');
+      en('<div class="yui3-g">');
 
-      en('<div class="yui3-u first">');
+      en('<div class="yui3-u-1-3">');
       en('<b>Width</b><br>');
       en($imageWidth . 'px', 1, 2);
       en('</div>');
 
-      en('<div class="yui3-u">');
+      en('<div class="yui3-u-1-3">');
       en('<b>Height</b><br>');
       en($imageHeight . 'px', 1, 2);
       en('</div>');
 
-      en('<div class="yui3-u">');
+      en('<div class="yui3-u-1-3">');
       en('<b>File Size</b><br>');
 
       if ($imageFileSize >= 1024) {
