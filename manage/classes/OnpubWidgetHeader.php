@@ -47,6 +47,7 @@ class OnpubWidgetHeader
       en('var onpub_dir_yui = null;');
     }
 
+    en('var onpub_yui_version = "' . ONPUBGUI_YUI_VERSION . '";');
     en('</script>');
 
     en('</head>');

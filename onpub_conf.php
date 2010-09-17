@@ -78,8 +78,8 @@ $onpub_inc_css = 'onpub.css';
 $onpub_inc_css_menu = 'onpub-menu.css';
 
 // YUI CONTROL VARIABLES
-// Sets the overall page width. Possible values are documented here:
-// http://developer.yahoo.com/yui/3/cssgrids/#page_width
-$onpub_yui_page_width = 'yui3-d2';
+// Version of YUI bundled with Onpub. If bundled YUI does not exist then this
+// is the version Onpub will attempt to download from Yahoo!'s CDN.
+$onpub_yui_version = '3.2.0';
 
 ?>

@@ -9,7 +9,7 @@
 
 YUI(
 {
-  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?3.1.2/build/" : onpub_dir_yui,
+  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui,
   timeout: 10000
 }
 ).use("node", "node-menunav", function(Y)
