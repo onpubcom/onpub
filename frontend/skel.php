@@ -17,6 +17,7 @@ header ("Content-Type: text/html; charset=iso-8859-1");
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
 <?php include $onpub_dir_root . $onpub_dir_frontend . 'title.php'; ?>
 <link rel="alternate" type="application/rss+xml" href="index.php?rss" title="<?php if ($onpub_website) echo $onpub_website->name; ?> RSS Feed">
 

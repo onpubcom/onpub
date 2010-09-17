@@ -80,6 +80,7 @@ class OnpubNewArticle
       $ck->basePath = 'ckeditor/';
 
       $config['height'] = 320;
+      $config['uiColor'] = '#eff0f0';
       $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css');
       $events['instanceReady'] = 'function (ev) {
         var w = ev.editor.dataProcessor.writer;

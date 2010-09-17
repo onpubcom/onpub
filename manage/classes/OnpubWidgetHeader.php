@@ -23,6 +23,7 @@ class OnpubWidgetHeader
     en('<html>');
     en('<head>');
     en('<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">');
+    en('<meta http-equiv="Content-Style-Type" content="text/css">');
     en('<title>' . strip_tags("Onpub (on " . $_SERVER['SERVER_NAME'] . ") - " . $this->title) . '</title>');
 
     if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
