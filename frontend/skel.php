@@ -48,10 +48,17 @@ var onpub_dir_root = "<?php echo $onpub_dir_root; ?>";
 <?php
 
 if ($onpub_dir_yui) {
-  en('var onpub_dir_yui = "' . $onpub_dir_root . $onpub_dir_yui . '";', 0);
+  en('var onpub_dir_yui = "' . $onpub_dir_root . $onpub_dir_yui . '";');
 }
 else {
-  en('var onpub_dir_yui = null;', 0);
+  en('var onpub_dir_yui = null;');
+}
+
+if (file_exists($onpub_dir_local . $onpub_inc_css_menu)) {
+  en('var onpub_inc_css_menu = "' . $onpub_dir_local . $onpub_inc_css_menu . '";', 0);
+}
+else {
+  en('var onpub_inc_css_menu = "' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css";', 0);
 }
 
 ?>
@@ -111,22 +118,7 @@ else {
   en('<script type="text/javascript" src="http://yui.yahooapis.com/combo?3.2.0/build/yui/yui-min.js"></script>');
 }
 
-?>
-
-<script type="text/javascript" src="<?php echo $onpub_dir_root . $onpub_dir_frontend; ?>js/site.js"></script>
-
-<?php
-
-if (file_exists($onpub_dir_local . $onpub_inc_css_menu)) {
-  en('<style type="text/css">');
-  en('@import url("' . $onpub_dir_local . $onpub_inc_css_menu . '");');
-  en('</style>');
-}
-else {
-  en('<style type="text/css">');
-  en('@import url("' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css");');
-  en('</style>');
-}
+en('<script type="text/javascript" src="' . $onpub_dir_root . $onpub_dir_frontend . 'js/site.js"></script>');
 
 if (file_exists($onpub_dir_local . $onpub_inc_foot)) include $onpub_dir_local . $onpub_inc_foot;
 

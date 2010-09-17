@@ -19,4 +19,6 @@ YUI(
     menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
     menu.setStyle('border-color', 'white');
   }
+
+  Y.Get.css(onpub_inc_css_menu);
 });
