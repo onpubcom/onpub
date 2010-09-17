@@ -118,3 +118,9 @@ font-size: 93%;
 color: #86919D;
 margin-bottom: 1.75em;
 }
+
+input, textarea, select {
+color: #393d43;
+border: 1px solid #D3D3D3;
+padding: 0.25em;
+}
