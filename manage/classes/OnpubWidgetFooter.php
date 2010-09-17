@@ -37,8 +37,6 @@ class OnpubWidgetFooter
 
     en('<script type="text/javascript" src="js/onpub.js"></script>');
 
-    //en('<link rel="stylesheet" type="text/css" href="css/onpub-menu.css">');
-
     en('</body>');
     en('</html>');
   }

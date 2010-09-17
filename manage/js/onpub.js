@@ -19,6 +19,7 @@ YUI(
   menu.plug(Y.Plugin.NodeMenuNav);
   menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
 
+  // Load custom CSS for YUI menu.
   Y.Get.css("css/onpub-menu.css");
 
   // Event handler functions.

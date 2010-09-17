@@ -20,5 +20,6 @@ YUI(
     menu.setStyle('border-color', 'white');
   }
 
+  // Load custom CSS for YUI menu.
   Y.Get.css(onpub_inc_css_menu);
 });
