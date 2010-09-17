@@ -28,7 +28,6 @@ margin-top: 0.5em;
 margin-bottom: 0.5em;
 padding: 1em;
 padding-bottom: .25em;
-
 -moz-box-shadow: 0px 0px 5px #636363;
 -webkit-box-shadow: 0px 0px 5px #636363;
 box-shadow: 0px 0px 5px #636363;
@@ -42,10 +41,10 @@ text-align: left;
 #onpub-logo {
 font-size: 197%;
 font-weight: bold;
+margin-bottom: 0.25em;
 }
 
 #onpub-menubar {
-margin-top: 0.5em;
 font-size: 108%;
 -moz-box-shadow: 0px 0px 5px #f0f0f0;
 -webkit-box-shadow: 0px 0px 5px #f0f0f0;
@@ -55,12 +54,7 @@ box-shadow: 0px 0px 5px #f0f0f0;
 #onpub-body {
 color: #393d43;
 background-color: #ffffff;
-border-left-style: solid;
-border-left-width: 1px;
-border-left-color: #D8D8DA;
-border-right-style: solid;
-border-right-width: 1px;
-border-right-color: #D8D8DA;
+border: 1px solid #D8D8DA;
 padding-left: 1em;
 padding-bottom: 1.5em;
 -moz-box-shadow: 0px 0px 5px #f0f0f0;
@@ -70,9 +64,6 @@ box-shadow: 0px 0px 5px #f0f0f0;
 
 #onpub-footer {
 padding-top: 1em;
-border-top-style: solid;
-border-top-width: 1px;
-border-top-color: #D8D8DA;
 font-size: 93%;
 color: #393d43;
 }

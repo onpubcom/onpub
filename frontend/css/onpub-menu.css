@@ -10,6 +10,7 @@
 /* Menu content border */
 .yui3-skin-sam .yui3-menu-content {
 border: 1px solid #D8D8DA;
+border-bottom: none;
 }
 
 /* Menu content bg image */

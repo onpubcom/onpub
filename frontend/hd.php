@@ -14,7 +14,7 @@ if ($onpub_website) {
     en('<div id="onpub-logo"><a href="index.php"><img src="' . addTrailingSlash($onpub_website->imagesURL) . $onpub_website->image->fileName . '" alt="' . $onpub_website->image->fileName . '" title="' . $onpub_website->image->description . '"></a></div>');
   }
   else {
-    en('<div id="onpub-logo"><a href="index.php">' . $onpub_website->name . '</a></div>');
+    en('<div id="onpub-logo" style="margin-bottom: .5em;"><a href="index.php">' . $onpub_website->name . '</a></div>');
   }
 
   $sections = $onpub_sections->select(null, $onpub_website->ID, FALSE);
@@ -131,7 +131,7 @@ if ($onpub_website) {
   }
 }
 else {
-    en('<a href="index.php"><img src="' . $onpub_dir_root . $onpub_dir_manage . 'images/onpub.png" alt="Onpub" title="Onpub"></a>');
+    en('<div id="onpub-logo"><a href="index.php"><img src="' . $onpub_dir_root . $onpub_dir_manage . 'images/onpub.png" alt="Onpub" title="Onpub"></a></div>');
 }
 
 ?>

@@ -54,9 +54,6 @@ class OnpubLogin
     en('<body>');
 
     en('<div id="onpub-page">');
-    en('<div id="onpub-header">&nbsp;</div>');
-    en('<div id="onpub-body">');
-
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-3">&nbsp;</div>');
@@ -118,9 +115,6 @@ class OnpubLogin
     en('<div class="yui3-u-1-3">&nbsp;</div>');
 
     en('</div>');
-
-    en('</div>');
-    en('<div id="onpub-foot">&nbsp;</div>');
     en('</div>');
 
     en('</body>');
