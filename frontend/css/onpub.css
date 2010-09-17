@@ -75,8 +75,16 @@ display: none;
 color: red;
 }
 
-input[type=text],input[type=password],textarea {
+input[type=text],input[type=password],textarea,select {
+color: #393d43;
+border: 1px solid #D3D3D3;
+padding: 0.25em;
 width:auto;*width:auto;
+}
+
+input[type=submit],input[type=button],input[type=file] {
+color: #393d43;
+padding: 0.25em;
 }
 
 div.onpub-section-nav {
@@ -117,10 +125,4 @@ p.onpub-article-info {
 font-size: 93%;
 color: #86919D;
 margin-bottom: 1.75em;
-}
-
-input, textarea, select {
-color: #393d43;
-border: 1px solid #D3D3D3;
-padding: 0.25em;
 }
