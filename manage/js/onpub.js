@@ -19,6 +19,8 @@ YUI(
   menu.plug(Y.Plugin.NodeMenuNav);
   menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
 
+  Y.Get.css("css/onpub-menu.css");
+
   // Event handler functions.
   function moveUp(e, list)
   {
