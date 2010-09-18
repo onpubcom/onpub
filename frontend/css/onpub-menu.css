@@ -25,13 +25,13 @@ border-right: 1px solid #D8D8DA;
 
 /* Menu item text and border */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-content {
-color: #393d43;
+color: #575d66;
 border-color: #D8D8DA;
 }
 
 /* Menu item active text and borders */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-active .yui3-menuitem-content {
-color: #393d43;
+color: #575d66;
 border-color:#D8D8DA;
 }
 
@@ -47,15 +47,15 @@ border: 1px solid #D8D8DA;
 
 /* Menu label text */
 .yui3-skin-sam .yui3-menubuttonnav .yui3-menu-label em {
-color: #393d43;
+color: #575d66;
 }
 
 /* Submenu item text */
 .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menuitem-content {
-color: #393d43;
+color: #575d66;
 }
 
 /* Submenu label text */
 .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label {
-color: #393d43;
+color: #575d66;
 }

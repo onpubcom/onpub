@@ -51,7 +51,7 @@ box-shadow: 0px 0px 5px #f0f0f0;
 }
 
 #onpub-body {
-color: #393d43;
+color: #525861;
 background-color: #ffffff;
 border: 1px solid #D8D8DA;
 padding-left: 1em;
@@ -64,7 +64,7 @@ box-shadow: 0px 0px 5px #f0f0f0;
 #onpub-footer {
 padding-top: 1em;
 font-size: 93%;
-color: #adadad;
+color: #575d66;
 }
 
 .yui3-loading #onpub-menubar {
@@ -76,14 +76,14 @@ color: red;
 }
 
 input[type=text],input[type=password],textarea,select {
-color: #393d43;
+color: #525861;
 border: 1px solid #D3D3D3;
 padding: 0.25em;
 width:auto;*width:auto;
 }
 
 input[type=submit],input[type=button],input[type=file] {
-color: #393d43;
+color: #525861;
 padding: 0.25em;
 }
 
