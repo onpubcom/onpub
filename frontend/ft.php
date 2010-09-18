@@ -15,7 +15,7 @@ if ($onpub_website) {
   en('<div class="yui3-g">');
   en('<div class="yui3-u-3-4">');
 
-  en('<p>&copy; ' . $dt->format('Y') . ' <a href="index.php">' . $onpub_website->name . '</a>. All rights reserved. <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/rss.png" align="top" width="12" height="12" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></p>');
+  en('<p>&copy; ' . $dt->format('Y') . ' <a href="index.php">' . $onpub_website->name . '</a>. All rights reserved. <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/rss.png" width="12" height="12" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></p>');
 
   en('</div>');
   en('<div class="yui3-u-1-4">');
