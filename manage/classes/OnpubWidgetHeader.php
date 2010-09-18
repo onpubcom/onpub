@@ -58,7 +58,7 @@ class OnpubWidgetHeader
 
     en('<div id="onpub-header">');
 
-    en('<div id="onpub-logo"><a href="index.php"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'onpub.png" width="162" height="34" alt="Onpub" title="Onpub" border="0"></a></div>', 1);
+    en('<div id="onpub-logo"><a href="index.php"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'onpub.png" width="143" height="29" alt="Onpub" title="Onpub" border="0"></a></div>', 1);
 
     en('<div id="onpub-menubar" class="yui3-menu yui3-menu-horizontal yui3-menubuttonnav">');
     en('<div class="yui3-menu-content">');

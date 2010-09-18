@@ -61,7 +61,7 @@ class OnpubLogin
     en('<div class="yui3-u-1-3">');
     en('<form action="index.php" method="post">');
 
-    en('<p><a href="index.php"><img src="images/onpub.png" width="162" height="34" alt="Onpub" title="Onpub"></a></p>');
+    en('<p><a href="index.php"><img src="images/onpub.png" width="143" height="29" alt="Onpub" title="Onpub"></a></p>');
 
     if ($this->pdoDatabase === NULL) {
       en('<p><b>Database</b><br><input type="text" maxlength="255" size="25" name="pdoDatabase" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');

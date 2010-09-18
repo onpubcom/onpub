@@ -18,6 +18,11 @@ border-bottom: none;
 /* background: none; */
 }
 
+/* Menu label bg image */
+.yui3-skin-sam .yui3-menubuttonnav .yui3-menu-label em {
+background-image: url("../images/horizontal-menu-submenu-indicator.png");
+}
+
 /* Menu button right borders */
 .yui3-skin-sam .yui3-menubuttonnav li {
 border-right: 1px solid #D8D8DA;
