@@ -9,18 +9,33 @@
 
 YUI(
 {
-  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui,
-  timeout: 10000
+  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
 }
-).use("node", "node-menunav", function(Y)
+).use("node-menunav", "transition", function(Y)
 {
-  // Load and display the menubar.
   var menu = Y.one("#onpub-menubar");
+
   menu.plug(Y.Plugin.NodeMenuNav);
-  menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
 
   // Load custom CSS for YUI menu.
-  Y.Get.css("css/onpub-menu.css");
+  Y.Get.css('css/onpub-menu.css');
+
+  menu.setStyle('height', '0px');
+  Y.all('.yui3-menu-content').setStyle('opacity', '0');
+
+  menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
+
+  menu.transition({
+    easing: 'ease-out',
+    duration: .2,
+    height: '27px',
+  });
+
+  Y.all('.yui3-menu-content').transition({
+    easing: 'ease-out',
+    duration: .2,
+    opacity: '1',
+  });
 
   // Event handler functions.
   function moveUp(e, list)

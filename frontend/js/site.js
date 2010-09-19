@@ -9,17 +9,32 @@
 
 YUI(
 {
-  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui,
-  timeout: 10000
-} ).use("node-menunav", function(Y)
+  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
+}).use("node-menunav", "transition", function(Y)
 {
   var menu = Y.one("#onpub-menubar");
+
   if (menu) {
     menu.plug(Y.Plugin.NodeMenuNav);
-    menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
-    menu.setStyle('border-color', 'white');
-  }
 
-  // Load custom CSS for YUI menu.
-  Y.Get.css(onpub_inc_css_menu);
+    // Load custom CSS for YUI menu.
+    Y.Get.css(onpub_inc_css_menu);
+
+    menu.setStyle('height', '0px');
+    Y.all('.yui3-menu-content').setStyle('opacity', '0');
+
+    menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
+
+    menu.transition({
+      easing: 'ease-out',
+      duration: .2,
+      height: '27px',
+    });
+
+    Y.all('.yui3-menu-content').transition({
+      easing: 'ease-out',
+      duration: .2,
+      opacity: '1',
+    });
+  }
 });
