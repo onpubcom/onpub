@@ -156,27 +156,27 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=ASC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=ASC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
               }
               break;
@@ -185,27 +185,27 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=DESC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=DESC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
               }
               break;
@@ -214,41 +214,41 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=ASC">Created</a></b></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
                   break;
 
                   default:
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords=' . $this
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords=' . $this
                                   ->
                                     keywords . '&amp;fullTextSearch=' . $this
                                       ->
-                                        fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                                        fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=ASC">Created</a></b></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
                   break;
               }
               break;
@@ -261,21 +261,21 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=ASC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=ASC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
               }
               break;
@@ -284,21 +284,21 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=fileName&amp;order=DESC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=fileName&amp;order=DESC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
               }
               break;
@@ -307,31 +307,31 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=ASC">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
                   break;
 
                   default:
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords=' . $this
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords=' . $this
                                   ->
-                                    keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=ASC">Created</a></b></td>');
+                                    keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
                   break;
               }
               break;
@@ -348,21 +348,21 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Created</a></b></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Created</a></b></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Created</a></strong></td>');
                   break;
               }
               break;
@@ -371,21 +371,21 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">ID</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">ID</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">ID</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">ID</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Created</a></strong></td>');
                   break;
               }
               break;
@@ -394,30 +394,30 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">Created</a></strong></td>');
                   break;
 
                   default:
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID=' . $this
-                                  ->sectionID . '">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC&sectionID=' . $this
+                                  ->sectionID . '">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">Created</a></strong></td>');
                   break;
               }
               break;
@@ -430,15 +430,15 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=ASC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=ASC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
               }
               break;
@@ -447,15 +447,15 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=DESC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=DESC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
               }
               break;
@@ -464,21 +464,21 @@ class OnpubEditImages
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=ASC">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
                   break;
 
                   default:
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></b></td>');
-                  en('<td align="left"><b><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></b></td>');
-                  en('<td align="left" class="onpub-highlight2"><b><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=ASC">Created</a></b></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
+                  en('<td align="left"><strong><a href="index.php?onpub=EditImages&amp;orderBy=fileName&amp;order=ASC">File Name</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditImages&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
                   break;
               }
               break;

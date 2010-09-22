@@ -44,10 +44,10 @@ class OnpubNewSection
     en('<div>');
 
     if ($this->osection->name === NULL) {
-      en('<b>Name</b><br><input type="text" maxlength="255" size="' . 30 . '" name="name" value="' . htmlentities($this->osection->name) . '"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
+      en('<strong>Name</strong><br><input type="text" maxlength="255" size="' . 30 . '" name="name" value="' . htmlentities($this->osection->name) . '"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
     }
     else {
-      en('<b>Name</b><br><input type="text" maxlength="255" size="' . 30 . '" name="name" value="' . htmlentities($this->osection->name) . '">', 1, 2);
+      en('<strong>Name</strong><br><input type="text" maxlength="255" size="' . 30 . '" name="name" value="' . htmlentities($this->osection->name) . '">', 1, 2);
     }
 
     if ($this->osection->parentID) {
@@ -75,11 +75,11 @@ class OnpubNewSection
 
     if (sizeof($websites)) {
       if ($this->visible) {
-        en('<b>Visibility</b>', 1, 1);
+        en('<strong>Visibility</strong>', 1, 1);
         en('<input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">De-select to make the frontend hide this section</label>', 1, 2);
       }
       else {
-        en('<b>Visibility</b>', 1, 1);
+        en('<strong>Visibility</strong>', 1, 1);
         en('<input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Select to make the frontend display this section</label>', 1, 2);
       }
     }

@@ -19,7 +19,7 @@ class OnpubWidgetDateCreated
 
   public function display()
   {
-    en('<b>Created</b>', 1, 1);
+    en('<strong>Created</strong>', 1, 1);
     en('Year: <input type="text" maxlength="4" size="4" name="createdYear" value="'
       . $this->created['year'] . '">');
     en('Month:');

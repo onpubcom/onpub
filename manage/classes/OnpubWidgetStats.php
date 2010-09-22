@@ -29,29 +29,29 @@ class OnpubWidgetStats
   {
     if ($this->keywords) {
       if ($this->totalArticles == 1) {
-        en('<b>' . $this->totalArticles . ' ' . $this->listType . ' Found</b>');
+        en('<strong>' . $this->totalArticles . ' ' . $this->listType . ' Found</strong>');
       }
       else {
-        en('<b>' . $this->totalArticles . ' ' . $this->listType . 's Found</b>');
+        en('<strong>' . $this->totalArticles . ' ' . $this->listType . 's Found</strong>');
       }
     }
     else {
       if ($this->id) {
         if ($this->totalArticles == 1) {
-          en('<b>' . $this->totalArticles . ' ' . $this->listType . ' in '
-            . $this->listTypeParent . '</b>');
+          en('<strong>' . $this->totalArticles . ' ' . $this->listType . ' in '
+            . $this->listTypeParent . '</strong>');
         }
         else {
-          en('<b>' . $this->totalArticles . ' ' . $this->listType . 's in '
-            . $this->listTypeParent . '</b>');
+          en('<strong>' . $this->totalArticles . ' ' . $this->listType . 's in '
+            . $this->listTypeParent . '</strong>');
         }
       }
       else {
         if ($this->totalArticles == 1) {
-          en('<b>' . $this->totalArticles . ' ' . $this->listType . ' in Total</b>');
+          en('<strong>' . $this->totalArticles . ' ' . $this->listType . ' in Total</strong>');
         }
         else {
-          en('<b>' . $this->totalArticles . ' ' . $this->listType . 's in Total</b>');
+          en('<strong>' . $this->totalArticles . ' ' . $this->listType . 's in Total</strong>');
         }
       }
     }

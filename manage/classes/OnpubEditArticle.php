@@ -66,19 +66,19 @@ class OnpubEditArticle
 
     en('<div class="yui3-u-1-2">');
 
-    en('<b>Title</b><br><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '">', 1, 2);
+    en('<strong>Title</strong><br><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '">', 1, 2);
 
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
 
-    en('<b>Author</b><br><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($author->displayAs) . '">', 1, 2);
+    en('<strong>Author</strong><br><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($author->displayAs) . '">', 1, 2);
 
     en('</div>');
 
     en('</div>');
 
-    en('<b>Content</b><br>');
+    en('<strong>Content</strong><br>');
 
     en('<textarea rows="25" cols="100" name="content">' . htmlentities($this->oarticle->content) . '</textarea>');
 
@@ -92,11 +92,19 @@ class OnpubEditArticle
 
       $config['height'] = 320;
       $config['uiColor'] = '#eff0f0';
-      $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css');
+
+      if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
+        $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css', ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css');
+      }
+      else {
+        $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css', 'http://yui.yahooapis.com/' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css');
+      }
+
       $events['instanceReady'] = 'function (ev) {
         var w = ev.editor.dataProcessor.writer;
-        w.indentationChars = "";
+        w.indentationChars = "  ";
         w.selfClosingEnd = ">";
+        w.setRules("div", {breakBeforeClose: true});
       }';
 
       $ck->replace('content', $config, $events);
@@ -114,16 +122,16 @@ class OnpubEditArticle
 
     $modified = $this->oarticle->getModified();
 
-    en('<b>Modified</b><br>' . $modified->format('M j, Y g:i:s A'), 1, 2);
+    en('<strong>Modified</strong><br>' . $modified->format('M j, Y g:i:s A'), 1, 2);
 
     if ($this->oarticle->url) {
-      $go = ' <b><a href="' . $this->oarticle->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></b>';
+      $go = ' <strong><a href="' . $this->oarticle->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></strong>';
     }
     else {
       $go = '';
     }
 
-    en('<b>URL</b><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '', 1, 2);
+    en('<strong>URL</strong><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '', 1, 2);
 
     $widget = new OnpubWidgetSections();
     $widget->websites = $websites;

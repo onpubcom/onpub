@@ -77,7 +77,7 @@ class OnpubWidgetSections
     }
 
     if ($areSections) {
-      en('<b>' . $this->heading . '</b><br>');
+      en('<strong>' . $this->heading . '</strong><br>');
 
       if ($this->multiple) {
         en('<small>' . $this->tooltip . '</small><br>');
@@ -127,7 +127,7 @@ class OnpubWidgetSections
     }
     else {
       if ($this->owebsite) {
-        en('<b>' . $this->heading . '</b><br>');
+        en('<strong>' . $this->heading . '</strong><br>');
 
         en('<small>Hold Ctrl to select/deselect multiple Sections</small><br>');
         en('<select name="' . $this->fieldName . '" multiple="multiple" size="' . $this->size . '" id="' . $this->ID . '">');

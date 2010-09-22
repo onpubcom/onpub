@@ -60,20 +60,20 @@ class OnpubEditSection
     en('<div>');
 
     if ($this->osection->name === NULL) {
-      en('<b>Name</b><br><input type="text" maxlength="255" size="75" name="name" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
+      en('<strong>Name</strong><br><input type="text" maxlength="255" size="75" name="name" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
     }
     else {
-      en('<b>Name</b><br><input type="text" maxlength="255" size="75" name="name" value="' . htmlentities($this->osection->name) . '">', 1, 2);
+      en('<strong>Name</strong><br><input type="text" maxlength="255" size="75" name="name" value="' . htmlentities($this->osection->name) . '">', 1, 2);
     }
 
     if ($this->osection->url) {
-      $go = ' <b><a href="' . $this->osection->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></b>';
+      $go = ' <strong><a href="' . $this->osection->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></strong>';
     }
     else {
       $go = '';
     }
 
-    en('<b>URL</b><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->osection->url) . '">' . $go, 1, 2);
+    en('<strong>URL</strong><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->osection->url) . '">' . $go, 1, 2);
 
     $widget = new OnpubWidgetImages("Icon", $this->osection->imageID, $images, $website);
     $widget->display();
@@ -95,14 +95,14 @@ class OnpubEditSection
     $widget->osection = $this->osection;
     $widget->display();
 
-    en('<b>Website</b><br><a href="index.php?onpub=EditWebsite&amp;websiteID=' . $website->ID . '" title="Edit">' . $website->name . '</a>', 1, 2);
+    en('<strong>Website</strong><br><a href="index.php?onpub=EditWebsite&amp;websiteID=' . $website->ID . '" title="Edit">' . $website->name . '</a>', 1, 2);
 
     if ($this->visible !== NULL) {
-      en('<b>Visibility</b>', 1, 1);
+      en('<strong>Visibility</strong>', 1, 1);
       en('<input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">De-select to make the frontend hide this section</label>', 1, 2);
     }
     else {
-      en('<b>Visibility</b>', 1, 1);
+      en('<strong>Visibility</strong>', 1, 1);
       en('<input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Select to make the frontend display this section</label>', 1, 2);
     }
 
@@ -111,7 +111,7 @@ class OnpubEditSection
       $widget->display();
     }
     else {
-      en('<b>Articles</b><br>');
+      en('<strong>Articles</strong><br>');
       en('There are 0 articles in the database. <a href="index.php?onpub=NewArticle">New Article</a>.');
       br (2);
     }
@@ -119,11 +119,11 @@ class OnpubEditSection
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-2">');
-    en('<b>Created</b><br>' . $this->osection->getCreated()->format('M j, Y g:i:s A'), 1, 2);
+    en('<strong>Created</strong><br>' . $this->osection->getCreated()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
-    en('<b>Modified</b><br>' . $this->osection->getModified()->format('M j, Y g:i:s A'), 1, 2);
+    en('<strong>Modified</strong><br>' . $this->osection->getModified()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 
     en('</div>');

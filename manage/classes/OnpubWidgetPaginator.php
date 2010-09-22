@@ -162,7 +162,7 @@ class OnpubWidgetPaginator
       if ($this->pages < 11) {
         for ($j = 0; $j < $this->pages; $j++) {
           if (($j + 1) == $currentPage) {
-            en('<b>' . $currentPage . '</b>');
+            en('<strong>' . $currentPage . '</strong>');
           }
           else {
             if ($this->orderBy && $this->order) {
@@ -216,7 +216,7 @@ class OnpubWidgetPaginator
         if ($currentPage < 7) {
           for ($j = 0; $j < $this->pages; $j++) {
             if (($j + 1) == $currentPage) {
-              en('<b>' . $currentPage . '</b>');
+              en('<strong>' . $currentPage . '</strong>');
             }
             else {
               if ($j < 11) {
@@ -272,7 +272,7 @@ class OnpubWidgetPaginator
           if ($currentPage < $this->pages - 5) {
             for ($j = $this->page - 6; $j < $this->pages; $j++) {
               if (($j + 1) == $currentPage) {
-                en('<b>' . $currentPage . '</b>');
+                en('<strong>' . $currentPage . '</strong>');
               }
               else {
                 if ($j < $currentPage + 5) {
@@ -327,7 +327,7 @@ class OnpubWidgetPaginator
           else {
             for ($j = $this->pages - 11; $j < $this->pages; $j++) {
               if (($j + 1) == $currentPage) {
-                en('<b>' . $currentPage . '</b>');
+                en('<strong>' . $currentPage . '</strong>');
               }
               else {
                 if ($j < $currentPage + 5) {

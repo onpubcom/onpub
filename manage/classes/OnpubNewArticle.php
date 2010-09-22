@@ -51,23 +51,23 @@ class OnpubNewArticle
     en('<div class="yui3-u-1-2">');
 
     if ($this->oarticle->title === NULL) {
-      en('<b>Title</b><br><input type="text" maxlength="255" size="40" name="title" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
+      en('<strong>Title</strong><br><input type="text" maxlength="255" size="40" name="title" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
     }
     else {
-      en('<b>Title</b><br><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '">', 1, 2);
+      en('<strong>Title</strong><br><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '">', 1, 2);
     }
 
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
 
-    en('<b>Author</b><br><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($this->oauthor->displayAs) . '">', 1, 2);
+    en('<strong>Author</strong><br><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($this->oauthor->displayAs) . '">', 1, 2);
 
     en('</div>');
 
     en('</div>');
 
-    en('<b>Content</b>', 1, 1);
+    en('<strong>Content</strong>', 1, 1);
 
     en('<textarea rows="25" cols="100" name="content">' . htmlentities($this->oarticle->content) . '</textarea>');
 
@@ -81,11 +81,19 @@ class OnpubNewArticle
 
       $config['height'] = 320;
       $config['uiColor'] = '#eff0f0';
-      $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css');
+
+      if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
+        $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css', ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css');
+      }
+      else {
+        $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css', 'http://yui.yahooapis.com/' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css');
+      }
+
       $events['instanceReady'] = 'function (ev) {
         var w = ev.editor.dataProcessor.writer;
-        w.indentationChars = "";
+        w.indentationChars = "  ";
         w.selfClosingEnd = ">";
+        w.setRules("div", {breakBeforeClose: true});
       }';
 
       $ck->replace('content', $config, $events);

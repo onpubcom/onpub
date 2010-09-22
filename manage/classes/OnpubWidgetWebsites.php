@@ -23,7 +23,7 @@ class OnpubWidgetWebsites
 
   function display()
   {
-    en('<b>Website</b>', 1, 1);
+    en('<strong>Website</strong>', 1, 1);
 
     if (sizeof($this->websites)) {
       if (sizeof($this->websites) == 1) {

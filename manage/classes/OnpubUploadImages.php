@@ -48,17 +48,17 @@ class OnpubUploadImages
     en('<div class="yui3-u-1-2">');
 
     if ($this->imageFiles === NULL) {
-      en('<b>Image File</b><br><input type="file" size="30" name="imageFiles[]"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"><br><br>');
+      en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"><br><br>');
     }
     else {
-      en('<b>Image File</b><br><input type="file" size="30" name="imageFiles[]"><br><br>');
+      en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]"><br><br>');
     }
 
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
 
-    en('<b>Image File</b><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
+    en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
 
     en('</div>');
 
@@ -68,13 +68,13 @@ class OnpubUploadImages
 
     en('<div class="yui3-u-1-2">');
 
-    en('<b>Image File</b><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
+    en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
 
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
 
-    en('<b>Image File</b><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
+    en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
 
     en('</div>');
 

@@ -25,7 +25,7 @@ class OnpubWidgetArticles
     $oarticles = new OnpubArticles($this->pdo);
     $articles = array();
 
-    en('<b>Articles</b>', 1, 1);
+    en('<strong>Articles</strong>', 1, 1);
     en('<small>Use the buttons below to edit/re-order the articles displayed in this section</small>', 1, 1);
 
     en('<select name="articleIDs[]" size="10" multiple="multiple" id="articles">');

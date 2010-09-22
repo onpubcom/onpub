@@ -53,18 +53,18 @@ class OnpubEditWebsite
     en('<form action="index.php" method="post" enctype="multipart/form-data">');
     en('<div>');
 
-    en('<b>Name</b><br><input type="text" maxlength="255" size="75" name="name" value="' . htmlentities($this->owebsite->name) . '">', 1, 2);
+    en('<strong>Name</strong><br><input type="text" maxlength="255" size="75" name="name" value="' . htmlentities($this->owebsite->name) . '">', 1, 2);
 
     $message = "";
 
     if ($this->owebsite->url) {
-      $go = ' <b><a href="' . $this->owebsite->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></b>';
+      $go = ' <strong><a href="' . $this->owebsite->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></strong>';
     }
     else {
       $go = '';
     }
 
-    en('<b>URL</b>' . $message . '<br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->owebsite->url) . '">' . $go, 1, 2);
+    en('<strong>URL</strong>' . $message . '<br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->owebsite->url) . '">' . $go, 1, 2);
 
     $message = "";
 
@@ -79,7 +79,7 @@ class OnpubEditWebsite
       }
     }
 
-    en('<b>Images Directory</b><br><small>Images uploaded to this website will be saved to this directory on <i>' . $_SERVER['SERVER_NAME'] . '</i></small><br><input type="text" maxlength="255" size="75" name="imagesDirectory" value="' . htmlentities($this->owebsite->imagesDirectory) . '"> ' . $message, 1, 2);
+    en('<strong>Images Directory</strong><br><small>Images uploaded to this website will be saved to this directory on <i>' . $_SERVER['SERVER_NAME'] . '</i></small><br><input type="text" maxlength="255" size="75" name="imagesDirectory" value="' . htmlentities($this->owebsite->imagesDirectory) . '"> ' . $message, 1, 2);
 
     $message = "";
 
@@ -91,22 +91,22 @@ class OnpubEditWebsite
     }
 
     if ($this->owebsite->imagesURL) {
-      $go = ' <b><a href="' . $this->owebsite->imagesURL . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></b>';
+      $go = ' <strong><a href="' . $this->owebsite->imagesURL . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></strong>';
     }
     else {
       $go = '';
     }
 
-    en('<b>Images URL</b>' . $message . '<br><input type="text" maxlength="255" size="75" name="imagesURL" value="' . htmlentities($this->owebsite->imagesURL) . '">' . $go, 1, 2);
+    en('<strong>Images URL</strong>' . $message . '<br><input type="text" maxlength="255" size="75" name="imagesURL" value="' . htmlentities($this->owebsite->imagesURL) . '">' . $go, 1, 2);
 
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-2">');
-    en('<b>Created</b><br>' . $this->owebsite->getCreated()->format('M j, Y g:i:s A'), 1, 2);
+    en('<strong>Created</strong><br>' . $this->owebsite->getCreated()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
-    en('<b>Modified</b><br>' . $this->owebsite->getModified()->format('M j, Y g:i:s A'), 1, 2);
+    en('<strong>Modified</strong><br>' . $this->owebsite->getModified()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 
     en('</div>');

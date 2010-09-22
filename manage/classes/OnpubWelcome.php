@@ -35,7 +35,7 @@ class OnpubWelcome
       en('<div class="yui3-g">');
 
       en('<div class="yui3-u-1-3">');
-      en('<b>Connection Info</b><br>');
+      en('<strong>Connection Info</strong><br>');
       en('Database: ' . $_SESSION['PDO_DATABASE'], 1, 1);
       en('User: ' . $_SESSION['PDO_USER'], 1, 1);
       en('Client: ' . $this->pdo->getAttribute(PDO::ATTR_CLIENT_VERSION) . ' on ' . $_SERVER['SERVER_NAME'], 1, 1);
@@ -45,7 +45,7 @@ class OnpubWelcome
       en('</div>');
 
       en('<div class="yui3-u-1-3">');
-      en('<b>Content Stats</b><br>');
+      en('<strong>Content Stats</strong><br>');
       en('Articles: ' . $oarticles->count(), 1, 1);
       en('Authors: ' . $oauthors->count(), 1, 1);
       en('Images: ' . $oimages->count(), 1, 1);
@@ -68,7 +68,7 @@ class OnpubWelcome
         $result = '<br>All tables are installed.<!--<br><a href="index.php?onpub=DataBackup">Backup the database</a><br><a href="index.php?onpub=DataRestore">Restore a previous backup</a>-->';
       }
 
-      en('<b>Database Tables</b>');
+      en('<strong>Database Tables</strong>');
 
       echo $result;
       en('</div>');
@@ -79,7 +79,7 @@ class OnpubWelcome
       en('<div class="yui3-g">');
 
       en('<div class="yui3-u-1-2">');
-      en('<b>Connection Info</b><br>');
+      en('<strong>Connection Info</strong><br>');
       en('Database: ' . $_SESSION['PDO_DATABASE'], 1, 1);
       en('User: ' . $_SESSION['PDO_USER'], 1, 1);
       en('Client: ' . $this->pdo->getAttribute(PDO::ATTR_CLIENT_VERSION) . ' on ' . $_SERVER['SERVER_NAME'], 1, 1);
@@ -103,7 +103,7 @@ class OnpubWelcome
         $result = '<br>All tables are installed.<!--<br><a href="index.php?onpub=DataBackup">Backup the database</a><br><a href="index.php?onpub=DataRestore">Restore a previous backup</a>-->';
       }
 
-      en('<b>Database Tables</b>');
+      en('<strong>Database Tables</strong>');
 
       echo $result;
       en('</div>');
@@ -116,7 +116,7 @@ class OnpubWelcome
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-2">');
-    en('<b>PHP Configuration</b><br>');
+    en('<strong>PHP Configuration</strong><br>');
 
     if (get_magic_quotes_gpc()) {
       en('<a href="http://php.net/manual/en/info.configuration.php#ini.magic-quotes-gpc">Magic Quotes</a>: <span class="onpub-error">On</span> (<a href="http://php.net/manual/en/security.magicquotes.disabling.php">Disabling Magic Quotes</a> is required)', 1, 1);

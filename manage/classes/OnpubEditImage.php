@@ -69,16 +69,16 @@ class OnpubEditImage
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-3">');
-    en('<b>File Name</b><br><input type="text" maxlength="255" size="' . 30 . '" name="fileName" value="' . htmlentities($this->oimage->fileName) . '">', 1, 2);
+    en('<strong>File Name</strong><br><input type="text" maxlength="255" size="' . 30 . '" name="fileName" value="' . htmlentities($this->oimage->fileName) . '">', 1, 2);
     en('</div>');
 
     en('<div class="yui3-u-1-3">');
-    en('<b>Description</b><br><input type="text" maxlength="255" size="' . 30 . '" name="description" value="'
+    en('<strong>Description</strong><br><input type="text" maxlength="255" size="' . 30 . '" name="description" value="'
       . htmlentities($this->oimage->description) . '">', 1, 2);
     en('</div>');
 
     en('<div class="yui3-u-1-3">');
-    en('<b>Website</b><br><a href="index.php?onpub=EditWebsite&amp;websiteID='
+    en('<strong>Website</strong><br><a href="index.php?onpub=EditWebsite&amp;websiteID='
       . $website->ID . '" title="Edit">' . $website->name . '</a>', 1, 2);
     en('</div>');
 
@@ -87,14 +87,14 @@ class OnpubEditImage
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-3">');
-    en('<b>URL</b><br><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">'
+    en('<strong>URL</strong><br><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">'
       . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a>', 1, 2);
     en('</div>');
 
     en('<div class="yui3-u-1-3">');
 
     if ($fileExists) {
-      en('<b>File Path</b><br>' . addTrailingSlash($website->imagesDirectory) . $this->oimage->fileName . ' (on <i>' . $_SERVER['SERVER_NAME'] . '</i>)', 1, 2);
+      en('<strong>File Path</strong><br>' . addTrailingSlash($website->imagesDirectory) . $this->oimage->fileName . ' (on <i>' . $_SERVER['SERVER_NAME'] . '</i>)', 1, 2);
     }
     en('</div>');
 
@@ -106,12 +106,12 @@ class OnpubEditImage
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-3">');
-    en('<b>Created</b><br>'
+    en('<strong>Created</strong><br>'
       . $this->oimage->getCreated()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 
     en('<div class="yui3-u-1-3">');
-    en('<b>Modified</b><br>'
+    en('<strong>Modified</strong><br>'
       . $this->oimage->getModified()->format('M j, Y g:i:s A'), 1, 2);
     en('</div>');
 
@@ -124,17 +124,17 @@ class OnpubEditImage
       en('<div class="yui3-g">');
 
       en('<div class="yui3-u-1-3">');
-      en('<b>Width</b><br>');
+      en('<strong>Width</strong><br>');
       en($imageWidth . 'px', 1, 2);
       en('</div>');
 
       en('<div class="yui3-u-1-3">');
-      en('<b>Height</b><br>');
+      en('<strong>Height</strong><br>');
       en($imageHeight . 'px', 1, 2);
       en('</div>');
 
       en('<div class="yui3-u-1-3">');
-      en('<b>File Size</b><br>');
+      en('<strong>File Size</strong><br>');
 
       if ($imageFileSize >= 1024) {
         en(round(($imageFileSize / 1024)) . ' KB (' . $imageFileSize . ' bytes)', 1, 2);

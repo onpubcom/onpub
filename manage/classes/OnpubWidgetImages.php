@@ -28,7 +28,7 @@ class OnpubWidgetImages
     $image = NULL;
 
     if (sizeof($this->images)) {
-      en('<b>' . $this->heading . '</b><br>');
+      en('<strong>' . $this->heading . '</strong><br>');
 
       if ($this->imageID) {
         en('<select name="imageID" size="1">');
