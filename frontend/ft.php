@@ -15,13 +15,13 @@ if ($onpub_website) {
   en('<div class="yui3-g">');
   en('<div class="yui3-u-3-4">');
 
-  en('<p>&copy; ' . $dt->format('Y') . ' <a href="index.php">' . $onpub_website->name . '</a>. All rights reserved. <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/rss.png" width="12" height="12" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></p>');
+  en('<p>&copy; ' . $dt->format('Y') . ' <a href="index.php">' . $onpub_website->name . '</a>. All rights reserved.</p>');
 
   en('</div>');
   en('<div class="yui3-u-1-4">');
 
   if ($onpub_disp_login) {
-    en('<p style="text-align: right;">&raquo; <a href="' . $onpub_dir_root . $onpub_dir_manage . '" target="_blank">Login</a></p>');
+    en('<p style="text-align: right;">Powered by <a href="http://onpub.com/" target="_blank">Onpub</a> &raquo; <a href="' . $onpub_dir_root . $onpub_dir_manage . '" target="_blank">Login</a></p>');
   }
 
   en('</div>');
@@ -37,7 +37,7 @@ else {
   en('<div class="yui3-u-1-4">');
 
   if ($onpub_disp_login) {
-    en('<p style="text-align: right;">&raquo; <a href="' . $onpub_dir_root . $onpub_dir_manage . '" target="_blank">Login</a></p>');
+    en('<p style="text-align: right;">Powered by <a href="http://onpub.com/" target="_blank">Onpub</a> &raquo; <a href="' . $onpub_dir_root . $onpub_dir_manage . '" target="_blank">Login</a></p>');
   }
 
   en('</div>');

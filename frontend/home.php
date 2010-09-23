@@ -38,7 +38,7 @@ if ($onpub_website) {
     $articles = $onpub_articles->select($qo);
 
     if (sizeof($articles) > 1) {
-      en('<h1>What\'s New</h1>');
+      en('<h1>What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/rss.png" width="12" height="12" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
   
       foreach ($articles as $a) {
         if ($a->ID != $onpub_disp_article) {
