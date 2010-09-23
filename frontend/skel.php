@@ -19,9 +19,12 @@ header ("Content-Type: text/html; charset=iso-8859-1");
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <?php include $onpub_dir_root . $onpub_dir_frontend . 'title.php'; ?>
-<link rel="alternate" type="application/rss+xml" href="index.php?rss" title="<?php if ($onpub_website) echo $onpub_website->name; ?> RSS Feed">
 
 <?php
+
+if ($onpub_website) {
+  en('<link rel="alternate" type="application/rss+xml" href="index.php?rss" title="' . $onpub_website->name . ' RSS Feed">');
+}
 
 if (file_exists($onpub_dir_root . $onpub_dir_yui)) {
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_yui . 'cssreset/reset-min.css">');
