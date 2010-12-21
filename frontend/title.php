@@ -23,7 +23,7 @@ if ($onpub_website) {
       }
     }
     else {
-      en('<title>' . $onpub_website->name . ' - Section ' . $_GET['sectionID'] . ' not found...</title>');
+      en('<title>' . $onpub_website->name . ' - Section ' . $onpub_section_id . ' not found...</title>');
     }
   }
   elseif ($onpub_index == 'article') {
@@ -31,7 +31,7 @@ if ($onpub_website) {
       en('<title>' . $onpub_article->title . ' - ' . $onpub_website->name . '</title>');
     }
     else {
-      en('<title>' . $onpub_website->name . ' - Article ' . $_GET['articleID'] . ' not found...</title>');
+      en('<title>' . $onpub_website->name . ' - Article ' . $onpub_article_id . ' not found...</title>');
     }
   }
   elseif ($onpub_index == 'section-article') {
@@ -45,15 +45,15 @@ if ($onpub_website) {
     }
 
     if ($onpub_section && !$onpub_article) {
-      en('<title>' . $onpub_website->name . ' - Article ' . $_GET['articleID'] . ' not found...</title>');
+      en('<title>' . $onpub_website->name . ' - Article ' . $onpub_article_id . ' not found...</title>');
     }
 
     if (!$onpub_section && $onpub_article) {
-      en('<title>' . $onpub_website->name . ' - Section ' . $_GET['sectionID'] . ' not found...</title>');
+      en('<title>' . $onpub_website->name . ' - Section ' . $onpub_section_id . ' not found...</title>');
     }
 
     if (!$onpub_section && !$onpub_article) {
-      en('<title>' . $onpub_website->name . ' - Section ' . $_GET['sectionID'] . ' and Article ' . $_GET['articleID'] . ' not found...</title>');
+      en('<title>' . $onpub_website->name . ' - Section ' . $onpub_section_id . ' and Article ' . $onpub_article_id . ' not found...</title>');
     }
   }
 }

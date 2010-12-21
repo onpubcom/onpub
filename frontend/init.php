@@ -40,9 +40,12 @@ catch (PDOException $e) {
 }
 
 $onpub_index = 'home';
+$onpub_section_id = null;
 $onpub_section = null;
+$onpub_article_id = null;
 $onpub_article = null;
 
+// Check for legacy GET query params..
 if (isset($_GET['sectionID']) && !isset($_GET['articleID'])) {
   if (!ctype_digit($_GET['sectionID'])) {
     en('<span style="color: red;">sectionID must be an integer.</span>');
@@ -50,7 +53,9 @@ if (isset($_GET['sectionID']) && !isset($_GET['articleID'])) {
   }
 
   $onpub_index = 'section';
-  $onpub_section = $onpub_sections->get($_GET['sectionID']);
+  $onpub_section_id = $_GET['sectionID'];
+
+  $onpub_section = $onpub_sections->get($onpub_section_id);
 
   $onpub_section_parent = null;
 
@@ -65,10 +70,11 @@ elseif (!isset($_GET['sectionID']) && isset($_GET['articleID'])) {
   }
 
   $onpub_index = 'article';
+  $onpub_article_id = $_GET['articleID'];
 
   $qo = new OnpubQueryOptions();
   $qo->includeAuthors = true;
-  $onpub_article = $onpub_articles->get($_GET['articleID'], $qo);
+  $onpub_article = $onpub_articles->get($onpub_article_id, $qo);
 }
 elseif (isset($_GET['sectionID']) && isset($_GET['articleID'])) {
   if (!ctype_digit($_GET['sectionID'])) {
@@ -82,7 +88,10 @@ elseif (isset($_GET['sectionID']) && isset($_GET['articleID'])) {
   }
 
   $onpub_index = 'section-article';
-  $onpub_section = $onpub_sections->get($_GET['sectionID']);
+  $onpub_section_id = $_GET['sectionID'];
+  $onpub_article_id = $_GET['articleID'];
+
+  $onpub_section = $onpub_sections->get($onpub_section_id);
 
   $onpub_section_parent = null;
 
@@ -92,7 +101,69 @@ elseif (isset($_GET['sectionID']) && isset($_GET['articleID'])) {
 
   $qo = new OnpubQueryOptions();
   $qo->includeAuthors = true;
-  $onpub_article = $onpub_articles->get($_GET['articleID'], $qo);
+  $onpub_article = $onpub_articles->get($onpub_article_id, $qo);
+}
+elseif (isset($_GET['rss'])) {
+  $onpub_index = 'rss';
+}
+
+// Check for new short/optimized GET query params..
+if (isset($_GET['s']) && !isset($_GET['a'])) {
+  if (!ctype_digit($_GET['s'])) {
+    en('<span style="color: red;">s must be an integer.</span>');
+    exit;
+  }
+
+  $onpub_index = 'section';
+  $onpub_section_id = $_GET['s'];
+
+  $onpub_section = $onpub_sections->get($onpub_section_id);
+
+  $onpub_section_parent = null;
+
+  if ($onpub_section && $onpub_section->parentID) {
+    $onpub_section_parent = $onpub_sections->get($onpub_section->parentID);
+  }
+}
+elseif (!isset($_GET['s']) && isset($_GET['a'])) {
+  if (!ctype_digit($_GET['a'])) {
+    en('<span style="color: red;">a must be an integer.</span>');
+    exit;
+  }
+
+  $onpub_index = 'article';
+  $onpub_article_id = $_GET['a'];
+
+  $qo = new OnpubQueryOptions();
+  $qo->includeAuthors = true;
+  $onpub_article = $onpub_articles->get($_GET['a'], $qo);
+}
+elseif (isset($_GET['s']) && isset($_GET['a'])) {
+  if (!ctype_digit($_GET['s'])) {
+    en('<span style="color: red;">s must be an integer.</span>');
+    exit;
+  }
+
+  if (!ctype_digit($_GET['a'])) {
+    en('<span style="color: red;">a must be an integer.</span>');
+    exit;
+  }
+
+  $onpub_index = 'section-article';
+  $onpub_section_id = $_GET['s'];
+  $onpub_article_id = $_GET['a'];
+
+  $onpub_section = $onpub_sections->get($onpub_section_id);
+
+  $onpub_section_parent = null;
+
+  if ($onpub_section && $onpub_section->parentID) {
+    $onpub_section_parent = $onpub_sections->get($onpub_section->parentID);
+  }
+
+  $qo = new OnpubQueryOptions();
+  $qo->includeAuthors = true;
+  $onpub_article = $onpub_articles->get($onpub_article_id, $qo);
 }
 elseif (isset($_GET['rss'])) {
   $onpub_index = 'rss';

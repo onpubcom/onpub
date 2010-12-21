@@ -13,10 +13,10 @@ if ($onpub_website) {
   if ($onpub_disp_updates) {
     en('<div class="yui3-g">');
     en('<div class="yui3-u-2-3">');
-    
+
     if ($onpub_disp_article) {
       $onpub_article = $onpub_articles->get($onpub_disp_article);
-    
+
       if ($onpub_article) {
         en($onpub_article->content);
       }
@@ -25,7 +25,7 @@ if ($onpub_website) {
         en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_blank">Create a new article</a> to customize this page.</p>');
       }
     }
-    
+
     en('</div>');
     en('<div class="yui3-u-1-3">');
 
@@ -34,37 +34,37 @@ if ($onpub_website) {
     $qo->orderBy = 'created';
     $qo->order = 'DESC';
     $qo->rowLimit = 6;
-  
+
     $articles = $onpub_articles->select($qo);
 
     if (sizeof($articles) > 1) {
       en('<h1>What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/rss.png" width="12" height="12" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
-  
+
       foreach ($articles as $a) {
         if ($a->ID != $onpub_disp_article) {
           $samaps = $onpub_samaps->select(null, null, $a->ID);
-  
+
           if (sizeof($samaps)) {
-            if (in_array($samaps[0]->sectionID, $sectIDs)) {
-              // Only include sectionID in links if current section is visible.
-              en('<h2><a href="index.php?sectionID=' . $samaps[0]->sectionID . '&amp;articleID=' . $a->ID . '">' . $a->title . '</a></h2>');
-  
+            if (in_array($samaps[0]->s, $sectIDs)) {
+              // Only include s in links if current section is visible.
+              en('<h2><a href="index.php?s=' . $samaps[0]->s . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
+
               en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em>');
-  
+
               if ($a->getSummary()) {
-                en(' &ndash; ' . $a->getSummary() . '...<a href="index.php?sectionID=' . $samaps[0]->sectionID . '&amp;articleID=' . $a->ID . '"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?sectionID=' . $samaps[0]->sectionID . '&amp;articleID=' . $a->ID . '">Read more</a></p>');
+                en(' &ndash; ' . $a->getSummary() . '...<a href="index.php?s=' . $samaps[0]->s . '&amp;a=' . $a->ID . '"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?s=' . $samaps[0]->s . '&amp;a=' . $a->ID . '">Read more</a></p>');
               }
               else {
                 en('</p>');
               }
             }
             else {
-              en('<h2><a href="index.php?articleID=' . $a->ID . '">' . $a->title . '</a></h2>');
-  
+              en('<h2><a href="index.php?a=' . $a->ID . '">' . $a->title . '</a></h2>');
+
               en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em>');
-  
+
               if ($a->getSummary()) {
-                en(' &ndash; ' . $a->getSummary() . '...<a href="index.php?articleID=' . $a->ID . '"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?articleID=' . $a->ID . '">Read more</a></p>');
+                en(' &ndash; ' . $a->getSummary() . '...<a href="index.php?a=' . $a->ID . '"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?a=' . $a->ID . '">Read more</a></p>');
               }
               else {
                 en('</p>');
@@ -72,12 +72,12 @@ if ($onpub_website) {
             }
           }
           else {
-            en('<h2><a href="index.php?articleID=' . $a->ID . '">' . $a->title . '</a></h2>');
-  
+            en('<h2><a href="index.php?a=' . $a->ID . '">' . $a->title . '</a></h2>');
+
             en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em>');
-  
+
             if ($a->getSummary()) {
-              en(' &ndash; ' . $a->getSummary() . '...<a href="index.php?articleID=' . $a->ID . '"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?articleID=' . $a->ID . '">Read more</a></p>');
+              en(' &ndash; ' . $a->getSummary() . '...<a href="index.php?a=' . $a->ID . '"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?a=' . $a->ID . '">Read more</a></p>');
             }
             else {
               en('</p>');
@@ -93,7 +93,7 @@ if ($onpub_website) {
   else {
     if ($onpub_disp_article) {
       $onpub_article = $onpub_articles->get($onpub_disp_article);
-    
+
       if ($onpub_article) {
         en($onpub_article->content);
       }

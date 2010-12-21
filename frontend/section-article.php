@@ -71,7 +71,7 @@ if ($onpub_section && $onpub_article) {
   en('</div>');
   en('<div class="yui3-u-1-4 onpub-section-nav">');
 
-  en('<h1 class="onpub-section-nav"><a href="index.php?sectionID=' . $onpub_section->ID . '">' . $onpub_section->name . '</a></h1>');
+  en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $onpub_section->ID . '">' . $onpub_section->name . '</a></h1>');
 
   $articles = $onpub_articles->select(null, $onpub_section->ID);
 
@@ -86,7 +86,7 @@ if ($onpub_section && $onpub_article) {
         en('<li><a href="' . $a->url . '">' . $a->title . '</a></li>');
       }
       else {
-        en('<li><a href="index.php?sectionID=' . $onpub_section->ID . '&amp;articleID=' . $a->ID . '">' . $a->title . '</a></li>');
+        en('<li><a href="index.php?s=' . $onpub_section->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
       }
     }
   }
@@ -99,7 +99,7 @@ if ($onpub_section && $onpub_article) {
       en('<li><a href="' . $s->url . '">' . $s->name . '</a></li>');
     }
     else {
-      en('<li><a href="index.php?sectionID=' . $s->ID . '">' . $s->name . '</a></li>');
+      en('<li><a href="index.php?s=' . $s->ID . '">' . $s->name . '</a></li>');
     }
   }
 
@@ -110,15 +110,15 @@ if ($onpub_section && $onpub_article) {
 }
 
 if ($onpub_section && !$onpub_article) {
-  en('<h1>Article ' . $_GET['articleID'] . ' not found... <a href="index.php">Home</a></h1>');
+  en('<h1>Article ' . $onpub_article_id . ' not found... <a href="index.php">Home</a></h1>');
 }
 
 if (!$onpub_section && $onpub_article) {
-  en('<h1>Section ' . $_GET['sectionID'] . ' not found... <a href="index.php">Home</a></h1>');
+  en('<h1>Section ' . $onpub_section_id . ' not found... <a href="index.php">Home</a></h1>');
 }
 
 if (!$onpub_section && !$onpub_article) {
-  en('<h1>Section ' . $_GET['sectionID'] . ' and Article ' . $_GET['articleID'] . ' not found... <a href="index.php">Home</a></h1>');
+  en('<h1>Section ' . $onpub_section_id . ' and Article ' . $onpub_article_id . ' not found... <a href="index.php">Home</a></h1>');
 }
 
 ?>

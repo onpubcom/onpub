@@ -69,7 +69,7 @@ if ($onpub_article) {
   if (file_exists($onpub_dir_local . $onpub_inc_article_foot)) include $onpub_dir_local . $onpub_inc_article_foot;
 }
 else {
-  en('<h1>Article ' . $_GET['articleID'] . ' not found... <a href="index.php">Home</a></h1>');
+  en('<h1>Article ' . $onpub_article_id . ' not found... <a href="index.php">Home</a></h1>');
 }
 
 en('</div>');

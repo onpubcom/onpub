@@ -61,11 +61,11 @@ if ($onpub_website) {
         else {
           en('<li>');
           if ($i) {
-            en('<a class="yui3-menu-label" href="index.php?sectionID=' . $s->ID . '"><em>' . $s->name . '</em></a>');
+            en('<a class="yui3-menu-label" href="index.php?s=' . $s->ID . '"><em>' . $s->name . '</em></a>');
           }
           else {
             // Round the left corner of the first menu label.
-            en('<a class="yui3-menu-label" href="index.php?sectionID=' . $s->ID . '"><em>' . $s->name . '</em></a>');
+            en('<a class="yui3-menu-label" href="index.php?s=' . $s->ID . '"><em>' . $s->name . '</em></a>');
           }
           en('<div class="yui3-menu">');
           en('<div class="yui3-menu-content">');
@@ -78,7 +78,7 @@ if ($onpub_website) {
               en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $a->url. '">' . $a->title . '</a></li>');
             }
             else {
-              en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?sectionID=' . $s->ID . '&amp;articleID=' . $a->ID . '">' . $a->title . '</a></li>');
+              en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?s=' . $s->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
             }
           }
 
@@ -92,7 +92,7 @@ if ($onpub_website) {
             }
             else {
               en('<li>');
-              en('<a class="yui3-menu-label" href="index.php?sectionID=' . $sub->ID . '">' . $sub->name . '</a>');
+              en('<a class="yui3-menu-label" href="index.php?s=' . $sub->ID . '">' . $sub->name . '</a>');
               en('<div class="yui3-menu">');
               en('<div class="yui3-menu-content">');
               en('<ul>');
@@ -104,7 +104,7 @@ if ($onpub_website) {
                   en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $a->url . '">' . $a->title . '</a></li>');
                 }
                 else {
-                  en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?sectionID=' . $sub->ID . '&amp;articleID=' . $a->ID . '">' . $a->title . '</a></li>');
+                  en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?s=' . $sub->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
                 }
               }
 

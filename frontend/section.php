@@ -56,10 +56,10 @@ if ($onpub_section) {
       en('<h2><a href="' . $a->url . '">' . $a->title . '</a></h2>');
     }
     else {
-      en('<h2><a href="index.php?sectionID=' . $_GET['sectionID'] . '&amp;articleID=' . $a->ID . '">' . $a->title . '</a></h2>');
+      en('<h2><a href="index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
     }
 
-    en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em><br>' . $a->getSummary(40) . '...<a href="index.php?sectionID=' . $_GET['sectionID'] . '&amp;articleID=' . $a->ID . '"><br><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?sectionID=' . $_GET['sectionID'] . '&amp;articleID=' . $a->ID . '">more</a></p>');
+    en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em><br>' . $a->getSummary(40) . '...<a href="index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID . '"><br><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID . '">more</a></p>');
 
     if ($even) {
       if ($i + 1 == sizeof($articles)) {
@@ -89,7 +89,7 @@ if ($onpub_section) {
         en('<h1 class="onpub-section-nav"><a href="' . $onpub_section_parent->url . '">' . $onpub_section_parent->name . '</a></h1>');
       }
       else {
-        en('<h1 class="onpub-section-nav"><a href="index.php?sectionID=' . $onpub_section_parent->ID . '">' . $onpub_section_parent->name . '</a></h1>');
+        en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $onpub_section_parent->ID . '">' . $onpub_section_parent->name . '</a></h1>');
       }
 
       $articles = $onpub_articles->select(null, $onpub_section_parent->ID);
@@ -101,7 +101,7 @@ if ($onpub_section) {
           en('<li><a href="' . $a->url . '">' . $a->title . '</a></li>');
         }
         else {
-          en('<li><a href="index.php?sectionID=' . $onpub_section_parent->ID . '&amp;articleID=' . $a->ID . '">' . $a->title . '</a></li>');
+          en('<li><a href="index.php?s=' . $onpub_section_parent->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
         }
       }
 
@@ -117,7 +117,7 @@ if ($onpub_section) {
             en('<li><a href="' . $s->url . '">' . $s->name . '</a></li>');
           }
           else {
-            en('<li><a href="index.php?sectionID=' . $s->ID . '">' . $s->name . '</a></li>');
+            en('<li><a href="index.php?s=' . $s->ID . '">' . $s->name . '</a></li>');
           }
         }
       }
@@ -130,7 +130,7 @@ if ($onpub_section) {
           en('<h1 class="onpub-section-nav"><a href="' . $s->url . '">' . $s->name . '</a></h1>');
         }
         else {
-          en('<h1 class="onpub-section-nav"><a href="index.php?sectionID=' . $s->ID . '">' . $s->name . '</a></h1>');
+          en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $s->ID . '">' . $s->name . '</a></h1>');
         }
 
         $articles = $onpub_articles->select(null, $s->ID);
@@ -142,7 +142,7 @@ if ($onpub_section) {
             en('<li><a href="' . $a->url . '">' . $a->title . '</a></li>');
           }
           else {
-            en('<li><a href="index.php?sectionID=' . $s->ID . '&amp;articleID=' . $a->ID . '">' . $a->title . '</a></li>');
+            en('<li><a href="index.php?s=' . $s->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
           }
         }
 
@@ -156,7 +156,7 @@ if ($onpub_section) {
   en('</div>');
 }
 else {
-  en('<h1>Section ' . $_GET['sectionID'] . ' not found... <a href="index.php">Home</a></h1>');
+  en('<h1>Section ' . $onpub_section_id . ' not found... <a href="index.php">Home</a></h1>');
 }
 
 ?>
