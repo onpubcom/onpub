@@ -59,14 +59,7 @@ if ($onpub_section) {
       en('<h2><a href="index.php?sectionID=' . $_GET['sectionID'] . '&amp;articleID=' . $a->ID . '">' . $a->title . '</a></h2>');
     }
 
-    en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em>');
-
-    if ($a->getSummary()) {
-      en('<br>' . $a->getSummary() . '...<a href="index.php?sectionID=' . $_GET['sectionID'] . '&amp;articleID=' . $a->ID . '"><br><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?sectionID=' . $_GET['sectionID'] . '&amp;articleID=' . $a->ID . '">more</a></p>');
-    }
-    else {
-      en('</p>');
-    }
+    en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em><br>' . $a->getSummary(40) . '...<a href="index.php?sectionID=' . $_GET['sectionID'] . '&amp;articleID=' . $a->ID . '"><br><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?sectionID=' . $_GET['sectionID'] . '&amp;articleID=' . $a->ID . '">more</a></p>');
 
     if ($even) {
       if ($i + 1 == sizeof($articles)) {
