@@ -80,6 +80,6 @@ $onpub_inc_css_menu = 'onpub-menu.css';
 // YUI CONTROL VARIABLES
 // Version of YUI bundled with Onpub. If bundled YUI does not exist then this
 // is the version Onpub will attempt to download from Yahoo!'s CDN.
-$onpub_yui_version = '3.2.0';
+$onpub_yui_version = '3.3.0';
 
 ?>
