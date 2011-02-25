@@ -45,14 +45,14 @@ if ($onpub_website) {
           $samaps = $onpub_samaps->select(null, null, $a->ID);
 
           if (sizeof($samaps)) {
-            if (in_array($samaps[0]->s, $sectIDs)) {
+            if (in_array($samaps[0]->sectionID, $sectIDs)) {
               // Only include s in links if current section is visible.
-              en('<h2><a href="index.php?s=' . $samaps[0]->s . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
+              en('<h2><a href="index.php?s=' . $samaps[0]->sectionID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
 
               en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em>');
 
               if ($a->getSummary()) {
-                en(' &ndash; ' . $a->getSummary() . '...<a href="index.php?s=' . $samaps[0]->s . '&amp;a=' . $a->ID . '"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?s=' . $samaps[0]->s . '&amp;a=' . $a->ID . '">Read more</a></p>');
+                en('<br>' . $a->getSummary() . '...<a href="index.php?s=' . $samaps[0]->sectionID . '&amp;a=' . $a->ID . '"><br><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?s=' . $samaps[0]->sectionID . '&amp;a=' . $a->ID . '">more</a></p>');
               }
               else {
                 en('</p>');
@@ -64,7 +64,7 @@ if ($onpub_website) {
               en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em>');
 
               if ($a->getSummary()) {
-                en(' &ndash; ' . $a->getSummary() . '...<a href="index.php?a=' . $a->ID . '"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?a=' . $a->ID . '">Read more</a></p>');
+                en('<br>' . $a->getSummary() . '...<a href="index.php?a=' . $a->ID . '"><br><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?a=' . $a->ID . '">more</a></p>');
               }
               else {
                 en('</p>');
@@ -77,7 +77,7 @@ if ($onpub_website) {
             en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em>');
 
             if ($a->getSummary()) {
-              en(' &ndash; ' . $a->getSummary() . '...<a href="index.php?a=' . $a->ID . '"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?a=' . $a->ID . '">Read more</a></p>');
+              en('<br>' . $a->getSummary() . '...<a href="index.php?a=' . $a->ID . '"><br><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?a=' . $a->ID . '">more</a></p>');
             }
             else {
               en('</p>');

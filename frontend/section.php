@@ -47,9 +47,11 @@ if ($onpub_section) {
     if ($even) {
       en('<div class="yui3-g">');
       en('<div class="yui3-u-1-2">');
+      en('<div style="padding-right: 1em;">');
     }
     else {
       en('<div class="yui3-u-1-2">');
+      en('<div style="padding-right: 1em;">');
     }
 
     if ($a->url) {
@@ -64,14 +66,17 @@ if ($onpub_section) {
     if ($even) {
       if ($i + 1 == sizeof($articles)) {
         en('</div>');
+        en('</div>');
         en('<div class="yui3-u-1-2">&nbsp;</div>');
         en('</div>');
       }
       else {
         en('</div>');
+        en('</div>');
       }
     }
     else {
+      en('</div>');
       en('</div>');
       en('</div>');
     }
