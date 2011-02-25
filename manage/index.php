@@ -17,7 +17,7 @@ if (!ini_get("date.timezone")) {
   date_default_timezone_set (ONPUBGUI_DEFAULT_TZ);
 }
 
-header ("Content-Type: text/html; charset=iso-8859-1");
+header("Content-Type: text/html; charset=iso-8859-1");
 
 session_name ("onpubpdo");
 session_set_cookie_params (0, '/', '', false, true);
@@ -38,7 +38,7 @@ if (isset($_SESSION['PDO_HOST']) && isset($_SESSION['PDO_USER']) && isset($_SESS
 
 if (isset($_POST['onpub'])) {
   if (!$loginStatus && $_POST['onpub'] != "LoginProcess") {
-    header ("Location: index.php");
+    header("Location: index.php");
     return;
   }
 
@@ -84,11 +84,11 @@ if (isset($_POST['onpub'])) {
       $login->process();
 
       if ($login->getTarget()) {
-        header ("Location: index.php?" . $login->getTarget());
+        header("Location: index.php?" . $login->getTarget());
         return;
       }
       else {
-        header ("Location: index.php");
+        header("Location: index.php");
         return;
       }
       break;
@@ -116,12 +116,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditImage&imageID="
+      header("Location: index.php?onpub=EditImage&imageID="
         . $_POST['imageID']);
       return;
       break;
@@ -183,7 +183,7 @@ if (isset($_POST['onpub'])) {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         return;
@@ -196,12 +196,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditArticle&articleID=" . $oarticle->ID);
+      header("Location: index.php?onpub=EditArticle&articleID=" . $oarticle->ID);
       return;
       break;
 
@@ -279,7 +279,7 @@ if (isset($_POST['onpub'])) {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         return;
@@ -292,12 +292,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditArticle&articleID=" . $_POST['articleID']);
+      header("Location: index.php?onpub=EditArticle&articleID=" . $_POST['articleID']);
       return;
       break;
 
@@ -326,9 +326,20 @@ if (isset($_POST['onpub'])) {
         $imageFiles = NULL;
       }
 
-      $upload = new OnpubUploadImages($pdo, $imageFiles, $websiteID);
+      if (isset($_POST['overwrite'])) {
+        $overwrite = $_POST['overwrite'];
+        $overwriteFileName = $_POST['overwriteFileName'];
+      }
+      else {
+        $overwrite = NULL;
+        $overwriteFileName = NULL;
+      }
 
-      if (!$upload->validate()) {
+      $upload = new OnpubUploadImages($pdo, $imageFiles, $websiteID);
+      $upload->overwrite = $overwrite;
+      $upload->overwriteFileName = $overwriteFileName;
+
+      if (!$upload->validate() && $overwrite === NULL) {
         try {
           $upload->display();
         }
@@ -336,7 +347,7 @@ if (isset($_POST['onpub'])) {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         return;
@@ -349,7 +360,7 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
       catch (Exception $e) {
         try {
@@ -359,16 +370,16 @@ if (isset($_POST['onpub'])) {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditImage&imageID=" . $upload->getImageID());
+      header("Location: index.php?onpub=EditImage&imageID=" . $upload->getImageID());
       return;
       break;
 
@@ -388,12 +399,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditImages");
+      header("Location: index.php?onpub=EditImages");
       return;
       break;
 
@@ -413,12 +424,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditSections");
+      header("Location: index.php?onpub=EditSections");
       return;
       break;
 
@@ -438,12 +449,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditWebsites");
+      header("Location: index.php?onpub=EditWebsites");
       return;
       break;
 
@@ -467,12 +478,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditArticles");
+      header("Location: index.php?onpub=EditArticles");
       return;
       break;
 
@@ -503,12 +514,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditArticles");
+      header("Location: index.php?onpub=EditArticles");
       return;
       break;
 
@@ -530,7 +541,7 @@ if (isset($_POST['onpub'])) {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         return;
@@ -543,12 +554,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditWebsite&websiteID="
+      header("Location: index.php?onpub=EditWebsite&websiteID="
         . $owebsite->ID);
       return;
       break;
@@ -609,7 +620,7 @@ if (isset($_POST['onpub'])) {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         return;
@@ -622,12 +633,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditSection&sectionID="
+      header("Location: index.php?onpub=EditSection&sectionID="
         . $osection->ID);
       return;
       break;
@@ -701,7 +712,7 @@ if (isset($_POST['onpub'])) {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         return;
@@ -714,12 +725,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditSection&sectionID="
+      header("Location: index.php?onpub=EditSection&sectionID="
         . $osection->ID);
       return;
       break;
@@ -764,7 +775,7 @@ if (isset($_POST['onpub'])) {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         return;
@@ -777,12 +788,12 @@ if (isset($_POST['onpub'])) {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header ("Location: index.php?onpub=EditWebsite&websiteID="
+      header("Location: index.php?onpub=EditWebsite&websiteID="
         . $_POST['websiteID']);
       return;
       break;
@@ -802,7 +813,7 @@ else {
         $login = new OnpubLogin("", "", "", "", TRUE);
         $login->process();
 
-        header ("Location: index.php");
+        header("Location: index.php");
         return;
         break;
 
@@ -816,12 +827,12 @@ else {
 
           if ($tempname) {
             $filename = str_replace('/tmp/', '', $tempname);
-            header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-            header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-            header ("Content-type: application/x-download");
-            header ("Content-Disposition: attachment; filename={$filename}");
-            header ("Content-Transfer-Encoding: binary");
-            header ('Content-Length: ' . filesize($tempname));
+            header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+            header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+            header("Content-type: application/x-download");
+            header("Content-Disposition: attachment; filename={$filename}");
+            header("Content-Transfer-Encoding: binary");
+            header('Content-Length: ' . filesize($tempname));
             readfile ($tempname);
             unlink ($tempname);
             return;
@@ -831,7 +842,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -849,11 +860,11 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
-        header ("Location: index.php");
+        header("Location: index.php");
         return;
         break;
 
@@ -872,11 +883,11 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
-        header ("Location: index.php");
+        header("Location: index.php");
         return;
         break;
 
@@ -921,7 +932,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -949,7 +960,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -971,7 +982,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -999,7 +1010,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1101,7 +1112,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1130,7 +1141,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1230,7 +1241,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1256,7 +1267,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1278,12 +1289,12 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
 
-        header ("Location: index.php?onpub=EditImages");
+        header("Location: index.php?onpub=EditImages");
         return;
         break;
 
@@ -1310,7 +1321,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1354,7 +1365,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1454,7 +1465,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1475,7 +1486,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1575,7 +1586,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1604,7 +1615,7 @@ else {
           $widget = new OnpubWidgetPDOException($e);
           $widget->display();
           $pdo = NULL;
-          exit ($e->getCode());
+          exit($e->getCode());
         }
 
         $pdo = NULL;
@@ -1642,7 +1653,7 @@ else {
         $widget = new OnpubWidgetPDOException($e);
         $widget->display();
         $pdo = NULL;
-        exit ($e->getCode());
+        exit($e->getCode());
       }
 
       $pdo = NULL;

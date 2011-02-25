@@ -188,7 +188,7 @@ YUI(
   function confirmDelete(e)
   {
     var result = false;
-    result = confirm( "Are you sure?");
+    result = confirm("Are you sure?");
 
     if (!result) {
       e.preventDefault();
@@ -198,7 +198,7 @@ YUI(
   function confirmNewPage(e, action)
   {
     var result = false;
-    result = confirm( "Are you sure?");
+    result = confirm("Are you sure?");
 
     if (result) {
       action();
@@ -224,6 +224,19 @@ YUI(
     }
 
     window.location.replace(action);
+  }
+
+  function confirmOverwrite(e, overwrite)
+  {
+    var result = false;
+    result = confirm("Are you sure?");
+
+    if (result) {
+      overwrite.set("value", "1");
+    }
+    else {
+      e.preventDefault();
+    }
   }
 
   // Register event handlers.
@@ -263,6 +276,10 @@ YUI(
 
     Y.on("click", confirmNewPage, node, null, action);
   }
+
+  if (Y.one("#overwriteImage")) {
+    Y.on("click", confirmOverwrite, "#overwriteImage", null, Y.one("input[name='overwrite']"));
+  }
 }
 );
 
@@ -270,7 +287,7 @@ function deleteImage()
 {
     var result = false;
 
-    result = confirm( "Are you sure?");
+    result = confirm("Are you sure?");
 
     if ( result ) {
         document.forms[0].onpub.value = "DeleteImageProcess";
@@ -282,7 +299,7 @@ function deleteSection()
 {
     var result = false;
 
-    result = confirm( "Are you sure?");
+    result = confirm("Are you sure?");
 
     if ( result ) {
         document.forms[0].onpub.value = "DeleteSectionProcess";
@@ -294,7 +311,7 @@ function deleteWebsite()
 {
     var result = false;
 
-    result = confirm( "Are you sure?");
+    result = confirm("Are you sure?");
 
     if ( result ) {
         document.forms[0].onpub.value = "DeleteWebsiteProcess";

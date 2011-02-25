@@ -14,6 +14,8 @@ class OnpubUploadImages
   private $imageID;
   private $imageFiles;
   private $websiteID;
+  public $overwrite;
+  public $overwriteFileName;
 
   function __construct(PDO $pdo, $imageFiles = array(), $websiteID = NULL)
   {
@@ -21,6 +23,8 @@ class OnpubUploadImages
     $this->imageID = NULL;
     $this->imageFiles = $imageFiles;
     $this->websiteID = $websiteID;
+    $this->overwrite = NULL;
+    $this->overwriteFileName = NULL;
   }
 
   public function display()
@@ -117,6 +121,26 @@ class OnpubUploadImages
         en('Make sure the Images Directory of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $this->websiteID . '">' . $website->name . '</a> is a valid path and is writable by the web server account.');
         break;
 
+      case ONPUBGUI_ERROR_IMAGE_EXISTS:
+        en('<form action="index.php" method="post">');
+        en('<div>');
+
+        en('<p class="onpub-error"><i>' . $e->getMessage() . '</i> already exists.</p>');
+
+        en('<p>Would you like to overwrite the existing image file, or keep the original?</p>');
+
+        en('<p><input type="submit" id="keepImage" value="Keep Existing File"> <input type="submit" id="overwriteImage" value="Overwrite Existing File"></p>');
+
+        en('<p><p><input type="hidden" name="websiteID" value="' . $this->websiteID . '"><p>');
+        en('<p><p><input type="hidden" name="overwrite" value="0"><p>');
+        en('<p><p><input type="hidden" name="overwriteFileName" value="' . $e->getMessage() . '"><p>');
+        en('<p><input type="hidden" name="onpub" value="UploadImagesProcess"><p>');
+
+        en('</div>');
+        en('</form>');
+
+        break;
+
       default:
         en('<span class="onpub-error">' . $e->getMessage() . '</span>');
         break;
@@ -153,20 +177,50 @@ class OnpubUploadImages
 
   public function process()
   {
-    if (!ini_get("file_uploads")) {
-      $message = "File uploads are disabled in the current PHP configuration.";
-
-      throw new Exception($message, ONPUBGUI_ERROR_IMAGE_TYPE);
-    }
-
     $oimages = new OnpubImages($this->pdo);
     $owebsites = new OnpubWebsites($this->pdo);
+
+    if ($this->overwrite !== NULL) {
+      // An image overwrite is being requested.
+      $image = new OnpubImage();
+      $image->websiteID = $this->websiteID;
+      $image->fileName = $this->overwriteFileName;
+
+      try {
+        $this->imageID = $oimages->getID($image);
+      }
+      catch (PDOException $e) {
+        throw $e;
+      }
+
+      try {
+        $website = $owebsites->get($this->websiteID);
+      }
+      catch (PDOException $e) {
+        throw $e;
+      }
+
+      if ($this->overwrite) {
+        // Overwrite the existing image file with the temp one.
+        rename(addTrailingSlash($website->imagesDirectory) . $this->overwriteFileName . ONPUBGUI_TMP_IMG_SUFFIX, addTrailingSlash($website->imagesDirectory) . $this->overwriteFileName);
+      }
+      else {
+        // Remove the temporary image file.
+        unlink(addTrailingSlash($website->imagesDirectory) . $this->overwriteFileName . ONPUBGUI_TMP_IMG_SUFFIX);
+      }
+
+      return;
+    }
+
+    if (!ini_get("file_uploads")) {
+      $message = "File uploads are disabled in the current PHP configuration.";
+      throw new Exception($message, ONPUBGUI_ERROR_IMAGE_TYPE);
+    }
 
     for ($i = 0; $i < sizeof($this->imageFiles['name']); $i++) {
       if ($this->imageFiles['name'][$i]) {
         if (!$this->isValidImage($this->imageFiles['name'][$i])) {
           $message = "<i>" . $this->imageFiles['name'][$i] . "</i> is an unsupported image file type.";
-
           throw new Exception($message, ONPUBGUI_ERROR_IMAGE_TYPE);
         }
 
@@ -181,19 +235,33 @@ class OnpubUploadImages
           throw $e;
         }
 
-        if (!$this->imageID) {
-          try {
-            $website = $owebsites->get($image->websiteID);
-          }
-          catch (PDOException $e) {
-            throw $e;
-          }
+        try {
+          $website = $owebsites->get($image->websiteID);
+        }
+        catch (PDOException $e) {
+          throw $e;
+        }
 
+        if ($this->imageID) {
+          // Image exists, write the file to the images directory with a temp
+          // name, and prompt the user to overwrite existing file.
+          if (is_uploaded_file($this->imageFiles['tmp_name'][$i])) {
+            if (@move_uploaded_file($this->imageFiles['tmp_name'][$i], addTrailingSlash($website->imagesDirectory) . $this->imageFiles['name'][$i] . ONPUBGUI_TMP_IMG_SUFFIX)) {
+              throw new Exception($this->imageFiles['name'][$i], ONPUBGUI_ERROR_IMAGE_EXISTS);
+            }
+            else {
+              $imagesDirectory = $website->imagesDirectory;
+              $message = "Unable to move <i>" . $this->imageFiles['tmp_name'][$i] . "</i> to <i>" . addTrailingSlash($imagesDirectory) . $this->imageFiles['name'][$i] . ONPUBGUI_TMP_IMG_SUFFIX . "</i>.";
+              throw new Exception($message, ONPUBGUI_ERROR_MOVE_UPLOADED_FILE);
+            }
+          }
+        }
+        else {
+          // Image does not exsist, copy to images folder and insert in to DB.
           if (is_uploaded_file($this->imageFiles['tmp_name'][$i])) {
             if (!@move_uploaded_file($this->imageFiles['tmp_name'][$i], addTrailingSlash($website->imagesDirectory) . $this->imageFiles['name'][$i])) {
               $imagesDirectory = $website->imagesDirectory;
               $message = "Unable to move <i>" . $this->imageFiles['tmp_name'][$i] . "</i> to <i>" . addTrailingSlash($imagesDirectory) . $this->imageFiles['name'][$i] . "</i>.";
-
               throw new Exception($message, ONPUBGUI_ERROR_MOVE_UPLOADED_FILE);
             }
 
@@ -207,7 +275,6 @@ class OnpubUploadImages
           else {
             $imagesDirectory = $website->imagesDirectory;
             $message = "<i>" . $this->imageFiles['name'][$i] . "</i> file size is larger than the current PHP configuration allows.";
-
             throw new Exception($message, ONPUBGUI_ERROR_FILE_SIZE);
           }
         }

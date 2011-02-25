@@ -29,6 +29,10 @@ define("ONPUBGUI_DEFAULT_TZ", "America/New_York");
 define("ONPUBGUI_ERROR_MOVE_UPLOADED_FILE", 2);
 define("ONPUBGUI_ERROR_FILE_SIZE", 3);
 define("ONPUBGUI_ERROR_IMAGE_TYPE", 4);
+define("ONPUBGUI_ERROR_IMAGE_EXISTS", 5);
+
+// Suffix to use for temporary image files
+define("ONPUBGUI_TMP_IMG_SUFFIX", '.onpubnew');
 
 // User Interface Classes
 include ("classes/OnpubNewArticle.php");
