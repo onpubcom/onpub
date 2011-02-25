@@ -202,7 +202,22 @@ class OnpubUploadImages
 
       if ($this->overwrite) {
         // Overwrite the existing image file with the temp one.
-        rename(addTrailingSlash($website->imagesDirectory) . $this->overwriteFileName . ONPUBGUI_TMP_IMG_SUFFIX, addTrailingSlash($website->imagesDirectory) . $this->overwriteFileName);
+        if (rename(addTrailingSlash($website->imagesDirectory) . $this->overwriteFileName . ONPUBGUI_TMP_IMG_SUFFIX, addTrailingSlash($website->imagesDirectory) . $this->overwriteFileName)) {
+          // Update the image's modified timestamp in the DB.
+          try {
+            $image = $oimages->get($this->imageID);
+          }
+          catch (PDOException $e) {
+            throw $e;
+          }
+
+          try {
+            $oimages->update($image);
+          }
+          catch (PDOException $e) {
+            throw $e;
+          }
+        }
       }
       else {
         // Remove the temporary image file.
