@@ -64,7 +64,9 @@ if ($onpub_section && $onpub_article) {
   en('</div>');
   en('</div>');
 
+  en('<div style="padding-right: 0.5em;">');
   en($onpub_article->content);
+  en('</div>');
 
   if (file_exists($onpub_dir_local . $onpub_inc_article_foot)) include $onpub_dir_local . $onpub_inc_article_foot;
 
