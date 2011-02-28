@@ -127,13 +127,13 @@ class OnpubUploadImages
 
         en('<p class="onpub-error"><i>' . $e->getMessage() . '</i> already exists.</p>');
 
-        en('<p>Would you like to overwrite the existing image file, or keep the original?</p>');
+        en('<p>Would you like to overwrite the existing image file?</p>');
 
         en('<p><input type="submit" id="keepImage" value="Keep Existing File"> <input type="submit" id="overwriteImage" value="Overwrite Existing File"></p>');
 
-        en('<p><p><input type="hidden" name="websiteID" value="' . $this->websiteID . '"><p>');
-        en('<p><p><input type="hidden" name="overwrite" value="0"><p>');
-        en('<p><p><input type="hidden" name="overwriteFileName" value="' . $e->getMessage() . '"><p>');
+        en('<p><input type="hidden" name="websiteID" value="' . $this->websiteID . '"><p>');
+        en('<p><input type="hidden" name="overwrite" value="0"><p>');
+        en('<p><input type="hidden" name="overwriteFileName" value="' . $e->getMessage() . '"><p>');
         en('<p><input type="hidden" name="onpub" value="UploadImagesProcess"><p>');
 
         en('</div>');

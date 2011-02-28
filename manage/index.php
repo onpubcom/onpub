@@ -817,57 +817,6 @@ else {
         return;
         break;
 
-      case "DataBackup":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-        $odatabase = new OnpubDatabase($pdo);
-
-        try {
-          $tempname = $odatabase->backup();
-
-          if ($tempname) {
-            $filename = str_replace('/tmp/', '', $tempname);
-            header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-            header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-            header("Content-type: application/x-download");
-            header("Content-Disposition: attachment; filename={$filename}");
-            header("Content-Transfer-Encoding: binary");
-            header('Content-Length: ' . filesize($tempname));
-            readfile ($tempname);
-            unlink ($tempname);
-            return;
-          }
-        }
-        catch (PDOException $e) {
-          $widget = new OnpubWidgetPDOException($e);
-          $widget->display();
-          $pdo = NULL;
-          exit($e->getCode());
-        }
-
-        $pdo = NULL;
-        break;
-
-      case "DataDelete":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-        $odatabase = new OnpubDatabase($pdo);
-
-        try {
-          $odatabase->delete();
-        }
-        catch (PDOException $e) {
-          $widget = new OnpubWidgetPDOException($e);
-          $widget->display();
-          $pdo = NULL;
-          exit($e->getCode());
-        }
-
-        $pdo = NULL;
-        header("Location: index.php");
-        return;
-        break;
-
       case "SchemaInstall":
         $pdo = new PDO($dsn, $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
@@ -1042,6 +991,7 @@ else {
         if (isset($_GET['keywords'])) {
           $keywords = $_GET['keywords'];
 
+          /*
           if (isset($_SESSION['EAS_S'])) {
             if ($_GET['keywords'] != $_SESSION['EAS_S']) {
               $page = NULL;
@@ -1050,6 +1000,7 @@ else {
           }
 
           $_SESSION['EAS_S'] = $keywords;
+          */
         }
         else {
           $keywords = NULL;

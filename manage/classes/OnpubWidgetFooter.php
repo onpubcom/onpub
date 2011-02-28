@@ -22,7 +22,7 @@ class OnpubWidgetFooter
 
     en('<div id="onpub-footer">');
 
-    en('<p>Onpub ' . ONPUBAPI_VERSION . ', &copy; 2010 <a href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
+    en('<p>Onpub ' . ONPUBAPI_VERSION . '. &copy; 2010 <a href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
 
     en('</div>');
 
