@@ -60,7 +60,7 @@ class OnpubWelcome
 
         if (sizeof($articles)) {
           en('<table style="width: 100%;" colspan="2">');
-          en('<tr><th style="text-align: left; width: 80%;">Recent Articles</th><th style="text-align: left;">Created</th></tr>');
+          en('<tr><th style="text-align: left; width: 75%;">Recent Articles</th><th style="text-align: left;">Created</th></tr>');
   
           foreach ($articles as $article) {
             en('<tr><td><a href="index.php?onpub=EditArticle&amp;articleID=' . $article->ID . '" title="Edit">' . $article->title . '</a></td><td>' . $article->getCreated()->format("M j, Y") . '</td></tr>');
