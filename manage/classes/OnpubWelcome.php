@@ -54,7 +54,7 @@ class OnpubWelcome
 
         $queryOptions = new OnpubQueryOptions();
         $queryOptions->rowLimit = 10;
-        $queryOptions->sortBy = "created";
+        $queryOptions->orderBy = "created";
         $queryOptions->order = "DESC";
         $articles = $oarticles->select($queryOptions);
 
