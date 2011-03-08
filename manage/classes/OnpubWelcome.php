@@ -42,13 +42,12 @@ class OnpubWelcome
       if ($numsites == 0) {
         en('<p><strong>Welcome!</strong></p>');
         en('<p>You are now ready to start creating content with Onpub.</p>');
-        en('<p><strong><a href="index.php?onpub=NewWebsite">Create a website...</a></strong></p>');
+        en('<p><strong><a href="index.php?onpub=NewWebsite">Create a new website...</a></strong></p>');
       }
       else {
         en('<form action="index.php" method="get">');
         en('<div>');
-        en('<input type="hidden" name="onpub" value="EditArticles">');
-        en('<p><input type="text" name="keywords" style="width: 19.4em;"> <input type="submit" value="Search"> For what: <select><option>Articles</option></select></p>');
+        en('<p><input type="text" name="keywords" style="width: 18.5em;"> <input type="submit" value="Search"> For what: <select name="onpub"><option value="EditArticles">Articles</option><option value="EditSections">Sections</option><option value="EditWebsites">Websites</option></select></p>');
         en('</div>');
         en('</form>');
 
@@ -96,8 +95,8 @@ class OnpubWelcome
       en('<div class="yui3-u-3-4">');
       en('<p><strong>Welcome to Onpub!</strong></p>');
       en('<p>This appears to be the first time you have logged in.</p>');
-      en('<p>Before you can start creating content with Onpub, please click the link below to add the Onpub schema to the connected MySQL database, <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
-      en('<p>You will be unable to start creating content until this step is performed.</p>');
+      en('<p>Before you can create a website with Onpub you must add the Onpub schema to the connected MySQL database, <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
+      en('<p>Please click the link below to continue..</p>');
       en('<ul><li><strong><a href="index.php?onpub=SchemaInstall">Install the Onpub database schema</a></strong></li></ul>');
       en('</div>');
       en('<div class="yui3-u-1-4">');
