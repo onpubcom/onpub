@@ -64,6 +64,10 @@ $onpub_inc_foot = 'onpub_foot.php';
 // This file is included immediately before the opening <head> tag. Suitable
 // for initializing JS variables and/or other dynamic PHP/JS code.
 $onpub_inc_head = 'onpub_head.php';
+// The file is included immediately before the "onpub-header" div. This file
+// is useful for including ad banners and other content that typically gets
+// included on the top of the site's content on every page.
+$onpub_inc_banner = 'onpub_banner.php';
 // This file is included in the right-side column after the published/updated
 // dates on article pages.
 $onpub_inc_article_info = 'onpub_article_info.php';

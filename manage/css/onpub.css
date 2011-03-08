@@ -19,6 +19,10 @@ background-color: #6b6b6b;
 body {
 }
 
+#onpub-banner {
+text-align: center;
+}
+
 #onpub-page {
 width: 970px;
 margin: auto;

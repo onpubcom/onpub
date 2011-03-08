@@ -72,11 +72,22 @@ en('var onpub_yui_version = "' . $onpub_yui_version . '";', 0);
 </script>
 
 <?php if (file_exists($onpub_dir_local . $onpub_inc_head)) include $onpub_dir_local . $onpub_inc_head; ?>
+
 </head>
 
 <body class="yui3-skin-sam">
 
 <div id="onpub-page">
+
+<?php
+
+if (file_exists($onpub_dir_local . $onpub_inc_banner)) {
+  en('<div id="onpub-banner">');
+  include $onpub_dir_local . $onpub_inc_banner;
+  en('</div>');
+}
+
+?>
 
 <div id="onpub-header">
 <?php include $onpub_dir_root . $onpub_dir_frontend . 'hd.php'; ?>
