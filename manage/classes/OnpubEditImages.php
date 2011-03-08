@@ -486,6 +486,7 @@ class OnpubEditImages
         }
       }
 
+      en('<td><strong>Preview</strong></td>');
       en('</tr>');
 
       if ($this->keywords || $this->sectionID) {
@@ -507,6 +508,8 @@ class OnpubEditImages
           $websites[$websiteID] = $owebsites->get($websiteID);
         }
 
+        $imageSrc = addTrailingSlash($websites[$websiteID]->imagesURL) . $fileName;
+
         en('<tr valign="top">');
         //en('<td align="right"><input type="checkbox" name="imageIDs[]" value="' . $ID . '"></td>');
 
@@ -520,6 +523,7 @@ class OnpubEditImages
                 en('<td class="onpub-highlight1" align="left"><a href="index.php?onpub=EditImage&amp;imageID='
                   . $ID . '" title="Edit">' . $fileName . '</a></td>');
                 en('<td class="onpub-highlight1" align="left">' . $created . '</td>');
+                en('<td class="onpub-highlight1"><a href="index.php?onpub=EditImage&amp;imageID=' . $ID . '" title="Edit"><img src="' . $imageSrc . '" height="40"></a></td>');
                 break;
 
               case 1:
@@ -527,6 +531,7 @@ class OnpubEditImages
                 en('<td class="onpub-highlight2" align="left"><a href="index.php?onpub=EditImage&amp;imageID='
                   . $ID . '" title="Edit">' . $fileName . '</a></td>');
                 en('<td class="onpub-highlight2" align="left">' . $created . '</td>');
+                en('<td class="onpub-highlight2"><a href="index.php?onpub=EditImage&amp;imageID=' . $ID . '" title="Edit"><img src="' . $imageSrc . '" height="40"></a></td>');
                 break;
             }
             break;
@@ -539,6 +544,7 @@ class OnpubEditImages
                 en('<td class="onpub-highlight1" align="left"><a href="index.php?onpub=EditImage&amp;imageID='
                   . $ID . '" title="Edit">' . $fileName . '</a></td>');
                 en('<td class="onpub-highlight1" align="left">' . $created . '</td>');
+                en('<td class="onpub-highlight1"><a href="index.php?onpub=EditImage&amp;imageID=' . $ID . '" title="Edit"><img src="' . $imageSrc . '" height="40"></a></td>');
                 break;
 
               case 1:
@@ -546,6 +552,7 @@ class OnpubEditImages
                 en('<td class="onpub-highlight2" align="left"><a href="index.php?onpub=EditImage&amp;imageID='
                   . $ID . '" title="Edit">' . $fileName . '</a></td>');
                 en('<td class="onpub-highlight2" align="left">' . $created . '</td>');
+                en('<td class="onpub-highlight2"><a href="index.php?onpub=EditImage&amp;imageID=' . $ID . '" title="Edit"><img src="' . $imageSrc . '" height="40"></a></td>');
                 break;
             }
             break;
@@ -558,6 +565,7 @@ class OnpubEditImages
                 en('<td class="onpub-highlight1" align="left"><a href="index.php?onpub=EditImage&amp;imageID='
                   . $ID . '" title="Edit">' . $fileName . '</a></td>');
                 en('<td class="onpub-highlight1" align="left">' . $created . '</td>');
+                en('<td class="onpub-highlight1"><a href="index.php?onpub=EditImage&amp;imageID=' . $ID . '" title="Edit"><img src="' . $imageSrc . '" height="40"></a></td>');
                 break;
 
               case 1:
@@ -565,6 +573,7 @@ class OnpubEditImages
                 en('<td class="onpub-highlight2" align="left"><a href="index.php?onpub=EditImage&amp;imageID='
                   . $ID . '" title="Edit">' . $fileName . '</a></td>');
                 en('<td class="onpub-highlight2" align="left">' . $created . '</td>');
+                en('<td class="onpub-highlight2"><a href="index.php?onpub=EditImage&amp;imageID=' . $ID . '" title="Edit"><img src="' . $imageSrc . '" height="40"></a></td>');
                 break;
             }
             break;
