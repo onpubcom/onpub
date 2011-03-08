@@ -62,23 +62,7 @@ class OnpubUploadImages
 
     en('<div class="yui3-u-1-2">');
 
-    en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
-
-    en('</div>');
-
-    en('</div>');
-
-    en('<div class="yui3-g">');
-
-    en('<div class="yui3-u-1-2">');
-
-    en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
-
-    en('</div>');
-
-    en('<div class="yui3-u-1-2">');
-
-    en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
+    //en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
 
     en('</div>');
 
