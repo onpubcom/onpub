@@ -31,7 +31,7 @@ else {
   en('<div class="yui3-g">');
   en('<div class="yui3-u-3-4">');
 
-  en('<p>Onpub ' . ONPUBAPI_VERSION . ', &copy; 2010 <a href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
+  en('<p>Onpub ' . ONPUBAPI_VERSION . ', &copy; 2011 <a href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
 
   en('</div>');
   en('<div class="yui3-u-1-4">');
