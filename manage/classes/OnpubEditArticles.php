@@ -604,7 +604,7 @@ class OnpubEditArticles
     }
     else {
       if ($this->keywords) {
-        en('Your search did not yield any results. <a href="javascript:clearSearchField(); submitForm();">Display all articles</a>.');
+        en('Your search did not yield any results. <a href="index.php?onpub=EditArticles">Display all articles</a>.');
       }
       else {
         if ($this->sectionID) {

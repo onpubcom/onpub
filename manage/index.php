@@ -132,16 +132,13 @@ if (isset($_POST['onpub'])) {
 
       if (isset($_POST['sectionIDs'])) {
         $sectionIDs = $_POST['sectionIDs'];
-        $_SESSION['NA_SIDS'] = $sectionIDs;
       }
       else {
         $sectionIDs = array ();
-        $_SESSION['NA_SIDS'] = $sectionIDs;
       }
 
       if (isset($_POST['displayAs'])) {
         $displayAs = $_POST['displayAs'];
-        $_SESSION['NA_DA'] = $displayAs;
       }
       else {
         $displayAs = "";
@@ -149,7 +146,6 @@ if (isset($_POST['onpub'])) {
 
       if (isset($_POST['imageID'])) {
         $imageID = $_POST['imageID'];
-        $_SESSION['NA_IID'] = $imageID;
 
         if (!$imageID) {
           $imageID = NULL;
@@ -311,12 +307,9 @@ if (isset($_POST['onpub'])) {
         if (!$websiteID) {
           $websiteID = NULL;
         }
-
-        $_SESSION['UI_WID'] = $websiteID;
       }
       else {
         $websiteID = NULL;
-        $_SESSION['UI_WID'] = $websiteID;
       }
 
       if (isset($_FILES['imageFiles'])) {
@@ -574,12 +567,9 @@ if (isset($_POST['onpub'])) {
         if (!$websiteID) {
           $websiteID = NULL;
         }
-
-        $_SESSION['NS_WID'] = $websiteID;
       }
       else {
         $websiteID = NULL;
-        $_SESSION['NS_WID'] = $websiteID;
       }
 
       if (isset($_POST['sectionID'])) {
@@ -588,21 +578,16 @@ if (isset($_POST['onpub'])) {
         if (!$parentID) {
           $parentID = NULL;
         }
-
-        $_SESSION['NS_SID'] = $parentID;
       }
       else {
         $parentID = NULL;
-        $_SESSION['NS_SID'] = $parentID;
       }
 
       if (isset($_POST['visible'])) {
         $visible = TRUE;
-        $_SESSION['NS_V'] = $visible;
       }
       else {
         $visible = FALSE;
-        $_SESSION['NS_V'] = $visible;
       }
 
       $osection = new OnpubSection();
@@ -844,33 +829,8 @@ else {
         $pdo = new PDO($dsn, $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 
-        if (isset($_SESSION['NA_DA'])) {
-          $displayAs = $_SESSION['NA_DA'];
-        }
-        else {
-          $displayAs = "";
-        }
-
-        if (isset($_SESSION['NA_SIDS'])) {
-          $sectionIDs = $_SESSION['NA_SIDS'];
-        }
-        else {
-          $sectionIDs = array ();
-        }
-
-        if (isset($_SESSION['NA_IID'])) {
-          $imageID = $_SESSION['NA_IID'];
-        }
-        else {
-          $imageID = NULL;
-        }
-
         $oarticle = new OnpubArticle();
-        $oarticle->imageID = $imageID;
-        $oarticle->sectionIDs = $sectionIDs;
-
         $oauthor = new OnpubAuthor();
-        $oauthor->displayAs = $displayAs;
 
         $create = new OnpubNewArticle($pdo, $oarticle, $oauthor);
 
@@ -972,8 +932,6 @@ else {
         if (isset($_GET['orderBy']) && isset($_GET['order'])) {
           $orderBy = $_GET['orderBy'];
           $order = $_GET['order'];
-          $_SESSION['EAS_OB'] = $orderBy;
-          $_SESSION['EAS_O'] = $order;
         }
         else {
           $orderBy = NULL;
@@ -982,7 +940,6 @@ else {
 
         if (isset($_GET['page'])) {
           $page = $_GET['page'];
-          $_SESSION['EAS_P'] = $page;
         }
         else {
           $page = NULL;
@@ -990,17 +947,6 @@ else {
 
         if (isset($_GET['keywords'])) {
           $keywords = $_GET['keywords'];
-
-          /*
-          if (isset($_SESSION['EAS_S'])) {
-            if ($_GET['keywords'] != $_SESSION['EAS_S']) {
-              $page = NULL;
-              $_SESSION['EAS_P'] = NULL;
-            }
-          }
-
-          $_SESSION['EAS_S'] = $keywords;
-          */
         }
         else {
           $keywords = NULL;
@@ -1008,50 +954,16 @@ else {
 
         if (isset($_GET['fullTextSearch'])) {
           $fullTextSearch = $_GET['fullTextSearch'];
-
-          $_SESSION['EAS_F'] = $fullTextSearch;
         }
         else {
           $fullTextSearch = NULL;
-          $_SESSION['EAS_F'] = $fullTextSearch;
         }
 
         if (isset($_GET['sectionID'])) {
-
           $sectionID = $_GET['sectionID'];
-
-          if (isset($_SESSION['EAS_SID'])) {
-            if ($_GET['sectionID'] != $_SESSION['EAS_SID']) {
-              $page = NULL;
-              $_SESSION['EAS_P'] = NULL;
-            }
-          }
-
-          $_SESSION['EAS_SID'] = $sectionID;
         }
         else {
           $sectionID = NULL;
-        }
-
-        if (isset($_SESSION['EAS_OB']) && isset($_SESSION['EAS_O'])) {
-          $orderBy = $_SESSION['EAS_OB'];
-          $order = $_SESSION['EAS_O'];
-        }
-
-        if (isset($_SESSION['EAS_P'])) {
-          $page = $_SESSION['EAS_P'];
-        }
-
-        if (isset($_SESSION['EAS_S'])) {
-          $keywords = $_SESSION['EAS_S'];
-        }
-
-        if (isset($_SESSION['EAS_F'])) {
-          $fullTextSearch = $_SESSION['EAS_F'];
-        }
-
-        if (isset($_SESSION['EAS_SID'])) {
-          $sectionID = $_SESSION['EAS_SID'];
         }
 
         $select = new OnpubEditArticles($pdo, $orderBy, $order, $page, $keywords, $fullTextSearch, $sectionID);
@@ -1105,8 +1017,6 @@ else {
         if (isset($_GET['orderBy']) && isset($_GET['order'])) {
           $orderBy = $_GET['orderBy'];
           $order = $_GET['order'];
-          $_SESSION['EIS_OB'] = $orderBy;
-          $_SESSION['EIS_O'] = $order;
         }
         else {
           $orderBy = NULL;
@@ -1115,7 +1025,6 @@ else {
 
         if (isset($_GET['page'])) {
           $page = $_GET['page'];
-          $_SESSION['EIS_P'] = $page;
         }
         else {
           $page = NULL;
@@ -1123,15 +1032,6 @@ else {
 
         if (isset($_GET['keywords'])) {
           $keywords = $_GET['keywords'];
-
-          if (isset($_SESSION['EIS_S'])) {
-            if ($_GET['keywords'] != $_SESSION['EIS_S']) {
-              $page = NULL;
-              $_SESSION['EIS_P'] = NULL;
-            }
-          }
-
-          $_SESSION['EIS_S'] = $keywords;
         }
         else {
           $keywords = NULL;
@@ -1139,48 +1039,16 @@ else {
 
         if (isset($_GET['fullTextSearch'])) {
           $fullTextSearch = $_GET['fullTextSearch'];
-          $_SESSION['EIS_F'] = $fullTextSearch;
         }
         else {
           $fullTextSearch = NULL;
-          $_SESSION['EIS_F'] = $fullTextSearch;
         }
 
         if (isset($_GET['sectionID'])) {
           $sectionID = $_GET['sectionID'];
-
-          if (isset($_SESSION['EIS_SID'])) {
-            if ($_GET['sectionID'] != $_SESSION['EIS_SID']) {
-              $page = NULL;
-              $_SESSION['EIS_P'] = NULL;
-            }
-          }
-
-          $_SESSION['EIS_SID'] = $sectionID;
         }
         else {
           $sectionID = NULL;
-        }
-
-        if (isset($_SESSION['EIS_OB']) && isset($_SESSION['EIS_O'])) {
-          $orderBy = $_SESSION['EIS_OB'];
-          $order = $_SESSION['EIS_O'];
-        }
-
-        if (isset($_SESSION['EIS_P'])) {
-          $page = $_SESSION['EIS_P'];
-        }
-
-        if (isset($_SESSION['EIS_S'])) {
-          $keywords = $_SESSION['EIS_S'];
-        }
-
-        if (isset($_SESSION['EIS_F'])) {
-          $fullTextSearch = $_SESSION['EIS_F'];
-        }
-
-        if (isset($_SESSION['EIS_SID'])) {
-          $sectionID = $_SESSION['EIS_SID'];
         }
 
         $select = new OnpubEditImages($pdo, $orderBy, $order, $page, $keywords, $fullTextSearch, $sectionID);
@@ -1202,14 +1070,7 @@ else {
         $pdo = new PDO($dsn, $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 
-        if (isset($_SESSION['UI_WID'])) {
-          $websiteID = $_SESSION['UI_WID'];
-        }
-        else {
-          $websiteID = NULL;
-        }
-
-        $upload = new OnpubUploadImages($pdo, array(), $websiteID);
+        $upload = new OnpubUploadImages($pdo, array());
 
         try {
           $upload->display();
@@ -1282,27 +1143,6 @@ else {
         $pdo = new PDO($dsn, $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 
-        if (isset($_SESSION['NS_WID'])) {
-          $websiteID = $_SESSION['NS_WID'];
-        }
-        else {
-          $websiteID = NULL;
-        }
-
-        if (isset($_SESSION['NS_SID'])) {
-          $parentID = $_SESSION['NS_SID'];
-        }
-        else {
-          $parentID = NULL;
-        }
-
-        if (isset($_SESSION['NS_V'])) {
-          $visible = $_SESSION['NS_V'];
-        }
-        else {
-          $visible = TRUE;
-        }
-
         $osection = new OnpubSection();
         $osection->websiteID = $websiteID;
         $osection->parentID = $parentID;
@@ -1329,8 +1169,6 @@ else {
         if (isset($_GET['orderBy']) && isset($_GET['order'])) {
           $orderBy = $_GET['orderBy'];
           $order = $_GET['order'];
-          $_SESSION['ESS_OB'] = $orderBy;
-          $_SESSION['ESS_O'] = $order;
         }
         else {
           $orderBy = NULL;
@@ -1339,7 +1177,6 @@ else {
 
         if (isset($_GET['page'])) {
           $page = $_GET['page'];
-          $_SESSION['ESS_P'] = $page;
         }
         else {
           $page = NULL;
@@ -1347,15 +1184,6 @@ else {
 
         if (isset($_GET['keywords'])) {
           $keywords = $_GET['keywords'];
-
-          if (isset($_SESSION['ESS_S'])) {
-            if ($_GET['keywords'] != $_SESSION['ESS_S']) {
-              $page = NULL;
-              $_SESSION['ESS_P'] = NULL;
-            }
-          }
-
-          $_SESSION['ESS_S'] = $keywords;
         }
         else {
           $keywords = NULL;
@@ -1363,48 +1191,16 @@ else {
 
         if (isset($_GET['fullTextSearch'])) {
           $fullTextSearch = $_GET['fullTextSearch'];
-          $_SESSION['ESS_F'] = $fullTextSearch;
         }
         else {
           $fullTextSearch = NULL;
-          $_SESSION['ESS_F'] = $fullTextSearch;
         }
 
         if (isset($_GET['websiteID'])) {
           $websiteID = $_GET['websiteID'];
-
-          if (isset($_SESSION['ESS_WID'])) {
-            if ($_GET['websiteID'] != $_SESSION['ESS_WID']) {
-              $page = NULL;
-              $_SESSION['ESS_P'] = NULL;
-            }
-          }
-
-          $_SESSION['ESS_WID'] = $websiteID;
         }
         else {
           $websiteID = NULL;
-        }
-
-        if (isset($_SESSION['ESS_OB']) && isset($_SESSION['ESS_O'])) {
-          $orderBy = $_SESSION['ESS_OB'];
-          $order = $_SESSION['ESS_O'];
-        }
-
-        if (isset($_SESSION['ESS_P'])) {
-          $page = $_SESSION['ESS_P'];
-        }
-
-        if (isset($_SESSION['ESS_S'])) {
-          $keywords = $_SESSION['ESS_S'];
-        }
-
-        if (isset($_SESSION['ESS_F'])) {
-          $fullTextSearch = $_SESSION['ESS_F'];
-        }
-
-        if (isset($_SESSION['ESS_WID'])) {
-          $websiteID = $_SESSION['ESS_WID'];
         }
 
         $select = new OnpubEditSections($pdo, $orderBy, $order, $page, $keywords, $fullTextSearch, $websiteID);
@@ -1450,8 +1246,6 @@ else {
         if (isset($_GET['orderBy']) && isset($_GET['order'])) {
           $orderBy = $_GET['orderBy'];
           $order = $_GET['order'];
-          $_SESSION['EWS_OB'] = $orderBy;
-          $_SESSION['EWS_O'] = $order;
         }
         else {
           $orderBy = NULL;
@@ -1460,7 +1254,6 @@ else {
 
         if (isset($_GET['page'])) {
           $page = $_GET['page'];
-          $_SESSION['EWS_P'] = $page;
         }
         else {
           $page = NULL;
@@ -1468,15 +1261,6 @@ else {
 
         if (isset($_GET['keywords'])) {
           $keywords = $_GET['keywords'];
-
-          if (isset($_SESSION['EWS_S'])) {
-            if ($_GET['keywords'] != $_SESSION['EWS_S']) {
-              $page = NULL;
-              $_SESSION['EWS_P'] = NULL;
-            }
-          }
-
-          $_SESSION['EWS_S'] = $keywords;
         }
         else {
           $keywords = NULL;
@@ -1484,48 +1268,16 @@ else {
 
         if (isset($_GET['fullTextSearch'])) {
           $fullTextSearch = $_GET['fullTextSearch'];
-          $_SESSION['EWS_F'] = $fullTextSearch;
         }
         else {
           $fullTextSearch = NULL;
-          $_SESSION['EWS_F'] = $fullTextSearch;
         }
 
         if (isset($_GET['websiteID'])) {
           $websiteID = $_GET['websiteID'];
-
-          if (isset($_SESSION['EWS_WID'])) {
-            if ($_GET['websiteID'] != $_SESSION['EWS_WID']) {
-              $page = NULL;
-              $_SESSION['EWS_P'] = NULL;
-            }
-          }
-
-          $_SESSION['EWS_WID'] = $websiteID;
         }
         else {
           $websiteID = NULL;
-        }
-
-        if (isset($_SESSION['EWS_OB']) && isset($_SESSION['EWS_O'])) {
-          $orderBy = $_SESSION['EWS_OB'];
-          $order = $_SESSION['EWS_O'];
-        }
-
-        if (isset($_SESSION['EWS_P'])) {
-          $page = $_SESSION['EWS_P'];
-        }
-
-        if (isset($_SESSION['EWS_S'])) {
-          $keywords = $_SESSION['EWS_S'];
-        }
-
-        if (isset($_SESSION['EWS_F'])) {
-          $fullTextSearch = $_SESSION['EWS_F'];
-        }
-
-        if (isset($_SESSION['EWS_WID'])) {
-          $websiteID = $_SESSION['EWS_WID'];
         }
 
         $select = new OnpubEditWebsites($pdo, $orderBy, $order, $page, $keywords, $fullTextSearch, $websiteID);

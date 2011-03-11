@@ -47,7 +47,10 @@ class OnpubWelcome
       else {
         en('<form action="index.php" method="get">');
         en('<div>');
-        en('<p><input type="text" name="keywords" style="width: 18.5em;"> <input type="submit" value="Search"> For what: <select name="onpub"><option value="EditArticles">Articles</option><option value="EditSections">Sections</option><option value="EditWebsites">Websites</option></select></p>');
+        en('<input type="hidden" name="onpub" value="EditArticles">');
+        en('<input type="hidden" name="fullTextSearch" value="1">');
+        en('<p><input type="text" name="keywords" style="width: 18.5em;"> <input type="submit" value="Search Articles"></p>');
+        //en(' For what: <select name="onpub"><option value="EditArticles">Articles</option><option value="EditSections">Sections</option><option value="EditWebsites">Websites</option></select>');
         en('</div>');
         en('</form>');
 
