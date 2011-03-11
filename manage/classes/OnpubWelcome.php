@@ -36,6 +36,7 @@ class OnpubWelcome
     if ($status == ONPUBAPI_SCHEMA_VERSION) {
       // Onpub schema is installed.
       $numsites = $owebsites->count();
+      $numarticles = $oarticles->count();
 
       en('<div class="yui3-u-1-2">');
 
@@ -45,14 +46,16 @@ class OnpubWelcome
         en('<p><strong><a href="index.php?onpub=NewWebsite">Create a new website...</a></strong></p>');
       }
       else {
-        en('<form action="index.php" method="get">');
-        en('<div>');
-        en('<input type="hidden" name="onpub" value="EditArticles">');
-        en('<input type="hidden" name="fullTextSearch" value="1">');
-        en('<p><input type="text" name="keywords" style="width: 18.5em;"> <input type="submit" value="Search Articles"></p>');
-        //en(' For what: <select name="onpub"><option value="EditArticles">Articles</option><option value="EditSections">Sections</option><option value="EditWebsites">Websites</option></select>');
-        en('</div>');
-        en('</form>');
+        if ($numarticles) {
+          en('<form action="index.php" method="get">');
+          en('<div>');
+          en('<input type="hidden" name="onpub" value="EditArticles">');
+          en('<input type="hidden" name="fullTextSearch" value="1">');
+          en('<p><input type="text" name="keywords" style="width: 18.5em;"> <input type="submit" value="Search Articles"></p>');
+          //en(' For what: <select name="onpub"><option value="EditArticles">Articles</option><option value="EditSections">Sections</option><option value="EditWebsites">Websites</option></select>');
+          en('</div>');
+          en('</form>');
+        }
 
         $queryOptions = new OnpubQueryOptions();
         $queryOptions->rowLimit = 10;
@@ -84,7 +87,7 @@ class OnpubWelcome
       en('<div class="yui3-u-1-4">');
       en('<table style="margin-left: auto; margin-right: auto;">');
       en('<tr><th colspan="2" style="text-align: left;">Content Stats</th></tr>');
-      en('<tr><td><a href="index.php?onpub=EditArticles">Articles</a>:</td><td>' . $oarticles->count() . '</td></tr>');
+      en('<tr><td><a href="index.php?onpub=EditArticles">Articles</a>:</td><td>' . $numarticles . '</td></tr>');
       //en('<tr><td>Authors:</td><td>' . $oauthors->count() . '</td></tr>');
       en('<tr><td><a href="index.php?onpub=EditImages">Images</a>:</td><td>' . $oimages->count() . '</td></tr>');
       en('<tr><td><a href="index.php?onpub=EditSections">Sections</a>:</td><td>' . $osections->count() . '</td></tr>');
