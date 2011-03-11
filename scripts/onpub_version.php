@@ -1,7 +1,7 @@
 <?php
 
 /* Onpub (TM)
- * Copyright (C) 2010 Onpub.com <http://onpub.com/>
+ * Copyright (C) 2011 Onpub.com <http://onpub.com/>
  * Author: Corey H.M. Taylor <corey@onpub.com>
  *
  * This program is free software; you can redistribute it and/or

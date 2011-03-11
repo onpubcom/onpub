@@ -6,19 +6,19 @@ svn export https://onpubdev.googlecode.com/svn/trunk/ onpub
 rm -r onpub/scripts
 
 # Get the latest stable release of CKeditor.
-wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.5.1/ckeditor_3.5.1.zip
-unzip ckeditor_3.5.1.zip
+wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.5.2/ckeditor_3.5.2.zip
+unzip ckeditor_3.5.2.zip
 mv ckeditor onpub/manage/
 
 # Get the latest release of YUI 3.
-#wget http://yuilibrary.com/downloads/yui3/yui_3.3.0.zip
-#unzip yui_3.3.0.zip
+wget http://yuilibrary.com/downloads/yui3/yui_3.3.0.zip
+unzip yui_3.3.0.zip
 # Remove some uneeded dirs to free up some space.
-#rm -r yui/as-api
-#rm -r yui/api
-#rm -r yui/tests
-#rm -r yui/examples
-#mv yui onpub/
+rm -r yui/as-api
+rm -r yui/api
+rm -r yui/tests
+rm -r yui/examples
+mv yui onpub/
 
 # Everything is in place, zip up the onpub directory.
 zip -9 -r onpub-`php onpub_version.php`.zip onpub
@@ -27,6 +27,6 @@ zip -9 -r onpub-`php onpub_version.php`.zip onpub
 sha1sum onpub-`php onpub_version.php`.zip > onpub-`php onpub_version.php`.sha1
 
 # Clean up.
-rm ckeditor_3.5.1.zip
-#rm yui_3.3.0.zip
+rm ckeditor_3.5.2.zip
+rm yui_3.3.0.zip
 rm -r onpub
