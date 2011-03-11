@@ -1144,10 +1144,8 @@ else {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 
         $osection = new OnpubSection();
-        $osection->websiteID = $websiteID;
-        $osection->parentID = $parentID;
 
-        $create = new OnpubNewSection($pdo, $osection, $visible);
+        $create = new OnpubNewSection($pdo, $osection);
 
         try {
           $create->display();
