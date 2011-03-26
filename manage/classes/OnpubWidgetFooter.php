@@ -15,7 +15,6 @@ class OnpubWidgetFooter
   public function display()
   {
     en('</div>');
-    en('<div class="yui3-u-1-24"></div>');
     en('</div>');
 
     en('</div>');
