@@ -121,7 +121,7 @@ class OnpubWidgetHeader
 
     en('<div id="onpub-body">');
     en('<div class="yui3-g">');
-    en('<div class="yui3-u-23-24">');
+    en('<div class="yui3-u-1">');
 
     if ($this->title) {
       en('<h1>' . strip_tags($this->title) . '</h1>');

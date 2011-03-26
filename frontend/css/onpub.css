@@ -59,6 +59,7 @@ color: #525861;
 background-color: #ffffff;
 border: 1px solid #D8D8DA;
 padding-left: 1em;
+padding-right: 1em;
 padding-bottom: 1.5em;
 -moz-box-shadow: 0px 0px 5px #f0f0f0;
 -webkit-box-shadow: 0px 0px 5px #f0f0f0;
@@ -121,6 +122,10 @@ h2, h3, h4, h5, h6, b, strong {
 color: #51565E;
 }
 
+h2.onpub-article-link {
+margin-bottom: 0em;
+}
+
 td.onpub-highlight1 {
 background-color: #F7F8FD;
 }
@@ -131,6 +136,12 @@ background-color: #DEE5F8;
 
 p.onpub-article-info {
 font-size: 93%;
+color: #86919D;
+margin-bottom: 1.75em;
+}
+
+p.onpub-article-summary {
+font-size: 85%;
 color: #86919D;
 margin-bottom: 1.75em;
 }

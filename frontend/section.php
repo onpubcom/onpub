@@ -55,13 +55,13 @@ if ($onpub_section) {
     }
 
     if ($a->url) {
-      en('<h2><a href="' . $a->url . '">' . $a->title . '</a></h2>');
+      en('<h2 class="onpub-article-link"><a href="' . $a->url . '">' . $a->title . '</a></h2>');
     }
     else {
-      en('<h2><a href="index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
+      en('<h2 class="onpub-article-link"><a href="index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
     }
 
-    en('<p><em>' . $a->getCreated()->format('M j, Y') . '</em><br>' . $a->getSummary(40) . '...<a href="index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID . '"><br><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/bullet_go.png" width="16" height="16" alt="Read more." title="Read more." align="top"></a><a href="index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID . '">more</a></p>');
+    en('<p class="onpub-article-summary"><em>' . $a->getCreated()->format('M j, Y') . '</em><br>' . $a->getSummary(40) . '...</p>');
 
     if ($even) {
       if ($i + 1 == sizeof($articles)) {

@@ -10,7 +10,7 @@
  */
 
 en('<div class="yui3-g">');
-en('<div class="yui3-u-23-24">');
+en('<div class="yui3-u-1">');
 
 if ($onpub_article) {
   en('<h1>' . $onpub_article->title . '</h1>');
@@ -73,7 +73,6 @@ else {
 }
 
 en('</div>');
-en('<div class="yui3-u-1-24"></div>');
 en('</div>');
 
 ?>

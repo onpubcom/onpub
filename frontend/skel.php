@@ -93,32 +93,36 @@ if (file_exists($onpub_dir_local . $onpub_inc_banner)) {
 <?php include $onpub_dir_root . $onpub_dir_frontend . 'hd.php'; ?>
 </div>
 
-<div id="onpub-body">
-
 <?php
 switch ($onpub_index)
 {
   case 'home':
+    en('<div id="onpub-body">');
     include $onpub_dir_root . $onpub_dir_frontend . 'home.php';
+    en('</div>');
     break;
 
   case 'section':
+    en('<div id="onpub-body" style="padding-right: 0em;">');
     include $onpub_dir_root . $onpub_dir_frontend . 'section.php';
+    en('</div>');
     break;
 
   case 'article':
+    en('<div id="onpub-body">');
     include $onpub_dir_root . $onpub_dir_frontend . 'article.php';
+    en('</div>');
     break;
 
   case 'section-article':
+    en('<div id="onpub-body" style="padding-right: 0em;">');
     include $onpub_dir_root . $onpub_dir_frontend . 'section-article.php';
+    en('</div>');
     break;
 
   default: break;
 }
 ?>
-
-</div>
 
 <div id="onpub-footer">
 <?php include $onpub_dir_root . $onpub_dir_frontend . 'ft.php'; ?>
