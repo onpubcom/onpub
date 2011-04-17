@@ -18,6 +18,9 @@ YUI(
       this.plug(Y.Plugin.NodeMenuNav);
       // Load custom CSS for YUI menu.
       Y.Get.css(onpub_inc_css_menu);
+      if (onpub_inc_css_menu_local) {
+        Y.Get.css(onpub_inc_css_menu_local);
+      }
       this.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
     }, "#onpub-menubar");
   }
