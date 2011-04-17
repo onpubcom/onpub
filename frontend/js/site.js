@@ -10,31 +10,15 @@
 YUI(
 {
   base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
-}).use("node-menunav", "transition", function(Y)
+}).use("node-menunav", function(Y)
 {
-  var menu = Y.one("#onpub-menubar");
-
-  if (menu) {
-    menu.plug(Y.Plugin.NodeMenuNav);
-
-    // Load custom CSS for YUI menu.
-    Y.Get.css(onpub_inc_css_menu);
-
-    menu.setStyle('height', '0px');
-    Y.all('.yui3-menu-content').setStyle('opacity', '0');
-
-    menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
-
-    menu.transition({
-      easing: 'ease-out',
-      duration: .2,
-      height: '27px',
-    });
-
-    Y.all('.yui3-menu-content').transition({
-      easing: 'ease-out',
-      duration: .2,
-      opacity: '1',
-    });
+  if (Y.one("#onpub-menubar")) {
+    // Render the nav menu.
+    Y.on("contentready", function () {
+      this.plug(Y.Plugin.NodeMenuNav);
+      // Load custom CSS for YUI menu.
+      Y.Get.css(onpub_inc_css_menu);
+      this.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
+    }, "#onpub-menubar");
   }
 });

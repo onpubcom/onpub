@@ -11,31 +11,15 @@ YUI(
 {
   base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
 }
-).use("node-menunav", "transition", function(Y)
+).use("node-menunav", function(Y)
 {
-  var menu = Y.one("#onpub-menubar");
-
-  menu.plug(Y.Plugin.NodeMenuNav);
-
-  // Load custom CSS for YUI menu.
-  Y.Get.css('css/onpub-menu.css');
-
-  menu.setStyle('height', '0px');
-  Y.all('.yui3-menu-content').setStyle('opacity', '0');
-
-  menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
-
-  menu.transition({
-    easing: 'ease-out',
-    duration: .2,
-    height: '27px',
-  });
-
-  Y.all('.yui3-menu-content').transition({
-    easing: 'ease-out',
-    duration: .2,
-    opacity: '1',
-  });
+  // Render the nav menu.
+  Y.on("contentready", function () {
+    this.plug(Y.Plugin.NodeMenuNav);
+    // Load custom CSS for YUI menu.
+    Y.Get.css('css/onpub-menu.css');
+    this.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
+  }, "#onpub-menubar");
 
   // Event handler functions.
   function moveUp(e, list)
@@ -188,7 +172,7 @@ YUI(
   function confirmDelete(e)
   {
     var result = false;
-    result = confirm("Are you sure?");
+    result = confirm("Are you sure you want to delete the article(s)?");
 
     if (!result) {
       e.preventDefault();
@@ -198,7 +182,7 @@ YUI(
   function confirmNewPage(e, action)
   {
     var result = false;
-    result = confirm("Are you sure?");
+    result = confirm("Are you sure want to blank this page?");
 
     if (result) {
       action();
@@ -229,7 +213,7 @@ YUI(
   function confirmOverwrite(e, overwrite)
   {
     var result = false;
-    result = confirm("Are you sure?");
+    result = confirm("Are you sure want to overwrite this image?");
 
     if (result) {
       overwrite.set("value", "1");
@@ -287,7 +271,7 @@ function deleteImage()
 {
     var result = false;
 
-    result = confirm("Are you sure?");
+    result = confirm("Are you sure you want to delete this image?");
 
     if ( result ) {
         document.forms[0].onpub.value = "DeleteImageProcess";
@@ -299,7 +283,7 @@ function deleteSection()
 {
     var result = false;
 
-    result = confirm("Are you sure?");
+    result = confirm("Are you sure you want to delete this section?");
 
     if ( result ) {
         document.forms[0].onpub.value = "DeleteSectionProcess";
@@ -311,7 +295,7 @@ function deleteWebsite()
 {
     var result = false;
 
-    result = confirm("Are you sure?");
+    result = confirm("Are you sure you want to delete this website?");
 
     if ( result ) {
         document.forms[0].onpub.value = "DeleteWebsiteProcess";
