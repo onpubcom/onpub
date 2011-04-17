@@ -38,6 +38,7 @@ else {
 }
 
 if (file_exists($onpub_dir_local . $onpub_inc_css)) {
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub.css">');
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_local . $onpub_inc_css . '">');
 }
 else {
