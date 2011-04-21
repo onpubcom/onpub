@@ -33,11 +33,13 @@ if ($onpub_pdo) {
   try {
     $onpub_website = $onpub_websites->get($onpub_disp_website, $qo);
     $onpub_schema_installed = true;
+    $onpub_pdo_exception = null;
   }
   catch (PDOException $e) {
     // Schema most likely has not yet been installed.
     $onpub_website = null;
     $onpub_schema_installed = false;
+    $onpub_pdo_exception = $e;
   }
 }
 else {
