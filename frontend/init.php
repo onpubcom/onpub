@@ -17,26 +17,32 @@ try {
   $onpub_pdo = new PDO('mysql:host=' . $onpub_db_host . ';dbname=' . $onpub_db_name, $onpub_db_user, $onpub_db_pass);
 }
 catch (PDOException $e) {
-  // Connection error. Bounce user to Onpub login page.
-  header ('Location: ' . $onpub_dir_root . $onpub_dir_manage);
-  exit;
+  // Connection error. PDO isn't installed or DB credentials are incorrect.
+  $onpub_pdo = null;
 }
 
-$onpub_websites = new OnpubWebsites($onpub_pdo);
-$onpub_sections = new OnpubSections($onpub_pdo);
-$onpub_articles = new OnpubArticles($onpub_pdo);
-$onpub_samaps = new OnpubSAMaps($onpub_pdo);
+if ($onpub_pdo) {
+  $onpub_websites = new OnpubWebsites($onpub_pdo);
+  $onpub_sections = new OnpubSections($onpub_pdo);
+  $onpub_articles = new OnpubArticles($onpub_pdo);
+  $onpub_samaps = new OnpubSAMaps($onpub_pdo);
 
-$qo = new OnpubQueryOptions();
-$qo->includeSections = true;
+  $qo = new OnpubQueryOptions();
+  $qo->includeSections = true;
 
-try {
-  $onpub_website = $onpub_websites->get($onpub_disp_website, $qo);
+  try {
+    $onpub_website = $onpub_websites->get($onpub_disp_website, $qo);
+    $onpub_schema_installed = true;
+  }
+  catch (PDOException $e) {
+    // Schema most likely has not yet been installed.
+    $onpub_website = null;
+    $onpub_schema_installed = false;
+  }
 }
-catch (PDOException $e) {
-  // Schema most likely has not yet been installed.
-  header ('Location: ' . $onpub_dir_root . $onpub_dir_manage);
-  exit;
+else {
+  $onpub_website = null;
+  $onpub_schema_installed = false;
 }
 
 $onpub_index = 'home';

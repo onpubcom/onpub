@@ -9,6 +9,11 @@
  * as published by the Free Software Foundation; version 2.
  */
 
+/*
+This is the Onpub website frontend index file.
+See http://onpub.com/index.php?s=8&a=96 for more information.
+*/
+
 // Include default Onpub config.
 include './onpub_conf.php';
 

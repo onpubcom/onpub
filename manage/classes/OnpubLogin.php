@@ -82,7 +82,7 @@ class OnpubLogin
 
     en('<p><strong>Password</strong><br><input title="Password" type="password" maxlength="255" size="25" name="pdoPassword" value=""></p>');
 
-    en('<p><input type="submit" value="Login"> <a href="http://onpub.com/index.php?articleID=66&amp;sectionID=8" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'help.png" align="top" alt="Help" title="Help"></a></p>');
+    en('<p><input type="submit" value="Login"> <a href="http://onpub.com/index.php?s=8&a=118#login" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'help.png" align="top" alt="Help" title="Help"></a></p>');
 
     if ($this->exception) {
       en('<p class="onpub-error">' . $this->exception->getMessage() . '</p>');

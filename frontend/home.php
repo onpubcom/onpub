@@ -106,8 +106,19 @@ if ($onpub_website) {
   }
 }
 else {
-  br();
-  en('<p>Onpub\'s installed. <a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewWebsite" target="_blank">Create a new website</a> and then reload this page to get started.</p>');
+  en('<h1>Welcome to Onpub</h1>');
+
+    en('<h3>You have successfully installed Onpub. This is the default Onpub frontend interface.</h3>');
+
+  if ($onpub_schema_installed) {
+    en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
+       'index.php?onpub=NewWebsite" target="_onpub">Create a new website</a> to start customizing this site.</p>');
+  }
+  else {
+    en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
+       'index.php" target="_onpub">Login</a> to the Onpub content management interface now to complete the database setup for this installation.</p>');
+    en('<p>See <a href="http://onpub.com/index.php?s=8&a=118" target="_blank">How to Install Onpub</a> for more information.</p>');
+  }
 }
 
 ?>

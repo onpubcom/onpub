@@ -12,23 +12,29 @@ class OnpubWelcome
 {
   private $pdo;
 
-  function __construct(PDO $pdo)
+  function __construct($pdo)
   {
     $this->pdo = $pdo;
   }
 
   public function display()
   {
-    $odatabase = new OnpubDatabase($this->pdo);
-    $oarticles = new OnpubArticles($this->pdo);
-    $oauthors = new OnpubAuthors($this->pdo);
-    $oimages = new OnpubImages($this->pdo);
-    $osections = new OnpubSections($this->pdo);
-    $owebsites = new OnpubWebsites($this->pdo);
-    $status = $odatabase->status();
-    $driver = $this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+    if ($this->pdo) {
+      $odatabase = new OnpubDatabase($this->pdo);
+      $oarticles = new OnpubArticles($this->pdo);
+      $oauthors = new OnpubAuthors($this->pdo);
+      $oimages = new OnpubImages($this->pdo);
+      $osections = new OnpubSections($this->pdo);
+      $owebsites = new OnpubWebsites($this->pdo);
+      $status = $odatabase->status();
+      $driver = $this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+      $widget = new OnpubWidgetHeader("Dashboard", $status);
+    }
+    else {
+      $status = null;
+      $widget = new OnpubWidgetHeader("Dashboard", $status);
+    }
 
-    $widget = new OnpubWidgetHeader("Dashboard", $status);
     $widget->display();
 
     en('<div class="yui3-g">');
@@ -96,71 +102,84 @@ class OnpubWelcome
       en('</div>');
       en('<div class="yui3-u-1-4">');
     }
+    elseif ($this->pdo === NULL) {
+      en('<div class="yui3-u-3-4">');
+      en('<h2>Welcome to Onpub</h2>');
+      en('<p class="onpub-error">Onpub could not load the PHP PDO_MYSQL driver.</p>');
+      en('<p>Either PDO_MYSQL is not installed or it is not configured correctly.</p>');
+      en('<p>Onpub requires the PDO_MYSQL PHP driver for connecting to your MySQL database.');
+      en('Please refer to the <a href="http://onpub.com/index.php?s=8&a=11" target="_blank">Onpub System Requirements</a> and the <a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PHP Manual</a> for more information.</p>');
+      en('<p>Once you install and configure PDO_MYSQL you will be able to continue using Onpub.</p>');
+      en('</div>');
+      en('<div class="yui3-u-1-4">');
+    }
     else {
       // Onpub schema is not installed yet. Prompt user to install.
       en('<div class="yui3-u-3-4">');
-      en('<p><strong>Welcome to Onpub!</strong></p>');
-      en('<p>This appears to be the first time you have logged in.</p>');
+      en('<h2>Welcome to Onpub</h2>');
+      en('<p>This appears to be the first time you have logged in to the Onpub content management interface.</p>');
       en('<p>Before you can create a website with Onpub you must add the Onpub schema to the connected MySQL database, <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
-      en('<p>Please click the link below to continue..</p>');
-      en('<ul><li><strong><a href="index.php?onpub=SchemaInstall">Install the Onpub database schema</a></strong></li></ul>');
+      en('<p>Please click the link below to continue:</p>');
+      en('<ul><li><a href="index.php?onpub=SchemaInstall">Install the Onpub database schema</a></li></ul>');
       en('</div>');
       en('<div class="yui3-u-1-4">');
     }
 
-    en('<table>');
-    en('<tr><th colspan="2" style="text-align: left;">PHP Configuration</th></tr>');
+    if ($this->pdo) {
+      en('<table>');
+      en('<tr><th colspan="2" style="text-align: left;">PHP Configuration</th></tr>');
 
-    if (get_magic_quotes_gpc()) {
-      en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/info.configuration.php#ini.magic-quotes-gpc" target="_blank">Magic Quotes</a>:</td><td><span class="onpub-error">On</span>: <a href="http://php.net/manual/en/security.magicquotes.disabling.php" target="_blank">Disabling Magic Quotes</a> is required.</td></tr>');
-    }
-    else {
-      en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/info.configuration.php#ini.magic-quotes-gpc" target="_blank">Magic Quotes</a>:</td><td>Off</td></tr>');
-    }
+      if (get_magic_quotes_gpc()) {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/info.configuration.php#ini.magic-quotes-gpc" target="_blank">Magic Quotes</a>:</td><td><span class="onpub-error">On</span>: <a href="http://php.net/manual/en/security.magicquotes.disabling.php" target="_blank">Disabling Magic Quotes</a> is required.</td></tr>');
+      }
+      else {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/info.configuration.php#ini.magic-quotes-gpc" target="_blank">Magic Quotes</a>:</td><td>Off</td></tr>');
+      }
 
-    if (ini_get("allow_url_fopen")) {
-      en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen" target="_blank">Allow URL File Open</a>:</td><td>Yes</td></tr>');
-    }
-    else {
-      en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen" target="_blank">Allow URL File Open</a>:</td><td><span class="onpub-error">No</span>: <a href="http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen" target="_blank">Enabling URL File Open</a> is required.</td></tr>');
-    }
+      if (ini_get("allow_url_fopen")) {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen" target="_blank">Allow URL File Open</a>:</td><td>Yes</td></tr>');
+      }
+      else {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen" target="_blank">Allow URL File Open</a>:</td><td><span class="onpub-error">No</span>: <a href="http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen" target="_blank">Enabling URL File Open</a> is required.</td></tr>');
+      }
 
-    if (ini_get("file_uploads")) {
-      en('<tr style="vertical-align: top;"><td><a href="http://php.net/ini.core#ini.file-uploads" target="_blank">Allow File Uploads</a>:</td><td>Yes</td></tr>');
-    }
-    else {
-      en('<tr style="vertical-align: top;"><td><a href="http://php.net/ini.core#ini.file-uploads" target="_blank">Allow File Uploads</a>:</td><td>No</td></tr>');
-    }
+      if (ini_get("file_uploads")) {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/ini.core#ini.file-uploads" target="_blank">Allow File Uploads</a>:</td><td>Yes</td></tr>');
+      }
+      else {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/ini.core#ini.file-uploads" target="_blank">Allow File Uploads</a>:</td><td>No</td></tr>');
+      }
 
-    if (ini_get("upload_max_filesize")) {
-      en('<tr style="vertical-align: top;"><td><a href="http://php.net/ini.core#ini.upload-max-filesize" target="_blank">Upload Maximum File Size</a>:</td><td>' . ini_get("upload_max_filesize") . '</td></tr>');
-    }
-    else {
-      en('<tr style="vertical-align: top;"><td><a href="http://php.net/ini.core#ini.upload-max-filesize" target="_blank">Upload Maximum File Size</a>:</td><td>undefined</td></tr>');
-    }
+      if (ini_get("upload_max_filesize")) {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/ini.core#ini.upload-max-filesize" target="_blank">Upload Maximum File Size</a>:</td><td>' . ini_get("upload_max_filesize") . '</td></tr>');
+      }
+      else {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/ini.core#ini.upload-max-filesize" target="_blank">Upload Maximum File Size</a>:</td><td>undefined</td></tr>');
+      }
 
-    if (ini_get("date.timezone")) {
-      en('<tr style="vertical-align: top;"><td><a href="http://php.net/ref.datetime" target="_blank">Timezone</a>:</td><td>' . ini_get("date.timezone") . '</td></tr>');
+      if (ini_get("date.timezone")) {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/ref.datetime" target="_blank">Timezone</a>:</td><td>' . ini_get("date.timezone") . '</td></tr>');
+      }
+      else {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/ref.datetime" target="_blank">Timezone</a>:</td><td>' . ONPUBGUI_DEFAULT_TZ . '</td></tr>');
+      }
+
+      en('</table>');
+
+      en('<table>');
+      en('<tr><th colspan="2" style="text-align: left;">Database Connection</th></tr>');
+      en('<tr style="vertical-align: top;"><td>MySQL Host:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CONNECTION_STATUS) . '</td></tr>');
+      en('<tr style="vertical-align: top;"><td>MySQL Client:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CLIENT_VERSION) . ' on ' . $_SERVER['SERVER_NAME'] . '</td></tr>');
+      en('<tr style="vertical-align: top;"><td>MySQL Server:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_SERVER_VERSION) . '</td></tr>');
+      en('<tr style="vertical-align: top;"><td>MySQL User:</td><td>' . $_SESSION['PDO_USER'] . '</td></tr>');
+      en('<tr style="vertical-align: top;"><td>Selected Database:</td><td>' . $_SESSION['PDO_DATABASE'] . '</td></tr>');
+
+      if ($status == ONPUBAPI_SCHEMA_VERSION) {
+        en('<tr><td>Onpub Schema:</td><td>Rev. ' . ONPUBAPI_SCHEMA_VERSION . '</td></tr>');
+      }
+
+      en('</table>');
     }
-    else {
-      en('<tr style="vertical-align: top;"><td><a href="http://php.net/ref.datetime" target="_blank">Timezone</a>:</td><td>' . ONPUBGUI_DEFAULT_TZ . '</td></tr>');
-    }
-
-    en('</table>');
-
-    en('<table>');
-    en('<tr><th colspan="2" style="text-align: left;">Database Connection</th></tr>');
-    en('<tr style="vertical-align: top;"><td>MySQL Host:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CONNECTION_STATUS) . '</td></tr>');
-    en('<tr style="vertical-align: top;"><td>MySQL Client:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CLIENT_VERSION) . ' on ' . $_SERVER['SERVER_NAME'] . '</td></tr>');
-    en('<tr style="vertical-align: top;"><td>MySQL Server:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_SERVER_VERSION) . '</td></tr>');
-    en('<tr style="vertical-align: top;"><td>MySQL User:</td><td>' . $_SESSION['PDO_USER'] . '</td></tr>');
-    en('<tr style="vertical-align: top;"><td>Selected Database:</td><td>' . $_SESSION['PDO_DATABASE'] . '</td></tr>');
-
-    if ($status == ONPUBAPI_SCHEMA_VERSION) {
-      en('<tr><td>Onpub Schema:</td><td>Rev. ' . ONPUBAPI_SCHEMA_VERSION . '</td></tr>');
-    }
-
-    en('</table>');
 
     en('</div>');
     en('</div>');

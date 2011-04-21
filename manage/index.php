@@ -9,9 +9,9 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-include ("../api/onpubapi.php");
+include("../api/onpubapi.php");
 
-include ("onpubgui.php");
+include("onpubgui.php");
 
 if (!ini_get("date.timezone")) {
   date_default_timezone_set (ONPUBGUI_DEFAULT_TZ);
@@ -19,8 +19,8 @@ if (!ini_get("date.timezone")) {
 
 header("Content-Type: text/html; charset=iso-8859-1");
 
-session_name ("onpubpdo");
-session_set_cookie_params (0, '/', '', false, true);
+session_name("onpubpdo");
+session_set_cookie_params(0, '/', '', false, true);
 session_start();
 
 $pdo = NULL;
@@ -40,6 +40,19 @@ if (isset($_POST['onpub'])) {
   if (!$loginStatus && $_POST['onpub'] != "LoginProcess") {
     header("Location: index.php");
     return;
+  }
+
+  if ($loginStatus) {
+    try {
+      $pdo = new PDO($dsn, $username, $password);
+    }
+    catch (PDOException $e) {
+      // PDO init error, bounce user back to Dashboard page.
+      header("Location: index.php");
+      return;
+    }
+
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
   }
 
   switch ($_POST['onpub'])
@@ -94,9 +107,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "EditImageProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       $oimage = new OnpubImage();
       $oimage->ID = $_POST['imageID'];
       $oimage->fileName = $_POST['fileName'];
@@ -121,15 +131,11 @@ if (isset($_POST['onpub'])) {
 
       $pdo = NULL;
 
-      header("Location: index.php?onpub=EditImage&imageID="
-        . $_POST['imageID']);
+      header("Location: index.php?onpub=EditImage&imageID=" . $_POST['imageID']);
       return;
       break;
 
     case "NewArticleProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       if (isset($_POST['sectionIDs'])) {
         $sectionIDs = $_POST['sectionIDs'];
       }
@@ -202,9 +208,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "EditArticleProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       if (isset($_POST['authorID'])) {
         $authorID = $_POST['authorID'];
       }
@@ -298,9 +301,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "UploadImagesProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       if (isset($_POST['websiteID'])) {
         $websiteID = $_POST['websiteID'];
 
@@ -377,9 +377,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "DeleteImageProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       $oimage = new OnpubImage();
       $oimage->ID = $_POST['imageID'];
 
@@ -402,9 +399,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "DeleteSectionProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       $osection = new OnpubSection();
       $osection->ID = $_POST['sectionID'];
 
@@ -427,9 +421,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "DeleteWebsiteProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       $owebsite = new OnpubWebsite();
       $owebsite->ID = $_POST['websiteID'];
 
@@ -452,9 +443,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "DeleteArticleProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       if (isset($_POST['articleIDs'])) {
         $articleIDs = $_POST['articleIDs'];
       }
@@ -481,9 +469,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "ArticleMoveProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       if (isset($_POST['articleIDs'])) {
         $articleIDs = $_POST['articleIDs'];
       }
@@ -517,9 +502,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "NewWebsiteProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       $owebsite = new OnpubWebsite();
 
       $owebsite->name = $_POST['name'];
@@ -558,9 +540,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "NewSectionProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       if (isset($_POST['websiteID'])) {
         $websiteID = $_POST['websiteID'];
 
@@ -629,9 +608,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "EditSectionProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       if (isset($_POST['articleIDs'])) {
         $articleIDs = $_POST['articleIDs'];
       }
@@ -721,9 +697,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "EditWebsiteProcess":
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
       if (isset($_POST['sectionIDs'])) {
         $sectionIDs = $_POST['sectionIDs'];
       }
@@ -778,13 +751,24 @@ if (isset($_POST['onpub'])) {
 
       $pdo = NULL;
 
-      header("Location: index.php?onpub=EditWebsite&websiteID="
-        . $_POST['websiteID']);
+      header("Location: index.php?onpub=EditWebsite&websiteID=" . $_POST['websiteID']);
       return;
       break;
   }
 }
 else {
+  if ($loginStatus) {
+    try {
+      $pdo = new PDO($dsn, $username, $password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+    }
+    catch (PDOException $e) {
+      // PDO init error, show only Dashboard page.
+      $pdo = NULL;
+      $_GET['onpub'] = NULL;
+    }
+  }
+
   if (isset($_GET['onpub'])) {
     if (!$loginStatus) {
       $login = new OnpubLogin(NULL, NULL, NULL, NULL, FALSE, $_GET);
@@ -803,8 +787,6 @@ else {
         break;
 
       case "SchemaInstall":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
         $odatabase = new OnpubDatabase($pdo);
         $owebsites = new OnpubWebsites($pdo);
         $osections = new OnpubSections($pdo);
@@ -826,9 +808,6 @@ else {
         break;
 
       case "NewArticle":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         $oarticle = new OnpubArticle();
         $oauthor = new OnpubAuthor();
 
@@ -848,9 +827,6 @@ else {
         break;
 
       case "DeleteArticle":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         $articleIDs = array ();
 
         if (isset($_GET['articleID'])) {
@@ -876,9 +852,6 @@ else {
         break;
 
       case "EditArticle":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         $oarticle = new OnpubArticle();
         $oarticle->ID = $_GET['articleID'];
 
@@ -898,9 +871,6 @@ else {
         break;
 
       case "ArticleMove":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         $articleIDs = array ();
 
         if (isset($_GET['articleID'])) {
@@ -926,9 +896,6 @@ else {
         break;
 
       case "EditArticles":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         if (isset($_GET['orderBy']) && isset($_GET['order'])) {
           $orderBy = $_GET['orderBy'];
           $order = $_GET['order'];
@@ -982,9 +949,6 @@ else {
         break;
 
       case "EditImage":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         if (isset($_GET['imageID'])) {
           $imageID = $_GET['imageID'];
         }
@@ -1011,9 +975,6 @@ else {
         break;
 
       case "EditImages":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         if (isset($_GET['orderBy']) && isset($_GET['order'])) {
           $orderBy = $_GET['orderBy'];
           $order = $_GET['order'];
@@ -1067,9 +1028,6 @@ else {
         break;
 
       case "UploadImages":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         $upload = new OnpubUploadImages($pdo, array());
 
         try {
@@ -1086,9 +1044,6 @@ else {
         break;
 
       case "DeleteImageProcess":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         $oimage = new OnpubImage();
         $oimage->ID = $_GET['imageID'];
 
@@ -1111,9 +1066,6 @@ else {
         break;
 
       case "EditSection":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         if (isset($_GET['sectionID'])) {
           $sectionID = $_GET['sectionID'];
         }
@@ -1140,9 +1092,6 @@ else {
         break;
 
       case "NewSection":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         $osection = new OnpubSection();
 
         $create = new OnpubNewSection($pdo, $osection);
@@ -1161,9 +1110,6 @@ else {
         break;
 
       case "EditSections":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         if (isset($_GET['orderBy']) && isset($_GET['order'])) {
           $orderBy = $_GET['orderBy'];
           $order = $_GET['order'];
@@ -1217,9 +1163,6 @@ else {
         break;
 
       case "NewWebsite":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         $owebsite = new OnpubWebsite();
 
         $create = new OnpubNewWebsite($pdo, $owebsite);
@@ -1238,9 +1181,6 @@ else {
         break;
 
       case "EditWebsites":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         if (isset($_GET['orderBy']) && isset($_GET['order'])) {
           $orderBy = $_GET['orderBy'];
           $order = $_GET['order'];
@@ -1294,9 +1234,6 @@ else {
         break;
 
       case "EditWebsite":
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-
         if (isset($_GET['websiteID'])) {
           $websiteID = $_GET['websiteID'];
         }
@@ -1328,8 +1265,6 @@ else {
           $login->display();
         }
         else {
-          $pdo = new PDO($dsn, $username, $password);
-          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
           $welcome = new OnpubWelcome($pdo);
           $welcome->display();
           $pdo = NULL;
@@ -1343,8 +1278,6 @@ else {
       $login->display();
     }
     else {
-      $pdo = new PDO($dsn, $username, $password);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
       $welcome = new OnpubWelcome($pdo);
 
       try {

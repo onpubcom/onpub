@@ -11,6 +11,16 @@
 
 header ("Content-Type: text/html; charset=iso-8859-1");
 
+session_name("onpubpdo");
+session_set_cookie_params(0, '/', '', false, true);
+session_start();
+
+$onpub_login_status = false;
+
+if (isset($_SESSION['PDO_HOST']) && isset($_SESSION['PDO_USER']) && isset($_SESSION['PDO_PASSWORD']) && isset($_SESSION['PDO_DATABASE'])) {
+  $onpub_login_status = true;
+}
+
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
