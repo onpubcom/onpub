@@ -15,10 +15,12 @@ if (!ini_get("date.timezone")) {
 
 try {
   $onpub_pdo = new PDO('mysql:host=' . $onpub_db_host . ';dbname=' . $onpub_db_name, $onpub_db_user, $onpub_db_pass);
+  $onpub_pdo_exception = null;
 }
 catch (PDOException $e) {
   // Connection error. PDO isn't installed or DB credentials are incorrect.
   $onpub_pdo = null;
+  $onpub_pdo_exception = $e;
 }
 
 if ($onpub_pdo) {
@@ -39,7 +41,7 @@ if ($onpub_pdo) {
     // Schema most likely has not yet been installed.
     $onpub_website = null;
     $onpub_schema_installed = false;
-    $onpub_pdo_exception = $e;
+    $onpub_pdo_exception = null;
   }
 }
 else {

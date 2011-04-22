@@ -11,10 +11,12 @@
 class OnpubWelcome
 {
   private $pdo;
+  public $pdoException;
 
   function __construct($pdo)
   {
     $this->pdo = $pdo;
+    $this->pdoExecption = null;
   }
 
   public function display()
@@ -47,9 +49,8 @@ class OnpubWelcome
       en('<div class="yui3-u-1-2">');
 
       if ($numsites == 0) {
-        en('<p><strong>Welcome!</strong></p>');
-        en('<p>You are now ready to start creating content with Onpub.</p>');
-        en('<p><strong><a href="index.php?onpub=NewWebsite">Create a new website...</a></strong></p>');
+        en('<h3>You are ready to start publishing content with Onpub.</h3>');
+        en('<p><a href="index.php?onpub=NewWebsite">Create a website</a> to get started.</p>');
       }
       else {
         if ($numarticles) {
@@ -104,12 +105,41 @@ class OnpubWelcome
     }
     elseif ($this->pdo === NULL) {
       en('<div class="yui3-u-3-4">');
-      en('<h2>Welcome to Onpub</h2>');
-      en('<p class="onpub-error">Onpub could not load the PHP PDO_MYSQL driver.</p>');
-      en('<p>Either PDO_MYSQL is not installed or it is not configured correctly.</p>');
-      en('<p>Onpub requires the PDO_MYSQL PHP driver for connecting to your MySQL database.');
-      en('Please refer to the <a href="http://onpub.com/index.php?s=8&a=11" target="_blank">Onpub System Requirements</a> and the <a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PHP Manual</a> for more information.</p>');
-      en('<p>Once you install and configure PDO_MYSQL you will be able to continue using Onpub.</p>');
+
+      en('<h3><span class="onpub-error">PDOException:</span> ' . $this->pdoException->getMessage() . '</h3>');
+
+      switch ($this->pdoException->getCode()) {
+        case 1044: // Bad database name.
+          en('<p>Onpub is unable to connect to the specified MySQL database.</p>');
+          en('<p>Please make sure your Onpub frontend database configuration is correct.</p>');
+          en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
+          break;
+
+        case 1045: // Bad credentials.
+          en('<p>Onpub is unable to connect to the specified MySQL database using the configured username/password.</p>');
+          en('<p>Please make sure your Onpub frontend database configuration is correct.</p>');
+          en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
+          break;
+
+        case 2002: // Server is down
+          en('<p>Onpub is unable to connect to the database server.</p>');
+          en('<p>Start the specified MySQL server and reload this page to try again.</p>');
+          break;
+
+        case 2005: // Bad host name
+          en('<p>Onpub is unable to connect to the specified MySQL database server host.</p>');
+          en('<p>Please make sure your Onpub frontend database configuration is correct.</p>');
+          en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
+          break;
+      }
+
+      if ($this->pdoException->getMessage() == 'could not find driver') {
+        en('<p>Either PDO_MYSQL is not installed or it is not configured correctly.</p>');
+        en('<p>Onpub requires the PDO and PDO_MYSQL PHP extensions in order to connect to a MySQL database server.</p>');
+        en('<p>You will be able to continue using Onpub once PDO_MYSQL is installed and configured.</p>');
+        en('<p>Please refer to the <a href="http://onpub.com/index.php?s=8&a=11" target="_blank">Onpub System Requirements</a> and the <a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PHP Manual</a> for more information.</p>');
+      }
+
       en('</div>');
       en('<div class="yui3-u-1-4">');
     }
@@ -118,9 +148,9 @@ class OnpubWelcome
       en('<div class="yui3-u-3-4">');
       en('<h2>Welcome to Onpub</h2>');
       en('<p>This appears to be the first time you have logged in to the Onpub content management interface.</p>');
-      en('<p>Before you can create a website with Onpub you must add the Onpub schema to the connected MySQL database, <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
+      en('<p>Before you can publish a website with Onpub you must add the Onpub schema to the connected MySQL database, <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
       en('<p>Please click the link below to continue:</p>');
-      en('<ul><li><a href="index.php?onpub=SchemaInstall">Install the Onpub database schema</a></li></ul>');
+      en('<ul><li><a href="index.php?onpub=SchemaInstall">Install the Onpub MySQL database schema</a></li></ul>');
       en('</div>');
       en('<div class="yui3-u-1-4">');
     }

@@ -765,7 +765,10 @@ else {
     catch (PDOException $e) {
       // PDO init error, show only Dashboard page.
       $pdo = NULL;
-      $_GET['onpub'] = NULL;
+
+      if (isset($_GET['onpub']) && $_GET['onpub'] != "Logout") {
+        $_GET['onpub'] = NULL;
+      }
     }
   }
 
@@ -1279,6 +1282,11 @@ else {
     }
     else {
       $welcome = new OnpubWelcome($pdo);
+
+      if (isset($e)) {
+        // There was a $pdo exception.
+        $welcome->pdoException = $e;
+      }
 
       try {
         $welcome->display();

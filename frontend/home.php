@@ -21,8 +21,7 @@ if ($onpub_website) {
         en($onpub_article->content);
       }
       else {
-        br();
-        en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_blank">Create a new article</a> to customize this page.</p>');
+        en('<h1><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h1>');
       }
     }
 
@@ -99,8 +98,7 @@ if ($onpub_website) {
         en($onpub_article->content);
       }
       else {
-        br();
-        en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_blank">Create a new article</a> to customize this page.</p>');
+        en('<h1><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h1>');
       }
     }
   }
@@ -108,16 +106,56 @@ if ($onpub_website) {
 else {
   en('<h1>Welcome to Onpub</h1>');
 
-    en('<h3>You have successfully installed Onpub. This is the default Onpub frontend interface.</h3>');
+  if ($onpub_pdo_exception) {
+    en('<h3><span class="onpub-error">PDOException:</span> ' . $onpub_pdo_exception->getMessage() . '</h3>');
 
-  if ($onpub_schema_installed) {
-    en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
-       'index.php?onpub=NewWebsite" target="_onpub">Create a new website</a> to start customizing this site.</p>');
+    switch ($onpub_pdo_exception->getCode()) {
+      case 1044: // Bad database name.
+        en('<p>Onpub is unable to connect to the specified MySQL database.</p>');
+        en('<p>Please make sure your Onpub frontend database configuration is correct.</p>');
+        en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
+        break;
+
+      case 1045: // Bad credentials.
+        en('<p>Onpub is unable to connect to the specified MySQL database using the configured username/password.</p>');
+        en('<p>Please make sure your Onpub frontend database configuration is correct.</p>');
+        en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
+        break;
+
+      case 2002: // Server is down
+        en('<p>Onpub is unable to connect to the database server.</p>');
+        en('<p>Start the specified MySQL server and reload this page to try again.</p>');
+        break;
+
+      case 2005: // Bad host name
+        en('<p>Onpub is unable to connect to the specified MySQL database server host.</p>');
+        en('<p>Please make sure your Onpub frontend database configuration is correct.</p>');
+        en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
+        break;
+    }
+
+    if ($onpub_pdo_exception->getMessage() == 'could not find driver') {
+      en('<p>Either PDO_MYSQL is not installed or it is not configured correctly.</p>');
+      en('<p>Onpub requires the PDO and PDO_MYSQL PHP extensions in order to connect to a MySQL database server.</p>');
+      en('<p>You will be able to continue using Onpub once PDO_MYSQL is installed and configured.</p>');
+      en('<p>Please refer to the <a href="http://onpub.com/index.php?s=8&a=11" target="_blank">Onpub System Requirements</a> and the <a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PHP Manual</a> for more information.</p>');
+    }
   }
   else {
-    en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
-       'index.php" target="_onpub">Login</a> to the Onpub content management interface now to complete the database setup for this installation.</p>');
-    en('<p>See <a href="http://onpub.com/index.php?s=8&a=118" target="_blank">How to Install Onpub</a> for more information.</p>');
+    if ($onpub_schema_installed) {
+      en('<h3>You have successfully installed Onpub. This is the default Onpub frontend interface.</h3>');
+      en('<p>The frontend is now setup to automatically publish all content you create within the Onpub content management interface.</p>');
+      en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
+         'index.php" target="_onpub">Login</a> and <a href="' .
+         $onpub_dir_root . $onpub_dir_manage .
+         'index.php?onpub=NewWebsite" target="_onpub">create a website</a> and then reload this page to get started.</p>');
+    }
+    else {
+      en('<h3>Almost there.. Follow the instructions below to complete the Onpub installation.</h3>');
+      en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
+         'index.php" target="_onpub">Login</a> to the Onpub content management to install the Onpub database schema. You will be unable to publish a website until you perform this step.</p>');
+      en('<p>See <a href="http://onpub.com/index.php?s=8&a=118" target="_blank">How to Install Onpub</a> for more information.</p>');
+    }
   }
 }
 

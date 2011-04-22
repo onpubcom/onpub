@@ -54,13 +54,14 @@ class OnpubLogin
     en('<body>');
 
     en('<div id="onpub-page">');
+
     en('<div class="yui3-g">');
 
-    en('<div class="yui3-u-1-3">&nbsp;</div>');
+    //en('<div class="yui3-u-1-3">&nbsp;</div>');
 
-    en('<div class="yui3-u-1-3">');
+    en('<div class="yui3-u-1">');
     en('<form action="index.php" method="post">');
-    en('<div>');
+    en('<div style="width: 25%; margin-left: auto; margin-right: auto;">');
 
     en('<p><a href="index.php"><img src="images/onpub.png" width="143" height="29" alt="Onpub" title="Onpub"></a></p>');
 
@@ -83,10 +84,6 @@ class OnpubLogin
     en('<p><strong>Password</strong><br><input title="Password" type="password" maxlength="255" size="25" name="pdoPassword" value=""></p>');
 
     en('<p><input type="submit" value="Login"> <a href="http://onpub.com/index.php?s=8&a=118#login" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'help.png" align="top" alt="Help" title="Help"></a></p>');
-
-    if ($this->exception) {
-      en('<p class="onpub-error">' . $this->exception->getMessage() . '</p>');
-    }
 
     if ($this->target) {
       $newTarget = "";
@@ -114,9 +111,20 @@ class OnpubLogin
     en('</form>');
     en('</div>');
 
-    en('<div class="yui3-u-1-3">&nbsp;</div>');
+    //en('<div class="yui3-u-1-3">&nbsp;</div>');
 
     en('</div>');
+
+    if ($this->exception) {
+      en('<div class="yui3-g">');
+      en('<div class="yui3-u-1">');
+      en('<div style="text-align: center;">');
+      en('<h3><span class="onpub-error">PDOException:</span> ' . $this->exception->getMessage() . '</h3>');
+      en('</div>');
+      en('</div>');
+      en('</div>');
+    }
+
     en('</div>');
 
     en('</body>');
