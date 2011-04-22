@@ -127,6 +127,10 @@ else {
         en('<p>Start the specified MySQL server and reload this page to try again.</p>');
         break;
 
+      case 2003: // Server is inaccessible (firewall, wrong port, etc.)
+        en('<p>Onpub is unable to access the specified MySQL database server.</p>');
+        break;
+
       case 2005: // Bad host name
         en('<p>Onpub is unable to connect to the specified MySQL database server host.</p>');
         en('<p>Please make sure the Onpub frontend database configuration is correct.</p>');

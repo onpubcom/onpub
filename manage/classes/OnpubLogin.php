@@ -119,7 +119,40 @@ class OnpubLogin
       en('<div class="yui3-g">');
       en('<div class="yui3-u-1">');
       en('<div style="text-align: center;">');
-      en('<h3><span class="onpub-error">PDOException:</span> ' . $this->exception->getMessage() . '</h3>');
+
+      switch ($this->exception->getCode()) {
+        case 1044: // Bad database name.
+          en('<h3><span class="onpub-error">Login error:</span> Invalid database name.</h3>');
+          break;
+
+        case 1045: // Bad credentials.
+          en('<h3><span class="onpub-error">Login error:</span> Invalid username and/or password.</h3>');
+          break;
+
+        case 2002: // Server is down
+          en('<h3><span class="onpub-error">Login error:</span> The MySQL server appears to be down.</h3>');
+          break;
+
+        case 2003: // Server is inaccessible (firewall, wrong port, etc.)
+          en('<h3><span class="onpub-error">Login error:</span> The MySQL server host is inaccessible.</h3>');
+          break;
+
+        case 2005: // Bad host name
+          en('<h3><span class="onpub-error">Login error:</span> The MySQL server host address is invalid.</h3>');
+          break;
+
+        default:
+          en('<h3><span class="onpub-error">Login error:</span> ' . $this->exception->getMessage() . '</h3>');
+          break;
+      }
+
+      if ($this->exception->getMessage() == 'could not find driver') {
+        en('<p>Either PDO_MYSQL is not installed or it is not configured correctly.</p>');
+        en('<p>Onpub requires the PDO and PDO_MYSQL PHP extensions in order to connect to a MySQL database server.</p>');
+        en('<p>You will be able to continue using Onpub once PDO_MYSQL is installed and configured.</p>');
+        en('<p>Please refer to the <a href="http://onpub.com/index.php?s=8&a=11" target="_blank">Onpub System Requirements</a> and the <a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PHP Manual</a> for more information.</p>');
+      }
+
       en('</div>');
       en('</div>');
       en('</div>');

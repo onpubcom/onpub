@@ -114,12 +114,17 @@ class OnpubWelcome
           break;
 
         case 1045: // Bad credentials.
-          en('<p>Onpub is unable to connect to the specified MySQL database using the logged-in user\'s credentials.</p>');
+          en('<p>Onpub is unable to connect to the specified MySQL database using the logged-in user\'s username and/or password.</p>');
+          en('<p>Try logging out and log back in with the correct MySQL credentials.</p>');
           break;
 
         case 2002: // Server is down
           en('<p>Onpub is unable to connect to the database server.</p>');
           en('<p>Start the specified MySQL server and reload this page to try again.</p>');
+          break;
+
+        case 2003: // Server is inaccessible (firewall, wrong port, etc.)
+          en('<p>Onpub is unable to access the specified MySQL database server.</p>');
           break;
 
         case 2005: // Bad host name
