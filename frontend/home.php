@@ -112,13 +112,13 @@ else {
     switch ($onpub_pdo_exception->getCode()) {
       case 1044: // Bad database name.
         en('<p>Onpub is unable to connect to the specified MySQL database.</p>');
-        en('<p>Please make sure your Onpub frontend database configuration is correct.</p>');
+        en('<p>Please make sure the Onpub frontend database configuration is correct.</p>');
         en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
         break;
 
       case 1045: // Bad credentials.
-        en('<p>Onpub is unable to connect to the specified MySQL database using the configured username/password.</p>');
-        en('<p>Please make sure your Onpub frontend database configuration is correct.</p>');
+        en('<p>Onpub is unable to connect to the specified MySQL database using the current username/password.</p>');
+        en('<p>Please make sure the Onpub frontend database configuration is correct.</p>');
         en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
         break;
 
@@ -129,7 +129,7 @@ else {
 
       case 2005: // Bad host name
         en('<p>Onpub is unable to connect to the specified MySQL database server host.</p>');
-        en('<p>Please make sure your Onpub frontend database configuration is correct.</p>');
+        en('<p>Please make sure the Onpub frontend database configuration is correct.</p>');
         en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
         break;
     }
