@@ -24,7 +24,7 @@ if ($onpub_website) {
           en('<div style="margin-top: 2em;"><p><a href="' . $onpub_dir_root . $onpub_dir_manage .
              'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
              '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
-             'images/page_edit.png" width="16" height="16" alt="Edit this article." title="Edit this article."></a></p></div>');
+             'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a></p></div>');
         }
       }
       else {
@@ -108,7 +108,7 @@ if ($onpub_website) {
           en('<div style="margin-top: 2em;"><p><a href="' . $onpub_dir_root . $onpub_dir_manage .
              'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
              '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
-             'images/page_edit.png" width="16" height="16" alt="Edit this article." title="Edit this article."></a></p></div>');
+             'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a></p></div>');
         }
       }
       else {
