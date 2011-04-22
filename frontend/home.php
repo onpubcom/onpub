@@ -19,6 +19,13 @@ if ($onpub_website) {
 
       if ($onpub_article) {
         en($onpub_article->content);
+
+        if ($onpub_login_status) {
+          en('<div style="margin-top: 2em;"><p><a href="' . $onpub_dir_root . $onpub_dir_manage .
+             'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
+             '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
+             'images/page_edit.png" width="16" height="16" alt="Edit this article." title="Edit this article."></a></p></div>');
+        }
       }
       else {
         en('<h1><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h1>');
@@ -96,6 +103,13 @@ if ($onpub_website) {
 
       if ($onpub_article) {
         en($onpub_article->content);
+
+        if ($onpub_login_status) {
+          en('<div style="margin-top: 2em;"><p><a href="' . $onpub_dir_root . $onpub_dir_manage .
+             'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
+             '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
+             'images/page_edit.png" width="16" height="16" alt="Edit this article." title="Edit this article."></a></p></div>');
+        }
       }
       else {
         en('<h1><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h1>');
@@ -150,9 +164,7 @@ else {
       en('<h3>You have successfully installed Onpub. This is the default Onpub frontend interface.</h3>');
       en('<p>The frontend is now setup to automatically publish all content you create within the Onpub content management interface.</p>');
       en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
-         'index.php" target="_onpub">Login</a> and <a href="' .
-         $onpub_dir_root . $onpub_dir_manage .
-         'index.php?onpub=NewWebsite" target="_onpub">create a website</a> and then reload this page to get started.</p>');
+         'index.php?onpub=NewWebsite" target="_onpub">Create a website</a> and then reload this page to get started.</p>');
     }
     else {
       en('<h3>Almost there.. Follow the instructions below to complete the Onpub installation.</h3>');
