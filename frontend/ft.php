@@ -21,7 +21,7 @@ if ($onpub_website) {
   en('<div class="yui3-u-1-4">');
 
   if ($onpub_disp_login) {
-    en('<p style="text-align: right;">Powered by <a href="http://onpub.com/" target="_blank">Onpub</a> &raquo; <a href="' . $onpub_dir_root . $onpub_dir_manage . '" target="_blank">Login</a></p>');
+    en('<p style="text-align: right;">Powered by <a href="http://onpub.com/" target="_blank">Onpub</a> &raquo; <a href="' . $onpub_dir_root . $onpub_dir_manage . '" target="_onpub">Login</a></p>');
   }
 
   en('</div>');
@@ -37,7 +37,7 @@ else {
   en('<div class="yui3-u-1-4">');
 
   if ($onpub_disp_login) {
-    en('<p style="text-align: right;">Powered by <a href="http://onpub.com/" target="_blank">Onpub</a> &raquo; <a href="' . $onpub_dir_root . $onpub_dir_manage . '" target="_blank">Login</a></p>');
+    en('<p style="text-align: right;">Powered by <a href="http://onpub.com/" target="_blank">Onpub</a> &raquo; <a href="' . $onpub_dir_root . $onpub_dir_manage . '" target="_onpub">Login</a></p>');
   }
 
   en('</div>');
