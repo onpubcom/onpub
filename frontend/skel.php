@@ -44,7 +44,11 @@ if (file_exists($onpub_dir_root . $onpub_dir_yui)) {
 }
 else {
   $onpub_dir_yui = null;
-  en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' . $onpub_yui_version . '/build/cssreset/reset-min.css&amp;' . $onpub_yui_version . '/build/cssfonts/fonts-min.css&amp;' . $onpub_yui_version . '/build/cssgrids/grids-min.css&amp;' . $onpub_yui_version . '/build/cssbase/base-min.css">');
+  en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?'
+     . $onpub_yui_version . '/build/cssreset/reset-min.css&amp;'
+     . $onpub_yui_version . '/build/cssfonts/fonts-min.css&amp;'
+     . $onpub_yui_version . '/build/cssgrids/grids-min.css&amp;'
+     . $onpub_yui_version . '/build/cssbase/base-min.css">');
 }
 
 if (file_exists($onpub_dir_local . $onpub_inc_css)) {
@@ -61,14 +65,12 @@ else {
 document.documentElement.className = "yui3-loading";
 var onpub_dir_root = "<?php echo $onpub_dir_root; ?>";
 <?php
-
 if ($onpub_dir_yui) {
   en('var onpub_dir_yui = "' . $onpub_dir_root . $onpub_dir_yui . '";');
 }
 else {
   en('var onpub_dir_yui = null;');
 }
-
 if (file_exists($onpub_dir_local . $onpub_inc_css_menu)) {
   en('var onpub_inc_css_menu = "' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css";');
   en('var onpub_inc_css_menu_local = "' . $onpub_dir_local . $onpub_inc_css_menu . '";');
@@ -77,15 +79,12 @@ else {
   en('var onpub_inc_css_menu = "' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css";');
   en('var onpub_inc_css_menu_local = null;');
 }
-
 en('var onpub_yui_version = "' . $onpub_yui_version . '";', 0);
-
 ?>
 
 </script>
 
 <?php if (file_exists($onpub_dir_local . $onpub_inc_head)) include $onpub_dir_local . $onpub_inc_head; ?>
-
 </head>
 
 <body class="yui3-skin-sam">

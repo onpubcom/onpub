@@ -73,7 +73,7 @@ color: #575d66;
 }
 
 .yui3-loading #onpub-menubar {
-display: none;
+visibility: hidden;
 }
 
 .onpub-error {
