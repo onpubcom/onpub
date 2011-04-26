@@ -149,7 +149,7 @@ class OnpubLogin
       if ($this->exception->getMessage() == 'could not find driver') {
         en('<p>Either PDO_MYSQL is not installed or it is not configured correctly.</p>');
         en('<p>Onpub requires the PDO and PDO_MYSQL PHP extensions in order to connect to a MySQL database server.</p>');
-        en('<p>You will be able to continue using Onpub once PDO_MYSQL is installed and configured.</p>');
+        en('<p>You will be unable to use Onpub until PDO_MYSQL is installed.</p>');
         en('<p>Please refer to the <a href="http://onpub.com/index.php?s=8&a=11" target="_blank">Onpub System Requirements</a> and the <a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PHP Manual</a> for more information.</p>');
       }
 
