@@ -162,7 +162,7 @@ else {
   else {
     if ($onpub_schema_installed) {
       en('<h3>You have successfully installed Onpub. This is the default Onpub frontend interface.</h3>');
-      en('<p>The frontend is now setup to automatically publish all content you create within the Onpub content management interface.</p>');
+      en('<p>The frontend is now configured to instantly display the content you publish using the Onpub content management interface.</p>');
       en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
          'index.php?onpub=NewWebsite" target="_onpub">Create a website</a> and then reload this page to get started.</p>');
     }
