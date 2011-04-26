@@ -106,6 +106,7 @@ if (file_exists($onpub_dir_local . $onpub_inc_banner)) {
 </div>
 
 <?php
+
 switch ($onpub_index)
 {
   case 'home':
@@ -134,6 +135,7 @@ switch ($onpub_index)
 
   default: break;
 }
+
 ?>
 
 <div id="onpub-footer">

@@ -19,13 +19,6 @@ if ($onpub_website) {
 
       if ($onpub_article) {
         en($onpub_article->content);
-
-        if ($onpub_login_status) {
-          en('<div style="margin-top: 2em;"><p><a href="' . $onpub_dir_root . $onpub_dir_manage .
-             'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
-             '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
-             'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a></p></div>');
-        }
       }
       else {
         en('<h1><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h1>');
@@ -103,18 +96,27 @@ if ($onpub_website) {
 
       if ($onpub_article) {
         en($onpub_article->content);
-
-        if ($onpub_login_status) {
-          en('<div style="margin-top: 2em;"><p><a href="' . $onpub_dir_root . $onpub_dir_manage .
-             'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
-             '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
-             'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a></p></div>');
-        }
       }
       else {
         en('<h1><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h1>');
       }
     }
+  }
+
+  if ($onpub_login_status && $onpub_article) {
+    en('<div class="yui3-g">');
+    en('<div class="yui3-u-1">');
+    en('<span class="onpub-edit">');
+    en('<a href="' . $onpub_dir_root . $onpub_dir_manage .
+       'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
+       '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
+       'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a> ' .
+       '<a href="' . $onpub_dir_root . $onpub_dir_manage .
+       'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
+       '" target="_onpub" title="Edit this Article">Edit</a>');
+    en('</span>');
+    en('</div>');
+    en('</div>');
   }
 }
 else {

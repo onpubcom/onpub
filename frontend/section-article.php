@@ -68,6 +68,22 @@ if ($onpub_section && $onpub_article) {
   en($onpub_article->content);
   en('</div>');
 
+  if ($onpub_login_status) {
+    en('<div class="yui3-g">');
+    en('<div class="yui3-u-1">');
+    en('<span class="onpub-edit">');
+    en('<a href="' . $onpub_dir_root . $onpub_dir_manage .
+       'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
+       '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
+       'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a> ' .
+       '<a href="' . $onpub_dir_root . $onpub_dir_manage .
+       'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
+       '" target="_onpub" title="Edit this Article">Edit</a>');
+    en('</span>');
+    en('</div>');
+    en('</div>');
+  }
+
   if (file_exists($onpub_dir_local . $onpub_inc_article_foot)) include $onpub_dir_local . $onpub_inc_article_foot;
 
   en('</div>');

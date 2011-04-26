@@ -145,3 +145,17 @@ font-size: 85%;
 color: #86919D;
 margin-bottom: 1.75em;
 }
+
+span.onpub-edit {
+font-size: 85%;
+color: #86919D;
+
+padding: 0.5em;
+background-color: #F7F8FD;
+border: 1px solid #DEE5F8;
+/*
+-moz-box-shadow: 0px 0px 5px #f0f0f0;
+-webkit-box-shadow: 0px 0px 5px #f0f0f0;
+box-shadow: 0px 0px 5px #f0f0f0;
+*/
+}
