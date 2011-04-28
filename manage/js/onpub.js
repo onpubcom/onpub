@@ -9,9 +9,10 @@
 
 YUI(
 {
-  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
+  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui,
+  filter: "raw"
 }
-).use("node-menunav", function(Y)
+).use("node-menunav", "io", function(Y)
 {
   // Render the nav menu.
   Y.on("contentready", function () {
@@ -179,6 +180,28 @@ YUI(
     }
   }
 
+  function saveArticle(e, action)
+  {
+    var textarea = Y.one("textarea[name='content']");
+    var data = CKEDITOR.instances.content.getData();
+
+    Y.log("textarea before: " + textarea.get("innerHTML"));
+
+    textarea.set("innerHTML", data);
+
+    Y.log("data: " + data);
+    Y.log("textarea after: " + textarea.get("innerHTML"));
+
+    var cfg = {
+      method: "POST",
+      form: {"id": "onpub-form"}
+    };
+
+    var request = Y.io("index.php", cfg);
+
+    //action();
+  }
+
   function confirmNewPage(e, action)
   {
     var result = false;
@@ -250,6 +273,15 @@ YUI(
 
   if (Y.one("#actions")) {
     Y.on("change", performAction, "#actions", null, Y.all("#articleIDs"));
+  }
+
+  if (Y.one("a.cke_button_save")) {
+    var node = Y.one("a.cke_button_save");
+    var action = node.get("onclick");
+
+    node.set("onclick", null);
+
+    Y.on("click", saveArticle, node, null, action);
   }
 
   if (Y.one("a.cke_button_newpage")) {

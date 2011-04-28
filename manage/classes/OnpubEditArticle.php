@@ -59,7 +59,7 @@ class OnpubEditArticle
     $widget = new OnpubWidgetHeader("Article " . $this->oarticle->ID . " - " . $this->oarticle->title);
     $widget->display();
 
-    en('<form action="index.php" method="post">');
+    en('<form id="onpub-form" action="index.php" method="post">');
     en('<div>');
 
     en('<div class="yui3-g">');

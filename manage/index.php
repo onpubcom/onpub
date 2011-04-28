@@ -208,6 +208,8 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "EditArticleProcess":
+      $ajaxPost = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
+
       if (isset($_POST['authorID'])) {
         $authorID = $_POST['authorID'];
       }
@@ -272,11 +274,15 @@ if (isset($_POST['onpub'])) {
 
       if (!$edit->validate()) {
         try {
-          $edit->display();
+          if (!$ajaxPost)
+            $edit->display();
         }
         catch (PDOException $e) {
-          $widget = new OnpubWidgetPDOException($e);
-          $widget->display();
+          if (!$ajaxPost) {
+            $widget = new OnpubWidgetPDOException($e);
+            $widget->display();
+          }
+
           $pdo = NULL;
           exit($e->getCode());
         }
@@ -288,15 +294,22 @@ if (isset($_POST['onpub'])) {
         $edit->process();
       }
       catch (PDOException $e) {
-        $widget = new OnpubWidgetPDOException($e);
-        $widget->display();
+        if (!$ajaxPost) {
+          $widget = new OnpubWidgetPDOException($e);
+          $widget->display();
+        }
+
         $pdo = NULL;
         exit($e->getCode());
       }
 
       $pdo = NULL;
 
-      header("Location: index.php?onpub=EditArticle&articleID=" . $_POST['articleID']);
+      if (!$ajaxPost) {
+        // Standard browser POST/form submission
+        header("Location: index.php?onpub=EditArticle&articleID=" . $_POST['articleID']);
+      }
+
       return;
       break;
 
