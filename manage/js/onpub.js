@@ -231,7 +231,7 @@ YUI(
 
   function saveArticle(e, action, textarea)
   {
-    textarea.set("innerHTML", CKEDITOR.instances.content.getData());
+    textarea.set("value", CKEDITOR.instances["content"].getData());
 
     var cfg = {
       method: "POST",
@@ -337,7 +337,6 @@ YUI(
     var overlay = new Y.Overlay({
       bodyContent: "",
       visible: false,
-      shim: false,
       align: {
         node: "#onpub-body",
         points: [Y.WidgetPositionAlign.TR, Y.WidgetPositionAlign.TR]
