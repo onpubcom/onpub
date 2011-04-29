@@ -50,7 +50,7 @@ class OnpubEditWebsite
       . $this->owebsite->name);
     $widget->display();
 
-    en('<form action="index.php" method="post" enctype="multipart/form-data">');
+    en('<form id="onpub-form" action="index.php" method="post" enctype="multipart/form-data">');
     en('<div>');
 
     en('<strong>Name</strong><br><input type="text" maxlength="255" size="75" name="name" value="' . htmlentities($this->owebsite->name) . '">', 1, 2);
@@ -136,7 +136,7 @@ class OnpubEditWebsite
       en('<input type="button" value="Move Up" id="moveUp"> <input type="button" value="Move Down" id="moveDown"> <input type="button" value="Remove" id="remove">', 1, 2);
     }
 
-    en('<input type="submit" value="Save" id="selectAll"> <input type="button" value="Delete" onclick="deleteWebsite();">');
+    en('<input type="submit" value="Save" id="selectAll"> <input type="button" value="Delete" id="deleteWebsite">');
 
     en('<input type="hidden" name="onpub" value="EditWebsiteProcess">');
     en('<input type="hidden" name="websiteID" value="' . $this->owebsite->ID . '">');

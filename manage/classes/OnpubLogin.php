@@ -60,7 +60,7 @@ class OnpubLogin
     //en('<div class="yui3-u-1-3">&nbsp;</div>');
 
     en('<div class="yui3-u-1">');
-    en('<form action="index.php" method="post">');
+    en('<form id="onpub-form" action="index.php" method="post">');
     en('<div style="width: 25%; margin-left: auto; margin-right: auto;">');
 
     en('<p><a href="index.php"><img src="images/onpub.png" width="143" height="29" alt="Onpub" title="Onpub"></a></p>');

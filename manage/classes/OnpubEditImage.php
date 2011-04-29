@@ -59,11 +59,10 @@ class OnpubEditImage
       $imageHeight = $imageDimensions[1];
     }
 
-    $widget = new OnpubWidgetHeader("Image " . $this->oimage->ID . " - "
-      . $this->oimage->fileName);
+    $widget = new OnpubWidgetHeader("Image " . $this->oimage->ID . " - " . $this->oimage->fileName);
     $widget->display();
 
-    en('<form action="index.php" method="post">');
+    en('<form id="onpub-form" action="index.php" method="post">');
     en('<div>');
 
     en('<div class="yui3-g">');
@@ -147,7 +146,7 @@ class OnpubEditImage
       en('</div>');
     }
 
-    en('<input type="submit" value="Save"> <input type="button" value="Delete" onclick="deleteImage();">', 1, 2);
+    en('<input type="submit" value="Save"> <input type="button" value="Delete" id="deleteImage">', 1, 2);
 
     if (@fopen(addTrailingSlash($website->imagesURL) . rawurlencode($this->oimage->fileName), 'r')) {
       if ($imageWidth && $imageHeight) {
@@ -168,8 +167,7 @@ class OnpubEditImage
 
     en('<input type="hidden" name="onpub" value="EditImageProcess">');
     en('<input type="hidden" name="imageID" value="' . $this->oimage->ID . '">');
-    en('<input type="hidden" name="oldImageFileName" value="'
-      . htmlentities($this->oimage->fileName) . '">');
+    en('<input type="hidden" name="oldImageFileName" value="' . htmlentities($this->oimage->fileName) . '">');
 
     en('</div>');
     en('</form>');

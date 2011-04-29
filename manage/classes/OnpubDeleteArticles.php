@@ -41,7 +41,7 @@ class OnpubDeleteArticles
     $widget = new OnpubWidgetHeader("Delete Articles");
     $widget->display();
 
-    en('<form action="index.php" method="post">');
+    en('<form id="onpub-form" action="index.php" method="post">');
     en('<div>');
 
     if (sizeof($articles)) {
@@ -55,7 +55,7 @@ class OnpubDeleteArticles
 
       en('</ul>');
 
-      en('<input type="submit" value="Delete" id="confirmDelete">');
+      en('<input type="submit" value="Delete" id="confirmDeleteArticle">');
     }
     else {
       en('<span class="onpub-error">No articles were selected to delete.</span>');

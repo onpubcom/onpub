@@ -44,7 +44,7 @@ class OnpubUploadImages
     $widget = new OnpubWidgetHeader("Upload Images");
     $widget->display();
 
-    en('<form action="index.php" method="post" enctype="multipart/form-data">');
+    en('<form id="onpub-form" action="index.php" method="post" enctype="multipart/form-data">');
     en('<div>');
 
     en('<div class="yui3-g">');
@@ -106,7 +106,7 @@ class OnpubUploadImages
         break;
 
       case ONPUBGUI_ERROR_IMAGE_EXISTS:
-        en('<form action="index.php" method="post">');
+        en('<form id="onpub-form" action="index.php" method="post">');
         en('<div>');
 
         en('<p class="onpub-error"><i>' . $e->getMessage() . '</i> already exists.</p>');

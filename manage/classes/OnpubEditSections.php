@@ -161,7 +161,7 @@ class OnpubEditSections
     $widget = new OnpubWidgetHeader("Sections");
     $widget->display();
 
-    en('<form action="index.php" method="get">');
+    en('<form id="onpub-form" action="index.php" method="get">');
     en('<div>');
 
     if ($totalSections) {

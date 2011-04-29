@@ -40,7 +40,7 @@ class OnpubNewSection
     $widget = new OnpubWidgetHeader("New Section");
     $widget->display();
 
-    en('<form action="index.php" method="post" enctype="multipart/form-data">');
+    en('<form id="onpub-form" action="index.php" method="post" enctype="multipart/form-data">');
     en('<div>');
 
     if ($this->osection->name === NULL) {

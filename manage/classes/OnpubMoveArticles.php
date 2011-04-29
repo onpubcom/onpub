@@ -51,7 +51,7 @@ class OnpubMoveArticles
     $widget = new OnpubWidgetHeader("Move Articles");
     $widget->display();
 
-    en('<form action="index.php" method="post">');
+    en('<form id="onpub-form" action="index.php" method="post">');
     en('<div>');
 
     if (sizeof($articles)) {

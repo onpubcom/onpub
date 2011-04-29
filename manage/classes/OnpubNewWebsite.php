@@ -24,7 +24,7 @@ class OnpubNewWebsite
     $widget = new OnpubWidgetHeader("New Website");
     $widget->display();
 
-    en('<form action="index.php" method="post" enctype="multipart/form-data">');
+    en('<form id="onpub-form" action="index.php" method="post" enctype="multipart/form-data">');
     en('<div>');
 
     if ($this->owebsite->name === NULL) {

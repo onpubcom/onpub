@@ -56,7 +56,7 @@ class OnpubEditSection
       . $this->osection->name);
     $widget->display();
 
-    en('<form action="index.php" method="post">');
+    en('<form id="onpub-form" action="index.php" method="post">');
     en('<div>');
 
     if ($this->osection->name === NULL) {
@@ -128,7 +128,7 @@ class OnpubEditSection
 
     en('</div>');
 
-    en('<input type="submit" value="Save" id="selectAll"> <input type="button" value="Delete" onclick="deleteSection();">');
+    en('<input type="submit" value="Save" id="selectAll"> <input type="button" value="Delete" id="deleteSection">');
 
     en('<input type="hidden" name="onpub" value="EditSectionProcess">');
     en('<input type="hidden" name="sectionID" value="' . $this->osection->ID . '">');

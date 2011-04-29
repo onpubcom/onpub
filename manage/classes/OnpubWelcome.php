@@ -54,7 +54,7 @@ class OnpubWelcome
       }
       else {
         if ($numarticles) {
-          en('<form action="index.php" method="get">');
+          en('<form id="onpub-form" action="index.php" method="get">');
           en('<div>');
           en('<input type="hidden" name="onpub" value="EditArticles">');
           en('<input type="hidden" name="fullTextSearch" value="1">');

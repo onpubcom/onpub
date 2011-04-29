@@ -9,10 +9,9 @@
 
 YUI(
 {
-  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui,
-  filter: "raw"
+  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
 }
-).use("node-menunav", "io", function(Y)
+).use("node-menunav", "io", "overlay", function(Y)
 {
   // Render the nav menu.
   Y.on("contentready", function () {
@@ -170,31 +169,74 @@ YUI(
     }
   }
 
-  function confirmDelete(e)
+  function confirmDeleteArticle(e)
   {
     var result = false;
-    result = confirm("Are you sure you want to delete the article(s)?");
+    result = confirm("Are you sure you want to delete the selected article(s)?");
 
     if (!result) {
       e.preventDefault();
     }
   }
 
-  function saveArticle(e, action)
+  function confirmDelete(e, message, onpubForm, onpubAction, onpubActionValue)
   {
-    var textarea = Y.one("textarea[name='content']");
-    var data = CKEDITOR.instances.content.getData();
+    var result = false;
+    result = confirm(message);
 
-    Y.log("textarea before: " + textarea.get("innerHTML"));
+    if (result) {
+      onpubAction.set("value", onpubActionValue);
+      onpubForm.submit();
+    }
+    else {
+      e.preventDefault();
+    }
+  }
 
-    textarea.set("innerHTML", data);
+  function saveArticleStart(tid, args)
+  {
+    Y.log("start: ");
+    Y.log(arguments);
+  }
 
-    Y.log("data: " + data);
-    Y.log("textarea after: " + textarea.get("innerHTML"));
+  function saveArticleComplete(tid, response, args)
+  {
+    Y.log("complete: ");
+    Y.log(arguments);
+  }
+
+  function saveArticleSuccess(tid, response, args)
+  {
+    Y.log("success: ");
+    Y.log(arguments);
+  }
+
+  function saveArticleFailure(tid, response, args)
+  {
+    Y.log("failure: ");
+    Y.log(arguments);
+  }
+
+  function saveArticleEnd(tid, args)
+  {
+    Y.log("end: ");
+    Y.log(arguments);
+  }
+
+  function saveArticle(e, action, textarea)
+  {
+    textarea.set("innerHTML", CKEDITOR.instances.content.getData());
 
     var cfg = {
       method: "POST",
-      form: {"id": "onpub-form"}
+      form: {id: "onpub-form"},
+      on: {
+        start: saveArticleStart,
+        complete: saveArticleComplete,
+        success: saveArticleSuccess,
+        failure: saveArticleFailure,
+        end: saveArticleEnd
+      }
     };
 
     var request = Y.io("index.php", cfg);
@@ -263,27 +305,41 @@ YUI(
     Y.on("click", selectAll, "#selectAll", null, Y.one("#sections"));
   }
 
-  if (Y.one("#confirmDelete")) {
-    Y.on("click", confirmDelete, "#confirmDelete");
-  }
-
   if (Y.one("#deleteArticle")) {
     Y.on("click", deleteArticle, "#deleteArticle", null, Y.one("#articleID"));
+  }
+
+  if (Y.one("#confirmDeleteArticle")) {
+    Y.on("click", confirmDeleteArticle, "#confirmDeleteArticle");
+  }
+
+  if (Y.one("#deleteImage")) {
+    Y.on("click", confirmDelete, "#deleteImage", null, "Are you sure you want to delete this image?", Y.one("#onpub-form"), Y.one("input[name='onpub']"), "DeleteImageProcess");
+  }
+
+  if (Y.one("#deleteSection")) {
+    Y.on("click", confirmDelete, "#deleteSection", null, "Are you sure you want to delete this section?", Y.one("#onpub-form"), Y.one("input[name='onpub']"), "DeleteSectionProcess");
+  }
+
+  if (Y.one("#deleteWebsite")) {
+    Y.on("click", confirmDelete, "#deleteWebsite", null, "Are you sure you want to delete this website?", Y.one("#onpub-form"), Y.one("input[name='onpub']"), "DeleteWebsiteProcess");
   }
 
   if (Y.one("#actions")) {
     Y.on("change", performAction, "#actions", null, Y.all("#articleIDs"));
   }
 
-  if (Y.one("a.cke_button_save")) {
+  // Override default CKEditor Save action
+  if (Y.one("a.cke_button_save") && Y.one("input[name='onpub']").get("value") == "EditArticleProcess") {
     var node = Y.one("a.cke_button_save");
     var action = node.get("onclick");
 
     node.set("onclick", null);
 
-    Y.on("click", saveArticle, node, null, action);
+    Y.on("click", saveArticle, node, null, action, Y.one("textarea[name='content']"));
   }
 
+  // Override default CKEditor New Page action
   if (Y.one("a.cke_button_newpage")) {
     var node = Y.one("a.cke_button_newpage");
     var action = node.get("onclick");
@@ -299,38 +355,3 @@ YUI(
 }
 );
 
-function deleteImage()
-{
-    var result = false;
-
-    result = confirm("Are you sure you want to delete this image?");
-
-    if ( result ) {
-        document.forms[0].onpub.value = "DeleteImageProcess";
-        document.forms[0].submit();
-    }
-}
-
-function deleteSection()
-{
-    var result = false;
-
-    result = confirm("Are you sure you want to delete this section?");
-
-    if ( result ) {
-        document.forms[0].onpub.value = "DeleteSectionProcess";
-        document.forms[0].submit();
-    }
-}
-
-function deleteWebsite()
-{
-    var result = false;
-
-    result = confirm("Are you sure you want to delete this website?");
-
-    if ( result ) {
-        document.forms[0].onpub.value = "DeleteWebsiteProcess";
-        document.forms[0].submit();
-    }
-}

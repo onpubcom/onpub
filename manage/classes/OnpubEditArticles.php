@@ -151,7 +151,7 @@ class OnpubEditArticles
     $widget = new OnpubWidgetHeader("Articles");
     $widget->display();
 
-    en('<form action="index.php" method="get">');
+    en('<form id="onpub-form" action="index.php" method="get">');
     en('<div>');
     en('<input type="hidden" name="onpub" value="EditArticles">');
 
