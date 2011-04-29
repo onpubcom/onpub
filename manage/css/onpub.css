@@ -146,6 +146,14 @@ color: #86919D;
 margin-bottom: 1.75em;
 }
 
+span.onpub-edit {
+font-size: 85%;
+color: #86919D;
+padding: 0.5em;
+background-color: #F7F8FD;
+border: 1px solid #DEE5F8;
+}
+
 .yui3-overlay-content .yui3-widget-bd {
 width: 10em;
 font-size: 85%;
