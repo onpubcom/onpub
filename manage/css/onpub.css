@@ -145,3 +145,12 @@ font-size: 85%;
 color: #86919D;
 margin-bottom: 1.75em;
 }
+
+.yui3-overlay-content .yui3-widget-bd {
+width: 10em;
+font-size: 85%;
+text-align: center;
+padding: 0.5em;
+border-top: 1px solid #D8D8DA;
+background-color: #EFF0F0;
+}

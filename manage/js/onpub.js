@@ -11,7 +11,7 @@ YUI(
 {
   base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
 }
-).use("node-menunav", "io", "overlay", function(Y)
+).use("node-menunav", "io", "overlay", "anim", function(Y)
 {
   // Render the nav menu.
   Y.on("contentready", function () {
@@ -193,34 +193,40 @@ YUI(
     }
   }
 
-  function saveArticleStart(tid, args)
+  function saveArticleStart(tid, overlay)
   {
-    Y.log("start: ");
-    Y.log(arguments);
+    // Reset overlay opacity.
+    Y.one("#" + overlay.getAttrs().id).setStyle("opacity", 1);
+
+    overlay.set("bodyContent", "Saving..");
+    overlay.set("visible", true);
+
   }
 
-  function saveArticleComplete(tid, response, args)
+  function saveArticleComplete(tid, response, overlay)
   {
-    Y.log("complete: ");
-    Y.log(arguments);
+
   }
 
-  function saveArticleSuccess(tid, response, args)
+  function saveArticleSuccess(tid, response, overlay)
   {
-    Y.log("success: ");
-    Y.log(arguments);
+    overlay.set("bodyContent", "Saved!");
   }
 
-  function saveArticleFailure(tid, response, args)
+  function saveArticleFailure(tid, response, overlay)
   {
-    Y.log("failure: ");
-    Y.log(arguments);
+    overlay.set("bodyContent", '<span style="color: red;">Save error.. Try again.</span>');
   }
 
-  function saveArticleEnd(tid, args)
+  function saveArticleEnd(tid, overlay)
   {
-    Y.log("end: ");
-    Y.log(arguments);
+    var anim = new Y.Anim({
+      node: "#" + overlay.getAttrs().id,
+      to: {opacity: 0},
+      duration: 1.5
+    });
+
+    anim.run();
   }
 
   function saveArticle(e, action, textarea)
@@ -229,19 +235,10 @@ YUI(
 
     var cfg = {
       method: "POST",
-      form: {id: "onpub-form"},
-      on: {
-        start: saveArticleStart,
-        complete: saveArticleComplete,
-        success: saveArticleSuccess,
-        failure: saveArticleFailure,
-        end: saveArticleEnd
-      }
+      form: {id: "onpub-form"}
     };
 
     var request = Y.io("index.php", cfg);
-
-    //action();
   }
 
   function confirmNewPage(e, action)
@@ -335,6 +332,26 @@ YUI(
     var action = node.get("onclick");
 
     node.set("onclick", null);
+
+    // Setup the AJAX status overlay.
+    var overlay = new Y.Overlay({
+      bodyContent: "",
+      visible: false,
+      shim: false,
+      align: {
+        node: "#onpub-body",
+        points: [Y.WidgetPositionAlign.TR, Y.WidgetPositionAlign.TR]
+      }
+    });
+
+    overlay.render("#onpub-body");
+
+    // Setup the AJAX event handlers
+    Y.on("io:start", saveArticleStart, Y, overlay);
+    Y.on("io:complete", saveArticleComplete, Y, overlay);
+    Y.on("io:success", saveArticleSuccess, Y, overlay);
+    Y.on("io:failure", saveArticleFailure, Y, overlay);
+    Y.on("io:end", saveArticleEnd, Y, overlay);
 
     Y.on("click", saveArticle, node, null, action, Y.one("textarea[name='content']"));
   }
