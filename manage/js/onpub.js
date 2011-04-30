@@ -11,7 +11,7 @@ YUI(
 {
   base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
 }
-).use("node-menunav", "io-form", "overlay", "anim", "json-parse", function(Y)
+).use("node-menunav", "io-form", "overlay", "anim-base", "json-parse", function(Y)
 {
   // Render the nav menu.
   Y.on("contentready", function () {
@@ -237,10 +237,10 @@ YUI(
       duration: 1
     });
 
-    Y.later(1000, anim, "run", null, false);
+    Y.later(1500, anim, "run", null, false);
   }
 
-  function saveArticle(e, action, textarea, overlay)
+  function saveArticle(e, textarea, overlay)
   {
     textarea.set("value", CKEDITOR.instances["content"].getData());
 
@@ -341,44 +341,47 @@ YUI(
     Y.on("change", performAction, "#actions", null, Y.all("#articleIDs"));
   }
 
-  // Override default CKEditor Save action
-  if (Y.one("a.cke_button_save") && Y.one("input[name='onpub']").get("value") == "EditArticleProcess") {
-    var node = Y.one("a.cke_button_save");
-    var action = node.get("onclick");
+  Y.on("contentready", function () {
+    // Override default CKEditor Save action
+    if (Y.one("input[name='onpub']").get("value") == "EditArticleProcess") {
+      var node = this;
+      node.set("onclick", null);
+  
+      // Setup the AJAX status overlay
+      var overlay = new Y.Overlay({
+        bodyContent: "",
+        visible: false,
+        align: {
+          node: "#onpub-body",
+          points: [Y.WidgetPositionAlign.TR, Y.WidgetPositionAlign.TR]
+        }
+      });
+  
+      overlay.render("#onpub-body");
+  
+      // Setup the AJAX event handlers
+      Y.on("io:start", saveArticleStart, Y, overlay);
+      Y.on("io:complete", saveArticleComplete, Y, overlay);
+      Y.on("io:success", saveArticleSuccess, Y, overlay);
+      Y.on("io:failure", saveArticleFailure, Y, overlay);
+      Y.on("io:end", saveArticleEnd, Y, overlay);
+  
+      // Setup the new CKEditor Save button click handler
+      Y.on("click", saveArticle, node, null, Y.one("textarea[name='content']"), overlay);
+    }
+  }, ".cke_button_save");
 
-    node.set("onclick", null);
-
-    // Setup the AJAX status overlay.
-    var overlay = new Y.Overlay({
-      bodyContent: "",
-      visible: false,
-      align: {
-        node: "#onpub-body",
-        points: [Y.WidgetPositionAlign.TR, Y.WidgetPositionAlign.TR]
-      }
-    });
-
-    overlay.render("#onpub-body");
-
-    // Setup the AJAX event handlers
-    Y.on("io:start", saveArticleStart, Y, overlay);
-    Y.on("io:complete", saveArticleComplete, Y, overlay);
-    Y.on("io:success", saveArticleSuccess, Y, overlay);
-    Y.on("io:failure", saveArticleFailure, Y, overlay);
-    Y.on("io:end", saveArticleEnd, Y, overlay);
-
-    Y.on("click", saveArticle, node, null, action, Y.one("textarea[name='content']"), overlay);
-  }
-
-  // Override default CKEditor New Page action
-  if (Y.one("a.cke_button_newpage")) {
-    var node = Y.one("a.cke_button_newpage");
-    var action = node.get("onclick");
-
-    node.set("onclick", null);
-
-    Y.on("click", confirmNewPage, node, null, action);
-  }
+  Y.on("contentready", function () {
+    // Override default CKEditor New Page action
+    if (Y.one(".cke_button_newpage")) {
+      var node = this;
+      var action = node.get("onclick");
+  
+      node.set("onclick", null);
+  
+      Y.on("click", confirmNewPage, node, null, action);
+    }
+  }, ".cke_button_newpage");
 
   if (Y.one("#overwriteImage")) {
     Y.on("click", confirmOverwrite, "#overwriteImage", null, Y.one("input[name='overwrite']"));
