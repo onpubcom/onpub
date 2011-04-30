@@ -11,7 +11,7 @@ YUI(
 {
   base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
 }
-).use("node-menunav", "io", "overlay", "anim", function(Y)
+).use("node-menunav", "io-form", "overlay", "anim", "json-parse", function(Y)
 {
   // Render the nav menu.
   Y.on("contentready", function () {
@@ -195,27 +195,38 @@ YUI(
 
   function saveArticleStart(tid, overlay)
   {
-    // Reset overlay opacity.
-    Y.one("#" + overlay.getAttrs().id).setStyle("opacity", 1);
-
     overlay.set("bodyContent", "Saving..");
-    overlay.set("visible", true);
-
   }
 
   function saveArticleComplete(tid, response, overlay)
   {
-
   }
 
   function saveArticleSuccess(tid, response, overlay)
   {
-    overlay.set("bodyContent", "Saved!");
+    if (response.responseText) {
+      // There was an error.
+      try {
+        var error = Y.JSON.parse(response.responseText);
+        overlay.set("bodyContent", '<span style="color: red;">Save error: ' + error.message + '.</span>');
+      }
+      catch (e) {
+        Y.log(e);
+      }
+    }
+    else {
+      overlay.set("bodyContent", "Saved.");
+    }
   }
 
   function saveArticleFailure(tid, response, overlay)
   {
-    overlay.set("bodyContent", '<span style="color: red;">Save error.. Try again.</span>');
+    overlay.set("bodyContent", '<span style="color: red;">Save error. Try again..</span>');
+  }
+
+  function animRun(anim)
+  {
+    anim.run();
   }
 
   function saveArticleEnd(tid, overlay)
@@ -223,13 +234,13 @@ YUI(
     var anim = new Y.Anim({
       node: "#" + overlay.getAttrs().id,
       to: {opacity: 0},
-      duration: 1.5
+      duration: 1
     });
 
-    anim.run();
+    Y.later(1000, anim, "run", null, false);
   }
 
-  function saveArticle(e, action, textarea)
+  function saveArticle(e, action, textarea, overlay)
   {
     textarea.set("value", CKEDITOR.instances["content"].getData());
 
@@ -237,6 +248,10 @@ YUI(
       method: "POST",
       form: {id: "onpub-form"}
     };
+
+    // Reset overlay opacity.
+    Y.one("#" + overlay.getAttrs().id).setStyle("opacity", 1);
+    overlay.set("visible", true);
 
     var request = Y.io("index.php", cfg);
   }
@@ -352,7 +367,7 @@ YUI(
     Y.on("io:failure", saveArticleFailure, Y, overlay);
     Y.on("io:end", saveArticleEnd, Y, overlay);
 
-    Y.on("click", saveArticle, node, null, action, Y.one("textarea[name='content']"));
+    Y.on("click", saveArticle, node, null, action, Y.one("textarea[name='content']"), overlay);
   }
 
   // Override default CKEditor New Page action

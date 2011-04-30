@@ -37,6 +37,8 @@ if (isset($_SESSION['PDO_HOST']) && isset($_SESSION['PDO_USER']) && isset($_SESS
 }
 
 if (isset($_POST['onpub'])) {
+  $ajaxPost = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
+
   if (!$loginStatus && $_POST['onpub'] != "LoginProcess") {
     header("Location: index.php");
     return;
@@ -48,7 +50,15 @@ if (isset($_POST['onpub'])) {
     }
     catch (PDOException $e) {
       // PDO init error, bounce user back to Dashboard page.
-      header("Location: index.php");
+      if ($ajaxPost) {
+        header("Content-Type: application/json; charset=iso-8859-1");
+        echo json_encode(array("code" => $e->getCode(),
+                               "message" => $e->getMessage()));
+      }
+      else {
+        header("Location: index.php");
+      }
+
       return;
     }
 
@@ -208,8 +218,6 @@ if (isset($_POST['onpub'])) {
       break;
 
     case "EditArticleProcess":
-      $ajaxPost = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
-
       if (isset($_POST['authorID'])) {
         $authorID = $_POST['authorID'];
       }
