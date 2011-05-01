@@ -62,22 +62,6 @@ class OnpubEditArticle
     en('<form id="onpub-form" action="index.php" method="post">');
     en('<div>');
 
-    en('<div class="yui3-g">');
-
-    en('<div class="yui3-u-1-2">');
-
-    en('<strong>Title</strong><br><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '">', 1, 2);
-
-    en('</div>');
-
-    en('<div class="yui3-u-1-2">');
-
-    en('<strong>Author</strong><br><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($author->displayAs) . '">', 1, 2);
-
-    en('</div>');
-
-    en('</div>');
-
     en('<strong>Content</strong><br>');
 
     en('<textarea rows="25" cols="100" name="content">' . htmlentities($this->oarticle->content) . '</textarea>');
@@ -114,6 +98,22 @@ class OnpubEditArticle
     else {
       br(2);
     }
+
+    en('<div class="yui3-g">');
+
+    en('<div class="yui3-u-1-2">');
+
+    en('<strong>Title</strong><br><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '">', 1, 2);
+
+    en('</div>');
+
+    en('<div class="yui3-u-1-2">');
+
+    en('<strong>Author</strong><br><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($author->displayAs) . '">', 1, 2);
+
+    en('</div>');
+
+    en('</div>');
 
     $widget = new OnpubWidgetDateCreated($this->oarticle->getCreated());
     $widget->display();
