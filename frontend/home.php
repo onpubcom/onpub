@@ -171,7 +171,7 @@ else {
     else {
       en('<h3>Almost there.. Follow the instructions below to complete the Onpub installation.</h3>');
       en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
-         'index.php" target="_onpub">Login</a> to the Onpub content management to install the Onpub database schema. You will be unable to publish a website until you perform this step.</p>');
+         'index.php" target="_onpub">Login</a> to the Onpub content management interface to install the Onpub database schema. You will be unable to publish a website until you perform this step.</p>');
       en('<p>See <a href="http://onpub.com/index.php?s=8&a=118" target="_blank">How to Install Onpub</a> for more information.</p>');
     }
   }

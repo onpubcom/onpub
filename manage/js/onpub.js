@@ -202,6 +202,11 @@ YUI(
   {
   }
 
+  function updateArticleTitle(articleID, oldTitle, newTitle)
+  {
+    oldTitle.set("innerHTML", "Article " + articleID.get("value") + " - " + newTitle.get("value"));
+  }
+
   function saveArticleSuccess(tid, response, overlay)
   {
     if (response.responseText) {
@@ -216,6 +221,7 @@ YUI(
     }
     else {
       overlay.set("bodyContent", "Saved.");
+      updateArticleTitle(Y.one("#articleID"), Y.one("#onpub-body h1"), Y.one("input[name='title']"));
     }
   }
 
@@ -300,6 +306,23 @@ YUI(
     }
   }
 
+  function checkUnsavedChanges(e)
+  {
+    // Code partially borrowed from:
+    // https://developer.mozilla.org/en/DOM/window.onbeforeunload
+    var e = e || window.event;
+    var textarea = Y.one("textarea[name='content']");
+    var m = "You have unsaved Content changes. Your changes will be lost if you leave this page.";
+
+    if (Y.Lang.trim(CKEDITOR.instances["content"].getData()) != Y.Lang.trim(textarea.get("value"))) {
+      if (e) {
+        e.returnValue = m; 
+      }
+
+      return m;
+    }
+  }
+
   // Register event handlers.
   if (Y.one("#articles")) {
     Y.on("click", moveUp, "#moveUp", null, Y.one("#articles"));
@@ -369,6 +392,11 @@ YUI(
       // Setup the new CKEditor Save button click handler
       Y.on("click", saveArticle, node, null, Y.one("textarea[name='content']"), overlay);
     }
+
+    // Define unload handler to warn user of unsaved changes.
+    // YUI onbeforeunload handler does not work properly in all browsers.
+    // User native DOM handler instead for better browser compatibility.
+    window.onbeforeunload = checkUnsavedChanges;
   }, ".cke_button_save");
 
   Y.on("contentready", function () {

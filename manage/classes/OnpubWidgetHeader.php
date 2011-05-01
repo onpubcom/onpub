@@ -124,7 +124,7 @@ class OnpubWidgetHeader
     en('<div class="yui3-u-1">');
 
     if ($this->title) {
-      en('<h1>' . strip_tags($this->title) . '</h1>');
+      en('<h1>' . $this->title . '</h1>');
     }
     else {
       en('<h1>Onpub (on ' . $_SERVER['SERVER_NAME'] . ')</h1>');
