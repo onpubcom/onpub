@@ -157,9 +157,14 @@ border: 1px solid #DEE5F8;
 .yui3-overlay-content .yui3-widget-bd {
 width: 15em;
 font-size: 85%;
-font-weight: bold;
 text-align: center;
 padding: 0.5em;
 border-top: 1px solid #D8D8DA;
 background-color: #DFF1FF;
+-webkit-border-bottom-right-radius: 5px;
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-bottomright: 5px;
+-moz-border-radius-bottomleft: 5px;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
 }
