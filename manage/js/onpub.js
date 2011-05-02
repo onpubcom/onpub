@@ -207,7 +207,7 @@ YUI(
     oldTitle.set("innerHTML", "Article " + articleID.get("value") + " - " + newTitle.get("value"));
   }
 
-  function saveArticleSuccess(tid, response, overlay)
+  function saveArticleSuccess(tid, response, overlay, textarea, textareaVal)
   {
     if (response.responseText) {
       // There was an error.
@@ -218,6 +218,9 @@ YUI(
       catch (e) {
         Y.log(e);
       }
+
+      // Set textarea back to value before error.
+      textarea.set("value", textareaVal);
     }
     else {
       overlay.set("bodyContent", "Saved.");
@@ -225,14 +228,12 @@ YUI(
     }
   }
 
-  function saveArticleFailure(tid, response, overlay)
+  function saveArticleFailure(tid, response, overlay, textarea, textareaVal)
   {
     overlay.set("bodyContent", '<span style="color: red;">Save error. Try again..</span>');
-  }
 
-  function animRun(anim)
-  {
-    anim.run();
+    // Set textarea back to value before error.
+    textarea.set("value", textareaVal);
   }
 
   function saveArticleEnd(tid, overlay)
@@ -259,7 +260,7 @@ YUI(
     Y.one("#" + overlay.getAttrs().id).setStyle("opacity", 1);
     overlay.set("visible", true);
 
-    var request = Y.io("index.php", cfg);
+    Y.io("index.php", cfg);
   }
 
   function confirmNewPage(e, action)
@@ -316,7 +317,7 @@ YUI(
 
     if (Y.Lang.trim(CKEDITOR.instances["content"].getData()) != Y.Lang.trim(textarea.get("value"))) {
       if (e) {
-        e.returnValue = m; 
+        e.returnValue = m;
       }
 
       return m;
@@ -367,9 +368,11 @@ YUI(
   Y.on("contentready", function () {
     // Override default CKEditor Save action
     if (Y.one("input[name='onpub']").get("value") == "EditArticleProcess") {
+      var textarea = Y.one("textarea[name='content']");
+      var textareaVal = textarea.get("value");
       var node = this;
       node.set("onclick", null);
-  
+
       // Setup the AJAX status overlay
       var overlay = new Y.Overlay({
         bodyContent: "",
@@ -379,18 +382,18 @@ YUI(
           points: [Y.WidgetPositionAlign.TR, Y.WidgetPositionAlign.TR]
         }
       });
-  
+
       overlay.render("#onpub-body");
-  
+
       // Setup the AJAX event handlers
       Y.on("io:start", saveArticleStart, Y, overlay);
       Y.on("io:complete", saveArticleComplete, Y, overlay);
-      Y.on("io:success", saveArticleSuccess, Y, overlay);
-      Y.on("io:failure", saveArticleFailure, Y, overlay);
+      Y.on("io:success", saveArticleSuccess, Y, overlay, textarea, textareaVal);
+      Y.on("io:failure", saveArticleFailure, Y, overlay, textarea, textareaVal);
       Y.on("io:end", saveArticleEnd, Y, overlay);
-  
+
       // Setup the new CKEditor Save button click handler
-      Y.on("click", saveArticle, node, null, Y.one("textarea[name='content']"), overlay);
+      Y.on("click", saveArticle, node, null, textarea, overlay);
     }
 
     // Define unload handler to warn user of unsaved changes.
@@ -404,9 +407,9 @@ YUI(
     if (Y.one(".cke_button_newpage")) {
       var node = this;
       var action = node.get("onclick");
-  
+
       node.set("onclick", null);
-  
+
       Y.on("click", confirmNewPage, node, null, action);
     }
   }, ".cke_button_newpage");
