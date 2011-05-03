@@ -33,12 +33,24 @@ class OnpubWidgetHeader
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssfonts/fonts-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssbase/base-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'node-menunav/assets/skins/sam/node-menunav.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'widget/assets/skins/sam/widget.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'widget/assets/skins/sam/widget-stack.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'overlay/assets/skins/sam/overlay.css">');
     }
     else {
-      en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' . ONPUBGUI_YUI_VERSION . '/build/cssreset/reset-min.css&amp;' . ONPUBGUI_YUI_VERSION . '/build/cssfonts/fonts-min.css&amp;' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css&amp;' . ONPUBGUI_YUI_VERSION . '/build/cssbase/base-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' .
+         ONPUBGUI_YUI_VERSION . '/build/cssreset/reset-min.css&' . ONPUBGUI_YUI_VERSION .
+         '/build/cssfonts/fonts-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css&' .
+         ONPUBGUI_YUI_VERSION . '/build/cssbase/base-min.css&' . ONPUBGUI_YUI_VERSION .
+         '/build/node-menunav/assets/skins/sam/node-menunav.css&' . ONPUBGUI_YUI_VERSION .
+         '/build/widget/assets/skins/sam/widget.css&' . ONPUBGUI_YUI_VERSION .
+         '/build/widget/assets/skins/sam/widget-stack.css&' . ONPUBGUI_YUI_VERSION .
+         '/build/overlay/assets/skins/sam/overlay.css">');
     }
 
     en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
+    en('<link rel="stylesheet" type="text/css" href="css/onpub-menu.css">');
 
     en('<script type="text/javascript">');
     en('document.documentElement.className = "yui3-loading";');

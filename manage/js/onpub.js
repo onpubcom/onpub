@@ -9,15 +9,14 @@
 
 YUI(
 {
-  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
+  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui,
+  fetchCSS: false // Don't fetch CSS dependencies since we load them in <head>
 }
 ).use("node-menunav", "io-form", "overlay", "anim-base", "json-parse", function(Y)
 {
   // Render the nav menu.
   Y.on("contentready", function () {
     this.plug(Y.Plugin.NodeMenuNav);
-    // Load custom CSS for YUI menu.
-    Y.Get.css('css/onpub-menu.css');
     this.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
   }, "#onpub-menubar");
 
@@ -316,7 +315,7 @@ YUI(
 
     if (Y.Lang.trim(CKEDITOR.instances["content"].getData()) != Y.Lang.trim(textarea.get("value"))) {
       if (e) {
-        e.returnValue = m; 
+        e.returnValue = m;
       }
 
       return m;
@@ -369,7 +368,7 @@ YUI(
     if (Y.one("input[name='onpub']").get("value") == "EditArticleProcess") {
       var node = this;
       node.set("onclick", null);
-  
+
       // Setup the AJAX status overlay
       var overlay = new Y.Overlay({
         bodyContent: "",
@@ -379,16 +378,16 @@ YUI(
           points: [Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.TC]
         }
       });
-  
+
       overlay.render("#onpub-body");
-  
+
       // Setup the AJAX event handlers
       Y.on("io:start", saveArticleStart, Y, overlay);
       Y.on("io:complete", saveArticleComplete, Y, overlay);
       Y.on("io:success", saveArticleSuccess, Y, overlay);
       Y.on("io:failure", saveArticleFailure, Y, overlay);
       Y.on("io:end", saveArticleEnd, Y, overlay);
-  
+
       // Setup the new CKEditor Save button click handler
       Y.on("click", saveArticle, node, null, Y.one("textarea[name='content']"), overlay);
     }
@@ -404,9 +403,9 @@ YUI(
     if (Y.one(".cke_button_newpage")) {
       var node = this;
       var action = node.get("onclick");
-  
+
       node.set("onclick", null);
-  
+
       Y.on("click", confirmNewPage, node, null, action);
     }
   }, ".cke_button_newpage");

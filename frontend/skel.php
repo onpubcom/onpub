@@ -41,14 +41,15 @@ if (file_exists($onpub_dir_root . $onpub_dir_yui)) {
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_yui . 'cssfonts/fonts-min.css">');
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_yui . 'cssgrids/grids-min.css">');
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_yui . 'cssbase/base-min.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_yui . 'node-menunav/assets/skins/sam/node-menunav.css">');
 }
 else {
   $onpub_dir_yui = null;
-  en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?'
-     . $onpub_yui_version . '/build/cssreset/reset-min.css&amp;'
-     . $onpub_yui_version . '/build/cssfonts/fonts-min.css&amp;'
-     . $onpub_yui_version . '/build/cssgrids/grids-min.css&amp;'
-     . $onpub_yui_version . '/build/cssbase/base-min.css">');
+  en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' .
+     $onpub_yui_version . '/build/cssreset/reset-min.css&' . $onpub_yui_version .
+     '/build/cssfonts/fonts-min.css&' . $onpub_yui_version . '/build/cssgrids/grids-min.css&' .
+     $onpub_yui_version . '/build/cssbase/base-min.css&' . $onpub_yui_version .
+     '/build/node-menunav/assets/skins/sam/node-menunav.css">');
 }
 
 if (file_exists($onpub_dir_local . $onpub_inc_css)) {
@@ -57,6 +58,14 @@ if (file_exists($onpub_dir_local . $onpub_inc_css)) {
 }
 else {
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub.css">');
+}
+
+if (file_exists($onpub_dir_local . $onpub_inc_css_menu)) {
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_local . $onpub_inc_css_menu . '">');
+}
+else {
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css">');
 }
 
 ?>

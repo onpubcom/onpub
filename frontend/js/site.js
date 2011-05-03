@@ -9,18 +9,14 @@
 
 YUI(
 {
-  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui
+  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui,
+  fetchCSS: false // Don't fetch CSS dependencies since we load them in <head>
 }).use("node-menunav", function(Y)
 {
   if (Y.one("#onpub-menubar")) {
     // Render the nav menu.
     Y.on("contentready", function () {
       this.plug(Y.Plugin.NodeMenuNav);
-      // Load custom CSS for YUI menu.
-      Y.Get.css(onpub_inc_css_menu);
-      if (onpub_inc_css_menu_local) {
-        Y.Get.css(onpub_inc_css_menu_local);
-      }
       this.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
     }, "#onpub-menubar");
   }
