@@ -80,14 +80,6 @@ if ($onpub_dir_yui) {
 else {
   en('var onpub_dir_yui = null;');
 }
-if (file_exists($onpub_dir_local . $onpub_inc_css_menu)) {
-  en('var onpub_inc_css_menu = "' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css";');
-  en('var onpub_inc_css_menu_local = "' . $onpub_dir_local . $onpub_inc_css_menu . '";');
-}
-else {
-  en('var onpub_inc_css_menu = "' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css";');
-  en('var onpub_inc_css_menu_local = null;');
-}
 en('var onpub_yui_version = "' . $onpub_yui_version . '";', 0);
 ?>
 
