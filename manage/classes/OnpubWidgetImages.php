@@ -53,7 +53,7 @@ class OnpubWidgetImages
               en('<div style="padding-top: 0.25em;"><a href="index.php?onpub=EditImage&amp;imageID=' . $image->ID . '"><img src="' . addTrailingSlash($this->website->imagesURL) . $image->fileName . '" alt="Edit" title="Edit" border="0"></a></div>', 1, 1);
             }
             else {
-              en('<div style="padding-top: 0.25em;"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="' . addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName) . ' not found" title="' . addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName) . ' not found"> <span class="onpub-error">Make sure the Images URL of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $this->website->ID . '">' . $this->website->name . '</a> is setup correctly.</span></div>', 1, 1);
+              en('<div style="padding-top: 0.25em;"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="' . addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName) . ' not found" title="' . addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName) . ' not found"> <span class="onpub-error">Make sure the Image Uploads URL of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $this->website->ID . '">' . $this->website->name . '</a> is setup correctly.</span></div>', 1, 1);
             }
           }
         }

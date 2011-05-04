@@ -102,7 +102,7 @@ class OnpubUploadImages
     {
       case ONPUBGUI_ERROR_MOVE_UPLOADED_FILE:
         en('<span class="onpub-error">' . $e->getMessage() . '</span>', 1, 2);
-        en('Make sure the Images Directory of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $this->websiteID . '">' . $website->name . '</a> is a valid path and is writable by the web server account.');
+        en('Make sure the Image Uploads Directory of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $this->websiteID . '">' . $website->name . '</a> is a valid path and is writable by the web server account.');
         break;
 
       case ONPUBGUI_ERROR_IMAGE_EXISTS:

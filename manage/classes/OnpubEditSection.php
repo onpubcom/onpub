@@ -73,8 +73,6 @@ class OnpubEditSection
       $go = '';
     }
 
-    en('<strong>URL</strong><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->osection->url) . '">' . $go, 1, 2);
-
     $widget = new OnpubWidgetImages("Icon", $this->osection->imageID, $images, $website);
     $widget->display();
 
@@ -115,6 +113,8 @@ class OnpubEditSection
       en('There are 0 articles in the database. <a href="index.php?onpub=NewArticle">New Article</a>.');
       br (2);
     }
+
+    en('<strong>Static Link</strong><br><small>Leave this field blank to make the frontend manage the link for this section (reccomended).</small><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->osection->url) . '">' . $go, 1, 2);
 
     en('<div class="yui3-g">');
 

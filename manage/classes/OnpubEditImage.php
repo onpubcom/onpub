@@ -86,8 +86,7 @@ class OnpubEditImage
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-3">');
-    en('<strong>URL</strong><br><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">'
-      . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a>', 1, 2);
+    en('<strong>URL</strong><br><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a>', 1, 2);
     en('</div>');
 
     en('<div class="yui3-u-1-3">');
@@ -161,7 +160,7 @@ class OnpubEditImage
       }
     }
     else {
-      en('<img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="Image not found" title="Image not found"><br><span class="onpub-error">Make sure the Images URL of <a href="index.php?onpub=EditWebsite&amp;websiteID='
+      en('<img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="Image not found" title="Image not found"><br><span class="onpub-error">Make sure the Image Uploads URL of <a href="index.php?onpub=EditWebsite&amp;websiteID='
         . $website->ID . '">' . $website->name . '</a> is setup correctly.</span>');
     }
 

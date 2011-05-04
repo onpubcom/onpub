@@ -79,7 +79,7 @@ class OnpubEditWebsite
       }
     }
 
-    en('<strong>Images Directory</strong><br><small>Images uploaded to this website will be saved to this directory on <i>' . $_SERVER['SERVER_NAME'] . '</i></small><br><input type="text" maxlength="255" size="75" name="imagesDirectory" value="' . htmlentities($this->owebsite->imagesDirectory) . '"> ' . $message, 1, 2);
+    en('<strong>Image Uploads Directory</strong><br><small>Images uploaded to this website will be saved to this directory on <i>' . $_SERVER['SERVER_NAME'] . '</i></small><br><input type="text" maxlength="255" size="75" name="imagesDirectory" value="' . htmlentities($this->owebsite->imagesDirectory) . '"> ' . $message, 1, 2);
 
     $message = "";
 
@@ -87,7 +87,7 @@ class OnpubEditWebsite
       $message = '<br><small>Images uploaded to this website should be accessible from this URL</small>';
     }
     else {
-      $message = '<br><small>Should be a URL to the Images Directory, example: http://onpub.com/images/</small>';
+      $message = '<br><small>Should be a URL to the Image Uploads Directory, example: http://onpub.com/images/</small>';
     }
 
     if ($this->owebsite->imagesURL) {
@@ -97,7 +97,7 @@ class OnpubEditWebsite
       $go = '';
     }
 
-    en('<strong>Images URL</strong>' . $message . '<br><input type="text" maxlength="255" size="75" name="imagesURL" value="' . htmlentities($this->owebsite->imagesURL) . '">' . $go, 1, 2);
+    en('<strong>Image Uploads URL</strong>' . $message . '<br><input type="text" maxlength="255" size="75" name="imagesURL" value="' . htmlentities($this->owebsite->imagesURL) . '">' . $go, 1, 2);
 
     en('<div class="yui3-g">');
 

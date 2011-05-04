@@ -115,6 +115,12 @@ class OnpubEditArticle
 
     en('</div>');
 
+    $widget = new OnpubWidgetSections();
+    $widget->websites = $websites;
+    $widget->osections = $osections;
+    $widget->samaps = $samaps;
+    $widget->display();
+
     $widget = new OnpubWidgetDateCreated($this->oarticle->getCreated());
     $widget->display();
 
@@ -131,13 +137,7 @@ class OnpubEditArticle
       $go = '';
     }
 
-    en('<strong>URL</strong><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '', 1, 2);
-
-    $widget = new OnpubWidgetSections();
-    $widget->websites = $websites;
-    $widget->osections = $osections;
-    $widget->samaps = $samaps;
-    $widget->display();
+    en('<strong>Static Link</strong><br><small>Leave this field blank to make the frontend manage the link for this article (reccomended).</small><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '', 1, 2);
 
     en('<input type="submit" value="Save"> <input type="button" value="Delete" id="deleteArticle">');
 
