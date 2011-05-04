@@ -111,7 +111,7 @@ class OnpubEditWebsite
 
     en('</div>');
 
-    $widget = new OnpubWidgetImages("Logo", $this->owebsite->imageID, $images, $this->owebsite);
+    $widget = new OnpubWidgetImages("Logo Image", $this->owebsite->imageID, $images, $this->owebsite);
     $widget->display();
 
     if ($totalSections) {

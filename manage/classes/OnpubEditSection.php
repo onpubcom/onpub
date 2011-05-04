@@ -73,7 +73,7 @@ class OnpubEditSection
       $go = '';
     }
 
-    $widget = new OnpubWidgetImages("Icon", $this->osection->imageID, $images, $website);
+    $widget = new OnpubWidgetImages("Image", $this->osection->imageID, $images, $website);
     $widget->display();
 
     if ($this->osection->parentID) {
@@ -97,11 +97,11 @@ class OnpubEditSection
 
     if ($this->visible !== NULL) {
       en('<strong>Visibility</strong>', 1, 1);
-      en('<input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">De-select to make the frontend hide this section</label>', 1, 2);
+      en('<input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">Uncheck to unlink this section from the frontend navigation menu</label>', 1, 2);
     }
     else {
       en('<strong>Visibility</strong>', 1, 1);
-      en('<input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Select to make the frontend display this section</label>', 1, 2);
+      en('<input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Check to link this section to the frontend navigation menu</label>', 1, 2);
     }
 
     if ($numOfArticles) {
