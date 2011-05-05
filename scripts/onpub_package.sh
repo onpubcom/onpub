@@ -8,20 +8,29 @@ rm -r onpub/scripts
 # Get the latest stable release of CKeditor.
 wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.5.3/ckeditor_3.5.3.zip
 unzip ckeditor_3.5.3.zip
+rm -r ckeditor/_samples
 mv ckeditor onpub/manage/
 
 # Get the latest release of YUI 3.
 wget http://yuilibrary.com/downloads/yui3/yui_3.3.0.zip
 unzip yui_3.3.0.zip
-# Remove some uneeded dirs to free up some space.
-rm -r yui/as-api
+
+# Remove some uneeded YUI dirs to free up some space.
 rm -r yui/api
-rm -r yui/tests
+rm -r yui/as-api
+rm -r yui/assets
 rm -r yui/examples
+rm -r yui/index.html
+rm -r yui/releasenotes
+rm -r yui/tests
+
+# Remove uneeded debug and raw YUI .js files.
+find yui/build/ -type f -name '*.js' | grep -v '\-min\.js' | grep -v 'lang/' | xargs /bin/rm
+
 mv yui onpub/
 
 # Everything is in place, zip up the onpub directory.
-zip -9 -r onpub-`php onpub_version.php`.zip onpub
+zip -r onpub-`php onpub_version.php`.zip onpub
 
 # Take a checksum of the file.
 sha1sum onpub-`php onpub_version.php`.zip > onpub-`php onpub_version.php`.sha1
@@ -30,3 +39,4 @@ sha1sum onpub-`php onpub_version.php`.zip > onpub-`php onpub_version.php`.sha1
 rm ckeditor_3.5.3.zip
 rm yui_3.3.0.zip
 rm -r onpub
+
