@@ -7,10 +7,10 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-a:link { color: #1e79de; text-decoration: none; }
-a:visited { color: #1e79de; text-decoration: none; }
-a:hover { color: #1e79de; text-decoration: underline; }
-a:active { color: #1e79de; text-decoration: underline; }
+a:link { color: #247EC3; text-decoration: none; }
+a:visited { color: #247EC3; text-decoration: none; }
+a:hover { color: #247EC3; text-decoration: underline; }
+a:active { color: #247EC3; text-decoration: underline; }
 
 html {
 background-color: #6b6b6b;
