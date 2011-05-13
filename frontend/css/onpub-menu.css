@@ -9,13 +9,16 @@
 
 /* Menu content border */
 .yui3-skin-sam .yui3-menu-content {
-border: 1px solid #D8D8DA;
-border-bottom: none;
+border: 1px solid #efefef;
+-webkit-border-top-right-radius: 8px;
+-moz-border-radius-topright: 8px;
+border-top-right-radius: 8px;
 }
 
 /* Menu content bg image */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-content {
-/* background: none; */
+background: none;
+background-color: #FCFCFC;
 }
 
 /* Menu label bg image */
@@ -30,42 +33,46 @@ background-image: url("../images/vertical-menu-submenu-indicator.png");
 
 /* Menu button right borders */
 .yui3-skin-sam .yui3-menubuttonnav li {
-border-right: 1px solid #D8D8DA;
+border-right: 1px solid #efefef;
 }
 
 /* Menu item text and border */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-content {
-color: #575d66;
-border-color: #D8D8DA;
+color: #6F6F6F;
+border-color: #efefef;
 }
 
 /* Menu item active text and borders */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-active .yui3-menuitem-content {
-color: #575d66;
-border-color:#D8D8DA;
+color: #6F6F6F;
+border-color:#efefef;
 }
 
 /* Menu label top and bottom borders */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label {
-border-color: #D8D8DA;
+border-color: #efefef;
 }
 
 /* Submenu content border */
 .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-content {
-border: 1px solid #D8D8DA;
+border: 1px solid #efefef;
+background-color: #FCFCFC;
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
 }
 
 /* Menu label text */
 .yui3-skin-sam .yui3-menubuttonnav .yui3-menu-label em {
-color: #575d66;
+color: #6F6F6F;
 }
 
 /* Submenu item text */
 .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menuitem-content {
-color: #575d66;
+color: #6F6F6F;
 }
 
 /* Submenu label text */
 .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label {
-color: #575d66;
+color: #6F6F6F;
 }

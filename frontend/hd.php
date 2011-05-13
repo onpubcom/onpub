@@ -11,7 +11,7 @@
 
 if ($onpub_website) {
   if ($onpub_website->image) {
-    en('<div id="onpub-logo"><a href="index.php"><img src="' . addTrailingSlash($onpub_website->imagesURL) . $onpub_website->image->fileName . '" alt="' . $onpub_website->image->fileName . '" title="' . $onpub_website->image->description . '"></a></div>');
+    //en('<div id="onpub-logo"><a href="index.php"><img src="' . addTrailingSlash($onpub_website->imagesURL) . $onpub_website->image->fileName . '" alt="' . $onpub_website->image->fileName . '" title="' . $onpub_website->image->description . '"></a></div>');
   }
   else {
     en('<div id="onpub-logo" style="margin-bottom: .5em;"><a href="index.php">' . $onpub_website->name . '</a></div>');
