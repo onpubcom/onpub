@@ -92,11 +92,8 @@ padding: 0.25em;
 div.onpub-section-nav {
 background-color: #f7f7f7;
 color: #6F6F6F;
--webkit-border-top-left-radius: 8px;
 -webkit-border-bottom-left-radius: 8px;
--moz-border-radius-topleft: 8px;
 -moz-border-radius-bottomleft: 8px;
-border-top-left-radius: 8px;
 border-bottom-left-radius: 8px;
 }
 
