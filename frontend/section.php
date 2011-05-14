@@ -94,7 +94,7 @@ if ($onpub_section) {
        'images/page_edit.png" width="16" height="16" alt="Edit this Section" title="Edit this Section"></a> ' .
        '<a href="' . $onpub_dir_root . $onpub_dir_manage .
        'index.php?onpub=EditSection&amp;sectionID=' . $onpub_section->ID .
-       '" target="_onpub" title="Edit this Section">Edit</a>');
+       '" target="_onpub" title="Edit this Section">EDIT</a>');
     en('</span>');
     en('</div>');
     en('</div>');
@@ -113,7 +113,7 @@ if ($onpub_section) {
         en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $onpub_section_parent->ID . '" class="onpub-section-nav">' . $onpub_section_parent->name . '</a></h1>');
       }
 
-      $articles = $onpub_articles->select(null, $onpub_section_parent->ID);
+      $articles = $onpub_articles->select(null, $onpub_section_parent->ID);                                                   
 
       en('<ul class="onpub-section-nav">');
 
