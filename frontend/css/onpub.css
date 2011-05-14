@@ -7,21 +7,44 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-a:link { color: #1B8CDF; text-decoration: none; }
-a:visited { color: #1B8CDF; text-decoration: none; }
-a:hover { color: #1B8CDF; text-decoration: underline; }
-a:active { color: #1B8CDF; text-decoration: underline; }
+a:link { color: #EF970E; text-decoration: none; }
+a:visited { color: #EF970E; text-decoration: none; }
+a:hover { color: #EF970E; text-decoration: underline; }
+a:active { color: #EF970E; text-decoration: underline; }
+
+a.onpub-section-nav:link { color: #0077CF; text-decoration: none; }
+a.onpub-section-nav:visited { color: #0077CF; text-decoration: none; }
+a.onpub-section-nav:hover { color: #0077CF; text-decoration: underline; }
+a.onpub-section-nav:active { color: #0077CF; text-decoration: underline; }
 
 html {
 background-color: #FCFCFC;
 }
 
 body {
-background-color: #f6f6f6;
+background-color: #8F8F8F;
 }
 
 #onpub-banner {
 text-align: center;
+}
+
+#onpub-header {
+background-color: #FCFCFC;
+border-bottom: 2px solid #7F7F7F;
+}
+
+#onpub-logo {
+width: 970px;
+margin: auto;
+font-size: 197%;
+font-weight: bold;
+padding-top: .25em;
+}
+
+#onpub-menubar {
+margin-top: 2em;
+margin-bottom: 2em;
 }
 
 #onpub-page {
@@ -29,44 +52,26 @@ width: 970px;
 margin: auto;
 }
 
-#onpub-header {
-text-align: left;
-}
-
-#onpub-logo {
-font-size: 197%;
-font-weight: bold;
-}
-
-#onpub-menubar {
-font-size: 108%;
-margin-top: .75em;
-}
-
 #onpub-body {
 color: #525861;
-background-color: #ffffff;
-border: 1px solid #efefef;
-border-top: none;
+background-color: #FCFCFC;
+border: 2px solid #7F7F7F;
 padding-left: 1em;
 padding-right: 1em;
 padding-bottom: 1.5em;
--webkit-border-bottom-right-radius: 8px;
--webkit-border-bottom-left-radius: 8px;
--moz-border-radius-bottomright: 8px;
--moz-border-radius-bottomleft: 8px;
-border-bottom-right-radius: 8px;
-border-bottom-left-radius: 8px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
 }
 
 #onpub-footer {
-margin-top: 1em;
+margin-top: 3em;
 padding-top: 1.5em;
 padding-bottom: .5em;
 font-size: 93%;
 color: #6F6F6F;
 background-color: #FCFCFC;
-border-top: 1px solid #efefef;
+border-top: 2px solid #7F7F7F;
 }
 
 .yui3-loading #onpub-menubar {
@@ -92,13 +97,12 @@ padding: 0.25em;
 div.onpub-section-nav {
 background-color: #f7f7f7;
 color: #6F6F6F;
--webkit-border-bottom-left-radius: 8px;
--moz-border-radius-bottomleft: 8px;
-border-bottom-left-radius: 8px;
-}
-
-h1.onpub-section-nav {
-padding-left: 1em;
+-webkit-border-top-right-radius: 4px;
+-webkit-border-bottom-left-radius: 4px;
+-moz-border-radius-topright: 4px;
+-moz-border-radius-bottomleft: 4px;
+border-top-right-radius: 4px;
+border-bottom-left-radius: 4px;
 }
 
 ul.onpub-section-nav {
@@ -111,14 +115,30 @@ border-color: #EDEDED;
 }
 
 h1 {
-color: #FFAA4F;
+color: #FCFCFC;
+background-color: #0C7CCF;
+padding: .2em;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+font-weight: normal;
+}
+
+h1.onpub-section-nav {
+padding-left: 1em;
+background: none;
 }
 
 h2, h3 {
 margin-top: 0em;
 }
 
-h2, h3, h4, h5, h6, b, strong {
+h2, h3, h4, h5, h6 {
+color: #5F5F5F;
+font-weight: normal;
+}
+
+b, strong {
 color: #5F5F5F;
 }
 

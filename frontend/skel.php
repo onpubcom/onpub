@@ -90,18 +90,6 @@ en('var onpub_yui_version = "' . $onpub_yui_version . '";', 0);
 
 <body class="yui3-skin-sam">
 
-<div style="width: 100%; background-color: #FCFCFC; border-bottom: 1px solid #efefef; padding-top: .25em;">
-<div style="width: 970px; margin: auto;">
-<?php
-if ($onpub_website->image) {
-  en('<div id="onpub-logo"><a href="index.php"><img src="' . addTrailingSlash($onpub_website->imagesURL) . $onpub_website->image->fileName . '" alt="' . $onpub_website->image->fileName . '" title="' . $onpub_website->image->description . '"></a></div>');
-}
-?>
-</div>
-</div>
-
-<div id="onpub-page">
-
 <?php
 
 if (file_exists($onpub_dir_local . $onpub_inc_banner)) {
@@ -116,7 +104,11 @@ if (file_exists($onpub_dir_local . $onpub_inc_banner)) {
 <?php include $onpub_dir_root . $onpub_dir_frontend . 'hd.php'; ?>
 </div>
 
+<div id="onpub-page">
+
 <?php
+
+include $onpub_dir_root . $onpub_dir_frontend . 'menu.php';
 
 switch ($onpub_index)
 {

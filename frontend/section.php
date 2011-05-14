@@ -22,11 +22,11 @@ if ($onpub_section) {
 
   if ($subsections) {
     en('<div class="yui3-u-3-4">');
-    en('<h1>' . $onpub_section->name . '</h1>');
+    en('<h1 style="margin-right: 1em;">' . $onpub_section->name . '</h1>');
   }
   else {
     en('<div class="yui3-u-1">');
-    en('<h1 style="margin-top: 0; padding-top: 1em;">' . $onpub_section->name . '</h1>');
+    en('<h1 style="margin-right: 1em;">' . $onpub_section->name . '</h1>');
   }
 
   $qo = new OnpubQueryOptions();
@@ -107,10 +107,10 @@ if ($onpub_section) {
 
     if ($onpub_section_parent) {
       if ($onpub_section_parent->url) {
-        en('<h1 class="onpub-section-nav"><a href="' . $onpub_section_parent->url . '">' . $onpub_section_parent->name . '</a></h1>');
+        en('<h1 class="onpub-section-nav"><a href="' . $onpub_section_parent->url . '" class="onpub-section-nav">' . $onpub_section_parent->name . '</a></h1>');
       }
       else {
-        en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $onpub_section_parent->ID . '">' . $onpub_section_parent->name . '</a></h1>');
+        en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $onpub_section_parent->ID . '" class="onpub-section-nav">' . $onpub_section_parent->name . '</a></h1>');
       }
 
       $articles = $onpub_articles->select(null, $onpub_section_parent->ID);
@@ -119,10 +119,10 @@ if ($onpub_section) {
 
       foreach ($articles as $a) {
         if ($a->url) {
-          en('<li><a href="' . $a->url . '">' . $a->title . '</a></li>');
+          en('<li><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></li>');
         }
         else {
-          en('<li><a href="index.php?s=' . $onpub_section_parent->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
+          en('<li><a href="index.php?s=' . $onpub_section_parent->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></li>');
         }
       }
 
@@ -135,10 +135,10 @@ if ($onpub_section) {
         }
         else {
           if ($s->url) {
-            en('<li><a href="' . $s->url . '">' . $s->name . '</a></li>');
+            en('<li><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></li>');
           }
           else {
-            en('<li><a href="index.php?s=' . $s->ID . '">' . $s->name . '</a></li>');
+            en('<li><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></li>');
           }
         }
       }
@@ -148,10 +148,10 @@ if ($onpub_section) {
     else {
       foreach ($sections as $s) {
         if ($s->url) {
-          en('<h1 class="onpub-section-nav"><a href="' . $s->url . '">' . $s->name . '</a></h1>');
+          en('<h1 class="onpub-section-nav"><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></h1>');
         }
         else {
-          en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $s->ID . '">' . $s->name . '</a></h1>');
+          en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></h1>');
         }
 
         $articles = $onpub_articles->select(null, $s->ID);
@@ -160,10 +160,10 @@ if ($onpub_section) {
 
         foreach ($articles as $a) {
           if ($a->url) {
-            en('<li><a href="' . $a->url . '">' . $a->title . '</a></li>');
+            en('<li><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></li>');
           }
           else {
-            en('<li><a href="index.php?s=' . $s->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
+            en('<li><a href="index.php?s=' . $s->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></li>');
           }
         }
 

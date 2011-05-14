@@ -7,73 +7,98 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-/* Menu content border */
-.yui3-skin-sam .yui3-menu-content {
-border: 1px solid #efefef;
--webkit-border-top-right-radius: 8px;
--moz-border-radius-topright: 8px;
-border-top-right-radius: 8px;
-}
-
-/* Menu content bg image */
+/* Menu background */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-content {
-background: none;
-background-color: #FCFCFC;
+background-image: none;
+background-color: none;
 }
 
-/* Menu label bg image */
+/* Menu borders */
+.yui3-skin-sam .yui3-menu-content {
+border: none;
+border-left: 2px solid #0060B0;
+}
+
+/* Menu buttons background */
+.yui3-skin-sam .yui3-menubuttonnav .yui3-menu-label {
+background-color: #1B8CDF;
+}
+
+/* Menu font */
+.yui3-skin-sam .yui3-menu-label, .yui3-skin-sam .yui3-menuitem-content {
+color: #F2F2F2;
+font-size: 116%;
+}
+
+/* Menu item background */
+.yui3-skin-sam .yui3-menuitem .yui3-menuitem-content {
+background-color: #1B8CDF;
+}
+
+/* Submenus background */
+.yui3-skin-sam .yui3-menu-content, .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-content {
+background-color: #1B8CDF;
+opacity: .97;
+}
+
+/* Submenu items font */
+.yui3-skin-sam .yui3-menu .yui3-menu .yui3-menuitem-content {
+color: #F2F2F2;
+font-size: 108%;
+}
+
+/* Submenus font */
+.yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label {
+color: #F2F2F2;
+font-size: 108%;
+}
+
+/* Menu buttons top and bottom borders */
+.yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label, .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-content {
+border-color: #0060B0;
+border-top-width: 2px;
+border-bottom-width: 2px;
+}
+
+/* Menu buttons right border */
+.yui3-skin-sam .yui3-menubuttonnav li {
+border-right: 2px solid #0060B0;
+}
+
+/* Submenu borders */
+.yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-content {
+border: 1px solid #0060B0;
+-webkit-border-bottom-right-radius: 6px;
+-webkit-border-bottom-left-radius: 6px;
+-moz-border-radius-bottomright: 6px;
+-moz-border-radius-bottomleft: 6px;
+border-bottom-right-radius: 6px;
+border-bottom-left-radius: 6px;
+}
+
+/* Menu buttons mouseover borders and background */
+.yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label-active, .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-active .yui3-menuitem-content, .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label-menuvisible {
+border-color: #0060B0;
+background-image: none;
+background-color: #1BC2F9;
+}
+
+/* Submenu items mouseover */
+.yui3-skin-sam .yui3-menuitem-active .yui3-menuitem-content, .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menuitem-active .yui3-menuitem-content {
+background-color: #1BC2F9;
+}
+
+/* Submenus mouseover */
+.yui3-skin-sam .yui3-menu-label-active, .yui3-skin-sam .yui3-menu-label-menuvisible, .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label-active, .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label-menuvisible {
+background-color: #1BC2F9;
+}
+
+/* Menu indicator background image */
 .yui3-skin-sam .yui3-menubuttonnav .yui3-menu-label em {
 background-image: url("../images/horizontal-menu-submenu-indicator.png");
 }
 
-/* Sub menu label bg image */
-.yui3-skin-sam .yui3-menubuttonnav .yui3-menu .yui3-menu-label {
+/* Submenu indicator background image */
+.yui3-skin-sam .yui3-menu-label, .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label {
 background-image: url("../images/vertical-menu-submenu-indicator.png");
-}
-
-/* Menu button right borders */
-.yui3-skin-sam .yui3-menubuttonnav li {
-border-right: 1px solid #efefef;
-}
-
-/* Menu item text and border */
-.yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-content {
-color: #6F6F6F;
-border-color: #efefef;
-}
-
-/* Menu item active text and borders */
-.yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-active .yui3-menuitem-content {
-color: #6F6F6F;
-border-color:#efefef;
-}
-
-/* Menu label top and bottom borders */
-.yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label {
-border-color: #efefef;
-}
-
-/* Submenu content border */
-.yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-content {
-border: 1px solid #efefef;
-background-color: #FCFCFC;
--webkit-border-radius: 0;
--moz-border-radius: 0;
-border-radius: 0;
-opacity: .95;
-}
-
-/* Menu label text */
-.yui3-skin-sam .yui3-menubuttonnav .yui3-menu-label em {
-color: #6F6F6F;
-}
-
-/* Submenu item text */
-.yui3-skin-sam .yui3-menu .yui3-menu .yui3-menuitem-content {
-color: #6F6F6F;
-}
-
-/* Submenu label text */
-.yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label {
-color: #6F6F6F;
 }
