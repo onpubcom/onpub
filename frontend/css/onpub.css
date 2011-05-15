@@ -68,10 +68,15 @@ border-radius: 4px;
 margin-top: 3em;
 padding-top: 1.5em;
 padding-bottom: .5em;
-font-size: 93%;
-color: #6F6F6F;
 background-color: #FCFCFC;
 border-top: 2px solid #7F7F7F;
+}
+
+#onpub-footer-content {
+width: 970px;
+margin: auto;
+font-size: 93%;
+color: #6F6F6F;
 }
 
 .yui3-loading #onpub-menubar {

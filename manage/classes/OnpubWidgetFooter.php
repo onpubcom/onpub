@@ -19,12 +19,12 @@ class OnpubWidgetFooter
 
     en('</div>');
 
-    en('<div id="onpub-footer">');
-
-    en('<p>Onpub ' . ONPUBAPI_VERSION . '. &copy; 2011 <a href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
-
     en('</div>');
 
+    en('<div id="onpub-footer">');
+    en('<div id="onpub-footer-content">');
+    en('<p>Onpub ' . ONPUBAPI_VERSION . '. &copy; 2011 <a href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
+    en('</div>');
     en('</div>');
 
     if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {

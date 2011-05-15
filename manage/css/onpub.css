@@ -7,75 +7,76 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-a:link { color: #247EC3; text-decoration: none; }
-a:visited { color: #247EC3; text-decoration: none; }
-a:hover { color: #247EC3; text-decoration: underline; }
-a:active { color: #247EC3; text-decoration: underline; }
+a:link { color: #EF970E; text-decoration: none; }
+a:visited { color: #EF970E; text-decoration: none; }
+a:hover { color: #EF970E; text-decoration: underline; }
+a:active { color: #EF970E; text-decoration: underline; }
+
+a.onpub-section-nav:link { color: #0077CF; text-decoration: none; }
+a.onpub-section-nav:visited { color: #0077CF; text-decoration: none; }
+a.onpub-section-nav:hover { color: #0077CF; text-decoration: underline; }
+a.onpub-section-nav:active { color: #0077CF; text-decoration: underline; }
 
 html {
-background-color: #6b6b6b;
+background-color: #FCFCFC;
 }
 
 body {
+background-color: #8F8F8F;
 }
 
 #onpub-banner {
 text-align: center;
 }
 
-#onpub-page {
-width: 970px;
-margin: auto;
-background-color: #fcfcfc;
-border: 1px solid #636363;
-margin-top: 0.25em;
-margin-bottom: 0.25em;
-padding: 1em;
-padding-bottom: .25em;
--moz-box-shadow: 0px 0px 5px #636363;
--webkit-box-shadow: 0px 0px 5px #636363;
-box-shadow: 0px 0px 5px #636363;
-}
-
 #onpub-header {
-text-align: left;
+background-color: #FCFCFC;
+border-bottom: 2px solid #7F7F7F;
 }
 
 #onpub-logo {
+width: 970px;
+margin: auto;
 font-size: 197%;
 font-weight: bold;
-margin-bottom: 0.25em;
+padding-top: .25em;
 }
 
 #onpub-menubar {
-font-size: 108%;
--moz-box-shadow: 0px 0px 5px #f0f0f0;
--webkit-box-shadow: 0px 0px 5px #f0f0f0;
-box-shadow: 0px 0px 5px #f0f0f0;
+margin-top: 2em;
+margin-bottom: 2em;
+}
+
+#onpub-page {
+width: 970px;
+margin: auto;
 }
 
 #onpub-body {
 color: #525861;
-background-color: #ffffff;
-border: 1px solid #D8D8DA;
+background-color: #FCFCFC;
+border: 2px solid #7F7F7F;
 padding-left: 1em;
 padding-right: 1em;
 padding-bottom: 1.5em;
--moz-box-shadow: 0px 0px 5px #f0f0f0;
--webkit-box-shadow: 0px 0px 5px #f0f0f0;
-box-shadow: 0px 0px 5px #f0f0f0;
--webkit-border-bottom-right-radius: 8px;
--webkit-border-bottom-left-radius: 8px;
--moz-border-radius-bottomright: 8px;
--moz-border-radius-bottomleft: 8px;
-border-bottom-right-radius: 8px;
-border-bottom-left-radius: 8px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
 }
 
 #onpub-footer {
-padding-top: 1em;
+margin-top: 3em;
+padding-top: 1.5em;
+padding-bottom: .5em;
+background-color: #FCFCFC;
+border-top: 2px solid #7F7F7F;
+}
+
+#onpub-footer-content {
+width: 970px;
+margin: auto;
 font-size: 93%;
-color: #575d66;
+color: #6F6F6F;
 }
 
 .yui3-loading #onpub-menubar {
@@ -99,15 +100,14 @@ padding: 0.25em;
 }
 
 div.onpub-section-nav {
-background-color: #eff0f0;
-color: #3F3F3F;
--webkit-border-bottom-left-radius: 8px;
--moz-border-radius-bottomleft: 8px;
-border-bottom-left-radius: 8px;
-}
-
-h1.onpub-section-nav {
-padding-left: 1em;
+background-color: #EFEFEF;
+color: #7A8087;
+-webkit-border-top-right-radius: 4px;
+-webkit-border-bottom-left-radius: 4px;
+-moz-border-radius-topright: 4px;
+-moz-border-radius-bottomleft: 4px;
+border-top-right-radius: 4px;
+border-bottom-left-radius: 4px;
 }
 
 ul.onpub-section-nav {
@@ -120,15 +120,31 @@ border-color: #EDEDED;
 }
 
 h1 {
-color: #fb9832;
+color: #FCFCFC;
+background-color: #0C7CCF;
+padding: .2em;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+font-weight: normal;
+}
+
+h1.onpub-section-nav {
+padding-left: 1em;
+background: none;
 }
 
 h2, h3 {
 margin-top: 0em;
 }
 
-h2, h3, h4, h5, h6, b, strong {
-color: #51565E;
+h2, h3, h4, h5, h6 {
+color: #5F5F5F;
+font-weight: normal;
+}
+
+b, strong {
+color: #5F5F5F;
 }
 
 h2.onpub-article-link {
@@ -145,22 +161,25 @@ background-color: #DEE5F8;
 
 p.onpub-article-info {
 font-size: 93%;
-color: #86919D;
+color: #7A8087;
 margin-bottom: 1.75em;
 }
 
 p.onpub-article-summary {
 font-size: 85%;
-color: #86919D;
+color: #7A8087;
 margin-bottom: 1.75em;
 }
 
 span.onpub-edit {
-font-size: 85%;
-color: #86919D;
-padding: 0.5em;
-background-color: #F7F8FD;
-border: 1px solid #DEE5F8;
+font-size: 93%;
+color: #7A8087;
+padding: 0.25em;
+padding-top: .75em;
+border: 2px solid #7F7F7F;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
 }
 
 .yui3-overlay-content .yui3-widget-bd {

@@ -144,7 +144,7 @@ switch ($onpub_index)
 </div>
 
 <div id="onpub-footer">
-<div style="width: 970px; margin: auto;">
+<div id="onpub-footer-content">
 <?php include $onpub_dir_root . $onpub_dir_frontend . 'ft.php'; ?>
 </div>
 </div>

@@ -34,7 +34,7 @@ class OnpubLogin
   public function display()
   {
     en('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">');
-    en('<html>');
+    en('<html style="background-color: #8F8F8F;">');
     en('<head>');
     en('<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">');
     en('<title>Onpub (on ' . $_SERVER['SERVER_NAME'] . ')</title>');
@@ -53,17 +53,16 @@ class OnpubLogin
     en('</head>');
     en('<body>');
 
-    en('<div id="onpub-page">');
+    en('<div id="onpub-page" style="margin-top: 2em;">');
+    en('<div id="onpub-body">');
+
+    en('<div style="text-align: center; margin-top: 1.5em; margin-bottom: 1.5em;"><a href="index.php"><img src="images/onpub.png" width="224" height="91" alt="Onpub" title="Onpub"></a></div>');
 
     en('<div class="yui3-g">');
 
-    //en('<div class="yui3-u-1-3">&nbsp;</div>');
-
     en('<div class="yui3-u-1">');
     en('<form id="onpub-form" action="index.php" method="post">');
-    en('<div style="width: 25%; margin-left: auto; margin-right: auto;">');
-
-    en('<p><a href="index.php"><img src="images/onpub.png" width="143" height="29" alt="Onpub" title="Onpub"></a></p>');
+    en('<div style="width: 22%; margin-left: auto; margin-right: auto; margin-bottom: 2em;">');
 
     if ($this->pdoDatabase === NULL) {
       en('<p><strong>Database</strong><br><input title="Database" type="text" maxlength="255" size="25" name="pdoDatabase" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');
@@ -111,8 +110,6 @@ class OnpubLogin
     en('</form>');
     en('</div>');
 
-    //en('<div class="yui3-u-1-3">&nbsp;</div>');
-
     en('</div>');
 
     if ($this->exception) {
@@ -158,6 +155,7 @@ class OnpubLogin
       en('</div>');
     }
 
+    en('</div>');
     en('</div>');
 
     en('</body>');
