@@ -77,7 +77,8 @@ class OnpubWidgetSections
     }
 
     if ($areSections) {
-      en('<strong>' . $this->heading . '</strong><br>');
+      en('<h3 class="onpub-field-header">' . $this->heading . '</h3>');
+      en('<p>');
 
       if ($this->multiple) {
         en('<small>' . $this->tooltip . '</small><br>');
@@ -119,15 +120,18 @@ class OnpubWidgetSections
       }
 
       if ($this->parentID === "") {
-        en('</select> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'folder_error.png" align="top" width="16" height="16" alt="Parent Section must belong to the same Website" title="Parent Section must belong to the same Website">', 1, 2);
+        en('</select> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'folder_error.png" align="top" width="16" height="16" alt="Parent Section must belong to the same Website" title="Parent Section must belong to the same Website">');
       }
       else {
-        en('</select>', 1, 2);
+        en('</select>');
       }
+
+      en('</p>');
     }
     else {
       if ($this->owebsite) {
-        en('<strong>' . $this->heading . '</strong><br>');
+        en('<h3 class="onpub-field-header">' . $this->heading . '</h3>');
+        en('<p>');
 
         en('<small>Hold Ctrl to select/deselect multiple Sections</small><br>');
         en('<select name="' . $this->fieldName . '" multiple="multiple" size="' . $this->size . '" id="' . $this->ID . '">');
@@ -150,7 +154,8 @@ class OnpubWidgetSections
           en('<option value="" selected="selected">None</option>');
         }
 
-        en('</select>', 1, 2);
+        en('</select>');
+        en('</p>');
       }
     }
   }

@@ -51,6 +51,8 @@ class OnpubWidgetPaginator
         $this->pages++;
       }
 
+      en('<p>');
+
       if ($currentPage > 1) {
         if ($this->orderBy && $this->order) {
           if ($this->keywords) {
@@ -481,7 +483,7 @@ class OnpubWidgetPaginator
         }
       }
 
-      br (2);
+      en('</p>');
     }
   }
 }

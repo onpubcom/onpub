@@ -109,8 +109,7 @@ class OnpubEditImage
     en('</div>');
 
     en('<div class="yui3-u-1-3">');
-    en('<strong>Modified</strong><br>'
-      . $this->oimage->getModified()->format('M j, Y g:i:s A'), 1, 2);
+    en('<h3 class="onpub-field-header">Modified</h3><p>' . $this->oimage->getModified()->format('M j, Y g:i:s A') . '</p>');
     en('</div>');
 
     en('<div class="yui3-u-1-3">');

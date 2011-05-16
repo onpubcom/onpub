@@ -19,9 +19,9 @@ class OnpubWidgetDateCreated
 
   public function display()
   {
-    en('<strong>Created</strong>', 1, 1);
-    en('Year: <input type="text" maxlength="4" size="4" name="createdYear" value="'
-      . $this->created['year'] . '">');
+    en('<h3 class="onpub-field-header">Created</h3>', 1);
+    en('<p>');
+    en('Year: <input type="text" maxlength="4" size="4" name="createdYear" value="' . $this->created['year'] . '">');
     en('Month:');
 
     en('<select name="createdMonth">');
@@ -158,6 +158,7 @@ class OnpubWidgetDateCreated
     }
 
     en('</select>');
+    en('</p>');
   }
 }
 ?>

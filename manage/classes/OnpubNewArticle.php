@@ -51,25 +51,23 @@ class OnpubNewArticle
     en('<div class="yui3-u-1-2">');
 
     if ($this->oarticle->title === NULL) {
-      en('<strong>Title</strong><br><input type="text" maxlength="255" size="40" name="title" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
+      en('<p><span class="onpub-field-header">Title</span> <input type="text" maxlength="255" size="40" name="title" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');
     }
     else {
-      en('<strong>Title</strong><br><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '">', 1, 2);
+      en('<p><span class="onpub-field-header">Title</span> <input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '"></p>');
     }
 
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
 
-    en('<strong>Author</strong><br><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($this->oauthor->displayAs) . '">', 1, 2);
+    en('<p><span class="onpub-field-header">Author</span> <input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($this->oauthor->displayAs) . '"></p>');
 
     en('</div>');
 
     en('</div>');
 
-    en('<strong>Content</strong>', 1, 1);
-
-    en('<textarea rows="25" cols="100" name="content">' . htmlentities($this->oarticle->content) . '</textarea>');
+    en('<p><textarea rows="25" cols="100" name="content">' . htmlentities($this->oarticle->content) . '</textarea></p>');
 
     if (file_exists('ckeditor/ckeditor_php5.php')) {
       include './ckeditor/ckeditor_php5.php';
@@ -97,17 +95,10 @@ class OnpubNewArticle
       }';
 
       $ck->replace('content', $config, $events);
-
-      br();
-    }
-    else {
-      br(2);
     }
 
     $widget = new OnpubWidgetDateCreated($this->oarticle->getCreated());
     $widget->display();
-
-    br(2);
 
     $widget = new OnpubWidgetSections();
     $widget->sectionIDs = $this->oarticle->sectionIDs;

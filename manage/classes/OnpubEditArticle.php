@@ -62,9 +62,7 @@ class OnpubEditArticle
     en('<form id="onpub-form" action="index.php" method="post">');
     en('<div>');
 
-    en('<strong>Content</strong><br>');
-
-    en('<textarea rows="25" cols="100" name="content">' . htmlentities($this->oarticle->content) . '</textarea>');
+    en('<p><textarea rows="25" cols="100" name="content">' . htmlentities($this->oarticle->content) . '</textarea></p>');
 
     if (file_exists('ckeditor/ckeditor_php5.php')) {
       include './ckeditor/ckeditor_php5.php';
@@ -92,24 +90,19 @@ class OnpubEditArticle
       }';
 
       $ck->replace('content', $config, $events);
-
-      br();
-    }
-    else {
-      br(2);
     }
 
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-2">');
 
-    en('<strong>Title</strong><br><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '">', 1, 2);
+    en('<p><span class="onpub-field-header">Title</span> <input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '"></p>');
 
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
 
-    en('<strong>Author</strong><br><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($author->displayAs) . '">', 1, 2);
+    en('<p><span class="onpub-field-header">Author</span> <input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($author->displayAs) . '"></p>');
 
     en('</div>');
 
@@ -124,11 +117,9 @@ class OnpubEditArticle
     $widget = new OnpubWidgetDateCreated($this->oarticle->getCreated());
     $widget->display();
 
-    br(2);
-
     $modified = $this->oarticle->getModified();
 
-    en('<strong>Modified</strong><br>' . $modified->format('M j, Y g:i:s A'), 1, 2);
+    en('<h3 class="onpub-field-header">Modified</h3><p>' . $modified->format('M j, Y g:i:s A') . '</p>');
 
     if ($this->oarticle->url) {
       $go = ' <strong><a href="' . $this->oarticle->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></strong>';
@@ -137,7 +128,7 @@ class OnpubEditArticle
       $go = '';
     }
 
-    en('<strong>Static Link</strong><br><small>Leave this field blank to make the frontend manage the link for this article (reccomended).</small><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '', 1, 2);
+    en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this article (reccomended).</small><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '</p>');
 
     en('<input type="submit" value="Save"> <input type="button" value="Delete" id="deleteArticle">');
 

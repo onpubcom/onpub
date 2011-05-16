@@ -65,22 +65,22 @@ class OnpubLogin
     en('<div style="width: 22%; margin-left: auto; margin-right: auto; margin-bottom: 2em;">');
 
     if ($this->pdoDatabase === NULL) {
-      en('<p><strong>Database</strong><br><input title="Database" type="text" maxlength="255" size="25" name="pdoDatabase" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');
+      en('<h3 class="onpub-field-header">Database</h3><p><input title="Database" type="text" maxlength="255" size="25" name="pdoDatabase" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');
     }
     else {
-      en('<p><strong>Database</strong><br><input title="Database" type="text" maxlength="255" size="25" name="pdoDatabase" value="'. htmlentities($this->pdoDatabase) . '"></p>');
+      en('<h3 class="onpub-field-header">Database</h3><p><input title="Database" type="text" maxlength="255" size="25" name="pdoDatabase" value="'. htmlentities($this->pdoDatabase) . '"></p>');
     }
 
     if (defined('ONPUBGUI_PDO_HOST')) {
       en('<input type="hidden" name="pdoHost" value="' . ONPUBGUI_PDO_HOST . '">');
     }
     else {
-      en('<p><strong>Host</strong><br><input title="Host" type="text" maxlength="255" size="25" name="pdoHost" value="' . htmlentities($this->pdoHost) . '"></p>');
+      en('<h3 class="onpub-field-header">Host</h3><p><input title="Host" type="text" maxlength="255" size="25" name="pdoHost" value="' . htmlentities($this->pdoHost) . '"></p>');
     }
 
-    en('<p><strong>Username</strong><br><input title="Username" type="text" maxlength="255" size="25" name="pdoUser" value="' . htmlentities($this->pdoUser) . '"></p>');
+    en('<h3 class="onpub-field-header">Username</h3><p><input title="Username" type="text" maxlength="255" size="25" name="pdoUser" value="' . htmlentities($this->pdoUser) . '"></p>');
 
-    en('<p><strong>Password</strong><br><input title="Password" type="password" maxlength="255" size="25" name="pdoPassword" value=""></p>');
+    en('<h3 class="onpub-field-header">Password</h3><p><input title="Password" type="password" maxlength="255" size="25" name="pdoPassword" value=""></p>');
 
     en('<p><input type="submit" value="Login"> <a href="http://onpub.com/index.php?s=8&a=118#login" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'help.png" align="top" alt="Help" title="Help"></a></p>');
 
@@ -124,6 +124,10 @@ class OnpubLogin
 
         case 1045: // Bad credentials.
           en('<h3><span class="onpub-error">Login error:</span> Invalid username and/or password.</h3>');
+          break;
+
+        case 1049: // Bad credentials.
+          en('<h3><span class="onpub-error">Login error:</span> Unknown database name.</h3>');
           break;
 
         case 2002: // Server is down

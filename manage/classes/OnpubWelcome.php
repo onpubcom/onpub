@@ -81,7 +81,7 @@ class OnpubWelcome
           en('</table>');
         }
 
-        en('<p><strong>Quick Links</strong></p>');
+        en('<h3>Quick Links</h3>');
         en('<ul>');
         en('<li><a href="index.php?onpub=NewArticle">New Article</a></li>');
         en('<li><a href="index.php?onpub=NewSection">New Section</a></li>');

@@ -114,7 +114,7 @@ class OnpubEditSection
       br (2);
     }
 
-    en('<strong>Static Link</strong><br><small>Leave this field blank to make the frontend manage the link for this section (reccomended).</small><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->osection->url) . '">' . $go, 1, 2);
+    en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this section (reccomended).</small><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->osection->url) . '">' . $go . '</p>');
 
     en('<div class="yui3-g">');
 
@@ -123,12 +123,12 @@ class OnpubEditSection
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
-    en('<strong>Modified</strong><br>' . $this->osection->getModified()->format('M j, Y g:i:s A'), 1, 2);
+    en('<h3 class="onpub-field-header">Modified</h3><p>' . $this->osection->getModified()->format('M j, Y g:i:s A') . '</p>');
     en('</div>');
 
     en('</div>');
 
-    en('<input type="submit" value="Save" id="selectAll"> <input type="button" value="Delete" id="deleteSection">');
+    en('<p><input type="submit" value="Save" id="selectAll"> <input type="button" value="Delete" id="deleteSection"></p>');
 
     en('<input type="hidden" name="onpub" value="EditSectionProcess">');
     en('<input type="hidden" name="sectionID" value="' . $this->osection->ID . '">');

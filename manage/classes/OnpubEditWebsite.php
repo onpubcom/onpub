@@ -106,7 +106,7 @@ class OnpubEditWebsite
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
-    en('<strong>Modified</strong><br>' . $this->owebsite->getModified()->format('M j, Y g:i:s A'), 1, 2);
+    en('<h3 class="onpub-field-header">Modified</h3><p>' . $this->owebsite->getModified()->format('M j, Y g:i:s A') . '</p>');
     en('</div>');
 
     en('</div>');

@@ -159,8 +159,6 @@ class OnpubEditArticles
       if (!$this->keywords) {
         $selector = new OnpubWidgetSelectSection($this->pdo, $this->sectionID);
         $selector->display();
-
-        br(2);
       }
 
       $widget = new OnpubWidgetPaginator($totalArticles, $this->orderBy, $this->order, $this->page, $this->keywords, $this->fullTextSearch, "sectionID", $this->sectionID, "EditArticles");
@@ -604,31 +602,29 @@ class OnpubEditArticles
     }
     else {
       if ($this->keywords) {
-        en('Your search did not yield any results. <a href="index.php?onpub=EditArticles">Display all articles</a>.');
+        en('<p>Your search did not yield any results. <a href="index.php?onpub=EditArticles">Display all articles</a>.</p>');
       }
       else {
         if ($this->sectionID) {
           $selector = new OnpubWidgetSelectSection($this->pdo, $this->sectionID);
           $selector->display();
 
-          br(2);
-
-          en('There are 0 articles in the selected section. <a href="index.php?onpub=EditArticles&amp;sectionID=">Display all articles</a>.');
+          en('<p>There are 0 articles in the selected section. <a href="index.php?onpub=EditArticles&amp;sectionID=">Display all articles</a>.</p>');
         }
         else {
-          en('There are 0 articles in the database. <a href="index.php?onpub=NewArticle">New Article</a>.');
+          en('<p>There are 0 articles in the database. <a href="index.php?onpub=NewArticle">New Article</a>.</p>');
         }
       }
     }
 
     if ($totalArticles) {
+      en('<p>');
       en('<select id="actions">');
       en('<option value="EditArticles">Select an action...</option>');
       en('<option value="DeleteArticle">Delete selected articles</option>');
       en('<option value="ArticleMove">Move selected articles</option>');
       en('</select>');
-
-      br(2);
+      en('</p>');
 
       $widget = new OnpubWidgetStats($totalArticles, $this->keywords, $this->sectionID, "Article", "Section");
       $widget->display();
