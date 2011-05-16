@@ -23,7 +23,8 @@ class OnpubWidgetWebsites
 
   function display()
   {
-    en('<strong>Website</strong>', 1, 1);
+    en('<h3 class="onpub-field-header">Website</h3>');
+    en('<p>');
 
     if (sizeof($this->websites)) {
       if (sizeof($this->websites) == 1) {
@@ -61,6 +62,8 @@ class OnpubWidgetWebsites
         en('There are 0 websites in the database. <a href="index.php?onpub=NewWebsite">New Website</a>.');
       }
     }
+
+    en('</p>');
   }
 }
 ?>

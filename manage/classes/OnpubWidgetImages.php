@@ -28,7 +28,8 @@ class OnpubWidgetImages
     $image = NULL;
 
     if (sizeof($this->images)) {
-      en('<strong>' . $this->heading . '</strong><br>');
+      en('<h3 class="onpub-field-header">' . $this->heading . '</h3>');
+      en('<p>');
 
       if ($this->imageID) {
         en('<select name="imageID" size="1">');
@@ -50,10 +51,10 @@ class OnpubWidgetImages
         if ($this->website && $image) {
           if ($this->website->imagesURL) {
             if (@fopen(addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName), 'r')) {
-              en('<div style="padding-top: 0.25em;"><a href="index.php?onpub=EditImage&amp;imageID=' . $image->ID . '"><img src="' . addTrailingSlash($this->website->imagesURL) . $image->fileName . '" alt="Edit" title="Edit" border="0"></a></div>', 1, 1);
+              en('<p><a href="index.php?onpub=EditImage&amp;imageID=' . $image->ID . '"><img src="' . addTrailingSlash($this->website->imagesURL) . $image->fileName . '" alt="Edit" title="Edit" border="0"></a></p>');
             }
             else {
-              en('<div style="padding-top: 0.25em;"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="' . addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName) . ' not found" title="' . addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName) . ' not found"> <span class="onpub-error">Make sure the Image Uploads URL of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $this->website->ID . '">' . $this->website->name . '</a> is setup correctly.</span></div>', 1, 1);
+              en('<p><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="' . addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName) . ' not found" title="' . addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName) . ' not found"> <span class="onpub-error">Make sure the Image Uploads URL of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $this->website->ID . '">' . $this->website->name . '</a> is setup correctly.</span></p>');
             }
           }
         }
@@ -67,8 +68,10 @@ class OnpubWidgetImages
           en('<option value="' . $this->images[$i]->ID . '">' . strip_tags($this->images[$i]->fileName) . '</option>');
         }
 
-        en('</select>', 1, 2);
+        en('</select>');
       }
+
+      en('</p>');
     }
   }
 }

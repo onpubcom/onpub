@@ -28,10 +28,10 @@ class OnpubNewWebsite
     en('<div>');
 
     if ($this->owebsite->name === NULL) {
-      en('<strong>Name</strong><br><input type="text" maxlength="255" size="' . 30 . '" name="name" value="' . htmlentities($this->owebsite->name) . '"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
+      en('<h3 class="onpub-field-header">Name</h3><p><input type="text" maxlength="255" size="' . 30 . '" name="name" value="' . htmlentities($this->owebsite->name) . '"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');
     }
     else {
-      en('<strong>Name</strong><br><input type="text" maxlength="255" size="' . 30 . '" name="name" value="">', 1, 2);
+      en('<h3 class="onpub-field-header">Name</h3><p><input type="text" maxlength="255" size="' . 30 . '" name="name" value=""></p>');
     }
 
     en('<input type="submit" value="Save">');

@@ -60,14 +60,14 @@ class OnpubEditSection
     en('<div>');
 
     if ($this->osection->name === NULL) {
-      en('<strong>Name</strong><br><input type="text" maxlength="255" size="75" name="name" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
+      en('<h3 class="onpub-field-header">Name</h3><p><input type="text" maxlength="255" size="75" name="name" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');
     }
     else {
-      en('<strong>Name</strong><br><input type="text" maxlength="255" size="75" name="name" value="' . htmlentities($this->osection->name) . '">', 1, 2);
+      en('<h3 class="onpub-field-header">Name</h3><p><input type="text" maxlength="255" size="75" name="name" value="' . htmlentities($this->osection->name) . '"></p>');
     }
 
     if ($this->osection->url) {
-      $go = ' <strong><a href="' . $this->osection->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></strong>';
+      $go = ' <h3 class="onpub-field-header"><a href="' . $this->osection->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></strong>';
     }
     else {
       $go = '';
@@ -93,15 +93,15 @@ class OnpubEditSection
     $widget->osection = $this->osection;
     $widget->display();
 
-    en('<strong>Website</strong><br><a href="index.php?onpub=EditWebsite&amp;websiteID=' . $website->ID . '" title="Edit">' . $website->name . '</a>', 1, 2);
+    en('<h3 class="onpub-field-header">Website</h3><p><a href="index.php?onpub=EditWebsite&amp;websiteID=' . $website->ID . '" title="Edit">' . $website->name . '</a></p>');
 
     if ($this->visible !== NULL) {
-      en('<strong>Visibility</strong>', 1, 1);
-      en('<input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">Uncheck to unlink this section from the frontend navigation menu</label>', 1, 2);
+      en('<h3 class="onpub-field-header">Visibility</h3>');
+      en('<p><input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">Uncheck to unlink this section from the frontend navigation menu</label></p>');
     }
     else {
-      en('<strong>Visibility</strong>', 1, 1);
-      en('<input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Check to link this section to the frontend navigation menu</label>', 1, 2);
+      en('<h3 class="onpub-field-header">Visibility</h3>');
+      en('<p><input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Check to link this section to the frontend navigation menu</label></p>');
     }
 
     if ($numOfArticles) {
@@ -109,9 +109,8 @@ class OnpubEditSection
       $widget->display();
     }
     else {
-      en('<strong>Articles</strong><br>');
-      en('There are 0 articles in the database. <a href="index.php?onpub=NewArticle">New Article</a>.');
-      br (2);
+      en('<h3 class="onpub-field-header">Articles</h3><p>');
+      en('There are 0 articles in the database. <a href="index.php?onpub=NewArticle">New Article</a>.</p>');
     }
 
     en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this section (reccomended).</small><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->osection->url) . '">' . $go . '</p>');
@@ -119,7 +118,7 @@ class OnpubEditSection
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-2">');
-    en('<strong>Created</strong><br>' . $this->osection->getCreated()->format('M j, Y g:i:s A'), 1, 2);
+    en('<h3 class="onpub-field-header">Created</h3><p>' . $this->osection->getCreated()->format('M j, Y g:i:s A') . '</p>');
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
@@ -128,7 +127,7 @@ class OnpubEditSection
 
     en('</div>');
 
-    en('<p><input type="submit" value="Save" id="selectAll"> <input type="button" value="Delete" id="deleteSection"></p>');
+    en('<input type="submit" value="Save" id="selectAll"> <input type="button" value="Delete" id="deleteSection">');
 
     en('<input type="hidden" name="onpub" value="EditSectionProcess">');
     en('<input type="hidden" name="sectionID" value="' . $this->osection->ID . '">');

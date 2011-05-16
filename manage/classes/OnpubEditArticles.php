@@ -179,27 +179,27 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=ASC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=ASC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
               }
               break;
@@ -208,27 +208,27 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=DESC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=DESC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
               }
               break;
@@ -237,41 +237,41 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=ASC">Created</a></span></td>');
                   break;
 
                   default:
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords=' . $this
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords=' . $this
                                   ->
                                     keywords . '&amp;fullTextSearch=' . $this
                                       ->
-                                        fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                                        fullTextSearch . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->fullTextSearch . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
                     . $this->keywords . '&amp;fullTextSearch='
-                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
+                    . $this->fullTextSearch . '&amp;orderBy=created&amp;order=ASC">Created</a></span></td>');
                   break;
               }
               break;
@@ -284,21 +284,21 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=ASC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=ASC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
               }
               break;
@@ -307,21 +307,21 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=title&amp;order=DESC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=title&amp;order=DESC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
               }
               break;
@@ -330,31 +330,31 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=ASC">Created</a></span></td>');
                   break;
 
                   default:
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords=' . $this
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords=' . $this
                                   ->
-                                    keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;keywords='
-                    . $this->keywords . '&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
+                                    keywords . '&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;keywords='
+                    . $this->keywords . '&amp;orderBy=created&amp;order=ASC">Created</a></span></td>');
                   break;
               }
               break;
@@ -371,21 +371,21 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Created</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Created</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Created</a></span></td>');
                   break;
               }
               break;
@@ -394,21 +394,21 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">ID</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">ID</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">ID</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">ID</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Created</a></span></td>');
                   break;
               }
               break;
@@ -417,30 +417,30 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID='
-                    . $this->sectionID . '">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID='
+                    . $this->sectionID . '">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">Created</a></span></td>');
                   break;
 
                   default:
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID=' . $this
-                                  ->sectionID . '">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=ASC&sectionID='
-                    . $this->sectionID . '">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC&sectionID=' . $this
+                                  ->sectionID . '">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=ASC&sectionID='
+                    . $this->sectionID . '">Created</a></span></td>');
                   break;
               }
               break;
@@ -453,15 +453,15 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=ASC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=ASC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
               }
               break;
@@ -470,15 +470,15 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=DESC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=DESC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
               }
               break;
@@ -487,21 +487,21 @@ class OnpubEditArticles
               switch ($this->order)
               {
                 case "ASC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=DESC">Created</a></span></td>');
                   break;
 
                 case "DESC":
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=ASC">Created</a></span></td>');
                   break;
 
                   default:
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></strong></td>');
-                  en('<td align="left"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></strong></td>');
-                  en('<td align="left" class="onpub-highlight2"><strong><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=ASC">Created</a></strong></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=ID&amp;order=DESC">ID</a></span></td>');
+                  en('<td align="left"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=title&amp;order=ASC">Title</a></span></td>');
+                  en('<td align="left" class="onpub-highlight2"><span class="onpub-field-header"><a href="index.php?onpub=EditArticles&amp;orderBy=created&amp;order=ASC">Created</a></span></td>');
                   break;
               }
               break;

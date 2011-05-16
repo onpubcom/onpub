@@ -44,10 +44,10 @@ class OnpubNewSection
     en('<div>');
 
     if ($this->osection->name === NULL) {
-      en('<strong>Name</strong><br><input type="text" maxlength="255" size="' . 30 . '" name="name" value="' . htmlentities($this->osection->name) . '"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field">', 1, 2);
+      en('<h3 class="onpub-field-header">Name</h3><p><input type="text" maxlength="255" size="' . 30 . '" name="name" value="' . htmlentities($this->osection->name) . '"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');
     }
     else {
-      en('<strong>Name</strong><br><input type="text" maxlength="255" size="' . 30 . '" name="name" value="' . htmlentities($this->osection->name) . '">', 1, 2);
+      en('<h3 class="onpub-field-header">Name</h3><p><input type="text" maxlength="255" size="' . 30 . '" name="name" value="' . htmlentities($this->osection->name) . '"></p>');
     }
 
     if ($this->osection->parentID) {
@@ -71,16 +71,14 @@ class OnpubNewSection
     $widget = new OnpubWidgetWebsites($this->osection->websiteID, $websites, "section");
     $widget->display();
 
-    br(2);
-
     if (sizeof($websites)) {
       if ($this->visible) {
-        en('<strong>Visibility</strong>', 1, 1);
-        en('<input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">Uncheck to unlink this section from the frontend navigation menu</label>', 1, 2);
+        en('<h3 class="onpub-field-header">Visibility</h3>');
+        en('<p><input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">Uncheck to unlink this section from the frontend navigation menu</label></p>');
       }
       else {
-        en('<strong>Visibility</strong>', 1, 1);
-        en('<input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Check to link this section to the frontend navigation menu</label>', 1, 2);
+        en('<h3 class="onpub-field-header">Visibility</h3>');
+        en('<p><input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Check to link this section to the frontend navigation menu</label></p>');
       }
     }
 

@@ -29,27 +29,27 @@ class OnpubWidgetStats
   {
     if ($this->keywords) {
       if ($this->totalArticles == 1) {
-        en('<p><span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . ' Found</span></p>');
+        en('<span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . ' Found</span>');
       }
       else {
-        en('<p><span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . 's Found</span></p>');
+        en('<span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . 's Found</span>');
       }
     }
     else {
       if ($this->id) {
         if ($this->totalArticles == 1) {
-          en('<p><span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . ' in ' . $this->listTypeParent . '</span></p>');
+          en('<span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . ' in ' . $this->listTypeParent . '</span>');
         }
         else {
-          en('<p><span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . 's in ' . $this->listTypeParent . '</span></p>');
+          en('<span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . 's in ' . $this->listTypeParent . '</span>');
         }
       }
       else {
         if ($this->totalArticles == 1) {
-          en('<p><span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . ' in Total</span></p>');
+          en('<span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . ' in Total</span>');
         }
         else {
-          en('<p><span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . 's in Total</span></p>');
+          en('<span class="onpub-field-header">' . $this->totalArticles . ' ' . $this->listType . 's in Total</span>');
         }
       }
     }

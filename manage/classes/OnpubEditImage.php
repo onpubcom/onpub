@@ -68,17 +68,16 @@ class OnpubEditImage
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-3">');
-    en('<strong>File Name</strong><br><input type="text" maxlength="255" size="' . 30 . '" name="fileName" value="' . htmlentities($this->oimage->fileName) . '">', 1, 2);
+    en('<h3 class="onpub-field-header">File Name</h3><p><input type="text" maxlength="255" size="' . 30 . '" name="fileName" value="' . htmlentities($this->oimage->fileName) . '"></p>');
     en('</div>');
 
     en('<div class="yui3-u-1-3">');
-    en('<strong>Description</strong><br><input type="text" maxlength="255" size="' . 30 . '" name="description" value="'
-      . htmlentities($this->oimage->description) . '">', 1, 2);
+    en('<h3 class="onpub-field-header">Description</h3><p><input type="text" maxlength="255" size="' . 30 . '" name="description" value="'
+      . htmlentities($this->oimage->description) . '"></p>');
     en('</div>');
 
     en('<div class="yui3-u-1-3">');
-    en('<strong>Website</strong><br><a href="index.php?onpub=EditWebsite&amp;websiteID='
-      . $website->ID . '" title="Edit">' . $website->name . '</a>', 1, 2);
+    en('<h3 class="onpub-field-header">Website</h3><p><a href="index.php?onpub=EditWebsite&amp;websiteID=' . $website->ID . '" title="Edit">' . $website->name . '</a></p>');
     en('</div>');
 
     en('</div>');
@@ -86,13 +85,13 @@ class OnpubEditImage
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-3">');
-    en('<strong>URL</strong><br><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a>', 1, 2);
+    en('<h3 class="onpub-field-header">URL</h3><p><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a></p>');
     en('</div>');
 
     en('<div class="yui3-u-1-3">');
 
     if ($fileExists) {
-      en('<strong>File Path</strong><br>' . addTrailingSlash($website->imagesDirectory) . $this->oimage->fileName . ' (on <i>' . $_SERVER['SERVER_NAME'] . '</i>)', 1, 2);
+      en('<h3 class="onpub-field-header">File Path</h3><p>' . addTrailingSlash($website->imagesDirectory) . $this->oimage->fileName . ' (on <i>' . $_SERVER['SERVER_NAME'] . '</i>)</p>');
     }
     en('</div>');
 
@@ -104,8 +103,7 @@ class OnpubEditImage
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-3">');
-    en('<strong>Created</strong><br>'
-      . $this->oimage->getCreated()->format('M j, Y g:i:s A'), 1, 2);
+    en('<h3 class="onpub-field-header">Created</h3><p>' . $this->oimage->getCreated()->format('M j, Y g:i:s A') . '</p>');
     en('</div>');
 
     en('<div class="yui3-u-1-3">');
@@ -121,46 +119,45 @@ class OnpubEditImage
       en('<div class="yui3-g">');
 
       en('<div class="yui3-u-1-3">');
-      en('<strong>Width</strong><br>');
-      en($imageWidth . 'px', 1, 2);
+      en('<h3 class="onpub-field-header">Width</h3><p>');
+      en($imageWidth . 'px</p>');
       en('</div>');
 
       en('<div class="yui3-u-1-3">');
-      en('<strong>Height</strong><br>');
-      en($imageHeight . 'px', 1, 2);
+      en('<h3 class="onpub-field-header">Height</h3><p>');
+      en($imageHeight . 'px</p>');
       en('</div>');
 
       en('<div class="yui3-u-1-3">');
-      en('<strong>File Size</strong><br>');
+      en('<h3 class="onpub-field-header">File Size</h3><p>');
 
       if ($imageFileSize >= 1024) {
-        en(round(($imageFileSize / 1024)) . ' KB (' . $imageFileSize . ' bytes)', 1, 2);
+        en(round(($imageFileSize / 1024)) . ' KB (' . $imageFileSize . ' bytes)</p>');
       }
       else {
-        en($imageFileSize . ' bytes', 1, 2);
+        en($imageFileSize . ' bytes</p>');
       }
       en('</div>');
 
       en('</div>');
     }
 
-    en('<input type="submit" value="Save"> <input type="button" value="Delete" id="deleteImage">', 1, 2);
+    en('<p><input type="submit" value="Save"> <input type="button" value="Delete" id="deleteImage"></p>');
 
     if (@fopen(addTrailingSlash($website->imagesURL) . rawurlencode($this->oimage->fileName), 'r')) {
       if ($imageWidth && $imageHeight) {
-        en('<a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank"><img src="'
+        en('<p><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank"><img src="'
           . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" width="' . $imageWidth . '" height="' . $imageHeight . '" alt="'
-          . $this->oimage->fileName . '" title="' . $this->oimage->fileName . '" border="0"></a>', 1, 2);
+          . $this->oimage->fileName . '" title="' . $this->oimage->fileName . '" border="0"></a></p>');
       }
       else {
-        en('<a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank"><img src="'
+        en('<p><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank"><img src="'
           . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" alt="' . $this->oimage->fileName . '" title="'
-          . $this->oimage->fileName . '" border="0"></a>', 1, 2);
+          . $this->oimage->fileName . '" border="0"></a></p>');
       }
     }
     else {
-      en('<img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="Image not found" title="Image not found"><br><span class="onpub-error">Make sure the Image Uploads URL of <a href="index.php?onpub=EditWebsite&amp;websiteID='
-        . $website->ID . '">' . $website->name . '</a> is setup correctly.</span>');
+      en('<p><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="Image not found" title="Image not found"><br><span class="onpub-error">Make sure the Image Uploads URL of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $website->ID . '">' . $website->name . '</a> is setup correctly.</span></p>');
     }
 
     en('<input type="hidden" name="onpub" value="EditImageProcess">');

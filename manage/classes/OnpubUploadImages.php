@@ -52,17 +52,17 @@ class OnpubUploadImages
     en('<div class="yui3-u-1-2">');
 
     if ($this->imageFiles === NULL) {
-      en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"><br><br>');
+      en('<h3 class="onpub-field-header">Image File</h3><p><input type="file" size="30" name="imageFiles[]"> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');
     }
     else {
-      en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]"><br><br>');
+      en('<h3 class="onpub-field-header">Image File</h3><p><input type="file" size="30" name="imageFiles[]"></p>');
     }
 
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
 
-    //en('<strong>Image File</strong><br><input type="file" size="30" name="imageFiles[]">', 1, 2);
+    //en('<h3 class="onpub-field-header">Image File</h3><p><input type="file" size="30" name="imageFiles[]"></p>');
 
     en('</div>');
 
@@ -70,8 +70,6 @@ class OnpubUploadImages
 
     $widget = new OnpubWidgetWebsites($this->websiteID, $websites, "image");
     $widget->display();
-
-    br (2);
 
     en('<input type="submit" value="Upload">');
 
