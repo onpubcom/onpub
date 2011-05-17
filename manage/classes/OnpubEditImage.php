@@ -83,21 +83,17 @@ class OnpubEditImage
     en('</div>');
 
     en('<div class="yui3-g">');
-
-    en('<div class="yui3-u-1-3">');
+    en('<div class="yui3-u-1">');
     en('<h3 class="onpub-field-header">URL</h3><p><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a></p>');
     en('</div>');
+    en('</div>');
 
-    en('<div class="yui3-u-1-3">');
-
+    en('<div class="yui3-g">');
+    en('<div class="yui3-u-1">');
     if ($fileExists) {
       en('<h3 class="onpub-field-header">File Path</h3><p>' . addTrailingSlash($website->imagesDirectory) . $this->oimage->fileName . ' (on <i>' . $_SERVER['SERVER_NAME'] . '</i>)</p>');
     }
     en('</div>');
-
-    en('<div class="yui3-u-1-3">');
-    en('</div>');
-
     en('</div>');
 
     en('<div class="yui3-g">');
