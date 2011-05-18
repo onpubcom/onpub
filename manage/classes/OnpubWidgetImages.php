@@ -29,9 +29,9 @@ class OnpubWidgetImages
 
     if (sizeof($this->images)) {
       en('<h3 class="onpub-field-header">' . $this->heading . '</h3>');
-      en('<p>');
 
       if ($this->imageID) {
+        en('<p>');
         en('<select name="imageID" size="1">');
 
         en('<option value="">None</option>');
@@ -47,6 +47,7 @@ class OnpubWidgetImages
         }
 
         en('</select>');
+        en('</p>');
 
         if ($this->website && $image) {
           if ($this->website->imagesURL) {
@@ -60,6 +61,7 @@ class OnpubWidgetImages
         }
       }
       else {
+        en('<p>');
         en('<select name="imageID" size="1">');
 
         en('<option value="">None</option>');
@@ -69,9 +71,8 @@ class OnpubWidgetImages
         }
 
         en('</select>');
+        en('</p>');
       }
-
-      en('</p>');
     }
   }
 }

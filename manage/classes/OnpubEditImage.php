@@ -82,35 +82,6 @@ class OnpubEditImage
 
     en('</div>');
 
-    en('<div class="yui3-g">');
-    en('<div class="yui3-u-1">');
-    en('<h3 class="onpub-field-header">URL</h3><p><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a></p>');
-    en('</div>');
-    en('</div>');
-
-    en('<div class="yui3-g">');
-    en('<div class="yui3-u-1">');
-    if ($fileExists) {
-      en('<h3 class="onpub-field-header">File Path</h3><p>' . addTrailingSlash($website->imagesDirectory) . $this->oimage->fileName . ' (on <i>' . $_SERVER['SERVER_NAME'] . '</i>)</p>');
-    }
-    en('</div>');
-    en('</div>');
-
-    en('<div class="yui3-g">');
-
-    en('<div class="yui3-u-1-3">');
-    en('<h3 class="onpub-field-header">Created</h3><p>' . $this->oimage->getCreated()->format('M j, Y g:i:s A') . '</p>');
-    en('</div>');
-
-    en('<div class="yui3-u-1-3">');
-    en('<h3 class="onpub-field-header">Modified</h3><p>' . $this->oimage->getModified()->format('M j, Y g:i:s A') . '</p>');
-    en('</div>');
-
-    en('<div class="yui3-u-1-3">');
-    en('</div>');
-
-    en('</div>');
-
     if ($fileExists) {
       en('<div class="yui3-g">');
 
@@ -137,6 +108,35 @@ class OnpubEditImage
 
       en('</div>');
     }
+
+    en('<div class="yui3-g">');
+    en('<div class="yui3-u-1">');
+    en('<h3 class="onpub-field-header">URL</h3><p><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a></p>');
+    en('</div>');
+    en('</div>');
+
+    if ($fileExists) {
+      en('<div class="yui3-g">');
+      en('<div class="yui3-u-1">');
+      en('<h3 class="onpub-field-header">File Path</h3><p>' . addTrailingSlash($website->imagesDirectory) . $this->oimage->fileName . ' (on <i>' . $_SERVER['SERVER_NAME'] . '</i>)</p>');
+      en('</div>');
+      en('</div>');
+    }
+
+    en('<div class="yui3-g">');
+
+    en('<div class="yui3-u-1-3">');
+    en('<h3 class="onpub-field-header">Created</h3><p>' . $this->oimage->getCreated()->format('M j, Y g:i:s A') . '</p>');
+    en('</div>');
+
+    en('<div class="yui3-u-1-3">');
+    en('<h3 class="onpub-field-header">Modified</h3><p>' . $this->oimage->getModified()->format('M j, Y g:i:s A') . '</p>');
+    en('</div>');
+
+    en('<div class="yui3-u-1-3">');
+    en('</div>');
+
+    en('</div>');
 
     en('<p><input type="submit" value="Save"> <input type="button" value="Delete" id="deleteImage"></p>');
 

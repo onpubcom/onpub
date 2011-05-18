@@ -45,7 +45,7 @@ class OnpubDeleteArticles
     en('<div>');
 
     if (sizeof($articles)) {
-      en('<strong>Selected Articles</strong>');
+      en('<h3>Selected Articles</h3>');
       en('<ul>');
 
       for ($i = 0; $i < sizeof($articles); $i++) {

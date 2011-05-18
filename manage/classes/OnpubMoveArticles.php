@@ -55,9 +55,7 @@ class OnpubMoveArticles
     en('<div>');
 
     if (sizeof($articles)) {
-      en('<p>Select the section(s) below to move the selected articles to. Click Move to apply the change.</p>');
-
-      en('<strong>Selected Articles</strong>');
+      en('<h3>Selected Articles</h3>');
       en('<ul>');
 
       for ($i = 0; $i < sizeof($articles); $i++) {

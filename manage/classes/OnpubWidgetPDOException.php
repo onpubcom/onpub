@@ -28,39 +28,23 @@ class OnpubWidgetPDOException
       $widget->display();
     }
 
-    en('<strong>Error Message</strong><br><span class="onpub-error">'
-      . $this->exception->getMessage() . '</span>', 1, 2);
+    en('<h3 class="onpub-field-header">Error Message</h3><p class="onpub-error">' . $this->exception->getMessage() . '</p>');
 
-    en('<strong>Error Code</strong><br>' . $this->exception->getCode(), 1, 2);
+    en('<h3 class="onpub-field-header">Error Code</h3><p>' . $this->exception->getCode() . '</p>');
 
     $sqlstate = $this->exception->errorInfo[0];
 
-    en('<strong>SQLSTATE Code</strong><br>' . $sqlstate, 1, 2);
+    en('<h3 class="onpub-field-header">SQLSTATE Code</h3><p>' . $sqlstate . '</p>');
 
-    en('<strong>Trace 0</strong><br>File: ' . $this->exception->getFile() . '<br>Line: ' . $this->exception->getLine(), 1, 2);
+    en('<h3 class="onpub-field-header">Trace 0</h3><p>File: ' . $this->exception->getFile() . 'Line: ' . $this->exception->getLine() . '</p>');
 
     $trace = $this->exception->getTrace();
 
     for ($i = 0; $i < sizeof($trace); $i++) {
-      en('<strong>Trace ' . ($i + 1) . '</strong><br>');
-      en('File: ' . $trace[$i]['file'] . '<br>');
-      en('Line: ' . $trace[$i]['line'] . '<br>');
-
-      en('Method: ' . $trace[$i]['class'] . $trace[$i]['type'] . $trace[$i]['function'] . '(');
-      /*
-      if ( isset( $trace[$i]['args'] ) ) {
-          $args = $trace[$i]['args'];
-
-          for ( $j = 0; $j < sizeof( $args ); $j++ ) {
-              echo $args[$j];
-
-              if ( $j + 1 != sizeof( $args ) ) {
-                  en( ', ' );
-              }
-          }
-      }
-*/
-      en(')', 1, 2);
+      en('<h3 class="onpub-field-header">Trace ' . ($i + 1) . '</h3>', 0);
+      en('<p>File: ' . $trace[$i]['file'], 0);
+      en(' Line: ' . $trace[$i]['line'], 0);
+      en(' Method: ' . $trace[$i]['class'] . $trace[$i]['type'] . $trace[$i]['function'] . '()</p>');
     }
 
     if ($this->footer) {

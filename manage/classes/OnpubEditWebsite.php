@@ -53,8 +53,11 @@ class OnpubEditWebsite
     en('<form id="onpub-form" action="index.php" method="post" enctype="multipart/form-data">');
     en('<div>');
 
-    en('<h3 class="onpub-field-header">Name</h3><p><input type="text" maxlength="255" size="75" name="name" value="' . htmlentities($this->owebsite->name) . '"></p>');
-
+    en('<div class="yui3-g">');
+    en('<div class="yui3-u-1-2">');
+    en('<h3 class="onpub-field-header">Name</h3><p><input type="text" maxlength="255" size="40" name="name" value="' . htmlentities($this->owebsite->name) . '"></p>');
+    en('</div>');
+    en('<div class="yui3-u-1-2">');
     $message = "";
 
     if ($this->owebsite->url) {
@@ -64,7 +67,9 @@ class OnpubEditWebsite
       $go = '';
     }
 
-    en('<h3 class="onpub-field-header">URL</h3><p>' . $message . '<input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->owebsite->url) . '">' . $go . '</p>');
+    en('<h3 class="onpub-field-header">URL</h3><p>' . $message . '<input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->owebsite->url) . '">' . $go . '</p>');
+    en('</div>');
+    en('</div>');
 
     $message = "";
 
@@ -79,7 +84,11 @@ class OnpubEditWebsite
       }
     }
 
-    en('<h3 class="onpub-field-header">Image Uploads Directory</h3><p><small>Images uploaded to this website will be saved to this directory on <i>' . $_SERVER['SERVER_NAME'] . '</i></small><br><input type="text" maxlength="255" size="75" name="imagesDirectory" value="' . htmlentities($this->owebsite->imagesDirectory) . '"> ' . $message . '</p>');
+    en('<div class="yui3-g">');
+    en('<div class="yui3-u-1-2">');
+    en('<h3 class="onpub-field-header">Image Uploads Directory</h3><p><small>Images uploaded to this website will be saved to this directory on <i>' . $_SERVER['SERVER_NAME'] . '</i></small><br><input type="text" maxlength="255" size="40" name="imagesDirectory" value="' . htmlentities($this->owebsite->imagesDirectory) . '"> ' . $message . '</p>');
+    en('</div>');
+    en('<div class="yui3-u-1-2">');
 
     $message = "";
 
@@ -97,7 +106,37 @@ class OnpubEditWebsite
       $go = '';
     }
 
-    en('<h3 class="onpub-field-header">Image Uploads URL</h3><p>' . $message . '<br><input type="text" maxlength="255" size="75" name="imagesURL" value="' . htmlentities($this->owebsite->imagesURL) . '">' . $go . '</p>');
+    en('<h3 class="onpub-field-header">Image Uploads URL</h3><p>' . $message . '<br><input type="text" maxlength="255" size="40" name="imagesURL" value="' . htmlentities($this->owebsite->imagesURL) . '">' . $go . '</p>');
+    en('</div>');
+    en('</div>');
+
+    $widget = new OnpubWidgetImages("Logo Image", $this->owebsite->imageID, $images, $this->owebsite);
+    $widget->display();
+
+    if ($totalSections) {
+      en('<div class="yui3-g">');
+      en('<div class="yui3-u-1-2">');
+      $widget = new OnpubWidgetSections();
+      $widget->websites = $websites;
+      $widget->osections = $osections;
+      $widget->heading = "All Sections";
+      $widget->fieldName = "existingSections";
+      $widget->ID = "existing";
+      $widget->display();
+      en('<p><input type="button" value="Add &raquo;" id="add"></p>');
+      en('</div>');
+      en('<div class="yui3-u-1-2">');
+      $widget = new OnpubWidgetSections();
+      $widget->sectionIDs = $this->sectionIDs;
+      $widget->websites = $websites;
+      $widget->osections = $osections;
+      $widget->heading = "Visible Sections";
+      $widget->owebsite = $this->owebsite;
+      $widget->display();
+      en('<p><input type="button" value="Move Up" id="moveUp"> <input type="button" value="Move Down" id="moveDown"> <input type="button" value="Remove" id="remove"></p>');
+      en('</div>');
+      en('</div>');
+    }
 
     en('<div class="yui3-g">');
 
@@ -110,31 +149,6 @@ class OnpubEditWebsite
     en('</div>');
 
     en('</div>');
-
-    $widget = new OnpubWidgetImages("Logo Image", $this->owebsite->imageID, $images, $this->owebsite);
-    $widget->display();
-
-    if ($totalSections) {
-      $widget = new OnpubWidgetSections();
-      $widget->websites = $websites;
-      $widget->osections = $osections;
-      $widget->heading = "All Sections";
-      $widget->fieldName = "existingSections";
-      $widget->ID = "existing";
-      $widget->display();
-
-      en('<input type="button" value="Add" id="add"></p>');
-
-      $widget = new OnpubWidgetSections();
-      $widget->sectionIDs = $this->sectionIDs;
-      $widget->websites = $websites;
-      $widget->osections = $osections;
-      $widget->heading = "Visible Sections";
-      $widget->owebsite = $this->owebsite;
-      $widget->display();
-
-      en('<input type="button" value="Move Up" id="moveUp"> <input type="button" value="Move Down" id="moveDown"> <input type="button" value="Remove" id="remove"></p>');
-    }
 
     en('<input type="submit" value="Save" id="selectAll"> <input type="button" value="Delete" id="deleteWebsite">');
 
