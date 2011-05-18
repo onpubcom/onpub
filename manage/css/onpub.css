@@ -38,7 +38,7 @@ border-bottom: 2px solid #7F7F7F;
 width: 970px;
 margin: auto;
 font-size: 197%;
-font-weight: bold;
+font-weight: normal;
 padding-top: .25em;
 }
 
@@ -139,6 +139,7 @@ padding: .2em;
 -moz-border-radius: 3px;
 border-radius: 3px;
 font-weight: normal;
+margin-right: .75em;
 }
 
 h1.onpub-section-nav {
@@ -216,5 +217,5 @@ color: #525861;
 -moz-border-radius-bottomleft: 3px;
 border-bottom-right-radius: 3px;
 border-bottom-left-radius: 3px;
-margin-top: 3px;
+margin-top: 2px;
 }

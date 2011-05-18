@@ -21,7 +21,7 @@ if ($onpub_website) {
         en($onpub_article->content);
       }
       else {
-        en('<h1><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h1>');
+        en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
       }
     }
 
@@ -38,7 +38,7 @@ if ($onpub_website) {
     $articles = $onpub_articles->select($qo);
 
     if (sizeof($articles) > 1) {
-      en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/rss.png" width="12" height="12" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
+      en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
 
       foreach ($articles as $a) {
         if ($a->ID != $onpub_disp_article) {
@@ -98,7 +98,7 @@ if ($onpub_website) {
         en($onpub_article->content);
       }
       else {
-        en('<h1><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h1>');
+        en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
       }
     }
   }
@@ -120,7 +120,7 @@ if ($onpub_website) {
   }
 }
 else {
-  en('<h1>Welcome to Onpub</h1>');
+  en('<h1 style="margin-right: 0;">Welcome to Onpub</h1>');
 
   if ($onpub_pdo_exception) {
     en('<h3><span class="onpub-error">PDOException:</span> ' . $onpub_pdo_exception->getMessage() . '</h3>');

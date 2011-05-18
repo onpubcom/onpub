@@ -134,10 +134,10 @@ class OnpubWidgetHeader
     en('<div class="yui3-u-1">');
 
     if ($this->title) {
-      en('<h1>' . $this->title . '</h1>');
+      en('<h1 style="margin-right: 0;">' . $this->title . '</h1>');
     }
     else {
-      en('<h1>Onpub (on ' . $_SERVER['SERVER_NAME'] . ')</h1>');
+      en('<h1 style="margin-right: 0;">Onpub (on ' . $_SERVER['SERVER_NAME'] . ')</h1>');
     }
   }
 }

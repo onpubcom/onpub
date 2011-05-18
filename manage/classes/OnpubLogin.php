@@ -62,10 +62,10 @@ class OnpubLogin
 
     en('<div class="yui3-u-1">');
     en('<form id="onpub-form" action="index.php" method="post">');
-    en('<div style="width: 22%; margin-left: auto; margin-right: auto; margin-bottom: 2em;">');
+    en('<div style="width: 20%; margin-left: auto; margin-right: auto; margin-bottom: 2em;">');
 
     if ($this->pdoDatabase === NULL) {
-      en('<h3 class="onpub-field-header">Database</h3><p><input title="Database" type="text" maxlength="255" size="25" name="pdoDatabase" value=""> <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></p>');
+      en('<h3 class="onpub-field-header">Database <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></h3><p><input title="Database" type="text" maxlength="255" size="25" name="pdoDatabase" value=""></p>');
     }
     else {
       en('<h3 class="onpub-field-header">Database</h3><p><input title="Database" type="text" maxlength="255" size="25" name="pdoDatabase" value="'. htmlentities($this->pdoDatabase) . '"></p>');
