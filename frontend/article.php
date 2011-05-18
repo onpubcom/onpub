@@ -13,7 +13,7 @@ en('<div class="yui3-g">');
 en('<div class="yui3-u-1">');
 
 if ($onpub_article) {
-  en('<h1>' . $onpub_article->title . '</h1>');
+  en('<h1 style="margin-right: 0;">' . $onpub_article->title . '</h1>');
 
   en('<div class="yui3-g">');
   en('<div class="yui3-u-2-3">');

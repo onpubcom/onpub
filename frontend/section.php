@@ -22,11 +22,11 @@ if ($onpub_section) {
 
   if ($subsections) {
     en('<div class="yui3-u-3-4">');
-    en('<h1 style="margin-right: 1em;">' . $onpub_section->name . '</h1>');
+    en('<h1>' . $onpub_section->name . '</h1>');
   }
   else {
     en('<div class="yui3-u-1">');
-    en('<h1 style="margin-right: 1em;">' . $onpub_section->name . '</h1>');
+    en('<h1>' . $onpub_section->name . '</h1>');
   }
 
   $qo = new OnpubQueryOptions();

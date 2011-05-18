@@ -13,7 +13,7 @@ if ($onpub_section && $onpub_article) {
   en('<div class="yui3-g">');
   en('<div class="yui3-u-3-4">');
 
-  en('<h1 style="margin-right: 1em;">' . $onpub_article->title . '</h1>');
+  en('<h1>' . $onpub_article->title . '</h1>');
 
   en('<div class="yui3-g">');
   en('<div class="yui3-u-2-3">');
