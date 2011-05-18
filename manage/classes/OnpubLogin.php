@@ -56,7 +56,7 @@ class OnpubLogin
     en('<div id="onpub-page" style="margin-top: 2em;">');
     en('<div id="onpub-body">');
 
-    en('<div style="text-align: center; margin-top: 1.5em; margin-bottom: 1.5em;"><a href="index.php"><img src="images/onpub.png" width="224" height="91" alt="Onpub" title="Onpub"></a></div>');
+    en('<div style="text-align: center; margin-top: 1.5em; margin-bottom: 1.5em;"><a href="index.php"><img src="images/onpub.png" width="222" height="89" alt="Onpub" title="Onpub"></a></div>');
 
     en('<div class="yui3-g">');
 
