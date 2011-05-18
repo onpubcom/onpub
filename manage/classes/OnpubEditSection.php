@@ -52,8 +52,7 @@ class OnpubEditSection
       throw $e;
     }
 
-    $widget = new OnpubWidgetHeader("Section " . $this->osection->ID . " - "
-      . $this->osection->name);
+    $widget = new OnpubWidgetHeader("Section " . $this->osection->ID . " - " . $this->osection->name);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post">');
@@ -67,7 +66,7 @@ class OnpubEditSection
     }
 
     if ($this->osection->url) {
-      $go = ' <h3 class="onpub-field-header"><a href="' . $this->osection->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></strong>';
+      $go = ' <a href="' . $this->osection->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a>';
     }
     else {
       $go = '';

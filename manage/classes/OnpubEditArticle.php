@@ -122,7 +122,7 @@ class OnpubEditArticle
     en('<h3 class="onpub-field-header">Modified</h3><p>' . $modified->format('M j, Y g:i:s A') . '</p>');
 
     if ($this->oarticle->url) {
-      $go = ' <strong><a href="' . $this->oarticle->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a></strong>';
+      $go = ' <a href="' . $this->oarticle->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a>';
     }
     else {
       $go = '';
