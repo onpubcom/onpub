@@ -110,9 +110,6 @@ class OnpubEditWebsite
     en('</div>');
     en('</div>');
 
-    $widget = new OnpubWidgetImages("Logo Image", $this->owebsite->imageID, $images, $this->owebsite);
-    $widget->display();
-
     if ($totalSections) {
       en('<div class="yui3-g">');
       en('<div class="yui3-u-1-2">');
@@ -123,7 +120,7 @@ class OnpubEditWebsite
       $widget->fieldName = "existingSections";
       $widget->ID = "existing";
       $widget->display();
-      en('<p><input type="button" value="Add &raquo;" id="add"></p>');
+      en('<p><input type="button" value="Show &raquo;" id="add"></p>');
       en('</div>');
       en('<div class="yui3-u-1-2">');
       $widget = new OnpubWidgetSections();
@@ -132,11 +129,15 @@ class OnpubEditWebsite
       $widget->osections = $osections;
       $widget->heading = "Visible Sections";
       $widget->owebsite = $this->owebsite;
+      $widget->tooltip = 'These sections are displayed by the frontend navigation menu in the same order as listed below';
       $widget->display();
-      en('<p><input type="button" value="Move Up" id="moveUp"> <input type="button" value="Move Down" id="moveDown"> <input type="button" value="Remove" id="remove"></p>');
+      en('<p><input type="button" value="Move Up" id="moveUp"> <input type="button" value="Move Down" id="moveDown"> <input type="button" value="Hide" id="hide"></p>');
       en('</div>');
       en('</div>');
     }
+
+    $widget = new OnpubWidgetImages("Logo Image", $this->owebsite->imageID, $images, $this->owebsite);
+    $widget->display();
 
     en('<div class="yui3-g">');
 

@@ -128,7 +128,7 @@ class OnpubEditArticle
       $go = '';
     }
 
-    en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this article (reccomended).</small><br><input type="text" maxlength="255" size="75" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '</p>');
+    en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this article (recommended).</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '</p>');
 
     en('<input type="submit" value="Save"> <input type="button" value="Delete" id="deleteArticle">');
 

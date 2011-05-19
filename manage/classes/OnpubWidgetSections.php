@@ -40,7 +40,7 @@ class OnpubWidgetSections
     $this->sectionsMap = array ();
     $this->websitesMap = array ();
     $this->ID = "sections";
-    $this->tooltip = "Hold Ctrl to select/deselect multiple Sections";
+    $this->tooltip = "Hold Ctrl to select/deselect multiple sections";
   }
 
   function display()
@@ -133,7 +133,7 @@ class OnpubWidgetSections
         en('<h3 class="onpub-field-header">' . $this->heading . '</h3>');
         en('<p>');
 
-        en('<small>Hold Ctrl to select/deselect multiple Sections</small><br>');
+        en('<small>' . $this->tooltip . '</small><br>');
         en('<select name="' . $this->fieldName . '" multiple="multiple" size="' . $this->size . '" id="' . $this->ID . '">');
 
         $sections = $this->owebsite->sections;

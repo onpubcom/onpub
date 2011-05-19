@@ -62,7 +62,7 @@ YUI(
     var option;
 
     if (index == -1) {
-      alert('Select an item to remove');
+      alert('Select an item to hide');
       return;
     }
 
@@ -326,7 +326,7 @@ YUI(
   if (Y.one("#articles")) {
     Y.on("click", moveUp, "#moveUp", null, Y.one("#articles"));
     Y.on("click", moveDown, "#moveDown", null, Y.one("#articles"));
-    Y.on("click", remove, "#remove", null, Y.one("#articles"));
+    Y.on("click", remove, "#hide", null, Y.one("#articles"));
     Y.on("click", sortByDate, "#sortByDate", null, Y.one("#articles"));
     Y.on("click", selectAll, "#selectAll", null, Y.one("#articles"));
   }
@@ -335,7 +335,7 @@ YUI(
     Y.on("click", add, "#add", null, Y.all("#existing option"), Y.one("#sections"));
     Y.on("click", moveUp, "#moveUp", null, Y.one("#sections"));
     Y.on("click", moveDown, "#moveDown", null, Y.one("#sections"));
-    Y.on("click", remove, "#remove", null, Y.one("#sections"));
+    Y.on("click", remove, "#hide", null, Y.one("#sections"));
     Y.on("click", selectAll, "#selectAll", null, Y.one("#sections"));
   }
 

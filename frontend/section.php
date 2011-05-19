@@ -29,6 +29,16 @@ if ($onpub_section) {
     en('<h1>' . $onpub_section->name . '</h1>');
   }
 
+  /* Code for displaying section image
+  if ($onpub_section->imageID) {
+    if (($section_image = $onpub_images->get($onpub_section->imageID))) {
+      if ($onpub_website->ID == $section_image->websiteID) {
+        en('<img src="' . addTrailingSlash($onpub_website->imagesURL) . $section_image->fileName . '" align="right" alt="' . $section_image->fileName . '" title="' . $section_image->description . '">');
+      }
+    }
+  }
+  */
+
   $qo = new OnpubQueryOptions();
   $qo->includeContent = true;
 
@@ -113,7 +123,7 @@ if ($onpub_section) {
         en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $onpub_section_parent->ID . '" class="onpub-section-nav">' . $onpub_section_parent->name . '</a></h1>');
       }
 
-      $articles = $onpub_articles->select(null, $onpub_section_parent->ID);                                                   
+      $articles = $onpub_articles->select(null, $onpub_section_parent->ID);
 
       en('<ul class="onpub-section-nav">');
 

@@ -25,9 +25,9 @@ class OnpubWidgetArticles
     $oarticles = new OnpubArticles($this->pdo);
     $articles = array();
 
-    en('<h3 class="onpub-field-header">Articles</h3>');
+    en('<h3 class="onpub-field-header">Visible Articles</h3>');
     en('<p>');
-    en('<small>Use the buttons below to edit/re-order the articles displayed in this section</small>', 1, 1);
+    en('<small>These articles are displayed by the frontend navigation menu in the same order as listed below</small>', 1, 1);
 
     en('<select name="articleIDs[]" size="10" multiple="multiple" id="articles">');
 
@@ -50,7 +50,7 @@ class OnpubWidgetArticles
     en('</select>');
     en('</p>');
 
-    en('<p><input type="button" value="Move Up" id="moveUp"> <input type="button" value="Move Down" id="moveDown"> <input type="button" value="Sort By Date" id="sortByDate"> <input type="button" value="Remove" id="remove"></p>');
+    en('<p><input type="button" value="Move Up" id="moveUp"> <input type="button" value="Move Down" id="moveDown"> <input type="button" value="Sort By Date" id="sortByDate"> <input type="button" value="Hide" id="hide"></p>');
 
     // Output articles as JS objects to enable sorting articles list.
     en('<script type="text/javascript">');

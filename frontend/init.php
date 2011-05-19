@@ -35,6 +35,7 @@ if ($onpub_pdo) {
   $onpub_sections = new OnpubSections($onpub_pdo);
   $onpub_articles = new OnpubArticles($onpub_pdo);
   $onpub_samaps = new OnpubSAMaps($onpub_pdo);
+  $onpub_images = new OnpubImages($onpub_pdo);
 
   $qo = new OnpubQueryOptions();
   $qo->includeSections = true;
@@ -63,14 +64,14 @@ if ($onpub_schema_installed) {
       en('<span style="color: red;">sectionID must be an integer.</span>');
       exit;
     }
-  
+
     $onpub_index = 'section';
     $onpub_section_id = $_GET['sectionID'];
-  
+
     $onpub_section = $onpub_sections->get($onpub_section_id);
-  
+
     $onpub_section_parent = null;
-  
+
     if ($onpub_section && $onpub_section->parentID) {
       $onpub_section_parent = $onpub_sections->get($onpub_section->parentID);
     }
@@ -80,10 +81,10 @@ if ($onpub_schema_installed) {
       en('<span style="color: red;">articleID must be an integer.</span>');
       exit;
     }
-  
+
     $onpub_index = 'article';
     $onpub_article_id = $_GET['articleID'];
-  
+
     $qo = new OnpubQueryOptions();
     $qo->includeAuthors = true;
     $onpub_article = $onpub_articles->get($onpub_article_id, $qo);
@@ -93,24 +94,24 @@ if ($onpub_schema_installed) {
       en('<span style="color: red;">sectionID must be an integer.</span>');
       exit;
     }
-  
+
     if (!ctype_digit($_GET['articleID'])) {
       en('<span style="color: red;">articleID must be an integer.</span>');
       exit;
     }
-  
+
     $onpub_index = 'section-article';
     $onpub_section_id = $_GET['sectionID'];
     $onpub_article_id = $_GET['articleID'];
-  
+
     $onpub_section = $onpub_sections->get($onpub_section_id);
-  
+
     $onpub_section_parent = null;
-  
+
     if ($onpub_section && $onpub_section->parentID) {
       $onpub_section_parent = $onpub_sections->get($onpub_section->parentID);
     }
-  
+
     $qo = new OnpubQueryOptions();
     $qo->includeAuthors = true;
     $onpub_article = $onpub_articles->get($onpub_article_id, $qo);
@@ -118,21 +119,21 @@ if ($onpub_schema_installed) {
   elseif (isset($_GET['rss'])) {
     $onpub_index = 'rss';
   }
-  
+
   // Check for new short/optimized GET query params..
   if (isset($_GET['s']) && !isset($_GET['a'])) {
     if (!ctype_digit($_GET['s'])) {
       en('<span style="color: red;">s must be an integer.</span>');
       exit;
     }
-  
+
     $onpub_index = 'section';
     $onpub_section_id = $_GET['s'];
-  
+
     $onpub_section = $onpub_sections->get($onpub_section_id);
-  
+
     $onpub_section_parent = null;
-  
+
     if ($onpub_section && $onpub_section->parentID) {
       $onpub_section_parent = $onpub_sections->get($onpub_section->parentID);
     }
@@ -142,10 +143,10 @@ if ($onpub_schema_installed) {
       en('<span style="color: red;">a must be an integer.</span>');
       exit;
     }
-  
+
     $onpub_index = 'article';
     $onpub_article_id = $_GET['a'];
-  
+
     $qo = new OnpubQueryOptions();
     $qo->includeAuthors = true;
     $onpub_article = $onpub_articles->get($_GET['a'], $qo);
@@ -155,24 +156,24 @@ if ($onpub_schema_installed) {
       en('<span style="color: red;">s must be an integer.</span>');
       exit;
     }
-  
+
     if (!ctype_digit($_GET['a'])) {
       en('<span style="color: red;">a must be an integer.</span>');
       exit;
     }
-  
+
     $onpub_index = 'section-article';
     $onpub_section_id = $_GET['s'];
     $onpub_article_id = $_GET['a'];
-  
+
     $onpub_section = $onpub_sections->get($onpub_section_id);
-  
+
     $onpub_section_parent = null;
-  
+
     if ($onpub_section && $onpub_section->parentID) {
       $onpub_section_parent = $onpub_sections->get($onpub_section->parentID);
     }
-  
+
     $qo = new OnpubQueryOptions();
     $qo->includeAuthors = true;
     $onpub_article = $onpub_articles->get($onpub_article_id, $qo);
