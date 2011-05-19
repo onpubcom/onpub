@@ -6,8 +6,8 @@ svn export https://onpubdev.googlecode.com/svn/trunk/ onpub
 rm -r onpub/scripts
 
 # Get the latest stable release of CKeditor.
-wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.5.3/ckeditor_3.5.3.zip
-unzip ckeditor_3.5.3.zip
+wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6/ckeditor_3.6.zip
+unzip ckeditor_3.6.zip
 rm -r ckeditor/_samples
 mv ckeditor onpub/manage/
 
@@ -36,7 +36,7 @@ zip -r onpub-`php onpub_version.php`.zip onpub
 sha1sum onpub-`php onpub_version.php`.zip > onpub-`php onpub_version.php`.sha1
 
 # Clean up.
-rm ckeditor_3.5.3.zip
+rm ckeditor_3.6.zip
 rm yui_3.3.0.zip
 rm -r onpub
 
