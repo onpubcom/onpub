@@ -116,21 +116,21 @@ class OnpubWidgetPaginator
               if ($this->fullTextSearch) {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;keywords='
                   . $this->keywords . '&amp;fullTextSearch='
-                  . $this->fullTextSearch . '&amp;orderBy=' . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=1">1...</a>');
+                  . $this->fullTextSearch . '&amp;orderBy=' . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=1">1..</a>');
               }
               else {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;keywords='
-                  . $this->keywords . '&amp;orderBy=' . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=1">1...</a>');
+                  . $this->keywords . '&amp;orderBy=' . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=1">1..</a>');
               }
             }
             else {
               if ($this->id) {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;orderBy='
-                  . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=1&amp;' . $this->idType . '=' . $this->id . '">1...</a>');
+                  . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=1&amp;' . $this->idType . '=' . $this->id . '">1..</a>');
               }
               else {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;orderBy='
-                  . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=1">1...</a>');
+                  . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=1">1..</a>');
               }
             }
           }
@@ -139,25 +139,25 @@ class OnpubWidgetPaginator
               if ($this->fullTextSearch) {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;keywords='
                   . $this->keywords . '&amp;fullTextSearch='
-                  . $this->fullTextSearch . '&amp;page=1">1...</a>');
+                  . $this->fullTextSearch . '&amp;page=1">1..</a>');
               }
               else {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;keywords='
-                  . $this->keywords . '&amp;page=1">1...</a>');
+                  . $this->keywords . '&amp;page=1">1..</a>');
               }
             }
             else {
               if ($this->id) {
-                en('<a href="index.php?onpub=' . $this->onpub . '&amp;page=1&amp;' . $this->idType . '=' . $this->id . '">1...</a>');
+                en('<a href="index.php?onpub=' . $this->onpub . '&amp;page=1&amp;' . $this->idType . '=' . $this->id . '">1..</a>');
               }
               else {
-                en('<a href="index.php?onpub=' . $this->onpub . '&amp;page=1">1...</a>');
+                en('<a href="index.php?onpub=' . $this->onpub . '&amp;page=1">1..</a>');
               }
             }
           }
         }
         else {
-          en('1...');
+          en('1..');
         }
       }
 
@@ -391,23 +391,23 @@ class OnpubWidgetPaginator
               if ($this->fullTextSearch) {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;keywords='
                   . $this->keywords . '&amp;fullTextSearch='
-                  . $this->fullTextSearch . '&amp;orderBy=' . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=' . $this->pages . '">...' . $this->pages . '</a>');
+                  . $this->fullTextSearch . '&amp;orderBy=' . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=' . $this->pages . '">..' . $this->pages . '</a>');
               }
               else {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;keywords='
-                  . $this->keywords . '&amp;orderBy=' . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=' . $this->pages . '">...' . $this->pages . '</a>');
+                  . $this->keywords . '&amp;orderBy=' . $this->orderBy . '&amp;order=' . $this->order . '&amp;page=' . $this->pages . '">..' . $this->pages . '</a>');
               }
             }
             else {
               if ($this->id) {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;orderBy='
                   . $this->orderBy . '&amp;order=' . $this->order . '&amp;page='
-                  . $this->pages . '&amp;' . $this->idType . '=' . $this->id . '">...' . $this->pages . '</a>');
+                  . $this->pages . '&amp;' . $this->idType . '=' . $this->id . '">..' . $this->pages . '</a>');
               }
               else {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;orderBy='
                   . $this->orderBy . '&amp;order=' . $this->order . '&amp;page='
-                  . $this->pages . '">...' . $this->pages . '</a>');
+                  . $this->pages . '">..' . $this->pages . '</a>');
               }
             }
           }
@@ -416,28 +416,28 @@ class OnpubWidgetPaginator
               if ($this->fullTextSearch) {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;keywords='
                   . $this->keywords . '&amp;fullTextSearch='
-                  . $this->fullTextSearch . '&amp;page=' . $this->pages . '">...' . $this->pages . '</a>');
+                  . $this->fullTextSearch . '&amp;page=' . $this->pages . '">..' . $this->pages . '</a>');
               }
               else {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;keywords='
-                  . $this->keywords . '&amp;page=' . $this->pages . '">...'
+                  . $this->keywords . '&amp;page=' . $this->pages . '">..'
                   . $this->pages . '</a>');
               }
             }
             else {
               if ($this->id) {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;page='
-                  . $this->pages . '&amp;' . $this->idType . '=' . $this->id . '">...' . $this->pages . '</a>');
+                  . $this->pages . '&amp;' . $this->idType . '=' . $this->id . '">..' . $this->pages . '</a>');
               }
               else {
                 en('<a href="index.php?onpub=' . $this->onpub . '&amp;page='
-                  . $this->pages . '">...' . $this->pages . '</a>');
+                  . $this->pages . '">..' . $this->pages . '</a>');
               }
             }
           }
         }
         else {
-          en('...' . $this->pages . '');
+          en('..' . $this->pages . '');
         }
       }
 

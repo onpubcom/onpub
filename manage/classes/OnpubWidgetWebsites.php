@@ -34,7 +34,7 @@ class OnpubWidgetWebsites
       }
       else {
         en('<select name="websiteID" size="1">');
-        en('<option value="">Select a website...</option>');
+        en('<option value="">Select a website..</option>');
 
         for ($i = 0; $i < sizeof($this->websites); $i++) {
           if ($this->websites[$i]->ID == $this->websiteID) {

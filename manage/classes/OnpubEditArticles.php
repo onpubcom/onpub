@@ -620,7 +620,7 @@ class OnpubEditArticles
     if ($totalArticles) {
       en('<p>');
       en('<select id="actions">');
-      en('<option value="EditArticles">Select an action...</option>');
+      en('<option value="EditArticles">Select an action..</option>');
       en('<option value="DeleteArticle">Delete selected articles</option>');
       en('<option value="ArticleMove">Move selected articles</option>');
       en('</select>');
