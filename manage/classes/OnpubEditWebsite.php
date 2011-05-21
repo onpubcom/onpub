@@ -46,8 +46,7 @@ class OnpubEditWebsite
       throw $e;
     }
 
-    $widget = new OnpubWidgetHeader("Website " . $this->owebsite->ID . " - "
-      . $this->owebsite->name);
+    $widget = new OnpubWidgetHeader("Website " . $this->owebsite->ID . " - " . $this->owebsite->name);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post" enctype="multipart/form-data">');
@@ -55,19 +54,22 @@ class OnpubEditWebsite
 
     en('<div class="yui3-g">');
     en('<div class="yui3-u-1-2">');
-    en('<h3 class="onpub-field-header">Name</h3><p><input type="text" maxlength="255" size="40" name="name" value="' . htmlentities($this->owebsite->name) . '"></p>');
+    en('<h3 class="onpub-field-header">Name</h3><p><small>This website\'s name</small><br><input type="text" maxlength="255" size="40" name="name" value="' . htmlentities($this->owebsite->name) . '"></p>');
     en('</div>');
     en('<div class="yui3-u-1-2">');
+
     $message = "";
 
     if ($this->owebsite->url) {
       $go = ' <a href="' . $this->owebsite->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a>';
+      $message = '<small>This URL should be set to the top-level frontend address for this website</small>';
     }
     else {
       $go = '';
+      $message = '<small>This URL should be set to the top-level frontend address for this website, example: http://onpub.com/</small>';
     }
 
-    en('<h3 class="onpub-field-header">URL</h3><p>' . $message . '<input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->owebsite->url) . '">' . $go . '</p>');
+    en('<h3 class="onpub-field-header">URL</h3><p>' . $message . '<br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->owebsite->url) . '">' . $go . '</p>');
     en('</div>');
     en('</div>');
 
@@ -93,10 +95,10 @@ class OnpubEditWebsite
     $message = "";
 
     if ($this->owebsite->imagesURL) {
-      $message = '<small>Images uploaded to this website should be accessible from this URL</small>';
+      $message = '<small>This URL should map to the Image Uploads Directory</small>';
     }
     else {
-      $message = '<small>Should be a URL to the Image Uploads Directory, example: http://onpub.com/images/</small>';
+      $message = '<small>This URL should map to the Image Uploads Directory, example: http://onpub.com/images/</small>';
     }
 
     if ($this->owebsite->imagesURL) {
