@@ -164,7 +164,7 @@ class OnpubWelcome
       en('<tr style="vertical-align: top;"><td>Selected Database:</td><td>' . $_SESSION['PDO_DATABASE'] . '</td></tr>');
 
       if ($status == ONPUBAPI_SCHEMA_VERSION) {
-        en('<tr><td>Onpub Schema:</td><td>Rev. ' . ONPUBAPI_SCHEMA_VERSION . '</td></tr>');
+        en('<tr style="vertical-align: top;"><td>Onpub Schema:</td><td>Rev. ' . ONPUBAPI_SCHEMA_VERSION . '</td></tr>');
       }
 
       en('</table>');
