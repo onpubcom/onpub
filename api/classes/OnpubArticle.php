@@ -146,8 +146,19 @@ class OnpubArticle
    */
   public function getSummary($limit = 30)
   {
-    $words = preg_split("/\s+/", trim(strip_tags($this->content)), $limit + 1);
-    array_pop ($words);
+    // Replace all new line charcaters and non-breaking spaces.
+    $content = preg_replace('/[\n\r]|(&nbsp;)/i', '', $this->content);
+    // Strip all HTML tags.
+    $content = strip_tags($content);
+    // Trim whitespace.
+    $content = trim($content);
+    // Split string in to words.
+    $words = preg_split("/\s+/", $content, $limit + 1);
+    
+    if (sizeof($words) > $limit) {
+      array_pop($words);
+    }
+
     return implode(' ', $words);
   }
 }

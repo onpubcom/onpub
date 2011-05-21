@@ -48,40 +48,27 @@ if ($onpub_website) {
             if (in_array($samaps[0]->sectionID, $sectIDs)) {
               // Only include s in links if current section is visible.
               en('<h2 class="onpub-article-link"><a href="index.php?s=' . $samaps[0]->sectionID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
-
-              en('<p class="onpub-article-summary"><em>' . $a->getCreated()->format('M j, Y') . '</em>');
-
-              if ($a->getSummary()) {
-                en('<br>' . $a->getSummary() . '...</p>');
-              }
-              else {
-                en('</p>');
-              }
             }
             else {
               en('<h2 class="onpub-article-link"><a href="index.php?a=' . $a->ID . '">' . $a->title . '</a></h2>');
-
-              en('<p class="onpub-article-summary"><em>' . $a->getCreated()->format('M j, Y') . '</em>');
-
-              if ($a->getSummary()) {
-                en('<br>' . $a->getSummary() . '...</p>');
-              }
-              else {
-                en('</p>');
-              }
             }
           }
           else {
             en('<h2 class="onpub-article-link"><a href="index.php?a=' . $a->ID . '">' . $a->title . '</a></h2>');
+          }
 
-            en('<p class="onpub-article-summary"><em>' . $a->getCreated()->format('M j, Y') . '</em>');
+          en('<p class="onpub-article-summary">' . $a->getCreated()->format('M j, Y'));
 
-            if ($a->getSummary()) {
-              en('<br>' . $a->getSummary() . '...</p>');
+          if (($summary = $a->getSummary(10))) {
+            if (substr($summary, -1, 1) == '.') {
+              en(' &ndash; ' . $summary . '..</p>');
             }
             else {
-              en('</p>');
+              en(' &ndash; ' . $summary . '...</p>');
             }
+          }
+          else {
+            en('</p>');
           }
         }
       }

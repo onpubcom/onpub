@@ -71,7 +71,19 @@ if ($onpub_section) {
       en('<h2 class="onpub-article-link"><a href="index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
     }
 
-    en('<p class="onpub-article-summary"><em>' . $a->getCreated()->format('M j, Y') . '</em><br>' . $a->getSummary(40) . '...</p>');
+    en('<p class="onpub-article-summary">' . $a->getCreated()->format('M j, Y'));
+
+    if (($summary = $a->getSummary(20))) {
+      if (substr($summary, -1, 1) == '.') {
+        en(' &ndash; ' . $summary . '..</p>');
+      }
+      else {
+        en(' &ndash; ' . $summary . '...</p>');
+      }
+    }
+    else {
+      en('</p>');
+    }
 
     if ($even) {
       if ($i + 1 == sizeof($articles)) {
