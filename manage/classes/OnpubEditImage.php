@@ -142,18 +142,18 @@ class OnpubEditImage
 
     if (@fopen(addTrailingSlash($website->imagesURL) . rawurlencode($this->oimage->fileName), 'r')) {
       if ($imageWidth && $imageHeight) {
-        en('<p><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank"><img src="'
+        en('<p style="margin-bottom: 0;"><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank"><img src="'
           . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" width="' . $imageWidth . '" height="' . $imageHeight . '" alt="'
           . $this->oimage->fileName . '" title="' . $this->oimage->fileName . '" border="0"></a></p>');
       }
       else {
-        en('<p><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank"><img src="'
+        en('<p style="margin-bottom: 0;"><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank"><img src="'
           . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" alt="' . $this->oimage->fileName . '" title="'
           . $this->oimage->fileName . '" border="0"></a></p>');
       }
     }
     else {
-      en('<p><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="Image not found" title="Image not found"><br><span class="onpub-error">Make sure the Image Uploads URL of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $website->ID . '">' . $website->name . '</a> is setup correctly.</span></p>');
+      en('<p style="margin-bottom: 0;"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="Image not found" title="Image not found"> <span class="onpub-error">Make sure the Image Uploads URL of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $website->ID . '">' . $website->name . '</a> is setup correctly.</span></p>');
     }
 
     en('<input type="hidden" name="onpub" value="EditImageProcess">');
