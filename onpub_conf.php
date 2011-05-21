@@ -133,6 +133,12 @@ home page.
 $onpub_disp_updates = true;
 
 /*
+Number of "What's New" articles to display on the home page if
+$onpub_disp_updates is true;
+*/
+$onpub_disp_updates_num = 5;
+
+/*
 Set this to flase to prevent the Onpub "Login" hyperlink from showing up
 anywhere on the frontend interface.
 */
