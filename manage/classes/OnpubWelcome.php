@@ -156,6 +156,20 @@ class OnpubWelcome
 
     if ($this->pdo) {
       en('<table>');
+      en('<tr><th colspan="2" style="text-align: left;">Database Connection</th></tr>');
+      en('<tr style="vertical-align: top;"><td>MySQL Host:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CONNECTION_STATUS) . '</td></tr>');
+      en('<tr style="vertical-align: top;"><td>MySQL Client:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CLIENT_VERSION) . ' on ' . $_SERVER['SERVER_NAME'] . '</td></tr>');
+      en('<tr style="vertical-align: top;"><td>MySQL Server:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_SERVER_VERSION) . '</td></tr>');
+      en('<tr style="vertical-align: top;"><td>MySQL User:</td><td>' . $_SESSION['PDO_USER'] . '</td></tr>');
+      en('<tr style="vertical-align: top;"><td>Selected Database:</td><td>' . $_SESSION['PDO_DATABASE'] . '</td></tr>');
+
+      if ($status == ONPUBAPI_SCHEMA_VERSION) {
+        en('<tr><td>Onpub Schema:</td><td>Rev. ' . ONPUBAPI_SCHEMA_VERSION . '</td></tr>');
+      }
+
+      en('</table>');
+
+      en('<table>');
       en('<tr><th colspan="2" style="text-align: left;">PHP Configuration</th></tr>');
 
       if (get_magic_quotes_gpc()) {
@@ -191,20 +205,6 @@ class OnpubWelcome
       }
       else {
         en('<tr style="vertical-align: top;"><td><a href="http://php.net/ref.datetime" target="_blank">Timezone</a>:</td><td>' . ONPUBGUI_DEFAULT_TZ . '</td></tr>');
-      }
-
-      en('</table>');
-
-      en('<table>');
-      en('<tr><th colspan="2" style="text-align: left;">Database Connection</th></tr>');
-      en('<tr style="vertical-align: top;"><td>MySQL Host:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CONNECTION_STATUS) . '</td></tr>');
-      en('<tr style="vertical-align: top;"><td>MySQL Client:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CLIENT_VERSION) . ' on ' . $_SERVER['SERVER_NAME'] . '</td></tr>');
-      en('<tr style="vertical-align: top;"><td>MySQL Server:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_SERVER_VERSION) . '</td></tr>');
-      en('<tr style="vertical-align: top;"><td>MySQL User:</td><td>' . $_SESSION['PDO_USER'] . '</td></tr>');
-      en('<tr style="vertical-align: top;"><td>Selected Database:</td><td>' . $_SESSION['PDO_DATABASE'] . '</td></tr>');
-
-      if ($status == ONPUBAPI_SCHEMA_VERSION) {
-        en('<tr><td>Onpub Schema:</td><td>Rev. ' . ONPUBAPI_SCHEMA_VERSION . '</td></tr>');
       }
 
       en('</table>');
