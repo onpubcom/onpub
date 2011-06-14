@@ -24,8 +24,8 @@ class OnpubWidgetSelectSection
     $owebsites = new OnpubWebsites($this->pdo);
     $osections = new OnpubSections($this->pdo);
 
-    en('<p>');
     en('<h3 class="onpub-field-header">Display articles in..</h3>');
+    en('<p>');
     en('<select name="sectionID"  onchange="document.forms[0].submit();">');
     en('<option value="">All Sections</option>');
 
