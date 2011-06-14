@@ -305,6 +305,13 @@ YUI(
     }
   }
 
+  // Replaces Windows and Mac new lines with unix style: \r or \r\n with \n.
+  // Borrowed from:
+  // https://closure-library.googlecode.com/svn/docs/closure_goog_string_string.js.source.html#line226
+  function canonicalizeNewlines(str) {
+    return str.replace(/(\r\n|\r|\n)/g, '\n');
+  };
+
   function checkUnsavedChanges(e)
   {
     // Code partially borrowed from:
@@ -312,8 +319,10 @@ YUI(
     var e = e || window.event;
     var textarea = Y.one("textarea[name='content']");
     var m = "You have unsaved Content changes. Your changes will be lost if you leave this page.";
+    var ckdata = canonicalizeNewlines(Y.Lang.trim(CKEDITOR.instances["content"].getData()));
+    var tareadata = canonicalizeNewlines(Y.Lang.trim(textarea.get("value")));
 
-    if (Y.Lang.trim(CKEDITOR.instances["content"].getData()) != Y.Lang.trim(textarea.get("value"))) {
+    if (ckdata != tareadata) {
       if (e) {
         e.returnValue = m;
       }
