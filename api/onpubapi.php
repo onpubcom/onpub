@@ -9,7 +9,7 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-define("ONPUBAPI_VERSION", "1.0.1");
+define("ONPUBAPI_VERSION", "1.0.2");
 define("ONPUBAPI_SCHEMA_VERSION", 1);
 
 // Database Class
