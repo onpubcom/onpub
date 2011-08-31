@@ -1,8 +1,8 @@
 #!/bin/sh
 GUIDIR="../manage/"
 DLDIR="ckeditor"
-DLURL="http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6/"
-FNAME="ckeditor_3.6.zip"
+DLURL="http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.1/"
+FNAME="ckeditor_3.6.1.zip"
 
 if [ "$1" = "-f" ]; then
     rm -r "${GUIDIR}${DLDIR}"
