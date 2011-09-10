@@ -133,6 +133,10 @@ else {
         en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
         break;
 
+      case 1064: // Bad query.
+        en('<p>A database query error occured.</p>');
+        break;
+      
       case 2002: // Server is down
         en('<p>Onpub is unable to connect to the database server.</p>');
         en('<p>Start the specified MySQL server and reload this page to try again.</p>');
