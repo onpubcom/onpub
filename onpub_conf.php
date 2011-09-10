@@ -78,17 +78,17 @@ installation directory.
 $onpub_dir_root = '';
 
 /*
-Path to YUI directory. This directory contains the YUI 3 distribution. Rename
-or delete this directory if you'd like to include the YUI files from Yahoo!'s
-CDN instead.
-*/
-$onpub_dir_yui = 'yui/build/';
-
-/*
 Path to OnpubAPI directory. It is recommended that you leave this value
 unchanged.
 */
 $onpub_dir_api = 'api/';
+
+/*
+Path to YUI directory. This directory contains the YUI 3 distribution. Rename
+or delete this directory if you'd like to include the YUI files from Yahoo!'s
+CDN instead.
+*/
+$onpub_dir_yui = $onpub_dir_api . 'yui/build/';
 
 /*
 Path to default Onpub frontend directory. This variable is useful for pointing
@@ -216,6 +216,6 @@ to be automatically downloaded from Yahoo!'s CDN. The default value of this
 variable will usually be set to whatever the most recent version of YUI 3 is at
 the time new versions of Onpub are released.
 */
-$onpub_yui_version = '3.3.0';
+$onpub_yui_version = '3.4.0';
 
 ?>

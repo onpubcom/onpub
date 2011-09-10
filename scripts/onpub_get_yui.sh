@@ -1,19 +1,19 @@
 #!/bin/sh
-GUIDIR="../"
+APIDIR="../api/"
 DLDIR="yui"
-DLURL="http://yuilibrary.com/downloads/yui3/"
-FNAME="yui_3.3.0.zip"
+DLURL="http://yui.zenfs.com/releases/yui3/"
+FNAME="yui_3.4.0.zip"
 
 if [ "$1" = "-f" ]; then
-    rm -r "${GUIDIR}${DLDIR}"
+    rm -r "${APIDIR}${DLDIR}"
 fi
 
-if [ -d "${GUIDIR}${DLDIR}" ]; then
-    echo "'${GUIDIR}${DLDIR}'" directory exists. Specify '-f' to overwrite.
+if [ -d "${APIDIR}${DLDIR}" ]; then
+    echo "'${APIDIR}${DLDIR}'" directory exists. Specify '-f' to overwrite.
     exit 0;
 fi
 
 wget "${DLURL}${FNAME}"
 unzip $FNAME
-mv $DLDIR $GUIDIR
+mv $DLDIR $APIDIR
 rm $FNAME

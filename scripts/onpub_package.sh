@@ -12,22 +12,18 @@ rm -r ckeditor/_samples
 mv ckeditor onpub/manage/
 
 # Get the latest release of YUI 3.
-wget http://yuilibrary.com/downloads/yui3/yui_3.3.0.zip
-unzip yui_3.3.0.zip
+wget http://yui.zenfs.com/releases/yui3/yui_3.4.0.zip
+unzip yui_3.4.0.zip
 
 # Remove some uneeded YUI dirs to free up some space.
-rm -r yui/api
-rm -r yui/as-api
-rm -r yui/assets
-rm -r yui/examples
-rm -r yui/index.html
+rm -r yui/docs
 rm -r yui/releasenotes
 rm -r yui/tests
 
 # Remove uneeded debug and raw YUI .js files.
 find yui/build/ -type f -name '*.js' | grep -v '\-min\.js' | grep -v 'lang/' | xargs /bin/rm
 
-mv yui onpub/
+mv yui onpub/api/
 
 # Everything is in place, zip up the onpub directory.
 zip -r onpub-`php onpub_version.php`.zip onpub
@@ -37,6 +33,6 @@ sha1sum onpub-`php onpub_version.php`.zip > onpub-`php onpub_version.php`.sha1
 
 # Clean up.
 rm ckeditor_3.6.1.zip
-rm yui_3.3.0.zip
+rm yui_3.4.0.zip
 rm -r onpub
 
