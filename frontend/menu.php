@@ -24,6 +24,47 @@ function onpub_extract_section_ids($sections)
   return $sectIDs;
 }
 
+function onpub_output_sub_sections($section)
+{
+  global $onpub_articles;
+  $subsections = $section->sections;
+
+  foreach ($subsections as $sub) {
+    if ($sub->url) {
+      en('<li class="yui3-menuitem">');
+      en('<a class="yui3-menuitem-content" href="' . $sub->url . '">' . $sub->name . '</a>');
+      en('</li>');
+    }
+    else {
+      en('<li>');
+      en('<a class="yui3-menu-label" href="index.php?s=' . $sub->ID . '">' . $sub->name . '</a>');
+      en('<div class="yui3-menu">');
+      en('<div class="yui3-menu-content">');
+      en('<ul>');
+
+      $articles = $onpub_articles->select(null, $sub->ID);
+
+      foreach ($articles as $a) {
+        if ($a->url) {
+          en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $a->url . '">' . $a->title . '</a></li>');
+        }
+        else {
+          en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?s=' . $sub->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
+        }
+      }
+
+      if (sizeof($sub->sections)) {
+        onpub_output_sub_sections($sub);
+      }
+      
+      en('</ul>');
+      en('</div>');
+      en('</div>');
+      en('</li>');
+    }  
+  }
+}
+
 if ($onpub_website) {
   $sections = $onpub_sections->select(null, $onpub_website->ID, FALSE);
 
@@ -86,6 +127,9 @@ if ($onpub_website) {
             }
           }
 
+          onpub_output_sub_sections($s);
+          
+          /*
           $subsections = $s->sections;
 
           foreach ($subsections as $sub) {
@@ -118,6 +162,7 @@ if ($onpub_website) {
               en('</li>');
             }
           }
+          */
 
           en('</ul>');
           en('</div>');
