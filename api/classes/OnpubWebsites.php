@@ -232,7 +232,7 @@ class OnpubWebsites
    * @return OnpubWebsite An {@link OnpubWebsite} object. NULL if the website does not exist in the database.
    */
   public function get($ID, OnpubQueryOptions $queryOptions = NULL, $flatArticleList = FALSE)
-  {
+  {    
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 
@@ -274,6 +274,7 @@ class OnpubWebsites
       return $website;
     }
 
+    $osections = new OnpubSections($this->pdo);
     $sectionsassoc = array ();
 
     foreach ($rows as $row) {
@@ -290,6 +291,8 @@ class OnpubWebsites
         $section->name = $row["sectionName"];
         $section->setCreated(new DateTime($row["sectionCreated"]));
         $section->setModified(new DateTime($row["sectionModified"]));
+        // Add sub-sections to top-level sections.
+        $section->sections = $osections->select(NULL, NULL, FALSE, $sectionID);
 
         if (isset($sectionsassoc["$sectionID"])) {
           $section = $sectionsassoc["$sectionID"];
@@ -538,7 +541,49 @@ class OnpubWebsites
     if ($queryOptions->includeSections) {
       if ($queryOptions->includeArticles) {
         return
-          "SELECT websites.ID, websites.imageID, websites.name, websites.url, websites.imagesURL, websites.imagesDirectory, websites.created, websites.modified, websiteimages.fileName, websiteimages.description, websiteimages.url AS websiteImageURL, websiteimages.created AS imageCreated, websiteimages.modified AS imageModified, sections.ID AS sectionID, sections.imageID AS sectionImageID, sections.websiteID AS sectionWebsiteID, sections.parentID AS sectionParentID, sections.name AS sectionName, sections.created AS sectionCreated, sections.modified AS sectionModified, sectionimages.websiteID AS sectionImageWebsiteID, sectionimages.fileName AS sectionImageFileName, sectionimages.description AS sectionImageDescription, sectionimages.url AS sectionImageURL, sectionimages.created AS sectionImageCreated, sectionimages.modified AS sectionImageModified, $articleColumns, articleimages.websiteID AS articleImageWebsiteID, articleimages.fileName AS articleImageFileName, articleimages.description AS articleImageDescription, articleimages.url AS articleImageURL, articleimages.created AS articleImageCreated, articleimages.modified AS articleImageModified, authors.ID AS authorID, authors.imageID AS authorImageID, authors.givenNames, authors.familyName, authors.displayAs, authors.created AS authorCreated, authors.modified AS authorModified, authorimages.websiteID AS authorImageWebsiteID, authorimages.fileName AS authorImageFileName, authorimages.description AS authorImageDescription, authorimages.url AS authorImageURL, authorimages.created AS authorImageCreated, authorimages.modified AS authorImageModified FROM OnpubWebsites AS websites LEFT JOIN OnpubImages AS websiteimages ON websites.imageID = websiteimages.ID LEFT JOIN OnpubWSMaps AS wsmaps ON websites.ID = wsmaps.websiteID LEFT JOIN OnpubSections AS sections ON wsmaps.sectionID = sections.ID LEFT JOIN OnpubImages AS sectionimages ON sections.imageID = sectionimages.ID LEFT JOIN OnpubSAMaps AS samaps ON sections.ID = samaps.sectionID LEFT JOIN OnpubArticles AS articles ON samaps.articleID = articles.ID LEFT JOIN OnpubImages AS articleimages ON articles.imageID = articleimages.ID LEFT JOIN OnpubAAMaps AS aamaps ON articles.ID = aamaps.articleID LEFT JOIN OnpubAuthors AS authors ON aamaps.authorID = authors.ID LEFT JOIN OnpubImages AS authorimages ON authors.imageID = authorimages.ID $where ORDER BY $orderBy";
+          "SELECT websites.ID, websites.imageID, websites.name, " .
+          "websites.url, websites.imagesURL, websites.imagesDirectory, " .
+          "websites.created, websites.modified, websiteimages.fileName, " .
+          "websiteimages.description, websiteimages.url AS websiteImageURL, " .
+          "websiteimages.created AS imageCreated, websiteimages.modified AS " .
+          "imageModified, sections.ID AS sectionID, sections.imageID AS " .
+          "sectionImageID, sections.websiteID AS sectionWebsiteID, " .
+          "sections.parentID AS sectionParentID, sections.name AS " .
+          "sectionName, sections.created AS sectionCreated, " .
+          "sections.modified AS sectionModified, sectionimages.websiteID AS " .
+          "sectionImageWebsiteID, sectionimages.fileName AS " .
+          "sectionImageFileName, sectionimages.description AS " .
+          "sectionImageDescription, sectionimages.url AS sectionImageURL, " .
+          "sectionimages.created AS sectionImageCreated, " .
+          "sectionimages.modified AS sectionImageModified, $articleColumns, " .
+          "articleimages.websiteID AS articleImageWebsiteID, " .
+          "articleimages.fileName AS articleImageFileName, " .
+          "articleimages.description AS articleImageDescription, " .
+          "articleimages.url AS articleImageURL, articleimages.created AS " .
+          "articleImageCreated, articleimages.modified AS " .
+          "articleImageModified, authors.ID AS authorID, authors.imageID AS " .
+          "authorImageID, authors.givenNames, authors.familyName, " .
+          "authors.displayAs, authors.created AS authorCreated, " .
+          "authors.modified AS authorModified, authorimages.websiteID AS " .
+          "authorImageWebsiteID, authorimages.fileName AS " .
+          "authorImageFileName, authorimages.description AS " .
+          "authorImageDescription, authorimages.url AS authorImageURL, " .
+          "authorimages.created AS authorImageCreated, " .
+          "authorimages.modified AS authorImageModified FROM OnpubWebsites " .
+          "AS websites LEFT JOIN OnpubImages AS websiteimages ON " .
+          "websites.imageID = websiteimages.ID LEFT JOIN OnpubWSMaps AS " .
+          "wsmaps ON websites.ID = wsmaps.websiteID LEFT JOIN OnpubSections " .
+          "AS sections ON wsmaps.sectionID = sections.ID LEFT JOIN " .
+          "OnpubImages AS sectionimages ON sections.imageID = " .
+          "sectionimages.ID LEFT JOIN OnpubSAMaps AS samaps ON " .
+          "sections.ID = samaps.sectionID LEFT JOIN OnpubArticles AS " .
+          "articles ON samaps.articleID = articles.ID LEFT JOIN OnpubImages " .
+          "AS articleimages ON articles.imageID = articleimages.ID " .
+          "LEFT JOIN OnpubAAMaps AS aamaps ON articles.ID = " .
+          "aamaps.articleID LEFT JOIN OnpubAuthors AS authors ON " .
+          "aamaps.authorID = authors.ID LEFT JOIN OnpubImages AS " .
+          "authorimages ON authors.imageID = authorimages.ID $where " .
+          "ORDER BY $orderBy";
       }
       else {
         return

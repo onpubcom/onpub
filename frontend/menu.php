@@ -9,6 +9,21 @@
  * as published by the Free Software Foundation; version 2.
  */
 
+function onpub_extract_section_ids($sections)
+{
+  static $sectIDs = array();
+  
+  foreach ($sections as $s) {
+    $sectIDs[] = $s->ID;
+    
+    if (sizeof($s->sections)) {
+      onpub_extract_section_ids($s->sections);
+    }
+  }
+  
+  return $sectIDs;
+}
+
 if ($onpub_website) {
   $sections = $onpub_sections->select(null, $onpub_website->ID, FALSE);
 
@@ -17,12 +32,8 @@ if ($onpub_website) {
   foreach ($sections as $s) {
     $sectionsassoc['s' . $s->ID] = $s;
   }
-
-  $sectIDs = array();
-
-  foreach ($onpub_website->sections as $s) {
-    $sectIDs[] = $s->ID;
-  }
+  
+  $sectIDs = onpub_extract_section_ids($onpub_website->sections);
 
   $sections = array();
 
