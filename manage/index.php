@@ -36,6 +36,17 @@ if (isset($_SESSION['PDO_HOST']) && isset($_SESSION['PDO_USER']) && isset($_SESS
   $password = $_SESSION['PDO_PASSWORD'];
 }
 
+if ($loginStatus && !class_exists('PDO')) {
+  // PDO is not installed, destroy session.
+  $login = new OnpubLogin();
+  $login->logout = true;
+  $login->process();
+
+  // Bounce user back to login page.
+  header("Location: index.php");
+  return;    
+}
+
 if (isset($_POST['onpub'])) {
   $ajaxPost = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
 
@@ -43,7 +54,7 @@ if (isset($_POST['onpub'])) {
     header("Location: index.php");
     return;
   }
-
+ 
   if ($loginStatus) {
     try {
       $pdo = new PDO($dsn, $username, $password);
@@ -98,7 +109,7 @@ if (isset($_POST['onpub'])) {
           return;
         }
       }
-      catch (PDOException $e) {
+      catch (Exception $e) {
         $login->setException($e);
         $login->display();
         return;

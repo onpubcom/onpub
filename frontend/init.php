@@ -20,14 +20,24 @@ $onpub_article_id = null;
 $onpub_article = null;
 $onpub_schema_installed = false;
 
-try {
-  $onpub_pdo = new PDO('mysql:host=' . $onpub_db_host . ';dbname=' . $onpub_db_name, $onpub_db_user, $onpub_db_pass);
-  $onpub_pdo_exception = null;
+if (class_exists('PDO')) {
+  $onpub_pdo_installed = true;
+  
+  try {
+    $onpub_pdo = new PDO('mysql:host=' . $onpub_db_host . ';dbname=' . $onpub_db_name, $onpub_db_user, $onpub_db_pass);
+    $onpub_pdo_exception = null;
+  }
+  catch (PDOException $e) {
+    // Connection error. PDO_MYSQL driver isn't installed or DB credentials are incorrect.
+    $onpub_pdo = null;
+    $onpub_pdo_exception = $e;
+  }
 }
-catch (PDOException $e) {
-  // Connection error. PDO isn't installed or DB credentials are incorrect.
+else {
+  // PDO is not install at all.
+  $onpub_pdo_installed = false;
   $onpub_pdo = null;
-  $onpub_pdo_exception = $e;
+  $onpub_pdo_exception = null;
 }
 
 if ($onpub_pdo) {

@@ -154,7 +154,7 @@ else {
     }
 
     if ($onpub_pdo_exception->getMessage() == 'could not find driver') {
-      en('<p>Either PDO_MYSQL is not installed or it is not configured correctly.</p>');
+      en('<p>PDO_MYSQL is not installed or is not configured correctly.</p>');
       en('<p>Onpub requires the PDO and PDO_MYSQL PHP extensions in order to connect to a MySQL database server.</p>');
       en('<p>You will be unable to use Onpub until PDO_MYSQL is installed.</p>');
       en('<p>Please refer to the <a href="http://onpub.com/index.php?s=8&a=11" target="_blank">Onpub System Requirements</a> and the <a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PHP Manual</a> for more information.</p>');
@@ -167,11 +167,17 @@ else {
       en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
          'index.php?onpub=NewWebsite" target="_onpub">Create a website</a> and then reload this page to get started.</p>');
     }
-    else {
+    elseif ($onpub_pdo_installed) {
       en('<h3>Almost there.. Follow the instructions below to complete the Onpub installation.</h3>');
       en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
          'index.php" target="_onpub">Login</a> to the Onpub content management interface to install the Onpub database schema. You will be unable to publish a website until you perform this step.</p>');
-      en('<p>See <a href="http://onpub.com/index.php?s=8&a=118" target="_blank">How to Install Onpub</a> for more information.</p>');
+      en('<p>See <a href="http://onpub.com/index.php?s=8&a=118" target="_blank">How to Install Onpub</a> for more information.</p>');      
+    }
+    else {
+      en('<h3><span class="onpub-error">PDO is not installed or is not configured correctly.</span></h3>');
+      en('<p>Onpub requires the PDO and PDO_MYSQL PHP extensions in order to connect to a MySQL database server.</p>');
+      en('<p>You will be unable to use Onpub until PDO and PDO_MYSQL are installed.</p>');
+      en('<p>Please refer to the <a href="http://onpub.com/index.php?s=8&a=11" target="_blank">Onpub System Requirements</a> and the <a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PHP Manual</a> for more information.</p>');
     }
   }
 }

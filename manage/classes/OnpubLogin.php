@@ -14,7 +14,7 @@ class OnpubLogin
   private $pdoHost;
   private $pdoUser;
   private $pdoPassword;
-  private $logout;
+  public $logout;
   private $target;
   private $rememberLogin;
   private $exception;
@@ -148,9 +148,14 @@ class OnpubLogin
       }
 
       if ($this->exception->getMessage() == 'could not find driver') {
-        en('<p>Either PDO_MYSQL is not installed or it is not configured correctly.</p>');
+        en('<p>PDO_MYSQL is not installed or is not configured correctly.</p>');
         en('<p>Onpub requires the PDO and PDO_MYSQL PHP extensions in order to connect to a MySQL database server.</p>');
         en('<p>You will be unable to use Onpub until PDO_MYSQL is installed.</p>');
+        en('<p>Please refer to the <a href="http://onpub.com/index.php?s=8&a=11" target="_blank">Onpub System Requirements</a> and the <a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PHP Manual</a> for more information.</p>');
+      }
+      elseif ($this->exception->getCode() === 1) {
+        en('<p>Onpub requires the PDO and PDO_MYSQL PHP extensions in order to connect to a MySQL database server.</p>');
+        en('<p>You will be unable to use Onpub until PDO and PDO_MYSQL are installed.</p>');
         en('<p>Please refer to the <a href="http://onpub.com/index.php?s=8&a=11" target="_blank">Onpub System Requirements</a> and the <a href="http://www.php.net/manual/en/ref.pdo-mysql.php" target="_blank">PHP Manual</a> for more information.</p>');
       }
 
@@ -173,11 +178,16 @@ class OnpubLogin
       return FALSE;
     }
 
-    try {
-      $pdo = new PDO("mysql:host=" . $this->pdoHost . ";dbname=$this->pdoDatabase", $this->pdoUser, $this->pdoPassword);
+    if (class_exists('PDO')) {
+      try {
+        $pdo = new PDO("mysql:host=" . $this->pdoHost . ";dbname=$this->pdoDatabase", $this->pdoUser, $this->pdoPassword);
+      }
+      catch (PDOException $e) {
+        throw $e;
+      }
     }
-    catch (PDOException $e) {
-      throw $e;
+    else {
+      throw new Exception('PDO is not installed or is not configured correctly.', 1);
     }
 
     $pdo = NULL;
