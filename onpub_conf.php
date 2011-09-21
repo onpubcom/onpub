@@ -176,6 +176,13 @@ every frontend page.
 $onpub_inc_banner = 'onpub_banner.php';
 
 /*
+If this file exists in the $onpub_dir_local directory, it is included directly
+after the "What's New" section on the home page. This file will only be included
+on the page if $onpub_disp_updates = true.
+*/
+$onpub_inc_article_updates = 'onpub_article_updates.php';
+
+/*
 If this file exists in the $onpub_dir_local directory, it is included in the
 right-side column beside the published/updated dates <div> on article pages
 only. We use this file to include our AddThis code for our articles and blog

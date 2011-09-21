@@ -76,12 +76,18 @@ if ($onpub_website) {
           else {
             en('</p>');
           }
+          
+          $i++;
         }
-
-        $i++;
       }
     }
 
+    if (file_exists($onpub_dir_local . $onpub_inc_article_updates)) {
+      en('<div>');
+      include $onpub_dir_local . $onpub_inc_article_updates;
+      en('</div>');
+    }
+    
     en('</div>');
     en('</div>');
   }
