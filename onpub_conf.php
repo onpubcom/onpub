@@ -223,6 +223,6 @@ to be automatically downloaded from Yahoo!'s CDN. The default value of this
 variable will usually be set to whatever the most recent version of YUI 3 is at
 the time new versions of Onpub are released.
 */
-$onpub_yui_version = '3.4.0';
+$onpub_yui_version = '3.4.1';
 
 ?>

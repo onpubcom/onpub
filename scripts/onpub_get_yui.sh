@@ -2,7 +2,7 @@
 APIDIR="../api/"
 DLDIR="yui"
 DLURL="http://yui.zenfs.com/releases/yui3/"
-FNAME="yui_3.4.0.zip"
+FNAME="yui_3.4.1.zip"
 
 if [ "$1" = "-f" ]; then
     rm -r "${APIDIR}${DLDIR}"
