@@ -377,6 +377,7 @@ YUI(
     if (Y.one("input[name='onpub']").get("value") == "EditArticleProcess") {
       var node = this;
       node.set("onclick", null);
+      node.set("onmouseup", null);
 
       // Setup the AJAX status overlay
       var overlay = new Y.Overlay({
