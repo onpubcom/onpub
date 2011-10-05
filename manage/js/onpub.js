@@ -318,7 +318,7 @@ YUI(
     // https://developer.mozilla.org/en/DOM/window.onbeforeunload
     var e = e || window.event;
     var textarea = Y.one("textarea[name='content']");
-    var m = "You have unsaved Content changes. Your changes will be lost if you leave this page.";
+    var m = "You have unsaved changes. Your changes will be lost if you leave this page.";
     var ckdata = canonicalizeNewlines(Y.Lang.trim(CKEDITOR.instances["content"].getData()));
     var tareadata = canonicalizeNewlines(Y.Lang.trim(textarea.get("value")));
 
