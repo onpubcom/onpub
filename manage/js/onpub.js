@@ -409,14 +409,10 @@ YUI(
   }, ".cke_button_save");
 
   Y.on("contentready", function () {
-    // Override default CKEditor New Page action
     if (Y.one(".cke_button_newpage")) {
-      var node = this;
-      var action = node.get("onclick");
-
-      node.set("onclick", null);
-
-      Y.on("click", confirmNewPage, node, null, action);
+      // Hide the New Page button since it's to easy to click and lose your
+      // edits by mistake!
+      this.hide();
     }
   }, ".cke_button_newpage");
 
