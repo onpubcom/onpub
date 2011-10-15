@@ -38,7 +38,7 @@ background-color: #1B8CDF;
 /* Submenus background */
 .yui3-skin-sam .yui3-menu-content, .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-content {
 background-color: #1B8CDF;
-opacity: .97;
+/*opacity: .97;*/
 }
 
 /* Submenu items font */
