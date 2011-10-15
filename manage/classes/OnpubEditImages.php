@@ -130,7 +130,7 @@ class OnpubEditImages
       }
     }
 
-    $widget = new OnpubWidgetHeader("Images");
+    $widget = new OnpubWidgetHeader("Images", ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="get">');

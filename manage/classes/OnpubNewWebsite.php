@@ -21,7 +21,7 @@ class OnpubNewWebsite
 
   public function display()
   {
-    $widget = new OnpubWidgetHeader("New Website");
+    $widget = new OnpubWidgetHeader("New Website", ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post" enctype="multipart/form-data">');

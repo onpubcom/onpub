@@ -38,7 +38,7 @@ class OnpubDeleteArticles
       throw $e;
     }
 
-    $widget = new OnpubWidgetHeader("Delete Articles");
+    $widget = new OnpubWidgetHeader("Delete Articles", ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post">');

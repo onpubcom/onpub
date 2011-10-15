@@ -46,7 +46,7 @@ class OnpubEditWebsite
       throw $e;
     }
 
-    $widget = new OnpubWidgetHeader("Website " . $this->owebsite->ID . " - " . $this->owebsite->name);
+    $widget = new OnpubWidgetHeader("Website " . $this->owebsite->ID . " - " . $this->owebsite->name, ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post" enctype="multipart/form-data">');

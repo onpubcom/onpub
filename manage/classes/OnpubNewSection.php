@@ -37,7 +37,7 @@ class OnpubNewSection
       throw $e;
     }
 
-    $widget = new OnpubWidgetHeader("New Section");
+    $widget = new OnpubWidgetHeader("New Section", ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post" enctype="multipart/form-data">');

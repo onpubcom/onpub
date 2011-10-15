@@ -13,10 +13,11 @@ class OnpubWidgetHeader
   private $title;
   private $dbstatus;
 
-  function __construct($title = "", $dbstatus = ONPUBAPI_SCHEMA_VERSION)
+  function __construct($title = "", $dbstatus = ONPUBAPI_SCHEMA_VERSION, $pdo = null)
   {
     $this->title = $title;
     $this->dbstatus = $dbstatus;
+    $this->pdo = $pdo;
   }
 
   function display()
@@ -79,6 +80,13 @@ class OnpubWidgetHeader
     en('<ul>');
 
     if ($this->dbstatus == ONPUBAPI_SCHEMA_VERSION) {
+      if ($this->pdo) {
+        $oarticles = new OnpubArticles($this->pdo);
+      }
+      else {
+        $oarticles = null;
+      }
+
       en('<li>');
       en('<a class="yui3-menu-label" href="#new"><em>New</em></a>');
       en('<div id="new" class="yui3-menu">');
@@ -91,19 +99,57 @@ class OnpubWidgetHeader
       en('</div>');
       en('</div>');
       en('</li>');
-      en('<li>');
-      en('<a class="yui3-menu-label" href="#edit"><em>Edit</em></a>');
-      en('<div id="edit" class="yui3-menu">');
-      en('<div class="yui3-menu-content">');
-      en('<ul>');
-      en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?onpub=EditArticles">Articles</a></li>');
-      en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?onpub=EditImages">Images</a></li>');
-      en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?onpub=EditSections">Sections</a></li>');
-      en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?onpub=EditWebsites">Websites</a></li>');
-      en('</ul>');
-      en('</div>');
-      en('</div>');
+
+      if ($oarticles) {
+        $queryOptions = new OnpubQueryOptions();
+        $queryOptions->includeContent = FALSE;
+        $queryOptions->orderBy = "modified";
+        $queryOptions->order = "DESC";
+        $queryOptions->setPage(1, ONPUBGUI_PDO_ROW_LIMIT);
+
+        try {
+          $articles = $oarticles->select($queryOptions);
+        }
+        catch (PDOException $e) {
+          $articles = null;
+        }
+      }
+      else {
+        $articles = null;
+      }
+
+      if ($articles) {
+        en('<li>');
+        en('<a class="yui3-menu-label" href="index.php?onpub=EditArticles"><em>Articles</em></a>');
+        en('<div id="edit" class="yui3-menu">');
+        en('<div class="yui3-menu-content">');
+        en('<ul>');
+  
+        foreach ($articles as $a) {
+          en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?onpub=EditArticle&articleID=' . $a->ID . '">' . $a->title . '</a></li>');
+        }
+  
+        en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?onpub=EditArticles">All Articles..</a></li>');
+        en('</ul>');
+        en('</div>');
+        en('</div>');
+        en('</li>');
+      }
+      else {
+        en('<li class="yui3-menuitem">');
+        en('<a class="yui3-menuitem-content" href="index.php?onpub=EditArticles">Articles</a>');
+        en('</li>');
+      }
+
+      en('<li class="yui3-menuitem">');
+      en('<a class="yui3-menuitem-content" href="index.php?onpub=EditImages">Images</a>');
       en('</li>');
+      en('<li class="yui3-menuitem">');
+      en('<a class="yui3-menuitem-content" href="index.php?onpub=EditSections">Sections</a>');
+      en('</li>');
+      en('<li class="yui3-menuitem">');
+      en('<a class="yui3-menuitem-content" href="index.php?onpub=EditWebsites">Websites</a>');
+      en('</li>');      
       en('<li>');
       en('<a class="yui3-menu-label" href="#upload"><em>Upload</em></a>');
       en('<div id="upload" class="yui3-menu">');

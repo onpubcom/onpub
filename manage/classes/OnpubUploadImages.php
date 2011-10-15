@@ -41,7 +41,7 @@ class OnpubUploadImages
       throw $e;
     }
 
-    $widget = new OnpubWidgetHeader("Upload Images");
+    $widget = new OnpubWidgetHeader("Upload Images", ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post" enctype="multipart/form-data">');
@@ -93,7 +93,7 @@ class OnpubUploadImages
       throw $e;
     }
 
-    $widget = new OnpubWidgetHeader("Upload Images");
+    $widget = new OnpubWidgetHeader("Upload Images", ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     switch ($e->getCode())

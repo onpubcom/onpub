@@ -52,7 +52,7 @@ class OnpubEditSection
       throw $e;
     }
 
-    $widget = new OnpubWidgetHeader("Section " . $this->osection->ID . " - " . $this->osection->name);
+    $widget = new OnpubWidgetHeader("Section " . $this->osection->ID . " - " . $this->osection->name, ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post">');

@@ -59,7 +59,7 @@ class OnpubEditImage
       $imageHeight = $imageDimensions[1];
     }
 
-    $widget = new OnpubWidgetHeader("Image " . $this->oimage->ID . " - " . $this->oimage->fileName);
+    $widget = new OnpubWidgetHeader("Image " . $this->oimage->ID . " - " . $this->oimage->fileName, ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post">');

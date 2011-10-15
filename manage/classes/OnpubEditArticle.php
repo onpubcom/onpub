@@ -56,7 +56,7 @@ class OnpubEditArticle
       $author = new OnpubAuthor();
     }
 
-    $widget = new OnpubWidgetHeader("Article " . $this->oarticle->ID . " - " . $this->oarticle->title);
+    $widget = new OnpubWidgetHeader("Article " . $this->oarticle->ID . " - " . $this->oarticle->title, ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post">');

@@ -30,11 +30,11 @@ class OnpubWelcome
       $owebsites = new OnpubWebsites($this->pdo);
       $status = $odatabase->status();
       $driver = $this->pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
-      $widget = new OnpubWidgetHeader("Dashboard", $status);
+      $widget = new OnpubWidgetHeader("Dashboard", $status, $this->pdo);
     }
     else {
       $status = null;
-      $widget = new OnpubWidgetHeader("Dashboard", $status);
+      $widget = new OnpubWidgetHeader("Dashboard", $status, $this->pdo);
     }
 
     $widget->display();

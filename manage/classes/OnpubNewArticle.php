@@ -40,7 +40,7 @@ class OnpubNewArticle
       throw $e;
     }
 
-    $widget = new OnpubWidgetHeader("New Article");
+    $widget = new OnpubWidgetHeader("New Article", ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="post">');

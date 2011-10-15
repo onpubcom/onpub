@@ -148,7 +148,7 @@ class OnpubEditArticles
       }
     }
 
-    $widget = new OnpubWidgetHeader("Articles");
+    $widget = new OnpubWidgetHeader("Articles", ONPUBAPI_SCHEMA_VERSION, $this->pdo);
     $widget->display();
 
     en('<form id="onpub-form" action="index.php" method="get">');
