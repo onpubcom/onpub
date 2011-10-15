@@ -348,6 +348,10 @@ YUI(
     Y.on("click", selectAll, "#selectAll", null, Y.one("#sections"));
   }
 
+  if (Y.one("#sections") && Y.one("input[name='onpub']").get("value") == "EditArticles") {
+    Y.on("change", function (e) {document.forms[0].submit();}, "#sections");
+  }
+
   if (Y.one("#deleteArticle")) {
     Y.on("click", deleteArticle, "#deleteArticle", null, Y.one("#articleID"));
   }

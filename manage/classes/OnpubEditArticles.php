@@ -32,8 +32,22 @@ class OnpubEditArticles
   public function display()
   {
     $oarticles = new OnpubArticles($this->pdo);
+    $owebsites = new OnpubWebsites($this->pdo);
+    $osections = new OnpubSections($this->pdo);
     $counter = 0;
     $currentPage = 1;
+
+    try {
+      $queryOptions = new OnpubQueryOptions();
+      $queryOptions->orderBy = "name";
+      $queryOptions->order = "ASC";
+      $websites = $owebsites->select($queryOptions);
+    }
+    catch (PDOException $e) {
+      $widget = new OnpubWidgetPDOException($e);
+      $widget->display();
+      return;
+    }
 
     if ($this->page) {
       $currentPage = $this->page;
@@ -157,8 +171,15 @@ class OnpubEditArticles
 
     if ($totalArticles) {
       if (!$this->keywords) {
-        $selector = new OnpubWidgetSelectSection($this->pdo, $this->sectionID);
-        $selector->display();
+        $widget = new OnpubWidgetSections();
+        $widget->websites = $websites;
+        $widget->osections = $osections;
+        $widget->heading = "Display articles in..";
+        $widget->fieldName = "sectionID";
+        $widget->multiple = false;
+        $widget->defaultOptionText = "All Sections";
+        if ($this->sectionID) $widget->sectionIDs = array($this->sectionID);
+        $widget->display();
       }
 
       $widget = new OnpubWidgetPaginator($totalArticles, $this->orderBy, $this->order, $this->page, $this->keywords, $this->fullTextSearch, "sectionID", $this->sectionID, "EditArticles");
@@ -606,8 +627,15 @@ class OnpubEditArticles
       }
       else {
         if ($this->sectionID) {
-          $selector = new OnpubWidgetSelectSection($this->pdo, $this->sectionID);
-          $selector->display();
+          $widget = new OnpubWidgetSections();
+          $widget->websites = $websites;
+          $widget->osections = $osections;
+          $widget->heading = "Display articles in..";
+          $widget->fieldName = "sectionID";
+          $widget->multiple = false;
+          $widget->defaultOptionText = "All Sections";
+          if ($this->sectionID) $widget->sectionIDs = array($this->sectionID);
+          $widget->display();
 
           en('<p>There are 0 articles in the selected section. <a href="index.php?onpub=EditArticles&amp;sectionID=">Display all articles</a>.</p>');
         }

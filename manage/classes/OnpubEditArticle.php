@@ -32,10 +32,6 @@ class OnpubEditArticle
       $this->oarticle = $oarticles->get($this->oarticle->ID, $queryOptions);
 
       $queryOptions = new OnpubQueryOptions();
-      $queryOptions->orderBy = "fileName";
-      $queryOptions->order = "ASC";
-
-      $queryOptions = new OnpubQueryOptions();
       $queryOptions->orderBy = "name";
       $queryOptions->order = "ASC";
       $websites = $owebsites->select($queryOptions);

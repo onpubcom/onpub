@@ -41,6 +41,7 @@ class OnpubWidgetSections
     $this->websitesMap = array ();
     $this->ID = "sections";
     $this->tooltip = "Hold Ctrl to select/deselect multiple sections";
+    $this->defaultOptionText = "None";
   }
 
   function display()
@@ -89,7 +90,7 @@ class OnpubWidgetSections
       }
       else {
         en('<select name="' . $this->fieldName . '" size="1" id="' . $this->ID . '">');
-        en('<option value="">None</option>');
+        en('<option value="">' . $this->defaultOptionText . '</option>');
       }
 
       if (sizeof($this->samaps)) {
@@ -151,7 +152,7 @@ class OnpubWidgetSections
           }
         }
         else {
-          en('<option value="" selected="selected">None</option>');
+          en('<option value="" selected="selected">' . $this->defaultOptionText . '</option>');
         }
 
         en('</select>');

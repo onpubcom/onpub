@@ -66,7 +66,6 @@ include ("classes/OnpubWidgetImages.php");
 include ("classes/OnpubWidgetPaginator.php");
 include ("classes/OnpubWidgetPDOException.php");
 include ("classes/OnpubWidgetSearch.php");
-include ("classes/OnpubWidgetSelectSection.php");
 include ("classes/OnpubWidgetSections.php");
 include ("classes/OnpubWidgetStats.php");
 include ("classes/OnpubWidgetSelectWebsite.php");
