@@ -160,17 +160,8 @@ class OnpubWidgetHeader
       en('</div>');
       en('</div>');
       en('</li>');
-      en('<li class="yui3-menuitem">');
-      en('<a class="yui3-menuitem-content" href="index.php">Dashboard</a>');
-      en('</li>');
     }
 
-    en('<li class="yui3-menuitem">');
-    en('<a class="yui3-menuitem-content" href="http://onpub.com/index.php?s=8" target="_blank">Help</a>');
-    en('</li>');
-    en('<li class="yui3-menuitem">');
-    en('<a class="yui3-menuitem-content" href="index.php?onpub=Logout">Logout</a>');
-    en('</li>');
     en('</ul>');
     en('</div>');
     en('</div>');

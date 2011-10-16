@@ -46,6 +46,7 @@ if ($onpub_pdo) {
   $onpub_articles = new OnpubArticles($onpub_pdo);
   $onpub_samaps = new OnpubSAMaps($onpub_pdo);
   $onpub_images = new OnpubImages($onpub_pdo);
+  $onpub_wsmaps = new OnpubWSMaps($onpub_pdo);
 
   $qo = new OnpubQueryOptions();
   $qo->includeSections = true;

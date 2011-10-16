@@ -684,8 +684,13 @@ class OnpubArticles
     $articles = array ();
 
     if ($rows) {
+      $lastID = null;
+      $article = new OnpubArticle();
+
       foreach ($rows as $row) {
-        $article = new OnpubArticle();
+        if ($lastID != $row["ID"]) {
+          $article = new OnpubArticle();
+        }
 
         if ($queryOptions->includeContent) {
           $content = $row["content"];
@@ -706,7 +711,11 @@ class OnpubArticles
           $article->sectionIDs[] = $row["sectionID"];
         }
 
-        $articles[] = $article;
+        if ($lastID != $row["ID"]) {
+          $articles[] = $article;
+        }
+
+        $lastID = $article->ID;
       }
     }
 
