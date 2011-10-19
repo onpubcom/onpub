@@ -133,7 +133,6 @@ class OnpubWidgetSections
       if ($this->owebsite) {
         en('<h3 class="onpub-field-header">' . $this->heading . '</h3>');
         en('<p>');
-
         en('<small>' . $this->tooltip . '</small><br>');
         en('<select name="' . $this->fieldName . '" multiple="multiple" size="' . $this->size . '" id="' . $this->ID . '">');
 

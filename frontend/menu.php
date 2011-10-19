@@ -11,17 +11,17 @@
 
 function onpub_extract_section_ids($sections)
 {
-  static $sectIDs = array();
+  static $ids = array();
   
   foreach ($sections as $s) {
-    $sectIDs[] = $s->ID;
+    $ids[] = $s->ID;
     
     if (sizeof($s->sections)) {
       onpub_extract_section_ids($s->sections);
     }
   }
   
-  return $sectIDs;
+  return $ids;
 }
 
 function onpub_output_sub_sections($section, $visSectIDs)
@@ -77,11 +77,11 @@ if ($onpub_website) {
       $sectionsassoc['s' . $s->ID] = $s;
     }
     
-    $sectIDs = onpub_extract_section_ids($onpub_website->sections);
+    $onpub_website_section_ids = onpub_extract_section_ids($onpub_website->sections);
   
     $sections = array();
   
-    foreach ($sectIDs as $sID) {
+    foreach ($onpub_website_section_ids as $sID) {
       if (isset($sectionsassoc['s' . $sID])) {
         $sections[] = $sectionsassoc['s' . $sID];
       }

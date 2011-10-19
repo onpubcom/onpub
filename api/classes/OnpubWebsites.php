@@ -291,8 +291,6 @@ class OnpubWebsites
         $section->name = $row["sectionName"];
         $section->setCreated(new DateTime($row["sectionCreated"]));
         $section->setModified(new DateTime($row["sectionModified"]));
-        // Add sub-sections to top-level sections.
-        $section->sections = $osections->select(NULL, NULL, FALSE, $sectionID);
 
         if (isset($sectionsassoc["$sectionID"])) {
           $section = $sectionsassoc["$sectionID"];
@@ -329,6 +327,31 @@ class OnpubWebsites
         }
       }
     }
+
+    // An array to track the subsections indexes in the sections array.
+    $subsections = array();
+
+    // Loop through all sections and link subsections to their parents and
+    // vice-versa.
+    for ($i = 0; $i < sizeof($sections); $i++) {
+      $section = $sections[$i];
+      
+      if ($section->parentID) {
+        $parentID = $section->parentID;
+        $parentSection = $sectionsassoc["$parentID"];
+        $parentSection->sections[] = $section;
+        $section->parent = $parentSection;
+        $subsections[] = $i;
+      }
+    }
+
+    // Unset subsections from the original sections array now that they are
+    // linked to their parent sections.
+    foreach ($subsections as $subsection) {
+      unset($sections[$subsection]);
+    }
+
+    $website->sections = $sections;
 
     if (!$queryOptions->includeArticles) {
       return $website;

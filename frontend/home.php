@@ -35,7 +35,7 @@ if ($onpub_website) {
     $qo->order = 'DESC';
     $qo->rowLimit = $onpub_disp_updates_num + 1;
 
-    $articles = $onpub_articles->select($qo, null, $onpub_disp_website);
+    $articles = $onpub_articles->select($qo, null, $onpub_website->ID);
 
     if (sizeof($articles) && !(sizeof($articles) == 1 && $articles[0]->ID == $onpub_disp_article)) {
       en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
@@ -51,7 +51,7 @@ if ($onpub_website) {
           $samaps = $onpub_samaps->select(null, null, $a->ID);
 
           if (sizeof($samaps)) {
-            if (in_array($samaps[0]->sectionID, $sectIDs)) {
+            if (in_array($samaps[0]->sectionID, $onpub_website_section_ids)) {
               // Only include s in links if current section is visible.
               en('<h2 class="onpub-article-link"><a href="index.php?s=' . $samaps[0]->sectionID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
             }

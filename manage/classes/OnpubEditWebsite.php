@@ -32,6 +32,7 @@ class OnpubEditWebsite
     try {
       $totalSections = $osections->count();
       $this->owebsite = $owebsites->get($this->owebsite->ID, $queryOptions);
+
       $queryOptions = new OnpubQueryOptions();
       $queryOptions->orderBy = "name";
       $queryOptions->order = "ASC";
@@ -179,7 +180,7 @@ class OnpubEditWebsite
   {
     $owebsites = new OnpubWebsites($this->pdo);
 
-    $sections = array ();
+    $sections = array();
 
     for ($i = 0; $i < sizeof($this->sectionIDs); $i++) {
       if ($this->sectionIDs[$i]) {
