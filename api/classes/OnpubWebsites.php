@@ -275,7 +275,8 @@ class OnpubWebsites
     }
 
     $osections = new OnpubSections($this->pdo);
-    $sectionsassoc = array ();
+    $sections = array();
+    $sectionsassoc = array();
 
     foreach ($rows as $row) {
       $sectionID = $row["sectionID"];
@@ -338,9 +339,13 @@ class OnpubWebsites
       
       if ($section->parentID) {
         $parentID = $section->parentID;
-        $parentSection = $sectionsassoc["$parentID"];
-        $parentSection->sections[] = $section;
-        $section->parent = $parentSection;
+
+        if (isset($sectionsassoc["$parentID"])) {
+          $parentSection = $sectionsassoc["$parentID"];
+          $parentSection->sections[] = $section;
+          $section->parent = $parentSection;
+        }
+
         $subsections[] = $i;
       }
     }
@@ -351,7 +356,12 @@ class OnpubWebsites
       unset($sections[$subsection]);
     }
 
-    $website->sections = $sections;
+    $website->sections = array();
+
+    // Array index now might not be offset from 0 for sections. Re-shuffle.
+    foreach ($sections as $section) {
+      $website->sections[] = $section;
+    }
 
     if (!$queryOptions->includeArticles) {
       return $website;
