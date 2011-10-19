@@ -75,11 +75,11 @@ class OnpubEditSection
 
     if ($this->visible !== NULL) {
       en('<h3 class="onpub-field-header">Visibility</h3>');
-      en('<p><input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">Uncheck to hide this section from the frontend navigation menu</label></p>');
+      en('<p><input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">De-select to hide this section from the frontend navigation menu</label></p>');
     }
     else {
       en('<h3 class="onpub-field-header">Visibility</h3>');
-      en('<p><input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Check to show this section on the frontend navigation menu</label></p>');
+      en('<p><input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Select to show this section on the frontend navigation menu</label></p>');
     }
 
     en('</div>');
