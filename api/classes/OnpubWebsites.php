@@ -356,12 +356,8 @@ class OnpubWebsites
       unset($sections[$subsection]);
     }
 
-    $website->sections = array();
-
-    // Array index now might not be offset from 0 for sections. Re-shuffle.
-    foreach ($sections as $section) {
-      $website->sections[] = $section;
-    }
+    // Array now might not be offset from 0 for sections. Re-index from 0.
+    $website->sections = array_values($sections);
 
     if (!$queryOptions->includeArticles) {
       return $website;
