@@ -290,6 +290,7 @@ class OnpubWebsites
         $section->websiteID = $row["sectionWebsiteID"];
         $section->parentID = $row["sectionParentID"];
         $section->name = $row["sectionName"];
+        $section->url = $row["sectionURL"];
         $section->setCreated(new DateTime($row["sectionCreated"]));
         $section->setModified(new DateTime($row["sectionModified"]));
 
@@ -561,10 +562,16 @@ class OnpubWebsites
     }
 
     if ($queryOptions->includeContent) {
-      $articleColumns = "articles.ID AS articleID, articles.imageID AS articleImageID, title, content, articles.url AS articleURL, articles.created AS articleCreated, articles.modified AS articleModified";
+      $articleColumns = "articles.ID AS articleID, articles.imageID AS " .
+                        "articleImageID, title, content, articles.url AS " .
+                        "articleURL, articles.created AS articleCreated, " .
+                        "articles.modified AS articleModified";
     }
     else {
-      $articleColumns = "articles.ID AS articleID, articles.imageID AS articleImageID, title, articles.url AS articleURL, articles.created AS articleCreated, articles.modified AS articleModified";
+      $articleColumns = "articles.ID AS articleID, articles.imageID AS " .
+                        "articleImageID, title, articles.url AS articleURL, " .
+                        "articles.created AS articleCreated, " .
+                        "articles.modified AS articleModified";
     }
 
     if ($queryOptions->includeSections) {
@@ -578,7 +585,7 @@ class OnpubWebsites
           "imageModified, sections.ID AS sectionID, sections.imageID AS " .
           "sectionImageID, sections.websiteID AS sectionWebsiteID, " .
           "sections.parentID AS sectionParentID, sections.name AS " .
-          "sectionName, sections.created AS sectionCreated, " .
+          "sectionName, sections.url AS sectionURL, sections.created AS sectionCreated, " .
           "sections.modified AS sectionModified, sectionimages.websiteID AS " .
           "sectionImageWebsiteID, sectionimages.fileName AS " .
           "sectionImageFileName, sectionimages.description AS " .
@@ -616,11 +623,38 @@ class OnpubWebsites
       }
       else {
         return
-          "SELECT websites.ID, websites.imageID, websites.name, websites.url, websites.imagesURL, websites.imagesDirectory, websites.created, websites.modified, websiteimages.fileName, websiteimages.description, websiteimages.url AS websiteImageURL, websiteimages.created AS imageCreated, websiteimages.modified AS imageModified, sections.ID AS sectionID, sections.imageID AS sectionImageID, sections.websiteID AS sectionWebsiteID, sections.parentID AS sectionParentID, sections.name AS sectionName, sections.created AS sectionCreated, sections.modified AS sectionModified, sectionimages.websiteID AS sectionImageWebsiteID, sectionimages.fileName AS sectionImageFileName, sectionimages.description AS sectionImageDescription, sectionimages.url AS sectionImageURL, sectionimages.created AS sectionImageCreated, sectionimages.modified AS sectionImageModified FROM OnpubWebsites AS websites LEFT JOIN OnpubImages AS websiteimages ON websites.imageID = websiteimages.ID LEFT JOIN OnpubWSMaps AS wsmaps ON websites.ID = wsmaps.websiteID LEFT JOIN OnpubSections AS sections ON wsmaps.sectionID = sections.ID LEFT JOIN OnpubImages AS sectionimages ON sections.imageID = sectionimages.ID $where ORDER BY $orderBy";
+          "SELECT websites.ID, websites.imageID, websites.name, " .
+          "websites.url, websites.imagesURL, websites.imagesDirectory, " .
+          "websites.created, websites.modified, websiteimages.fileName, " .
+          "websiteimages.description, websiteimages.url AS websiteImageURL, " .
+          "websiteimages.created AS imageCreated, websiteimages.modified AS " .
+          "imageModified, sections.ID AS sectionID, sections.imageID AS " .
+          "sectionImageID, sections.websiteID AS sectionWebsiteID, " .
+          "sections.parentID AS sectionParentID, sections.name AS " .
+          "sectionName, sections.url AS sectionURL, sections.created AS sectionCreated, " .
+          "sections.modified AS sectionModified, sectionimages.websiteID " .
+          "AS sectionImageWebsiteID, sectionimages.fileName AS " .
+          "sectionImageFileName, sectionimages.description AS " .
+          "sectionImageDescription, sectionimages.url AS sectionImageURL, " .
+          "sectionimages.created AS sectionImageCreated, " .
+          "sectionimages.modified AS sectionImageModified FROM " .
+          "OnpubWebsites AS websites LEFT JOIN OnpubImages AS websiteimages " .
+          "ON websites.imageID = websiteimages.ID LEFT JOIN OnpubWSMaps AS " .
+          "wsmaps ON websites.ID = wsmaps.websiteID LEFT JOIN OnpubSections " .
+          "AS sections ON wsmaps.sectionID = sections.ID LEFT JOIN " .
+          "OnpubImages AS sectionimages ON sections.imageID = " .
+          "sectionimages.ID $where ORDER BY $orderBy";
       }
     }
     else {
-      return "SELECT websites.ID, imageID, name, websites.url, imagesURL, imagesDirectory, websites.created, websites.modified, websiteimages.fileName, websiteimages.description, websiteimages.url AS websiteImageURL, websiteimages.created AS imageCreated, websiteimages.modified AS imageModified FROM OnpubWebsites AS websites LEFT JOIN OnpubImages AS websiteimages ON websites.imageID = websiteimages.ID WHERE websites.ID = $ID";
+      return "SELECT websites.ID, imageID, name, websites.url, imagesURL, " .
+             "imagesDirectory, websites.created, websites.modified, " .
+             "websiteimages.fileName, websiteimages.description, " .
+             "websiteimages.url AS websiteImageURL, websiteimages.created " .
+             "AS imageCreated, websiteimages.modified AS imageModified " .
+             "FROM OnpubWebsites AS websites LEFT JOIN OnpubImages AS " .
+             "websiteimages ON websites.imageID = websiteimages.ID " .
+             "WHERE websites.ID = $ID";
     }
   }
 

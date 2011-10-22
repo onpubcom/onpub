@@ -9,6 +9,22 @@
  * as published by the Free Software Foundation; version 2.
  */
 
+function onpub_extract_section_ids($sections)
+{
+  static $ids = array();
+  
+  foreach ($sections as $s) {
+    $ids[] = $s->ID;
+    
+    if (sizeof($s->sections)) {
+      onpub_extract_section_ids($s->sections);
+    }
+  }
+  
+  return $ids;
+}
+
+
 if ($onpub_website) {
   if ($onpub_disp_updates) {
     en('<div class="yui3-g">');
@@ -40,6 +56,8 @@ if ($onpub_website) {
     if (sizeof($articles) && !(sizeof($articles) == 1 && $articles[0]->ID == $onpub_disp_article)) {
       en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
 
+      $onpub_website_section_ids = onpub_extract_section_ids($onpub_website->sections);
+
       $i = 0;
 
       foreach ($articles as $a) {
@@ -51,16 +69,15 @@ if ($onpub_website) {
           $samaps = $onpub_samaps->select(null, null, $a->ID);
 
           if (sizeof($samaps)) {
-            if (in_array($samaps[0]->sectionID, $onpub_website_section_ids)) {
-              // Only include s in links if current section is visible.
-              en('<h2 class="onpub-article-link"><a href="index.php?s=' . $samaps[0]->sectionID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
+            $sectionIDs = array();
+
+            foreach ($samaps as $samap) {
+              $sectionIDs[] = $samap->sectionID;
             }
-            else {
-              en('<h2 class="onpub-article-link"><a href="index.php?a=' . $a->ID . '">' . $a->title . '</a></h2>');
-            }
-          }
-          else {
-            en('<h2 class="onpub-article-link"><a href="index.php?a=' . $a->ID . '">' . $a->title . '</a></h2>');
+
+            $visibleSIDs = array_values(array_intersect($onpub_website_section_ids, $sectionIDs));
+
+            en('<h2 class="onpub-article-link"><a href="index.php?s=' . $visibleSIDs[0] . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
           }
 
           en('<p class="onpub-article-summary">' . $a->getCreated()->format('M j, Y'));

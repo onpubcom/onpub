@@ -9,93 +9,52 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-function onpub_extract_section_ids($sections)
-{
-  static $ids = array();
-  
-  foreach ($sections as $s) {
-    $ids[] = $s->ID;
-    
-    if (sizeof($s->sections)) {
-      onpub_extract_section_ids($s->sections);
-    }
-  }
-  
-  return $ids;
-}
-
-function onpub_output_sub_sections($section, $visSectIDs)
+function onpub_output_sub_sections($section)
 {
   global $onpub_articles;
   $subsections = $section->sections;
 
   foreach ($subsections as $sub) {
-    if (in_array($sub->ID, $visSectIDs)) {
-      if ($sub->url) {
-        en('<li class="yui3-menuitem">');
-        en('<a class="yui3-menuitem-content" href="' . $sub->url . '">' . $sub->name . '</a>');
-        en('</li>');
-      }
-      else {
-        en('<li>');
-        en('<a class="yui3-menu-label" href="index.php?s=' . $sub->ID . '">' . $sub->name . '</a>');
-        en('<div class="yui3-menu">');
-        en('<div class="yui3-menu-content">');
-        en('<ul>');
-  
-        $articles = $onpub_articles->select(null, $sub->ID);
-  
-        foreach ($articles as $a) {
-          if ($a->url) {
-            en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $a->url . '">' . $a->title . '</a></li>');
-          }
-          else {
-            en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?s=' . $sub->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
-          }
+    if ($sub->url) {
+      en('<li class="yui3-menuitem">');
+      en('<a class="yui3-menuitem-content" href="' . $sub->url . '">' . $sub->name . '</a>');
+      en('</li>');
+    }
+    else {
+      en('<li>');
+      en('<a class="yui3-menu-label" href="index.php?s=' . $sub->ID . '">' . $sub->name . '</a>');
+      en('<div class="yui3-menu">');
+      en('<div class="yui3-menu-content">');
+      en('<ul>');
+
+      $articles = $onpub_articles->select(null, $sub->ID);
+
+      foreach ($articles as $a) {
+        if ($a->url) {
+          en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $a->url . '">' . $a->title . '</a></li>');
         }
-  
-        if (sizeof($sub->sections)) {
-          onpub_output_sub_sections($sub, $visSectIDs);
+        else {
+          en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?s=' . $sub->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
         }
-        
-        en('</ul>');
-        en('</div>');
-        en('</div>');
-        en('</li>');
       }
+
+      if (sizeof($sub->sections)) {
+        onpub_output_sub_sections($sub);
+      }
+      
+      en('</ul>');
+      en('</div>');
+      en('</div>');
+      en('</li>');
     }
   }
 }
 
 if ($onpub_website) {
   if ($onpub_disp_menu) {
-    $sections = $onpub_sections->select(null, $onpub_website->ID, FALSE);
-  
-    $sectionsassoc = array();
-  
-    foreach ($sections as $s) {
-      $sectionsassoc['s' . $s->ID] = $s;
-    }
-    
-    $onpub_website_section_ids = onpub_extract_section_ids($onpub_website->sections);
-  
-    $sections = array();
-  
-    foreach ($onpub_website_section_ids as $sID) {
-      if (isset($sectionsassoc['s' . $sID])) {
-        $sections[] = $sectionsassoc['s' . $sID];
-      }
-    }
+    $sections = $onpub_website->sections;
   
     if (sizeof($sections)) {
-      $wsmaps = $onpub_wsmaps->select(null, $onpub_website->ID);
-
-      $visSectIDs = array();
-
-      foreach ($wsmaps as $wsmap) {
-        $visSectIDs[] = $wsmap->sectionID;
-      }
-
       en('<div id="onpub-menubar" class="yui3-menu yui3-menu-horizontal yui3-menubuttonnav">');
       en('<div class="yui3-menu-content">');
       en('<ul>');
@@ -136,7 +95,7 @@ if ($onpub_website) {
             }
           }
   
-          onpub_output_sub_sections($s, $visSectIDs);
+          onpub_output_sub_sections($s);
   
           en('</ul>');
           en('</div>');
