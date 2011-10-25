@@ -34,5 +34,5 @@ sha1sum onpub-`php onpub_version.php`.zip > onpub-`php onpub_version.php`.sha1
 # Clean up.
 rm ckeditor_3.6.2.zip
 rm yui_3.4.1.zip
-rm -r onpub
+#rm -r onpub
 
