@@ -31,8 +31,9 @@ the frontend web interface all the way down to the database API layer.</descript
  </notes>
  <contents>
   <dir name="/">
-   <file name="index.php" role="php" />
-   <file name="onpub_conf.php" role="php" />
+   <dir name="onpub/">
+     <file name="index.php" role="php" />
+   </dir>
   </dir>
  </contents>
  <dependencies>
