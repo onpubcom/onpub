@@ -1,5 +1,5 @@
 #!/bin/sh
-APIDIR="../Onpub/data/"
+APIDIR="../data/"
 DLDIR="yui"
 DLURL="http://yui.zenfs.com/releases/yui3/"
 FNAME="yui_3.4.1.zip"

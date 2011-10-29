@@ -9,7 +9,7 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-include "../Onpub/api/onpubapi.php";
+include "../api/onpubapi.php";
 
 echo ONPUBAPI_VERSION;
 

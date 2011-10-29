@@ -54,7 +54,7 @@ if ($onpub_website) {
     $articles = $onpub_articles->select($qo, null, $onpub_website->ID);
 
     if (sizeof($articles) && !(sizeof($articles) == 1 && $articles[0]->ID == $onpub_disp_article)) {
-      en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_data . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
+      en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_data . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
 
       $onpub_website_section_ids = onpub_extract_section_ids($onpub_website->sections);
 
@@ -127,7 +127,7 @@ if ($onpub_website) {
     en('<span class="onpub-edit">');
     en('<a href="' . $onpub_dir_root . $onpub_dir_manage .
        'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
-       '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_data . $onpub_dir_frontend .
+       '" target="_onpub"><img src="' . $onpub_dir_data . $onpub_dir_frontend .
        'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a> ' .
        '<a href="' . $onpub_dir_root . $onpub_dir_manage .
        'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .

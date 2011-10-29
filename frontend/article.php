@@ -72,7 +72,7 @@ if ($onpub_article) {
     en('<span class="onpub-edit">');
     en('<a href="' . $onpub_dir_root . $onpub_dir_manage .
        'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
-       '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_data . $onpub_dir_frontend .
+       '" target="_onpub"><img src="' . $onpub_dir_data . $onpub_dir_frontend .
        'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a> ' .
        '<a href="' . $onpub_dir_root . $onpub_dir_manage .
        'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
