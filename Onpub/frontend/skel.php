@@ -54,19 +54,19 @@ else {
 }
 
 if (file_exists($onpub_dir_local . $onpub_inc_css)) {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_data . $onpub_dir_frontend . 'css/onpub.css">');
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_local . $onpub_inc_css . '">');
 }
 else {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_data . $onpub_dir_frontend . 'css/onpub.css">');
 }
 
 if (file_exists($onpub_dir_local . $onpub_inc_css_menu)) {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_data . $onpub_dir_frontend . 'css/onpub-menu.css">');
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_local . $onpub_inc_css_menu . '">');
 }
 else {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_data . $onpub_dir_frontend . 'css/onpub-menu.css">');
 }
 
 ?>
@@ -159,7 +159,7 @@ else {
   en('<script type="text/javascript" src="http://yui.yahooapis.com/combo?' . $onpub_yui_version . '/build/yui/yui-min.js"></script>');
 }
 
-en('<script type="text/javascript" src="' . $onpub_dir_root . $onpub_dir_frontend . 'js/site.js"></script>');
+en('<script type="text/javascript" src="' . $onpub_dir_root . $onpub_dir_data . $onpub_dir_frontend . 'js/site.js"></script>');
 
 if (file_exists($onpub_dir_local . $onpub_inc_foot)) include $onpub_dir_local . $onpub_inc_foot;
 

@@ -77,6 +77,8 @@ installation directory.
 */
 $onpub_dir_root = 'Onpub/';
 
+$onpub_dir_data = 'data/';
+
 /*
 Path to OnpubAPI directory. It is recommended that you leave this value
 unchanged.
