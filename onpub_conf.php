@@ -75,7 +75,7 @@ onpub/api/, onpub/frontend/, etc. This allows you to load the frontend
 index.php and onpub_conf_*.php files from a location outside of the root onpub/
 installation directory.
 */
-$onpub_dir_root = '';
+$onpub_dir_root = 'Onpub/';
 
 /*
 Path to OnpubAPI directory. It is recommended that you leave this value
