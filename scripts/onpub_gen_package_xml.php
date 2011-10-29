@@ -7,7 +7,7 @@ PEAR::setErrorHandling(PEAR_ERROR_DIE);
 $pfm = PEAR_PackageFileManager2::importOptions('./package-template.xml');
 
 $pfm_options = array('packagedirectory' => 'onpub/',
-                     'baseinstalldir' => 'Onpub/');
+                     'baseinstalldir' => '/');
 
 $pfm->setOptions($pfm_options);
 
