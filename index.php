@@ -14,6 +14,23 @@ This is the Onpub website frontend index file.
 See http://onpub.com/index.php?s=8&a=96 for more information.
 */
 
+function onpub_find_dir_root()
+{
+	$include_paths = explode(':', get_include_path());
+
+	foreach ($include_paths as $include_path) {
+		if (stristr($include_path, 'pear') !== FALSE) {
+			if (file_exists($include_path . '/PEAR.php') && file_exists($include_path . '/Onpub/index.php')) {
+					// Onpub is installed via PEAR.
+					// Use Onpub root dir relative to PEAR include_path.
+					return 'Onpub/';
+			}
+		}
+	}
+
+	return '';
+}
+
 // Include default Onpub config.
 include './onpub_conf.php';
 
