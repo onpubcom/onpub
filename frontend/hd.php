@@ -18,7 +18,7 @@ if ($onpub_website) {
   }
 }
 else {
-  en('<div id="onpub-logo"><a href="index.php"><img src="' . $onpub_dir_root . $onpub_dir_manage . 'images/onpub.png" alt="Onpub" title="Onpub"></a></div>');
+  en('<div id="onpub-logo"><a href="index.php"><img src="' . $onpub_dir_data . $onpub_dir_manage . 'images/onpub.png" alt="Onpub" title="Onpub"></a></div>');
 }
 
 ?>
