@@ -14,8 +14,11 @@ This is the Onpub website frontend index file.
 See http://onpub.com/index.php?s=8&a=96 for more information.
 */
 
-function onpub_find_dir_root()
+function onpub_get_dir_root()
 {
+	// A local install path takes precedence over a PEAR install.
+	if (file_exists('./frontend/init.php')) return '';
+
 	$include_paths = explode(':', get_include_path());
 
 	foreach ($include_paths as $include_path) {
