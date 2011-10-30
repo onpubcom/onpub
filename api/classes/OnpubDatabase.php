@@ -47,7 +47,7 @@ class OnpubDatabase
     $line = 0;
     $exceptions = array ();
 
-    $sqlfile = file('../api/sql/deleteonpubtables.sql');
+    $sqlfile = file('../../data/api/sql/deleteonpubtables.sql');
 
     // advance past all comments
     while (strpos($sqlfile[$line], '--') !== FALSE) {
@@ -110,7 +110,12 @@ class OnpubDatabase
     $line = 0;
     $exceptions = array ();
 
-    $sqlfile = file('../api/sql/createonpubtables-rev0.sql');
+    if (file_exists('../../data/api/sql/createonpubtables-rev0.sql') {
+      $sqlfile = file('../../data/api/sql/createonpubtables-rev0.sql');
+    }
+    else {
+      $sqlfile = file('../../../data/Onpub/data/api/sql/createonpubtables-rev0.sql');
+    }
 
     // advance past all comments
     while (strpos($sqlfile[$line], '--') !== FALSE) {
