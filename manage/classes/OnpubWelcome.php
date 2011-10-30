@@ -145,7 +145,7 @@ class OnpubWelcome
     else {
       // Onpub schema is not installed yet. Prompt user to install.
       en('<div class="yui3-u-3-4">');
-      en('<h2>Welcome to Onpub</h2>');
+      en('<h2>Welcome to Onpub on ' . $_SERVER['SERVER_NAME'] . '</h2>');
       en('<p>This appears to be the first time you have logged in to the Onpub content management interface.</p>');
       en('<p>Before you can publish a website with Onpub you must add the Onpub schema to the connected MySQL database, <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
       en('<p>Please click the link below to continue:</p>');
@@ -158,7 +158,7 @@ class OnpubWelcome
       en('<table>');
       en('<tr><th colspan="2" style="text-align: left;">Database Connection</th></tr>');
       en('<tr style="vertical-align: top;"><td>MySQL Host:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CONNECTION_STATUS) . '</td></tr>');
-      en('<tr style="vertical-align: top;"><td>MySQL Client:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CLIENT_VERSION) . ' on ' . $_SERVER['SERVER_NAME'] . '</td></tr>');
+      en('<tr style="vertical-align: top;"><td>MySQL Client:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CLIENT_VERSION) . '</td></tr>');
       en('<tr style="vertical-align: top;"><td>MySQL Server:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_SERVER_VERSION) . '</td></tr>');
       en('<tr style="vertical-align: top;"><td>MySQL User:</td><td>' . $_SESSION['PDO_USER'] . '</td></tr>');
       en('<tr style="vertical-align: top;"><td>Selected Database:</td><td>' . $_SESSION['PDO_DATABASE'] . '</td></tr>');
