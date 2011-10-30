@@ -110,7 +110,7 @@ class OnpubDatabase
     $line = 0;
     $exceptions = array ();
 
-    if (file_exists('../../data/api/sql/createonpubtables-rev0.sql') {
+    if (file_exists('../../data/api/sql/createonpubtables-rev0.sql')) {
       $sqlfile = file('../../data/api/sql/createonpubtables-rev0.sql');
     }
     else {
