@@ -60,22 +60,35 @@ class OnpubEditArticle
 
     en('<p><textarea rows="25" cols="100" name="content">' . htmlentities($this->oarticle->content) . '</textarea></p>');
 
-    if (file_exists('ckeditor/ckeditor_php5.php')) {
-      include './ckeditor/ckeditor_php5.php';
+    $ckpath = null;
+
+    if (file_exists('../data/manage/ckeditor/ckeditor_php5.php')) {
+      $ckpath = '../data/manage/ckeditor/ckeditor_php5.php';
+      $ckbasepath = '../data/manage/ckeditor/';
+      $cssbasepath = '../data/manage/css/';
+    }
+    else if (file_exists('../../data/Onpub/data/manage/ckeditor/ckeditor_php5.php')) {
+      $ckpath = '../../data/Onpub/data/manage/ckeditor/ckeditor_php5.php';
+      $ckbasepath = '../Onpub/data/manage/ckeditor/';
+      $cssbasepath = '../Onpub/data/manage/css/';
+    }
+
+    if ($ckpath) {
+      include $ckpath;
       $config = array();
       $events = array();
 
       $ck = new CKEditor();
-      $ck->basePath = 'ckeditor/';
+      $ck->basePath = $ckbasepath;
 
       $config['height'] = 320;
       $config['uiColor'] = '#eff0f0';
 
       if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
-        $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css', ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css');
+        $config['contentsCss'] = array($ckbasepath . 'contents.css', $cssbasepath . 'ckeditor.css', ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css');
       }
       else {
-        $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css', 'http://yui.yahooapis.com/' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css');
+        $config['contentsCss'] = array($ckbasepath . 'contents.css', $cssbasepath . 'ckeditor.css', 'http://yui.yahooapis.com/' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css');
       }
 
       $events['instanceReady'] = 'function (ev) {

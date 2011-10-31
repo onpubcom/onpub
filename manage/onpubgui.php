@@ -16,7 +16,17 @@ define("ONPUBGUI_PDO_HOST", "localhost");
 // Directory Configuration
 // Icons, buttons and other Onpub GUI graphics are stored in this directory
 define("ONPUBGUI_IMAGE_DIRECTORY", "../data/manage/images/");
-define("ONPUBGUI_YUI_DIRECTORY", "../data/yui/build/");
+
+if (file_exists("../data/yui/build/")) {
+  define("ONPUBGUI_YUI_DIRECTORY", "../data/yui/build/");
+}
+else if (file_exists("../../data/Onpub/data/yui/build/")) {
+  define("ONPUBGUI_YUI_DIRECTORY", "../Onpub/data/yui/build/");
+}
+else {
+  define("ONPUBGUI_YUI_DIRECTORY", "");
+}
+
 define("ONPUBGUI_YUI_VERSION", "3.4.1");
 
 // UI Configuration
