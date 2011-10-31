@@ -93,8 +93,8 @@ class OnpubNewArticle
       $config['height'] = 320;
       $config['uiColor'] = '#eff0f0';
 
-      if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
-        $config['contentsCss'] = array($ckbasepath . 'contents.css', $cssbasepath . 'ckeditor.css', ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css');
+      if (ONPUBGUI_YUI_DIRECTORY) {
+        $config['contentsCss'] = array($ckbasepath . 'contents.css', $cssbasepath . 'ckeditor.css', ONPUBGUI_YUI_BASEPATH . 'cssgrids/grids-min.css');
       }
       else {
         $config['contentsCss'] = array($ckbasepath . 'contents.css', $cssbasepath . 'ckeditor.css', 'http://yui.yahooapis.com/' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css');

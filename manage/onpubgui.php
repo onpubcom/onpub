@@ -19,12 +19,15 @@ define("ONPUBGUI_IMAGE_DIRECTORY", "../data/manage/images/");
 
 if (file_exists("../data/yui/build/")) {
   define("ONPUBGUI_YUI_DIRECTORY", "../data/yui/build/");
+  define("ONPUBGUI_YUI_BASEPATH", "../data/yui/build/");
 }
 else if (file_exists("../../data/Onpub/data/yui/build/")) {
-  define("ONPUBGUI_YUI_DIRECTORY", "../Onpub/data/yui/build/");
+  define("ONPUBGUI_YUI_DIRECTORY", "../../data/Onpub/data/yui/build/");
+  define("ONPUBGUI_YUI_BASEPATH", "../Onpub/data/yui/build/");
 }
 else {
   define("ONPUBGUI_YUI_DIRECTORY", "");
+  define("ONPUBGUI_YUI_BASEPATH", "");
 }
 
 define("ONPUBGUI_YUI_VERSION", "3.4.1");
