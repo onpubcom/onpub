@@ -50,8 +50,8 @@ class OnpubWidgetHeader
          '/build/overlay/assets/skins/sam/overlay.css">');
     }
 
-    en('<link rel="stylesheet" type="text/css" href="../data/manage/css/onpub.css">');
-    en('<link rel="stylesheet" type="text/css" href="../data/manage/css/onpub-menu.css">');
+    en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
+    en('<link rel="stylesheet" type="text/css" href="css/onpub-menu.css">');
 
     en('<script type="text/javascript">');
     en('document.documentElement.className = "yui3-loading";');

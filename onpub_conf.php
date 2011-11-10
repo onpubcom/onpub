@@ -75,9 +75,7 @@ onpub/api/, onpub/frontend/, etc. This allows you to load the frontend
 index.php and onpub_conf_*.php files from a location outside of the root onpub/
 installation directory.
 */
-$onpub_dir_root = onpub_get_dir_root();
-
-$onpub_dir_data = $onpub_dir_root . 'data/';
+$onpub_dir_root = '';
 
 /*
 Path to OnpubAPI directory. It is recommended that you leave this value
@@ -90,7 +88,7 @@ Path to YUI directory. This directory contains the YUI 3 distribution. Rename
 or delete this directory if you'd like to include the YUI files from Yahoo!'s
 CDN instead.
 */
-$onpub_dir_yui = $onpub_dir_data . 'yui/build/';
+$onpub_dir_yui = $onpub_dir_api . 'yui/build/';
 
 /*
 Path to default Onpub frontend directory. This variable is useful for pointing

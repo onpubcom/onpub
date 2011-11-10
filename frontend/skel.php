@@ -36,12 +36,12 @@ if ($onpub_website) {
   en('<link rel="alternate" type="application/rss+xml" href="index.php?rss" title="' . $onpub_website->name . ' RSS Feed">');
 }
 
-if (file_exists($onpub_dir_yui)) {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssreset/cssreset-min.css">');
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssfonts/cssfonts-min.css">');
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssgrids/cssgrids-min.css">');
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssbase/cssbase-min.css">');
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'node-menunav/assets/skins/sam/node-menunav.css">');
+if (file_exists($onpub_dir_root . $onpub_dir_yui)) {
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_yui . 'cssreset/cssreset-min.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_yui . 'cssfonts/cssfonts-min.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_yui . 'cssgrids/cssgrids-min.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_yui . 'cssbase/cssbase-min.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_yui . 'node-menunav/assets/skins/sam/node-menunav.css">');
 }
 else {
   $onpub_dir_yui = null;
@@ -54,19 +54,19 @@ else {
 }
 
 if (file_exists($onpub_dir_local . $onpub_inc_css)) {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_data . $onpub_dir_frontend . 'css/onpub.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub.css">');
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_local . $onpub_inc_css . '">');
 }
 else {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_data . $onpub_dir_frontend . 'css/onpub.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub.css">');
 }
 
 if (file_exists($onpub_dir_local . $onpub_inc_css_menu)) {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_data . $onpub_dir_frontend . 'css/onpub-menu.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css">');
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_local . $onpub_inc_css_menu . '">');
 }
 else {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_data . $onpub_dir_frontend . 'css/onpub-menu.css">');
+  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_root . $onpub_dir_frontend . 'css/onpub-menu.css">');
 }
 
 ?>
@@ -76,7 +76,7 @@ document.documentElement.className = "yui3-loading";
 var onpub_dir_root = "<?php echo $onpub_dir_root; ?>";
 <?php
 if ($onpub_dir_yui) {
-  en('var onpub_dir_yui = "' . $onpub_dir_yui . '";');
+  en('var onpub_dir_yui = "' . $onpub_dir_root . $onpub_dir_yui . '";');
 }
 else {
   en('var onpub_dir_yui = null;');
@@ -153,13 +153,13 @@ switch ($onpub_index)
 <?php
 
 if ($onpub_dir_yui) {
-  en('<script type="text/javascript" src="' . $onpub_dir_yui . 'yui/yui-min.js"></script>');
+  en('<script type="text/javascript" src="' . $onpub_dir_root . $onpub_dir_yui . 'yui/yui-min.js"></script>');
 }
 else {
   en('<script type="text/javascript" src="http://yui.yahooapis.com/combo?' . $onpub_yui_version . '/build/yui/yui-min.js"></script>');
 }
 
-en('<script type="text/javascript" src="' . $onpub_dir_data . $onpub_dir_frontend . 'js/site.js"></script>');
+en('<script type="text/javascript" src="' . $onpub_dir_root . $onpub_dir_frontend . 'js/site.js"></script>');
 
 if (file_exists($onpub_dir_local . $onpub_inc_foot)) include $onpub_dir_local . $onpub_inc_foot;
 

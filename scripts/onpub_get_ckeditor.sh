@@ -1,5 +1,5 @@
 #!/bin/sh
-GUIDIR="../data/manage/"
+GUIDIR="../manage/"
 DLDIR="ckeditor"
 DLURL="http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.2/"
 FNAME="ckeditor_3.6.2.zip"

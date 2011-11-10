@@ -49,14 +49,14 @@ class OnpubLogin
       en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' . ONPUBGUI_YUI_VERSION . '/build/cssreset/cssreset-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssfonts/cssfonts-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/cssgrids-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssbase/cssbase-min.css">');
     }
 
-    en('<link rel="stylesheet" type="text/css" href="../data/manage/css/onpub.css">');
+    en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
     en('</head>');
     en('<body>');
 
     en('<div id="onpub-page" style="margin-top: 2em;">');
     en('<div id="onpub-body">');
 
-    en('<div style="text-align: center; margin-top: 1.5em; margin-bottom: 1.5em;"><a href="index.php"><img src="../data/manage/images/onpub.png" width="222" height="89" alt="Onpub" title="Onpub"></a></div>');
+    en('<div style="text-align: center; margin-top: 1.5em; margin-bottom: 1.5em;"><a href="index.php"><img src="images/onpub.png" width="222" height="89" alt="Onpub" title="Onpub"></a></div>');
 
     en('<div class="yui3-g">');
 
