@@ -16,7 +16,7 @@ if ($onpub_section && $onpub_article) {
   en('<h1>' . $onpub_article->title . '</h1>');
 
   en('<div class="yui3-g">');
-  en('<div class="yui3-u-2-3">');
+  en('<div class="yui3-u-1-2">');
   en('<p class="onpub-article-info">');
 
   $created = $onpub_article->getCreated();
@@ -57,7 +57,7 @@ if ($onpub_section && $onpub_article) {
 
   en('</p>');
   en('</div>');
-  en('<div class="yui3-u-1-3">');
+  en('<div class="yui3-u-1-2">');
 
   if (file_exists($onpub_dir_local . $onpub_inc_article_info)) include $onpub_dir_local . $onpub_inc_article_info;
 
