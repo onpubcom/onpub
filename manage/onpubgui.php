@@ -70,4 +70,5 @@ include ("classes/OnpubWidgetSections.php");
 include ("classes/OnpubWidgetStats.php");
 include ("classes/OnpubWidgetSelectWebsite.php");
 include ("classes/OnpubWidgetWebsites.php");
+
 ?>

@@ -12,6 +12,9 @@
 define("ONPUBAPI_VERSION", "1.2.2");
 define("ONPUBAPI_SCHEMA_VERSION", 1);
 
+// phpThumb
+include ("phpThumb/phpThumb.config.php");
+
 // Database Class
 include("classes/OnpubDatabase.php");
 

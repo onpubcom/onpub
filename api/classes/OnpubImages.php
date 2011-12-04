@@ -218,6 +218,17 @@ class OnpubImages
 
     if ($rows) {
       foreach ($rows as $row) {
+        $website = new OnpubWebsite();
+
+        $website->ID = $row["websiteID"];
+        $website->imageID = $row["websiteImageID"];
+        $website->name = $row["websiteName"];
+        $website->url = $row["websiteURL"];
+        $website->imagesURL = $row["websiteImagesURL"];
+        $website->imagesDirectory = $row["websiteImagesDirectory"];
+        $website->setCreated(new DateTime($row["websiteCreated"]));
+        $website->setModified(new DateTime($row["websiteModified"]));
+
         $image = new OnpubImage();
 
         $image->ID = $row["ID"];
@@ -227,6 +238,7 @@ class OnpubImages
         $image->url = $row["url"];
         $image->setCreated(new DateTime($row["created"]));
         $image->setModified(new DateTime($row["modified"]));
+        $image->website = $website;
 
         $images[] = $image;
       }
@@ -246,7 +258,7 @@ class OnpubImages
     $limit = "";
 
     if ($queryOptions->dateLimit) {
-      $where = "WHERE created <= "
+      $where = "WHERE images.created <= "
         . $this->pdo->quote($queryOptions->dateLimit->format('Y-m-d H:i:s'));
     }
 
@@ -267,7 +279,7 @@ class OnpubImages
       $limit = "LIMIT 0," . $queryOptions->rowLimit;
     }
 
-    return "SELECT ID, websiteID, fileName, description, url, created, modified FROM OnpubImages $where $orderBy $limit";
+    return "SELECT images.ID, images.websiteID, images.fileName, images.description, images.url, images.created, images.modified, website.imageID as websiteImageID, website.name as websiteName, website.url as websiteURL, website.imagesURL as websiteImagesURL, website.imagesDirectory as websiteImagesDirectory, website.created as websiteCreated, website.modified as websiteModified FROM OnpubImages as images LEFT JOIN OnpubWebsites as website ON images.websiteID = website.ID $where $orderBy $limit";
   }
 
   /**

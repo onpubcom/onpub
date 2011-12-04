@@ -114,5 +114,19 @@ class OnpubImage
   {
     $this->modified = $modified;
   }
+
+  public function getSourceURL()
+  {
+    return addTrailingSlash($this->website->imagesURL) . $this->fileName;
+  }
+
+  public function getThumbURL($parameters)
+  {
+    global $PHPTHUMB_CONFIG;
+
+    if ($PHPTHUMB_CONFIG['high_security_enabled']) {
+      return phpThumbURL($parameters);
+    }
+  }
 }
 ?>
