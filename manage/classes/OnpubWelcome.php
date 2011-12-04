@@ -172,6 +172,15 @@ class OnpubWelcome
       en('<table>');
       en('<tr><th colspan="2" style="text-align: left;">PHP Configuration</th></tr>');
 
+      if (function_exists("gd_info")) {
+        $gdinfo = gd_info();
+
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/book.image.php" target="_blank">GD</a>:</td><td>Installed: ' . $gdinfo['GD Version'] . '</td></tr>');
+      }
+      else {
+        en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/book.image.php" target="_blank">GD</a>:</td><td><span class="onpub-error">Not installed.</span> <a href="http://php.net/manual/en/image.setup.php" target="_blank">Installing GD</a> is required.</td></tr>');
+      }
+
       if (get_magic_quotes_gpc()) {
         en('<tr style="vertical-align: top;"><td><a href="http://php.net/manual/en/info.configuration.php#ini.magic-quotes-gpc" target="_blank">Magic Quotes</a>:</td><td><span class="onpub-error">On</span>: <a href="http://php.net/manual/en/security.magicquotes.disabling.php" target="_blank">Disabling Magic Quotes</a> is required.</td></tr>');
       }
