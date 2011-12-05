@@ -396,5 +396,16 @@ class OnpubImages
 
     return $stmt->rowCount();
   }
+
+  public static function getThumbURL($phpThumbParams)
+  {
+    global $PHPTHUMB_CONFIG;
+
+    if ($PHPTHUMB_CONFIG['high_security_enabled']) {
+      return phpThumbURL($phpThumbParams);
+    }
+
+    return str_replace(@$PHPTHUMB_CONFIG['document_root'], '', dirname(__FILE__)).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'phpThumb'.DIRECTORY_SEPARATOR.'phpThumb.php?'.$phpThumbParams;
+  }
 }
 ?>

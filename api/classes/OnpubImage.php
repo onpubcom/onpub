@@ -119,16 +119,5 @@ class OnpubImage
   {
     return addTrailingSlash($this->website->imagesDirectory) . $this->fileName;
   }
-
-  public function getThumbURL($parameters)
-  {
-    global $PHPTHUMB_CONFIG;
-
-    if ($PHPTHUMB_CONFIG['high_security_enabled']) {
-      return phpThumbURL($parameters);
-    }
-
-    return str_replace(@$PHPTHUMB_CONFIG['document_root'], '', dirname(__FILE__)).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'phpThumb'.DIRECTORY_SEPARATOR.'phpThumb.php?'.$parameters;
-  }
 }
 ?>
