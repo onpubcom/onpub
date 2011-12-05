@@ -115,12 +115,7 @@ class OnpubImage
     $this->modified = $modified;
   }
 
-  public function getSourceURL()
-  {
-    return addTrailingSlash($this->website->imagesURL) . $this->fileName;
-  }
-
-  public function getSourcePath()
+  public function getFullPath()
   {
     return addTrailingSlash($this->website->imagesDirectory) . $this->fileName;
   }
