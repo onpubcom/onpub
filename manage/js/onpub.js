@@ -331,6 +331,11 @@ YUI(
     }
   }
 
+  function previewImage(e, widgetImagesOptions)
+  {
+    Y.log(widgetImagesOptions);
+  }
+
   // Register event handlers.
   if (Y.one("#articles")) {
     Y.on("click", moveUp, "#moveUp", null, Y.one("#articles"));
@@ -422,6 +427,10 @@ YUI(
 
   if (Y.one("#overwriteImage")) {
     Y.on("click", confirmOverwrite, "#overwriteImage", null, Y.one("input[name='overwrite']"));
+  }
+
+  if (Y.all("#widgetimages option")) {
+    Y.on("mouseover", previewImage, "#widgetimages option", null, Y.all("#widgetimages option"));
   }
 }
 );

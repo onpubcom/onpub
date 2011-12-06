@@ -32,7 +32,7 @@ class OnpubWidgetImages
 
       if ($this->imageID) {
         en('<p>');
-        en('<select name="imageID" size="1">');
+        en('<select id="widgetimages" name="imageID" size="1">');
 
         en('<option value="">None</option>');
 
@@ -52,7 +52,8 @@ class OnpubWidgetImages
         if ($this->website && $image) {
           if ($this->website->imagesURL) {
             if (@fopen(addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName), 'r')) {
-              en('<p><a href="index.php?onpub=EditImage&amp;imageID=' . $image->ID . '"><img src="' . addTrailingSlash($this->website->imagesURL) . $image->fileName . '" alt="Edit" title="Edit" border="0"></a></p>');
+              //en('<p><a href="index.php?onpub=EditImage&amp;imageID=' . $image->ID . '"><img src="' . addTrailingSlash($this->website->imagesURL) . $image->fileName . '" alt="Edit" title="Edit" border="0"></a></p>');
+              en('<p><a href="index.php?onpub=EditImage&amp;imageID=' . $image->ID . '"><img id="widgetimage" src="' . OnpubImages::getThumbURL('src=' . $image->getFullPath() . '&w=200') . '" alt="Edit" title="Edit" border="0"></a></p>');
             }
             else {
               en('<p><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'picture_error.png" align="top" width="16" height="16" alt="' . addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName) . ' not found" title="' . addTrailingSlash($this->website->imagesURL) . rawurlencode($image->fileName) . ' not found"> <span class="onpub-error">Make sure the Image Uploads URL of <a href="index.php?onpub=EditWebsite&amp;websiteID=' . $this->website->ID . '">' . $this->website->name . '</a> is setup correctly.</span></p>');
