@@ -334,7 +334,7 @@ YUI(
   function previewImage(e, widgetImage, onpubThumbURLs)
   {
     var currentTarget = e.currentTarget;
-    var options, selectedIndex, option;
+    var options, selectedIndex, option, parent;
 
     if (currentTarget.get("type") == "select-one") {
       options = currentTarget.get("options");
@@ -355,6 +355,8 @@ YUI(
       thumbURL = onpubThumbURLs[thumbIndex];
       widgetImage.set("src", thumbURL);
       widgetImage.setStyle("display", "inline");
+      parent = widgetImage.get("parentElement");
+      parent.set("href", "index.php?onpub=EditImage&imageID=" + option.get("value"));
     }
   }
 
