@@ -331,9 +331,31 @@ YUI(
     }
   }
 
-  function previewImage(e, widgetImagesOptions)
+  function previewImage(e, widgetImage, onpubThumbURLs)
   {
-    Y.log(widgetImagesOptions);
+    var currentTarget = e.currentTarget;
+    var options, selectedIndex, option;
+
+    if (currentTarget.get("type") == "select-one") {
+      options = currentTarget.get("options");
+      selectedIndex = currentTarget.get("selectedIndex");
+      option = options.item(selectedIndex);
+    }
+    else {
+      option = currentTarget;
+    }
+
+    var thumbIndex = option.get("index") - 1;
+    var thumbURL;
+
+    if (thumbIndex == -1) {
+      widgetImage.setStyle("display", "none");
+    }
+    else {
+      thumbURL = onpubThumbURLs[thumbIndex];
+      widgetImage.set("src", thumbURL);
+      widgetImage.setStyle("display", "inline");
+    }
   }
 
   // Register event handlers.
@@ -429,8 +451,9 @@ YUI(
     Y.on("click", confirmOverwrite, "#overwriteImage", null, Y.one("input[name='overwrite']"));
   }
 
-  if (Y.all("#widgetimages option")) {
-    Y.on("mouseover", previewImage, "#widgetimages option", null, Y.all("#widgetimages option"));
+  if (Y.one("#widgetimage")) {
+    Y.on("mouseover", previewImage, "#widgetimages option", null, Y.one("#widgetimage"), onpubThumbURLs);
+    Y.on("mouseout", previewImage, "#widgetimages", null, Y.one("#widgetimage"), onpubThumbURLs);
   }
 }
 );
