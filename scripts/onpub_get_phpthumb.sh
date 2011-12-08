@@ -15,6 +15,6 @@ if [ -d "${APIDIR}${DLDIR}" ]; then
 fi
 
 wget "${DLURL}${FNAME}"
-unzip $FNAME
+unzip $FNAME -d ${DLDIR}
 mv $DLDIR $APIDIR
 rm $FNAME
