@@ -340,9 +340,14 @@ YUI(
       options = currentTarget.get("options");
       selectedIndex = currentTarget.get("selectedIndex");
       option = options.item(selectedIndex);
+      options.setStyles({"backgroundColor":"#ffffff", "color":"#525861"});
     }
     else {
       option = currentTarget;
+      parent = option.get("parentElement");
+      options = parent.get("options");
+      options.setStyles({"backgroundColor":"#ffffff", "color":"#525861"});
+      option.setStyles({"backgroundColor":"#0C7CCF", "color":"#ffffff"});
     }
 
     var thumbIndex = option.get("index") - 1;
