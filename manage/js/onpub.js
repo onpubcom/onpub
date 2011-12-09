@@ -344,7 +344,7 @@ YUI(
     }
     else {
       option = currentTarget;
-      parent = option.get("parentElement");
+      parent = option.get("parentNode");
       options = parent.get("options");
       options.setStyles({"backgroundColor":"#ffffff", "color":"#525861"});
       option.setStyles({"backgroundColor":"#0C7CCF", "color":"#ffffff"});
@@ -360,7 +360,7 @@ YUI(
       thumbURL = onpubThumbURLs[thumbIndex];
       widgetImage.set("src", thumbURL);
       widgetImage.setStyle("display", "inline");
-      parent = widgetImage.get("parentElement");
+      parent = widgetImage.get("parentNode");
       parent.set("href", "index.php?onpub=EditImage&imageID=" + option.get("value"));
     }
   }
