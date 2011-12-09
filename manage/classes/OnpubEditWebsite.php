@@ -139,7 +139,7 @@ class OnpubEditWebsite
       en('</div>');
     }
 
-    $widget = new OnpubWidgetImages("Logo Image", $this->owebsite->imageID, $images, $this->owebsite);
+    $widget = new OnpubWidgetImages("Logo Image", $this->owebsite->imageID, $images);
     $widget->display();
 
     en('<div class="yui3-g">');

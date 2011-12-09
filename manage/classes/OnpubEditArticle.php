@@ -25,11 +25,17 @@ class OnpubEditArticle
     $owebsites = new OnpubWebsites($this->pdo);
     $osamaps = new OnpubSAMaps($this->pdo);
     $osections = new OnpubSections($this->pdo);
+    $oimages = new OnpubImages($this->pdo);
 
     try {
       $queryOptions = new OnpubQueryOptions();
       $queryOptions->includeAuthors = TRUE;
       $this->oarticle = $oarticles->get($this->oarticle->ID, $queryOptions);
+
+      $queryOptions = new OnpubQueryOptions();
+      $queryOptions->orderBy = "fileName";
+      $queryOptions->order = "ASC";
+      $images = $oimages->select($queryOptions);
 
       $queryOptions = new OnpubQueryOptions();
       $queryOptions->orderBy = "name";
@@ -92,22 +98,42 @@ class OnpubEditArticle
 
     en('<div class="yui3-u-1-2">');
 
-    en('<p><span class="onpub-field-header">Title</span> <input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '"></p>');
+    en('<h3 class="onpub-field-header">Title</h3><p><input type="text" maxlength="255" size="40" name="title" value="' . htmlentities($this->oarticle->title) . '"></p>');
 
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
 
-    en('<p><span class="onpub-field-header">Author</span> <input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($author->displayAs) . '"></p>');
+    en('<h3 class="onpub-field-header">Author</h3><p><input type="text" maxlength="255" size="40" name="displayAs" value="' . htmlentities($author->displayAs) . '"></p>');
 
     en('</div>');
 
     en('</div>');
 
+    en('<div class="yui3-g">');
+
+    en('<div class="yui3-u-1-2">');
     $widget = new OnpubWidgetSections();
     $widget->websites = $websites;
     $widget->osections = $osections;
     $widget->samaps = $samaps;
+    $widget->display();
+    en('</div>');
+
+    en('<div class="yui3-u-1-2">');
+    if ($this->oarticle->url) {
+      $go = ' <a href="' . $this->oarticle->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a>';
+    }
+    else {
+      $go = '';
+    }
+
+    en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this article (recommended).</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '</p>');
+    en('</div>');
+
+    en('</div>');
+
+    $widget = new OnpubWidgetImages("Image", $this->oarticle->imageID, $images);
     $widget->display();
 
     $widget = new OnpubWidgetDateCreated($this->oarticle->getCreated());
@@ -117,19 +143,9 @@ class OnpubEditArticle
 
     en('<h3 class="onpub-field-header">Modified</h3><p>' . $modified->format('M j, Y g:i:s A') . '</p>');
 
-    if ($this->oarticle->url) {
-      $go = ' <a href="' . $this->oarticle->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a>';
-    }
-    else {
-      $go = '';
-    }
-
-    en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this article (recommended).</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '</p>');
-
     en('<input type="submit" value="Save"> <input type="button" value="Delete" id="deleteArticle">');
 
     en('<input type="hidden" name="articleID" id="articleID" value="' . $this->oarticle->ID . '">');
-    en('<input type="hidden" name="imageID" value="' . $this->oarticle->imageID . '">');
     en('<input type="hidden" name="authorID" value="' . $author->ID . '">');
     en('<input type="hidden" name="authorImageID" value="' . $author->imageID . '">');
     en('<input type="hidden" name="lastDisplayAs" value="'  . htmlentities($author->displayAs) . '">');

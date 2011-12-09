@@ -115,6 +115,9 @@ class OnpubEditSection
 
     en('</div>');
 
+    en('<div class="yui3-g">');
+
+    en('<div class="yui3-u-1-2">');
     if ($numOfArticles) {
       $widget = new OnpubWidgetArticles($this->pdo, $this->osection);
       $widget->display();
@@ -123,10 +126,9 @@ class OnpubEditSection
       en('<h3 class="onpub-field-header">Visible Articles</h3><p>');
       en('There are 0 articles in the database. <a href="index.php?onpub=NewArticle">New Article</a>.</p>');
     }
+    en('</div>');
 
-    $widget = new OnpubWidgetImages("Image", $this->osection->imageID, $images, $website);
-    $widget->display();
-
+    en('<div class="yui3-u-1-2">');
     if ($this->osection->url) {
       $go = ' <a href="' . $this->osection->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a>';
     }
@@ -135,6 +137,12 @@ class OnpubEditSection
     }
 
     en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this section (recommended).</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->osection->url) . '">' . $go . '</p>');
+    en('</div>');
+
+    en('</div>');
+
+    $widget = new OnpubWidgetImages("Image", $this->osection->imageID, $images);
+    $widget->display();
 
     en('<div class="yui3-g">');
 
