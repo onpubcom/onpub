@@ -26,11 +26,12 @@ class OnpubWidgetImages
     $image = NULL;
 
     if (sizeof($this->images)) {
-      en('<div class="yui3-g">');
 
-      en('<div class="yui3-u-1-2">');
       en('<h3 class="onpub-field-header">' . $this->heading . '</h3>');
+
       en('<p>');
+      en('<small>Mouse-over an image name below for a live preview</small>', 1, 1);
+      en('<span id="widgetimagepreview">');
       en('<select id="widgetimages" name="imageID" size="10">');
 
       if ($this->imageID) {
@@ -51,12 +52,8 @@ class OnpubWidgetImages
       }
 
       en('</select>');
+      en('</span>');
       en('</p>');
-      en('</div>');
-
-      en('<div class="yui3-u-1-2">');
-      en('<h3>' . $this->heading . ' Preview</h3>');
-
       en('<script type="text/javascript">var onpubThumbURLs = [];');
 
       foreach ($this->images as $i) {
@@ -65,6 +62,7 @@ class OnpubWidgetImages
 
       en('</script>');
 
+      /*
       if ($image) {
         if (@fopen($image->getFullPath(), 'r')) {
           en('<p><a href="index.php?onpub=EditImage&amp;imageID=' .
@@ -86,12 +84,9 @@ class OnpubWidgetImages
         }
       }
       else {
-        en('<p><a href=""><img id="widgetimage" src="" alt="Edit" title="Edit" border="0" style="display: none;"></a></p>');
+        //en('<p><a href=""><img id="widgetimage" src="" alt="Edit" title="Edit" border="0" style="display: none;"></a></p>');
       }
-
-      en('</div>');
-
-      en('</div>');
+      */
     }
   }
 }

@@ -331,7 +331,7 @@ YUI(
     }
   }
 
-  function previewImage(e, widgetImage, onpubThumbURLs)
+  function previewImage(e, widgetImage, onpubThumbURLs, overlay)
   {
     var currentTarget = e.currentTarget;
     var options, selectedIndex, option, parent;
@@ -362,6 +362,7 @@ YUI(
       widgetImage.setStyle("display", "inline");
       parent = widgetImage.get("parentNode");
       parent.set("href", "index.php?onpub=EditImage&imageID=" + option.get("value"));
+      overlay.set("visible", true);
     }
   }
 
@@ -458,9 +459,21 @@ YUI(
     Y.on("click", confirmOverwrite, "#overwriteImage", null, Y.one("input[name='overwrite']"));
   }
 
-  if (Y.one("#widgetimage")) {
-    Y.on("mouseover", previewImage, "#widgetimages option", null, Y.one("#widgetimage"), onpubThumbURLs);
-    Y.on("mouseout", previewImage, "#widgetimages", null, Y.one("#widgetimage"), onpubThumbURLs);
+  if (Y.one("#widgetimagepreview")) {
+    // Setup the image preview overlay.
+    var overlay = new Y.Overlay({
+      headerContent: '<img id="widgetimage" src="" alt="Edit" title="Edit" class="onpub-image-preview">',
+      visible: false,
+      align: {
+        node: "#widgetimagepreview",
+        points: [Y.WidgetPositionAlign.TL, Y.WidgetPositionAlign.TR]
+      }
+    });
+
+    overlay.render("#widgetimagepreview");
+
+    Y.on("mouseover", previewImage, "#widgetimages option", null, Y.one("#widgetimage"), onpubThumbURLs, overlay);
+    Y.on("mouseout", previewImage, "#widgetimages", null, Y.one("#widgetimage"), onpubThumbURLs, overlay);
   }
 }
 );

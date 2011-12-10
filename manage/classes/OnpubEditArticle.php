@@ -121,6 +121,12 @@ class OnpubEditArticle
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
+    $widget = new OnpubWidgetImages("Image", $this->oarticle->imageID, $images);
+    $widget->display();
+    en('</div>');
+
+    en('</div>');
+
     if ($this->oarticle->url) {
       $go = ' <a href="' . $this->oarticle->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a>';
     }
@@ -129,12 +135,6 @@ class OnpubEditArticle
     }
 
     en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this article (recommended).</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '</p>');
-    en('</div>');
-
-    en('</div>');
-
-    $widget = new OnpubWidgetImages("Image", $this->oarticle->imageID, $images);
-    $widget->display();
 
     $widget = new OnpubWidgetDateCreated($this->oarticle->getCreated());
     $widget->display();
