@@ -194,7 +194,7 @@ YUI(
 
   function saveArticleStart(tid, overlay)
   {
-    overlay.set("bodyContent", '<div class="onpub-save-overlay">Saving..</div>');
+    overlay.set("headerContent", '<div class="onpub-save-overlay">Saving..</div>');
   }
 
   function saveArticleComplete(tid, response, overlay)
@@ -212,21 +212,21 @@ YUI(
       // There was an error.
       try {
         var error = Y.JSON.parse(response.responseText);
-        overlay.set("bodyContent", '<div class="onpub-save-overlay"><span style="color: red;">Save error: ' + error.message + '.</span></div>');
+        overlay.set("headerContent", '<div class="onpub-save-overlay"><span style="color: red;">Save error: ' + error.message + '.</span></div>');
       }
       catch (e) {
         Y.log(e);
       }
     }
     else {
-      overlay.set("bodyContent", '<div class="onpub-save-overlay">Saved.</div>');
+      overlay.set("headerContent", '<div class="onpub-save-overlay">Saved.</div>');
       updateArticleTitle(Y.one("#articleID"), Y.one("#onpub-body h1"), Y.one("input[name='title']"));
     }
   }
 
   function saveArticleFailure(tid, response, overlay)
   {
-    overlay.set("bodyContent", '<div class="onpub-save-overlay"><span style="color: red;">Save error. Try again..</span></div>');
+    overlay.set("headerContent", '<div class="onpub-save-overlay"><span style="color: red;">Save error. Try again..</span></div>');
   }
 
   function animRun(anim)
@@ -420,7 +420,7 @@ YUI(
 
       // Setup the AJAX status overlay
       var overlay = new Y.Overlay({
-        bodyContent: '<div class="onpub-save-overlay"></div>',
+        headerContent: '<div class="onpub-save-overlay"></div>',
         visible: false,
         align: {
           node: "#onpub-body",

@@ -157,6 +157,17 @@ class OnpubImages
       return NULL;
     }
 
+    $website = new OnpubWebsite();
+
+    $website->ID = $row["websiteID"];
+    $website->imageID = $row["websiteImageID"];
+    $website->name = $row["websiteName"];
+    $website->url = $row["websiteURL"];
+    $website->imagesURL = $row["websiteImagesURL"];
+    $website->imagesDirectory = $row["websiteImagesDirectory"];
+    $website->setCreated(new DateTime($row["websiteCreated"]));
+    $website->setModified(new DateTime($row["websiteModified"]));
+
     $image = new OnpubImage();
 
     $image->ID = $row["ID"];
@@ -166,6 +177,7 @@ class OnpubImages
     $image->url = $row["url"];
     $image->setCreated(new DateTime($row["created"]));
     $image->setModified(new DateTime($row["modified"]));
+    $image->website = $website;
 
     $result->closeCursor();
     return $image;
@@ -173,7 +185,14 @@ class OnpubImages
 
   private function getQuery($ID)
   {
-    return "SELECT * FROM OnpubImages WHERE ID = $ID";
+    return "SELECT images.ID, images.websiteID, images.fileName, " .
+           "images.description, images.url, images.created, images.modified, " .
+           "website.imageID as websiteImageID, website.name as websiteName, " .
+           "website.url as websiteURL, website.imagesURL as websiteImagesURL, " .
+           "website.imagesDirectory as websiteImagesDirectory, website.created " .
+           "as websiteCreated, website.modified as websiteModified FROM " .
+           "OnpubImages as images LEFT JOIN OnpubWebsites as website ON " .
+           "images.websiteID = website.ID WHERE images.ID = $ID";
   }
 
   /**
@@ -279,7 +298,14 @@ class OnpubImages
       $limit = "LIMIT 0," . $queryOptions->rowLimit;
     }
 
-    return "SELECT images.ID, images.websiteID, images.fileName, images.description, images.url, images.created, images.modified, website.imageID as websiteImageID, website.name as websiteName, website.url as websiteURL, website.imagesURL as websiteImagesURL, website.imagesDirectory as websiteImagesDirectory, website.created as websiteCreated, website.modified as websiteModified FROM OnpubImages as images LEFT JOIN OnpubWebsites as website ON images.websiteID = website.ID $where $orderBy $limit";
+    return "SELECT images.ID, images.websiteID, images.fileName, " .
+           "images.description, images.url, images.created, images.modified, " .
+           "website.imageID as websiteImageID, website.name as websiteName, " .
+           "website.url as websiteURL, website.imagesURL as websiteImagesURL, " .
+           "website.imagesDirectory as websiteImagesDirectory, website.created " .
+           "as websiteCreated, website.modified as websiteModified FROM " .
+           "OnpubImages as images LEFT JOIN OnpubWebsites as website ON " .
+           "images.websiteID = website.ID $where $orderBy $limit";
   }
 
   /**

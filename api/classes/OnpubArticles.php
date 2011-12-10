@@ -469,14 +469,33 @@ class OnpubArticles
     }
 
     if ($queryOptions->includeContent) {
-      $articleColumns = "articles.ID, articles.imageID, title, content, articles.url, articles.created, articles.modified";
+      $articleColumns = "articles.ID, articles.imageID, title, content, " .
+                        "articles.url, articles.created, articles.modified";
     }
     else {
-      $articleColumns = "articles.ID, articles.imageID, title, articles.url, articles.created, articles.modified";
+      $articleColumns = "articles.ID, articles.imageID, title, articles.url, " .
+                        "articles.created, articles.modified";
     }
 
     if ($queryOptions->includeAuthors) {
-      return "SELECT $articleColumns, articleimages.websiteID, articleimages.fileName, articleimages.description, articleimages.url AS articleImageURL, articleimages.created AS imageCreated, articleimages.modified AS imageModified, authors.ID AS authorID, authors.imageID AS authorImageID, givenNames, familyName, displayAs, authors.created AS authorCreated, authors.modified AS authorModified, authorimages.websiteID AS authorImageWebsiteID, authorimages.fileName AS authorImageFileName, authorimages.description AS authorImageDescription, authorimages.url AS authorImageURL, authorimages.created AS authorImageCreated, authorimages.modified AS authorImageModified FROM OnpubArticles AS articles LEFT JOIN OnpubImages AS articleimages ON articles.imageID = articleimages.ID LEFT JOIN OnpubAAMaps AS aamaps ON articles.ID = aamaps.articleID LEFT JOIN OnpubAuthors AS authors ON aamaps.authorID = authors.ID LEFT JOIN OnpubImages AS authorimages ON authors.imageID = authorimages.ID $where ORDER BY $orderBy $order";
+      return "SELECT $articleColumns, articleimages.websiteID, " .
+             "articleimages.fileName, articleimages.description, " .
+             "articleimages.url AS articleImageURL, articleimages.created AS " .
+             "imageCreated, articleimages.modified AS imageModified, " .
+             "authors.ID AS authorID, authors.imageID AS authorImageID, " .
+             "givenNames, familyName, displayAs, authors.created AS " .
+             "authorCreated, authors.modified AS authorModified, " .
+             "authorimages.websiteID AS authorImageWebsiteID, " .
+             "authorimages.fileName AS authorImageFileName, " .
+             "authorimages.description AS authorImageDescription, " .
+             "authorimages.url AS authorImageURL, authorimages.created AS " .
+             "authorImageCreated, authorimages.modified AS authorImageModified " .
+             "FROM OnpubArticles AS articles LEFT JOIN OnpubImages AS " .
+             "articleimages ON articles.imageID = articleimages.ID " .
+             "LEFT JOIN OnpubAAMaps AS aamaps ON articles.ID = aamaps.articleID " .
+             "LEFT JOIN OnpubAuthors AS authors ON aamaps.authorID = authors.ID " .
+             "LEFT JOIN OnpubImages AS authorimages ON " .
+             "authors.imageID = authorimages.ID $where ORDER BY $orderBy $order";
     }
     else {
       return "SELECT $articleColumns FROM OnpubArticles as articles WHERE ID = $ID";

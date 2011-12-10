@@ -64,6 +64,11 @@ if ($onpub_article) {
   en('</div>');
   en('</div>');
 
+  if ($onpub_article->imageID) {
+    $onpub_article->image->website = $onpub_website;
+    en('<img src="' . OnpubImages::getThumbURL('src=' . $onpub_article->image->getFullPath() . '&w=360') . '" align="right" alt="' . $onpub_article->image->fileName . '" title="' . $onpub_article->image->description . '">');
+  }
+
   en ($onpub_article->content);
 
   if ($onpub_login_status) {
