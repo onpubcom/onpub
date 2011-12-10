@@ -203,7 +203,7 @@ span.onpub-field-header {
 font-size: 108%;
 }
 
-.yui3-overlay-content .yui3-widget-bd {
+div.onpub-save-overlay {
 width: 15em;
 font-size: 93%;
 font-weight: normal;
@@ -221,5 +221,8 @@ margin-top: 2px;
 }
 
 img.onpub-image-preview {
-border: 1px solid #0C7CCF;
+border: 1px solid #BEBEBE;
+-moz-box-shadow: 0px 0px 3px #BEBEBE;
+-webkit-box-shadow: 0px 0px 3px #BEBEBE;
+box-shadow: 0px 0px 3px #BEBEBE;
 }

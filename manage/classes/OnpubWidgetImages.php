@@ -57,7 +57,7 @@ class OnpubWidgetImages
       en('<script type="text/javascript">var onpubThumbURLs = [];');
 
       foreach ($this->images as $i) {
-        en('onpubThumbURLs.push("' . OnpubImages::getThumbURL('src=' . $i->getFullPath() . '&h=120') . '");');                
+        en('onpubThumbURLs.push("' . OnpubImages::getThumbURL('src=' . $i->getFullPath() . '&h=100') . '");');                
       }
 
       en('</script>');
@@ -68,7 +68,7 @@ class OnpubWidgetImages
           en('<p><a href="index.php?onpub=EditImage&amp;imageID=' .
              $image->ID . '"><img id="widgetimage" src="' .
              OnpubImages::getThumbURL('src=' . $image->getFullPath() .
-             '&h=120') . '" alt="Edit" title="Edit" border="0"></a></p>');
+             '&h=100') . '" alt="Edit" title="Edit" border="0"></a></p>');
         }
         else {
           en('<p><img src="' . ONPUBGUI_IMAGE_DIRECTORY .
