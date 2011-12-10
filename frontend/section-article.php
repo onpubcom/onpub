@@ -67,7 +67,7 @@ if ($onpub_section && $onpub_article) {
   en('<div style="padding-right: 0.5em;">');
   if ($onpub_article->image) {
     $onpub_article->image->website = $onpub_website;
-    en('<img src="' . OnpubImages::getThumbURL('src=' . $onpub_article->image->getFullPath() . '&w=180&f=png') . '" align="right" style="margin-right: 0.75em;" alt="' . $onpub_article->image->fileName . '" title="' . $onpub_article->image->description . '">');
+    en('<img src="' . OnpubImages::getThumbURL('src=' . $onpub_article->image->getFullPath() . '&w=280&f=png') . '" align="right" style="margin-right: 0.75em;" alt="' . $onpub_article->image->fileName . '" title="' . $onpub_article->image->description . '">');
   }
 
   en($onpub_article->content);

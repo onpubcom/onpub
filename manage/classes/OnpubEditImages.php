@@ -509,7 +509,7 @@ class OnpubEditImages
           $websites[$websiteID] = $owebsites->get($websiteID);
         }
 
-        $thumbURL = OnpubImages::getThumbURL('src=' . $image->getFullPath() . '&w=50');
+        $thumbURL = OnpubImages::getThumbURL('src=' . $image->getFullPath() . '&w=50&f=png');
 
         en('<tr valign="top">');
         //en('<td align="right"><input type="checkbox" name="imageIDs[]" value="' . $ID . '"></td>');
