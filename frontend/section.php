@@ -73,9 +73,17 @@ if ($onpub_section) {
       $url = 'index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID;
     }
 
+    en('<div class="yui3-g">');
+
     if ($a->image) {
+      en('<div class="yui3-u-1-4">');
       $a->image->website = $onpub_website;
       en('<a href="' . $url . '"><img src="' . OnpubImages::getThumbURL('src=' . $a->image->getFullPath() . '&w=80&f=png') . '" align="left" style="margin-right: 0.75em;" alt="' . $a->image->fileName . '" title="' . $a->image->description . '"></a>');
+      en('</div>');
+      en('<div class="yui3-u-3-4">');
+    }
+    else {
+      en('<div class="yui3-u-1">');
     }
 
     en('<h2 class="onpub-article-link"><a href="' . $url . '">' . $a->title . '</a></h2>');
@@ -93,6 +101,10 @@ if ($onpub_section) {
     else {
       en('</p>');
     }
+
+    en('</div>');
+
+    en('</div>');
 
     if ($even) {
       if ($i + 1 == sizeof($articles)) {
