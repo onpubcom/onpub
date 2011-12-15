@@ -78,7 +78,6 @@ if ($onpub_section) {
       en('<a href="' . $url . '"><img src="' . OnpubImages::getThumbURL('src=' . $a->image->getFullPath() . '&w=80&f=png') . '" align="left" style="margin-right: 0.75em;" alt="' . $a->image->fileName . '" title="' . $a->image->description . '"></a>');
     }
 
-
     en('<h2 class="onpub-article-link"><a href="' . $url . '">' . $a->title . '</a></h2>');
 
     en('<p class="onpub-article-summary">' . $a->getCreated()->format('M j, Y'));

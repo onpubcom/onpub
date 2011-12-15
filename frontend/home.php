@@ -68,17 +68,35 @@ if ($onpub_website) {
         if ($a->ID != $onpub_disp_article) {
           $samaps = $onpub_samaps->select(null, null, $a->ID);
 
-          if (sizeof($samaps)) {
-            $sectionIDs = array();
+          $sectionIDs = array();
 
-            foreach ($samaps as $samap) {
-              $sectionIDs[] = $samap->sectionID;
-            }
-
-            $visibleSIDs = array_values(array_intersect($onpub_website_section_ids, $sectionIDs));
-
-            en('<h2 class="onpub-article-link"><a href="index.php?s=' . $visibleSIDs[0] . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
+          foreach ($samaps as $samap) {
+            $sectionIDs[] = $samap->sectionID;
           }
+
+          $visibleSIDs = array_values(array_intersect($onpub_website_section_ids, $sectionIDs));
+
+          if ($a->url) {
+            $url = $a->url;
+          }
+          else {
+            $url = 'index.php?s=' . $visibleSIDs[0] . '&amp;a=' . $a->ID;
+          }
+
+          en('<div class="yui3-g">');
+
+          if ($a->image) {
+            en('<div class="yui3-u-1-4">');
+            $a->image->website = $onpub_website;
+            en('<a href="' . $url . '"><img src="' . OnpubImages::getThumbURL('src=' . $a->image->getFullPath() . '&w=50&f=png') . '" align="left" style="margin-right: 0.75em;" alt="' . $a->image->fileName . '" title="' . $a->image->description . '"></a>');
+            en('</div>');
+            en('<div class="yui3-u-3-4">');
+          }
+          else {
+            en('<div class="yui3-u-1">');
+          }
+
+          en('<h2 class="onpub-article-link"><a href="' . $url . '">' . $a->title . '</a></h2>');
 
           en('<p class="onpub-article-summary">' . $a->getCreated()->format('M j, Y'));
 
@@ -93,6 +111,10 @@ if ($onpub_website) {
           else {
             en('</p>');
           }
+
+          en('</div>');
+
+          en('</div>');
           
           $i++;
         }
