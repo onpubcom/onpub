@@ -25,6 +25,7 @@ class OnpubNewArticle
   {
     $owebsites = new OnpubWebsites($this->pdo);
     $osections = new OnpubSections($this->pdo);
+    $oimages = new OnpubImages($this->pdo);
 
     try {
       $queryOptions = new OnpubQueryOptions();
@@ -35,6 +36,7 @@ class OnpubNewArticle
       $queryOptions = new OnpubQueryOptions();
       $queryOptions->orderBy = "fileName";
       $queryOptions->order = "ASC";
+      $images = $oimages->select($queryOptions);
     }
     catch (PDOException $e) {
       throw $e;
@@ -100,11 +102,22 @@ class OnpubNewArticle
     $widget = new OnpubWidgetDateCreated($this->oarticle->getCreated());
     $widget->display();
 
+    en('<div class="yui3-g">');
+
+    en('<div class="yui3-u-1-2">');
     $widget = new OnpubWidgetSections();
     $widget->sectionIDs = $this->oarticle->sectionIDs;
     $widget->websites = $websites;
     $widget->osections = $osections;
     $widget->display();
+    en('</div>');
+
+    en('<div class="yui3-u-1-2">');
+    $widget = new OnpubWidgetImages("Image", $this->oarticle->imageID, $images);
+    $widget->display();
+    en('</div>');
+
+    en('</div>');
 
     en('<input type="submit" value="Save">');
 

@@ -64,12 +64,22 @@ if ($onpub_section) {
       en('<div style="padding-right: 1em;">');
     }
 
+    $url = '';
+
     if ($a->url) {
-      en('<h2 class="onpub-article-link"><a href="' . $a->url . '">' . $a->title . '</a></h2>');
+      $url = $a->url;
     }
     else {
-      en('<h2 class="onpub-article-link"><a href="index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID . '">' . $a->title . '</a></h2>');
+      $url = 'index.php?s=' . $onpub_section_id . '&amp;a=' . $a->ID;
     }
+
+    if ($a->image) {
+      $a->image->website = $onpub_website;
+      en('<a href="' . $url . '"><img src="' . OnpubImages::getThumbURL('src=' . $a->image->getFullPath() . '&w=80&f=png') . '" align="left" style="margin-right: 0.75em;" alt="' . $a->image->fileName . '" title="' . $a->image->description . '"></a>');
+    }
+
+
+    en('<h2 class="onpub-article-link"><a href="' . $url . '">' . $a->title . '</a></h2>');
 
     en('<p class="onpub-article-summary">' . $a->getCreated()->format('M j, Y'));
 

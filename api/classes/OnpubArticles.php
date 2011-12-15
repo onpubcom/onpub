@@ -726,6 +726,19 @@ class OnpubArticles
         $article->setCreated(new DateTime($row["created"]));
         $article->setModified(new DateTime($row["modified"]));
 
+        if ($row["imageID"]) {
+          $image = new OnpubImage();
+    
+          $image->ID = $row["imageID"];
+          $image->websiteID = $row["imageWebsiteID"];
+          $image->fileName = $row["imageFileName"];
+          $image->description = $row["imageDescription"];
+          $image->setCreated(new DateTime($row["imageCreated"]));
+          $image->setModified(new DateTime($row["imageModified"]));
+    
+          $article->image = $image;
+        }
+
         if ($sectionID || $websiteID) {
           $article->sectionIDs[] = $row["sectionID"];
         }
@@ -747,13 +760,25 @@ class OnpubArticles
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 
-    $articleColumns = "articles.ID, articles.imageID, articles.title, articles.url, articles.created, articles.modified";
+    $articleColumns = "articles.ID, articles.imageID, articles.title, " .
+                      "articles.url, articles.created, articles.modified, " .
+                      "articleimages.websiteID AS imageWebsiteID, articleimages.fileName AS imageFileName, " .
+                      "articleimages.description AS imageDescription, articleimages.url AS " .
+                      "articleImageURL, articleimages.created AS imageCreated, " .
+                      "articleimages.modified AS imageModified";
     $where = "";
     $orderBy = "";
     $limit = "";
 
     if ($queryOptions->includeContent) {
-      $articleColumns = "articles.ID, articles.imageID, articles.title, articles.content, articles.url, articles.created, articles.modified";
+      $articleColumns = "articles.ID, articles.imageID, articles.title, " .
+                        "articles.content, articles.url, articles.created, " .
+                        "articles.modified, articleimages.websiteID AS " .
+                        "imageWebsiteID, articleimages.fileName AS " .
+                        "imageFileName, articleimages.description AS " .
+                        "imageDescription, articleimages.url AS " .
+                        "articleImageURL, articleimages.created AS " .
+                        "imageCreated, articleimages.modified AS imageModified";
     }
 
     if ($sectionID || $websiteID) {
@@ -800,13 +825,22 @@ class OnpubArticles
     }
 
     if ($sectionID && !$websiteID) {
-      return "SELECT $articleColumns FROM OnpubArticles AS articles LEFT JOIN OnpubSAMaps AS samaps ON articles.ID = samaps.articleID $where $orderBy $limit";
+      return "SELECT $articleColumns FROM OnpubArticles AS articles LEFT JOIN " .
+             "OnpubImages AS articleimages ON articles.imageID = articleimages.ID LEFT JOIN " .
+             "OnpubSAMaps AS samaps ON articles.ID = samaps.articleID " .
+             "$where $orderBy $limit";
     }
     elseif ($websiteID && !$sectionID) {
-      return "SELECT $articleColumns FROM OnpubArticles AS articles LEFT JOIN OnpubSAMaps AS samaps ON articles.ID = samaps.articleID LEFT JOIN OnpubWSMaps AS wsmaps ON samaps.sectionID = wsmaps.sectionID $where $orderBy $limit";
+      return "SELECT $articleColumns FROM OnpubArticles AS articles LEFT JOIN " .
+             "OnpubImages AS articleimages ON articles.imageID = articleimages.ID LEFT JOIN " .
+             "OnpubSAMaps AS samaps ON articles.ID = samaps.articleID " .
+             "LEFT JOIN OnpubWSMaps AS wsmaps ON samaps.sectionID = " .
+             "wsmaps.sectionID $where $orderBy $limit";
     }
     else {
-      return "SELECT $articleColumns FROM OnpubArticles AS articles $where $orderBy $limit";
+      return "SELECT $articleColumns FROM OnpubArticles AS articles LEFT JOIN " .
+             "OnpubImages AS articleimages ON articles.imageID = articleimages.ID " .
+             "$where $orderBy $limit";
     }
   }
 
