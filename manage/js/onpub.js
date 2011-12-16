@@ -363,6 +363,7 @@ YUI(
 
     if (thumbIndex == -1) {
       widgetImage.setStyle("display", "none");
+      widgetImageName.set("textContent", "");
     }
     else {
       thumbURL = onpubThumbURLs[thumbIndex];
