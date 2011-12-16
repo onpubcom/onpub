@@ -331,16 +331,23 @@ YUI(
     }
   }
 
-  function previewImage(e, widgetImage, onpubThumbURLs, overlay)
+  function previewImage(e, widgetImage, widgetImageName, onpubThumbURLs, overlay)
   {
-    var currentTarget = e.currentTarget;
-    var options, selectedIndex, option, parent;
+    var currentTarget, options, selectedIndex, option, parent;
+
+    if (e.currentTarget) {
+      currentTarget = e.currentTarget;
+    }
+    else {
+      currentTarget = e;
+    }
 
     if (currentTarget.get("type") == "select-one") {
       options = currentTarget.get("options");
       selectedIndex = currentTarget.get("selectedIndex");
       option = options.item(selectedIndex);
       options.setStyles({"backgroundColor":"#ffffff", "color":"#525861"});
+      widgetImageName.set("textContent", option.get("text"));
     }
     else {
       option = currentTarget;
@@ -348,6 +355,7 @@ YUI(
       options = parent.get("options");
       options.setStyles({"backgroundColor":"#ffffff", "color":"#525861"});
       option.setStyles({"backgroundColor":"#0C7CCF", "color":"#ffffff"});
+      widgetImageName.set("textContent", option.get("text"));
     }
 
     var thumbIndex = option.get("index") - 1;
@@ -462,7 +470,8 @@ YUI(
   if (Y.one("#widgetimagepreview")) {
     // Setup the image preview overlay.
     var overlay = new Y.Overlay({
-      headerContent: '<a href=""><img id="widgetimage" src="" alt="Edit" title="Edit" class="onpub-image-preview"></a>',
+      headerContent: '<a href=""><img id="widgetimage" src="" alt="Edit" title="Edit" class="onpub-image-preview"></a>' +
+                     '<p id="widgetimagename" class="onpub-image-preview-name"></p>',
       visible: false,
       align: {
         node: "#widgetimagepreview",
@@ -472,8 +481,13 @@ YUI(
 
     overlay.render("#widgetimagepreview");
 
-    Y.on("mouseover", previewImage, "#widgetimages option", null, Y.one("#widgetimage"), onpubThumbURLs, overlay);
-    Y.on("mouseout", previewImage, "#widgetimages", null, Y.one("#widgetimage"), onpubThumbURLs, overlay);
+    Y.on("mouseover", previewImage, "#widgetimages option", null,
+         Y.one("#widgetimage"), Y.one("#widgetimagename"), onpubThumbURLs, overlay);
+    Y.on("mouseout", previewImage, "#widgetimages", null, Y.one("#widgetimage"),
+         Y.one("#widgetimagename"), onpubThumbURLs, overlay);
+
+    previewImage(Y.one("#widgetimages"), Y.one("#widgetimage"),
+                 Y.one("#widgetimagename"), onpubThumbURLs, overlay);
   }
 }
 );
