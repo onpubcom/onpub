@@ -57,7 +57,7 @@ class OnpubWidgetImages
       en('<script type="text/javascript">var onpubThumbURLs = [];');
 
       foreach ($this->images as $i) {
-        en('onpubThumbURLs.push("' . OnpubImages::getThumbURL('src=' . $i->getFullPath() . '&h=100&f=png') . '");');                
+        en('onpubThumbURLs.push("' . OnpubImages::getThumbURL('src=' . $i->getFullPath() . '&h=80&f=png') . '");');                
       }
 
       en('</script>');
