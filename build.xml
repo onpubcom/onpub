@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project name="Onpub" default="dist">
+    <target name="prepare">
+
+    </target>
+
+    <target name="build" depends="prepare">
+
+    </target>
+
+    <target name="dist" depends="build">
+
+    </target>
+</project>
