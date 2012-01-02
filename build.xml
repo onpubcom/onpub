@@ -18,6 +18,11 @@
   <property name="url.ckeditor" value="http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.2/ckeditor_3.6.2.zip"/>
   <property name="url.yui" value="http://yui.zenfs.com/releases/yui3/yui_3.4.1.zip"/>
   <property name="url.phpthumb" value="http://sourceforge.net/projects/phpthumb/files/latest/download"/>
+  <property name="ver" value="1.2.2"/>
+
+  <target name="clean">
+    <delete dir="${dir.build}"/>
+  </target>
 
   <target name="dldeps">
     <mkdir dir="${dir.build}"/>
@@ -47,10 +52,10 @@
     <exec command="find ${dir.yui.build} -type f -name '*.js' | grep -v '\-min\.js' | grep -v 'lang/' | xargs /bin/rm"/>
   </target>
 
-  <target name="package">
+  <target name="package" depends="clean, dldeps, unzipdeps, prunedeps">
     <move file="${dir.yui}" todir="${dir.onpub.api}"/>
     <move file="${dir.phpthumb}" todir="${dir.onpub.api}"/>
     <move file="${dir.ckeditor}" todir="${dir.onpub.manage}"/>
-    <zip destfile="${dir.build}/onpub.zip" basedir="${dir.onpub}" prefix="onpub/"/>
+    <zip destfile="${dir.build}/onpub-${ver}.zip" basedir="${dir.onpub}" prefix="onpub/"/>
   </target>
 </project>
