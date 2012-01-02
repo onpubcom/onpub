@@ -33,7 +33,8 @@
   </target>
 
   <target name="unzipdeps">
-    <unzip file="${dir.build}/phpThumb.zip" todir="${dir.build}/phpThumb"/>
+    <unzip file="${dir.build}/phpThumb.zip" todir="${dir.phpthumb}"/>
+    <copy file="${dir.phpthumb}/phpThumb.config.php.default" tofile="${dir.phpthumb}/phpThumb.config.php"/>
     <unzip todir="${dir.build}">
       <fileset dir="${dir.build}">
         <include name="*.zip"/>
