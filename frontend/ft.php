@@ -31,7 +31,7 @@ if ($onpub_disp_login) {
   }
   else {
     en('<p style="text-align: right;">Powered by <a href="http://onpub.com/" target="_blank">Onpub</a> &raquo; ');
-    en('<a href="' . $onpub_dir_root . $onpub_dir_manage . '" target="_onpub">Login</a></p>');
+    en('<a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php" target="_onpub">Login</a></p>');
   }
 }
 
