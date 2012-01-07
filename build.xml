@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <project name="Onpub" default="package">
+  <property name="dir.dev" value="."/>
   <property name="dir.build" value="build"/>
   <property name="dir.onpub" value="${dir.build}/onpub"/>
   <property name="dir.onpub.api" value="${dir.onpub}/api"/>
@@ -24,15 +25,14 @@
     <delete dir="${dir.build}"/>
   </target>
 
-  <target name="dldeps">
+  <target name="dldeps" depends="clean">
     <mkdir dir="${dir.build}"/>
-    <svnexport repositoryurl="${url.svn}" todir="${dir.onpub}" force="true"/>
     <httpget url="${url.ckeditor}" dir="${dir.build}"/>
     <httpget url="${url.yui}" dir="${dir.build}"/>
     <exec command="curl -L http://sourceforge.net/projects/phpthumb/files/latest/download -o ${dir.build}/phpThumb.zip --silent"/>
   </target>
 
-  <target name="unzipdeps">
+  <target name="unzipdeps" depends="dldeps">
     <unzip file="${dir.build}/phpThumb.zip" todir="${dir.phpthumb}"/>
     <copy file="${dir.phpthumb}/phpThumb.config.php.default" tofile="${dir.phpthumb}/phpThumb.config.php"/>
     <unzip todir="${dir.build}">
@@ -43,9 +43,13 @@
     </unzip>
   </target>
 
-  <target name="prunedeps">
-    <delete file="${dir.onpub}/build.xml"/>
-    <delete dir="${dir.onpub.scripts}"/>
+  <target name="devdeps" depends="unzipdeps">
+    <move file="${dir.yui}" todir="${dir.dev}/api"/>
+    <move file="${dir.phpthumb}" todir="${dir.dev}/api"/>
+    <move file="${dir.ckeditor}" todir="${dir.dev}/manage"/>    
+  </target>
+
+  <target name="prunedeps" depends="unzipdeps">
     <delete dir="${dir.ckeditor.samples}"/>
     <delete dir="${dir.yui.docs}"/>
     <delete dir="${dir.yui.releasenotes}"/>
@@ -53,7 +57,10 @@
     <exec command="find ${dir.yui.build} -type f -name '*.js' | grep -v '\-min\.js' | grep -v 'lang/' | xargs /bin/rm"/>
   </target>
 
-  <target name="package" depends="clean, dldeps, unzipdeps, prunedeps">
+  <target name="package" depends="prunedeps">
+    <svnexport repositoryurl="${url.svn}" todir="${dir.onpub}" force="true"/>
+    <delete file="${dir.onpub}/build.xml"/>
+    <delete dir="${dir.onpub.scripts}"/>
     <move file="${dir.yui}" todir="${dir.onpub.api}"/>
     <move file="${dir.phpthumb}" todir="${dir.onpub.api}"/>
     <move file="${dir.ckeditor}" todir="${dir.onpub.manage}"/>
