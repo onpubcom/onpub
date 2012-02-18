@@ -54,7 +54,6 @@ else {
 }
 
 if (file_exists($onpub_inc_css)) {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_frontend . 'css/onpub.css">');
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_inc_css . '">');
 }
 else {
@@ -62,7 +61,6 @@ else {
 }
 
 if (file_exists($onpub_inc_css_menu)) {
-  en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_frontend . 'css/onpub-menu.css">');
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_inc_css_menu . '">');
 }
 else {
