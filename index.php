@@ -14,17 +14,20 @@ This is the Onpub website frontend index file.
 See http://onpub.com/index.php?s=8&a=96 for more information.
 */
 
-// Include default Onpub config.
-include './onpub_conf.php';
-
 // Include local config customizations if file exists.
-if (file_exists($onpub_conf_local)) {
-  include $onpub_conf_local;
+if (file_exists('./onpub_conf_local.php')) {
+  include './onpub_conf_local.php';
 }
 
-include $onpub_dir_root . $onpub_dir_api . 'onpubapi.php';
+// Include default Onpub config. Variables in this file will only be defined
+// if their equivalents have not already been defined in the local configuration
+// file included above.
+include './onpub_conf.php';
+
+// Include all OnpubAPI classes.
+include $onpub_dir_api . 'onpubapi.php';
 
 // Include frontend initialization file.
-include $onpub_dir_root . $onpub_dir_frontend . 'init.php';
+include $onpub_dir_frontend . 'init.php';
 
 ?>

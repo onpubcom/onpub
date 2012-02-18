@@ -26,12 +26,12 @@ en('<div class="yui3-u-1-4">');
 
 if ($onpub_disp_login) {
   if ($onpub_login_status) {
-    en('<p style="text-align: right;">Powered by <a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php" target="_onpub">Onpub</a> &raquo; ');
-    en('<a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=Logout" target="_onpub">Logout</a></p>');
+    en('<p style="text-align: right;">Powered by <a href="' . $onpub_dir_manage . 'index.php" target="_onpub">Onpub</a> &raquo; ');
+    en('<a href="' . $onpub_dir_manage . 'index.php?onpub=Logout" target="_onpub">Logout</a></p>');
   }
   else {
     en('<p style="text-align: right;">Powered by <a href="http://onpub.com/" target="_blank">Onpub</a> &raquo; ');
-    en('<a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php" target="_onpub">Login</a></p>');
+    en('<a href="' . $onpub_dir_manage . 'index.php" target="_onpub">Login</a></p>');
   }
 }
 

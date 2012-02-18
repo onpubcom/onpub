@@ -204,12 +204,12 @@ if ($onpub_schema_installed) {
 
 switch ($onpub_index) {
   case 'rss':
-  include $onpub_dir_root . $onpub_dir_frontend . 'libs/FeedWriter.php';
-  include $onpub_dir_root . $onpub_dir_frontend . 'rss.php';
+  include $onpub_dir_frontend . 'libs/FeedWriter.php';
+  include $onpub_dir_frontend . 'rss.php';
   break;
 
   default:
-  include $onpub_dir_root . $onpub_dir_frontend . 'skel.php';
+  include $onpub_dir_frontend . 'skel.php';
   break;
 }
 

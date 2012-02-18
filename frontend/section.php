@@ -131,11 +131,11 @@ if ($onpub_section) {
     en('<div class="yui3-g">');
     en('<div class="yui3-u-1">');
     en('<span class="onpub-edit">');
-    en('<a href="' . $onpub_dir_root . $onpub_dir_manage .
+    en('<a href="' . $onpub_dir_manage .
        'index.php?onpub=EditSection&amp;sectionID=' . $onpub_section->ID .
-       '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
+       '" target="_onpub"><img src="' . $onpub_dir_frontend .
        'images/page_edit.png" width="16" height="16" alt="Edit this Section" title="Edit this Section"></a> ' .
-       '<a href="' . $onpub_dir_root . $onpub_dir_manage .
+       '<a href="' . $onpub_dir_manage .
        'index.php?onpub=EditSection&amp;sectionID=' . $onpub_section->ID .
        '" target="_onpub" title="Edit this Section">EDIT</a>');
     en('</span>');

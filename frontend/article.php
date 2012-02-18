@@ -59,7 +59,7 @@ if ($onpub_article) {
   en('</div>');
   en('<div class="yui3-u-1-2">');
 
-  if (file_exists($onpub_dir_local . $onpub_inc_article_info)) include $onpub_dir_local . $onpub_inc_article_info;
+  if (file_exists($onpub_inc_article_info)) include $onpub_inc_article_info;
 
   en('</div>');
   en('</div>');
@@ -75,11 +75,11 @@ if ($onpub_article) {
     en('<div class="yui3-g">');
     en('<div class="yui3-u-1">');
     en('<span class="onpub-edit">');
-    en('<a href="' . $onpub_dir_root . $onpub_dir_manage .
+    en('<a href="' . $onpub_dir_manage .
        'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
-       '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
+       '" target="_onpub"><img src="' . $onpub_dir_frontend .
        'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a> ' .
-       '<a href="' . $onpub_dir_root . $onpub_dir_manage .
+       '<a href="' . $onpub_dir_manage .
        'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
        '" target="_onpub" title="Edit this Article">EDIT</a>');
     en('</span>');
@@ -87,7 +87,7 @@ if ($onpub_article) {
     en('</div>');
   }
 
-  if (file_exists($onpub_dir_local . $onpub_inc_article_foot)) include $onpub_dir_local . $onpub_inc_article_foot;
+  if (file_exists($onpub_inc_article_foot)) include $onpub_inc_article_foot;
 }
 else {
   en('<h1>Article ' . $onpub_article_id . ' not found... <a href="index.php">Home</a></h1>');

@@ -37,7 +37,7 @@ if ($onpub_website) {
         en($onpub_article->content);
       }
       else {
-        en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
+        en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
       }
     }
 
@@ -54,7 +54,7 @@ if ($onpub_website) {
     $articles = $onpub_articles->select($qo, null, $onpub_website->ID);
 
     if (sizeof($articles) && !(sizeof($articles) == 1 && $articles[0]->ID == $onpub_disp_article)) {
-      en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_root . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
+      en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
 
       $onpub_website_section_ids = onpub_extract_section_ids($onpub_website->sections);
 
@@ -121,9 +121,9 @@ if ($onpub_website) {
       }
     }
 
-    if (file_exists($onpub_dir_local . $onpub_inc_article_updates)) {
+    if (file_exists($onpub_inc_article_updates)) {
       en('<div>');
-      include $onpub_dir_local . $onpub_inc_article_updates;
+      include $onpub_inc_article_updates;
       en('</div>');
     }
     
@@ -138,7 +138,7 @@ if ($onpub_website) {
         en($onpub_article->content);
       }
       else {
-        en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_root . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
+        en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
       }
     }
   }
@@ -147,11 +147,11 @@ if ($onpub_website) {
     en('<div class="yui3-g">');
     en('<div class="yui3-u-1">');
     en('<span class="onpub-edit">');
-    en('<a href="' . $onpub_dir_root . $onpub_dir_manage .
+    en('<a href="' . $onpub_dir_manage .
        'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
-       '" target="_onpub"><img src="' . $onpub_dir_root . $onpub_dir_frontend .
+       '" target="_onpub"><img src="' . $onpub_dir_frontend .
        'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a> ' .
-       '<a href="' . $onpub_dir_root . $onpub_dir_manage .
+       '<a href="' . $onpub_dir_manage .
        'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
        '" target="_onpub" title="Edit this Article">EDIT</a>');
     en('</span>');
@@ -209,12 +209,12 @@ else {
     if ($onpub_schema_installed) {
       en('<h3>You have successfully installed Onpub. This is the default Onpub frontend interface.</h3>');
       en('<p>The frontend is now configured to instantly display the content you publish using the Onpub content management interface.</p>');
-      en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
+      en('<p><a href="' . $onpub_dir_manage .
          'index.php?onpub=NewWebsite" target="_onpub">Create a website</a> and then reload this page to get started.</p>');
     }
     elseif ($onpub_pdo_installed) {
       en('<h3>Almost there.. Follow the instructions below to complete the Onpub installation.</h3>');
-      en('<p><a href="' . $onpub_dir_root . $onpub_dir_manage .
+      en('<p><a href="' . $onpub_dir_manage .
          'index.php" target="_onpub">Login</a> to the Onpub content management interface to install the Onpub database schema. You will be unable to publish a website until you perform this step.</p>');
       en('<p>See <a href="http://onpub.com/index.php?s=8&a=118" target="_blank">How to Install Onpub</a> for more information.</p>');      
     }
