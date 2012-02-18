@@ -77,7 +77,7 @@ Path to YUI directory. This directory contains the YUI 3 distribution. Rename
 or delete this directory if you'd like to include the YUI files from Yahoo!'s
 CDN instead.
 */
-if (!isset($onpub_dir_yui)) $onpub_dir_yui = $onpub_dir_root . $onpub_dir_api . 'yui/build/';
+if (!isset($onpub_dir_yui)) $onpub_dir_yui = $onpub_dir_api . 'yui/build/';
 
 /*
 Path to default Onpub frontend directory. This variable is useful for pointing
