@@ -60,7 +60,7 @@
 
   <target name="package" depends="prunedeps">
     <mkdir dir="${dir.onpub}"/>
-    <exec command="git clone https://github.com/onpubcom/onpub.git ${dir.onpub}"/>
+    <exec command="git clone git://github.com/onpubcom/onpub.git ${dir.onpub}"/>
     <mkdir dir="${dir.onpub.local}"/>    
     <delete file="${dir.onpub}/build.xml"/>
     <delete file="${dir.onpub}/.gitignore"/>
