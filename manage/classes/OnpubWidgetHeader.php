@@ -70,12 +70,16 @@ class OnpubWidgetHeader
     en('<body class="yui3-skin-sam">');
 
     en('<div id="onpub-header">');
-    en('<div id="onpub-logo"><a href="index.php"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'onpub.png" width="222" height="89" alt="Onpub" title="Onpub" border="0"></a></div>', 1);
+    en('<div id="onpub-logo">');
+
+    en('<div class="yui3-g">');
+
+    en('<div class="yui3-u-1-4">');
+    en('<a href="index.php"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'onpub-small.png" width="150" height="60" alt="Onpub" title="Onpub" border="0"></a>', 1);
     en('</div>');
 
-    en('<div id="onpub-page">');
-
-    en('<div id="onpub-menubar" class="yui3-menu yui3-menu-horizontal yui3-menubuttonnav">');
+    en('<div class="yui3-u-3-4">');
+    en('<div id="onpub-menubar" class="yui3-menu yui3-menu-horizontal yui3-menubuttonnav" style="float: right;">');
     en('<div class="yui3-menu-content">');
     en('<ul>');
 
@@ -165,6 +169,16 @@ class OnpubWidgetHeader
     en('</ul>');
     en('</div>');
     en('</div>');
+    en('</div>');
+
+
+
+    en('</div>');
+
+    en('</div>');
+    en('</div>');
+
+    en('<div id="onpub-page">');
 
     en('<div id="onpub-body">');
     en('<div class="yui3-g">');

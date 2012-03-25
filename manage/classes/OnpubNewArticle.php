@@ -79,14 +79,15 @@ class OnpubNewArticle
       $ck = new CKEditor();
       $ck->basePath = 'ckeditor/';
 
-      $config['height'] = 320;
+      $config['height'] = 350;
       $config['uiColor'] = '#eff0f0';
+      $config['resize_dir'] = 'vertical';
 
       if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
-        $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css', ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css');
+        $config['contentsCss'] = array('ckeditor/contents.css', ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css', 'css/ckeditor.css');
       }
       else {
-        $config['contentsCss'] = array('ckeditor/contents.css', 'css/ckeditor.css', 'http://yui.yahooapis.com/' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css');
+        $config['contentsCss'] = array('ckeditor/contents.css', 'http://yui.yahooapis.com/' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css', 'css/ckeditor.css');
       }
 
       $events['instanceReady'] = 'function (ev) {
