@@ -156,6 +156,10 @@ color: #5F5F5F;
 font-weight: normal;
 }
 
+h4, h5, h6 {
+margin-bottom: 1em;
+}
+
 h3.onpub-field-header {
 margin-bottom: 0;
 }
