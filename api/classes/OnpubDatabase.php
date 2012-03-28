@@ -189,7 +189,7 @@ class OnpubDatabase
     OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $excludes = array('performance_schema', 'information_schema');
+    $excludes = array('mysql', 'performance_schema', 'information_schema');
     $dbs = array();
 
     if ($rows) {
