@@ -33,6 +33,26 @@ class OnpubDatabase
   }
 
   /**
+   * Get the name of the currently connected-to MySQL database.
+   *
+   * @return NULL if no database is currently selected. Otherwise, the name of
+   * the MySQL that's currently being used.
+   */
+  public function current()
+  {
+    $result = $this->pdo->query('SELECT DATABASE() AS current');
+    OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
+
+    if (!($row = $result->fetch(PDO::FETCH_ASSOC))) {
+      return 0;
+    }
+
+    $result->closeCursor();
+
+    return $row["current"];
+  }
+
+  /**
    * Delete the Onpub schema.
    *
    * Calling this method will delete all Onpub content and schema in the
@@ -153,6 +173,36 @@ class OnpubDatabase
     }
 
     return TRUE;
+  }
+
+  /**
+   * Gets a list of MySQL databases the logged-in user has access to. System
+   * database names are excluded from the list.
+   *
+   * @return array Array will be empty if user has access to no databases.
+   * Otherwise array will contain the names of the MySQL databases she has
+   * access to.
+   */
+  public function listDBs()
+  {
+    $result = $this->pdo->query('SHOW DATABASES');
+    OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
+    $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+
+    $excludes = array('performance_schema', 'information_schema');
+    $dbs = array();
+
+    if ($rows) {
+      foreach ($rows as $row) {
+        if (!in_array($row['Database'], $excludes))
+        {
+          $dbs[] = $row['Database'];
+        }
+      }
+    }
+
+    $result->closeCursor();
+    return $dbs;
   }
 
   /**

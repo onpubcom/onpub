@@ -44,7 +44,7 @@ if ($loginStatus && !class_exists('PDO')) {
 
   // Bounce user back to login page.
   header("Location: index.php");
-  return;    
+  return;
 }
 
 if (isset($_POST['onpub'])) {
@@ -54,7 +54,7 @@ if (isset($_POST['onpub'])) {
     header("Location: index.php");
     return;
   }
- 
+
   if ($loginStatus) {
     try {
       $pdo = new PDO($dsn, $username, $password);

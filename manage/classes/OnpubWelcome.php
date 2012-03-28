@@ -146,10 +146,20 @@ class OnpubWelcome
       // Onpub schema is not installed yet. Prompt user to install.
       en('<div class="yui3-u-3-4">');
       en('<h2>Welcome to Onpub</h2>');
-      en('<p>This appears to be the first time you have logged in to the Onpub content management interface.</p>');
-      en('<p>Before you can publish a website with Onpub you must add the Onpub schema to the connected MySQL database, <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
-      en('<p>Please click the link below to continue:</p>');
-      en('<ul><li><a href="index.php?onpub=SchemaInstall">Install the Onpub MySQL database schema</a></li></ul>');
+
+      if ($odatabase->current())
+      {
+        en('<p>This appears to be the first time you have logged in to the Onpub content management interface.</p>');
+        en('<p>Before you can publish a website with Onpub you must add the Onpub schema to the connected MySQL database, <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
+        en('<p>Please click the link below to continue:</p>');
+        en('<ul><li><a href="index.php?onpub=SchemaInstall">Install the Onpub MySQL database schema</a></li></ul>');
+      }
+      else
+      {
+        en('<p>Please choose the database that you\'d like to work with for this session...</p>');
+        print_r($odatabase->listDBs());
+      }
+
       en('</div>');
       en('<div class="yui3-u-1-4">');
     }

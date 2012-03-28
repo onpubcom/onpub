@@ -173,14 +173,16 @@ class OnpubLogin
 
   public function validate()
   {
+    /*
     if (!$this->pdoDatabase) {
       $this->pdoDatabase = NULL;
       return FALSE;
     }
+    */
 
     if (class_exists('PDO')) {
       try {
-        $pdo = new PDO("mysql:host=" . $this->pdoHost . ";dbname=$this->pdoDatabase", $this->pdoUser, $this->pdoPassword);
+        $pdo = new PDO("mysql:host=" . $this->pdoHost, $this->pdoUser, $this->pdoPassword);
       }
       catch (PDOException $e) {
         throw $e;
