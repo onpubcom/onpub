@@ -35,8 +35,8 @@ class OnpubDatabase
   /**
    * Get the name of the currently connected-to MySQL database.
    *
-   * @return NULL if no database is currently selected. Otherwise, the name of
-   * the MySQL that's currently being used.
+   * @return mixed NULL if no database is currently selected. Otherwise, the
+   * name of the MySQL that's currently being used.
    */
   public function current()
   {
@@ -176,10 +176,10 @@ class OnpubDatabase
   }
 
   /**
-   * Gets a list of MySQL databases the logged-in user has access to. System
-   * database names are excluded from the list.
+   * Gets a list of MySQL databases that the logged-in user has access to.
+   * System database names are excluded from the list.
    *
-   * @return array Array will be empty if user has access to no databases.
+   * @return array Array will be empty if user has no database access.
    * Otherwise array will contain the names of the MySQL databases she has
    * access to.
    */
