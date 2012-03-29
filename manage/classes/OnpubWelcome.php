@@ -160,7 +160,7 @@ class OnpubWelcome
 
         if (sizeof($dbs))
         {
-          en('<p>Please select the MySQL Database that you would like to use for this session...</p>');
+          en('<p>Please select the MySQL Database that you would like to work with...</p>');
 
           en('<form id="onpub-form" action="index.php" method="post">');
           en('<div>');
@@ -203,7 +203,7 @@ class OnpubWelcome
 
       if ($_SESSION['PDO_DATABASE'])
       {
-        en('<tr style="vertical-align: top;"><td>Connected Database:</td><td>' . $_SESSION['PDO_DATABASE'] . '</td></tr>');
+        en('<tr style="vertical-align: top;"><td>Connected Database:</td><td>' . $_SESSION['PDO_DATABASE'] . ' (<a href="index.php?onpub=Disconnect">Disconnect</a>)</td></tr>');
       }
 
       if ($status == ONPUBAPI_SCHEMA_VERSION) {

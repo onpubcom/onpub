@@ -838,6 +838,13 @@ else {
         return;
         break;
 
+      case "Disconnect":
+        $_SESSION['PDO_DATABASE'] = '';
+        
+        header("Location: index.php");
+        return;
+        break;
+
       case "SchemaInstall":
         $odatabase = new OnpubDatabase($pdo);
         $owebsites = new OnpubWebsites($pdo);
