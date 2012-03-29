@@ -175,7 +175,7 @@ class OnpubWelcome
           en('</select>');
           en('</p>');
 
-          en('<p><input type="submit" value="Save"></p>');
+          en('<p><input type="submit" value="Connect"></p>');
 
           en('<input type="hidden" name="onpub" value="LoginProcess">');
           en('</div>');
