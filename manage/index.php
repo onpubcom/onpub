@@ -31,7 +31,16 @@ $password = "";
 
 if (isset($_SESSION['PDO_HOST']) && isset($_SESSION['PDO_USER']) && isset($_SESSION['PDO_PASSWORD']) && isset($_SESSION['PDO_DATABASE'])) {
   $loginStatus = TRUE;
-  $dsn = "mysql:host=" . $_SESSION['PDO_HOST'] . ";dbname=" . $_SESSION['PDO_DATABASE'];
+
+  if ($_SESSION['PDO_DATABASE'])
+  {
+    $dsn = "mysql:host=" . $_SESSION['PDO_HOST'] . ";dbname=" . $_SESSION['PDO_DATABASE'];
+  }
+  else
+  {
+    $dsn = "mysql:host=" . $_SESSION['PDO_HOST'];
+  }
+
   $username = $_SESSION['PDO_USER'];
   $password = $_SESSION['PDO_PASSWORD'];
 }
@@ -101,30 +110,39 @@ if (isset($_POST['onpub'])) {
         $target = NULL;
       }
 
-      $login = new OnpubLogin($_POST['pdoDatabase'], $_POST['pdoHost'], $_POST['pdoUser'], $_POST['pdoPassword'], $logout, $target, $rememberLogin);
+      if (isset($_POST['pdoDatabase']) && !isset($_POST['pdoHost']) && !isset($_POST['pdoUser']) && !isset($_POST['pdoPassword']))
+      {
+        // User is selecting a Database after logging in.
+        $login = new OnpubLogin($_POST['pdoDatabase'], '', '', '', $logout, $target, $rememberLogin);
+      }
+      else
+      {
+        // User is attempting to log in.
+        $login = new OnpubLogin('', $_POST['pdoHost'], $_POST['pdoUser'], $_POST['pdoPassword'], $logout, $target, $rememberLogin);
 
-      try {
-        if (!$login->validate()) {
+        try {
+          if (!$login->validate()) {
+            $login->display();
+            return;
+          }
+        }
+        catch (Exception $e) {
+          $login->setException($e);
           $login->display();
           return;
         }
       }
-      catch (Exception $e) {
-        $login->setException($e);
-        $login->display();
-        return;
-      }
 
       $login->process();
 
-      if ($login->getTarget()) {
-        header("Location: index.php?" . $login->getTarget());
-        return;
-      }
-      else {
+      //if ($login->getTarget()) {
+        //header("Location: index.php?" . $login->getTarget());
+        //return;
+      //}
+      //else {
         header("Location: index.php");
         return;
-      }
+      //}
       break;
 
     case "EditImageProcess":
@@ -723,8 +741,7 @@ if (isset($_POST['onpub'])) {
 
       $pdo = NULL;
 
-      header("Location: index.php?onpub=EditSection&sectionID="
-        . $osection->ID);
+      header("Location: index.php?onpub=EditSection&sectionID=" . $osection->ID);
       return;
       break;
 

@@ -56,20 +56,13 @@ class OnpubLogin
     en('<div id="onpub-page" style="margin-top: 2em;">');
     en('<div id="onpub-body">');
 
-    en('<div style="text-align: center; margin-top: 1.5em; margin-bottom: 1.5em;"><a href="index.php"><img src="images/onpub.png" width="222" height="89" alt="Onpub" title="Onpub"></a></div>');
+    en('<div style="text-align: center; margin-top: 2em; margin-bottom: 1em;"><a href="index.php"><img src="images/onpub.png" width="222" height="89" alt="Onpub" title="Onpub"></a></div>');
 
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1">');
     en('<form id="onpub-form" action="index.php" method="post">');
     en('<div style="width: 20%; margin-left: auto; margin-right: auto; margin-bottom: 2em;">');
-
-    if ($this->pdoDatabase === NULL) {
-      en('<h3 class="onpub-field-header">Database <img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'exclamation.png" align="top" alt="Required field" title="Required field"></h3><p><input title="Database" type="text" maxlength="255" size="25" name="pdoDatabase" value=""></p>');
-    }
-    else {
-      en('<h3 class="onpub-field-header">Database</h3><p><input title="Database" type="text" maxlength="255" size="25" name="pdoDatabase" value="'. htmlentities($this->pdoDatabase) . '"></p>');
-    }
 
     if (defined('ONPUBGUI_PDO_HOST')) {
       en('<input type="hidden" name="pdoHost" value="' . ONPUBGUI_PDO_HOST . '">');
@@ -173,13 +166,6 @@ class OnpubLogin
 
   public function validate()
   {
-    /*
-    if (!$this->pdoDatabase) {
-      $this->pdoDatabase = NULL;
-      return FALSE;
-    }
-    */
-
     if (class_exists('PDO')) {
       try {
         $pdo = new PDO("mysql:host=" . $this->pdoHost, $this->pdoUser, $this->pdoPassword);
@@ -206,14 +192,26 @@ class OnpubLogin
       }
 
       session_destroy();
+      session_regenerate_id();
     }
+    else
+    {
+      if ($this->pdoDatabase && !$this->pdoHost && !$this->pdoUser && !$this->pdoPassword)
+      {
+        // User is selecting a Database.
+        $_SESSION['PDO_DATABASE'] = $this->pdoDatabase;
+      }
+      else
+      {
+        // User is attempting to login.
+        session_regenerate_id();
 
-    session_regenerate_id();
-
-    $_SESSION['PDO_HOST'] = $this->pdoHost;
-    $_SESSION['PDO_USER'] = $this->pdoUser;
-    $_SESSION['PDO_PASSWORD'] = $this->pdoPassword;
-    $_SESSION['PDO_DATABASE'] = $this->pdoDatabase;
+        $_SESSION['PDO_HOST'] = $this->pdoHost;
+        $_SESSION['PDO_USER'] = $this->pdoUser;
+        $_SESSION['PDO_PASSWORD'] = $this->pdoPassword;
+        $_SESSION['PDO_DATABASE'] = $this->pdoDatabase;
+      }
+    }
   }
 
   public function getTarget()

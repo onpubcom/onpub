@@ -149,15 +149,44 @@ class OnpubWelcome
 
       if ($odatabase->current())
       {
-        en('<p>This appears to be the first time you have logged in to the Onpub content management interface.</p>');
-        en('<p>Before you can publish a website with Onpub you must add the Onpub schema to the connected MySQL database, <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
-        en('<p>Please click the link below to continue:</p>');
+        en('<p>This appears to be the first time you have connected to this MySQL database with Onpub.</p>');
+        en('<p>Before you can publish a website with Onpub you must add the Onpub schema to the connected database: <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
+        en('<p>Please click the link below to continue...</p>');
         en('<ul><li><a href="index.php?onpub=SchemaInstall">Install the Onpub MySQL database schema</a></li></ul>');
       }
       else
       {
-        en('<p>Please choose the database that you\'d like to work with for this session...</p>');
-        print_r($odatabase->listDBs());
+        $dbs = $odatabase->listDBs();
+
+        if (sizeof($dbs))
+        {
+          en('<p>Please select the Database that you would like to connect to for this session...</p>');
+
+          en('<form id="onpub-form" action="index.php" method="post">');
+          en('<div>');
+          en('<p>');
+          en('<select name="pdoDatabase">');
+
+          foreach ($dbs as $db)
+          {
+            en('<option value="' . $db . '">' . $db . '</option>');
+          }
+
+          en('</select>');
+          en('</p>');
+
+          en('<p><input type="submit" value="Save"></p>');
+
+          en('<input type="hidden" name="onpub" value="LoginProcess">');
+          en('</div>');
+          en('</form>');
+        }
+        else
+        {
+          // User has no database permissions.
+          en('<p>Your MySQL User <em>' . $_SESSION['PDO_USER'] . '</em> does not have the permissions to access any databases on this host.</p>');
+          en('<p><a href="http://onpub.com/index.php?s=8&a=118#setup" target="_blank">Click here for instructions</a> on how to setup a MySQL User and Database for use with Onpub.');
+        }
       }
 
       en('</div>');
@@ -171,7 +200,11 @@ class OnpubWelcome
       en('<tr style="vertical-align: top;"><td>MySQL Client:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CLIENT_VERSION) . '</td></tr>');
       en('<tr style="vertical-align: top;"><td>MySQL Server:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_SERVER_VERSION) . '</td></tr>');
       en('<tr style="vertical-align: top;"><td>MySQL User:</td><td>' . $_SESSION['PDO_USER'] . '</td></tr>');
-      en('<tr style="vertical-align: top;"><td>Selected Database:</td><td>' . $_SESSION['PDO_DATABASE'] . '</td></tr>');
+
+      if ($_SESSION['PDO_DATABASE'])
+      {
+        en('<tr style="vertical-align: top;"><td>Connected Database:</td><td>' . $_SESSION['PDO_DATABASE'] . '</td></tr>');
+      }
 
       if ($status == ONPUBAPI_SCHEMA_VERSION) {
         en('<tr style="vertical-align: top;"><td>Onpub Schema:</td><td>Rev. ' . ONPUBAPI_SCHEMA_VERSION . '</td></tr>');

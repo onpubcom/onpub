@@ -9,7 +9,7 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-define("ONPUBAPI_VERSION", "1.2.3");
+define("ONPUBAPI_VERSION", "1.2.4");
 define("ONPUBAPI_SCHEMA_VERSION", 1);
 
 // phpThumb
