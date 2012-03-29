@@ -160,7 +160,7 @@ class OnpubWelcome
 
         if (sizeof($dbs))
         {
-          en('<p>Please select the Database that you would like to connect to for this session...</p>');
+          en('<p>Please select the MySQL Database that you would like to use for this session...</p>');
 
           en('<form id="onpub-form" action="index.php" method="post">');
           en('<div>');
