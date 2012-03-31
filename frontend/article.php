@@ -66,7 +66,7 @@ if ($onpub_article) {
 
   if ($onpub_article->imageID) {
     $onpub_article->image->website = $onpub_website;
-    en('<img src="' . OnpubImages::getThumbURL('src=' . $onpub_article->image->getFullPath() . '&w=400&f=png') . '" align="right" alt="' . $onpub_article->image->fileName . '" title="' . $onpub_article->image->description . '">');
+    en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($onpub_article->image->getFullPath()) . '&w=400&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $onpub_article->image->fileName . '" title="' . $onpub_article->image->description . '">');
   }
 
   en ($onpub_article->content);

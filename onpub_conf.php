@@ -88,6 +88,12 @@ if (!isset($onpub_dir_yui))
   $onpub_dir_yui = $onpub_dir_api . 'yui/build/';
 
 /*
+Path to the phpThumb installation directory.
+*/
+if (!isset($onpub_dir_phpthumb))
+  $onpub_dir_phpthumb = $onpub_dir_api . 'phpThumb/';
+
+/*
 Path to default Onpub frontend directory. This variable is useful for pointing
 Onpub to a different frontend include path. For example, you could copy the
 entire frontend/ directory to a new directory called frontend-custom/ and then

@@ -88,7 +88,7 @@ if ($onpub_website) {
           if ($a->image) {
             en('<div class="yui3-u-1-4">');
             $a->image->website = $onpub_website;
-            en('<a href="' . $url . '"><img src="' . OnpubImages::getThumbURL('src=' . $a->image->getFullPath() . '&w=50&f=png') . '" align="left" style="margin-right: 0.75em;" alt="' . $a->image->fileName . '" title="' . $a->image->description . '"></a>');
+            en('<a href="' . $url . '"><img src="' . OnpubImages::getThumbURL('src=' . urlencode($a->image->getFullPath()) . '&w=50&f=png', $onpub_dir_phpthumb) . '" align="left" style="margin-right: 0.75em;" alt="' . $a->image->fileName . '" title="' . $a->image->description . '"></a>');
             en('</div>');
             en('<div class="yui3-u-3-4">');
           }
