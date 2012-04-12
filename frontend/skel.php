@@ -32,7 +32,7 @@ if (isset($_SESSION['PDO_HOST']) && isset($_SESSION['PDO_USER']) && isset($_SESS
 
 <?php
 
-if ($onpub_website) {
+if ($onpub_website && $onpub_disp_rss) {
   en('<link rel="alternate" type="application/rss+xml" href="index.php?rss" title="' . $onpub_website->name . ' RSS Feed">');
 }
 

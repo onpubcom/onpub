@@ -142,7 +142,8 @@ if (!isset($onpub_disp_updates))
 
 /*
 Number of "What's New" articles to display on the home page if
-$onpub_disp_updates is true;
+$onpub_disp_updates is true. This also controls the number of items generated
+within the RSS feed if $onpub_disp_rss is true.
 */
 if (!isset($onpub_disp_updates_num))
   $onpub_disp_updates_num = 5;
@@ -159,6 +160,12 @@ Set this to false to hide the Onpub horizontal navigation menu bar.
 */
 if (!isset($onpub_disp_menu))
   $onpub_disp_menu = true;
+
+/*
+Set this to false to disable the site's RSS feed.
+*/
+if (!isset($onpub_disp_rss))
+  $onpub_disp_rss = true;
 
 // Local File Includes Config
 

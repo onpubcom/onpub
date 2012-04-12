@@ -9,53 +9,51 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-if ($onpub_website) {
+if ($onpub_website && $onpub_disp_rss) {
   // See the following OnpubAPI tutorial for more info:
-  // http://onpub.com/index.php?a=78&s=2
+  // http://onpub.com/index.php?s=20&a=78
 
   // This example is based on an example by Anis uddin Ahmad, the author of
   // Universal Feed Writer.
 
-  // Specify the query options.
-  // Include articles in the returned section ordered by date, newest to oldest.
-  $qo = new OnpubQueryOptions();
-  $qo->includeContent = true;
-  $qo->orderBy = 'created';
-  $qo->order = 'DESC';
-  $qo->rowLimit = 10;
-
-  $articles = $onpub_articles->select($qo);
-
   //Creating an instance of FeedWriter class.
   //The constant RSS2 is passed to mention the version
-  $TestFeed = new FeedWriter(RSS2);
+  $feed = new FeedWriter(RSS2);
 
   //Setting the channel elements
   //Use wrapper functions for common channel elements
-  $TestFeed->setTitle($onpub_website->name);
-  $TestFeed->setLink(addTrailingSlash($onpub_website->url));
-  $TestFeed->setDescription('');
+  $feed->setTitle($onpub_website->name);
+  $feed->setLink(addTrailingSlash($onpub_website->url));
+  $feed->setDescription('');
 
   //Image title and link must match with the 'title' and 'link' channel elements for RSS 2.0
   if ($onpub_website->image) {
-    $TestFeed->setImage($onpub_website->name, addTrailingSlash($onpub_website->url), addTrailingSlash($onpub_website->imagesURL) . $onpub_website->image->fileName);
+    $feed->setImage($onpub_website->name, addTrailingSlash($onpub_website->url), addTrailingSlash($onpub_website->imagesURL) . $onpub_website->image->fileName);
   }
   else {
-    $TestFeed->setImage($onpub_website->name, addTrailingSlash($onpub_website->url), null);
+    $feed->setImage($onpub_website->name, addTrailingSlash($onpub_website->url), null);
   }
 
   //Use core setChannelElement() function for other optional channels
-  $TestFeed->setChannelElement('language', 'en-us');
-  $TestFeed->setChannelElement('pubDate', date(DATE_RSS, time()));
+  $feed->setChannelElement('language', 'en-us');
+  $feed->setChannelElement('pubDate', date(DATE_RSS, time()));
+
+  $qo = new OnpubQueryOptions();
+  $qo->includeContent = true;
+  $qo->includeAuthors = true;
+  $qo->orderBy = 'created';
+  $qo->order = 'DESC';
+  $qo->rowLimit = $onpub_disp_updates_num;
+
+  $articles = $onpub_articles->select($qo, null, $onpub_website->ID);
 
   //Adding a feed. Genarally this portion will be in a loop and add all feeds.
-
   foreach ($articles as $article) {
     // Get the article's authors.
     $authors = $article->authors;
 
     //Create an empty FeedItem
-    $newItem = $TestFeed->createNewItem();
+    $newItem = $feed->createNewItem();
 
     //Add elements to the feed item
     //Use wrapper functions to add common feed elements
@@ -82,11 +80,11 @@ if ($onpub_website) {
     }
 
     //Now add the feed item
-    $TestFeed->addItem($newItem);
+    $feed->addItem($newItem);
   }
 
   //OK. Everything is done. Now genarate the feed.
-  $TestFeed->genarateFeed();
+  $feed->genarateFeed();
 }
 
 ?>

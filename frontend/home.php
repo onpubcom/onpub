@@ -54,7 +54,14 @@ if ($onpub_website) {
     $articles = $onpub_articles->select($qo, null, $onpub_website->ID);
 
     if (sizeof($articles) && !(sizeof($articles) == 1 && $articles[0]->ID == $onpub_disp_article)) {
-      en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
+      if ($onpub_disp_rss)
+      {
+        en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $onpub_website->name . ' RSS Feed" title="' . $onpub_website->name . ' RSS Feed"></a></h1>');
+      }
+      else
+      {
+        en('<h1 style="margin-right: 0;">What\'s New</h1>');
+      }
 
       $onpub_website_section_ids = onpub_extract_section_ids($onpub_website->sections);
 
