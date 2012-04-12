@@ -6,7 +6,6 @@
   <property name="dir.onpub" value="${dir.build}/onpub"/>
   <property name="dir.onpub.api" value="${dir.onpub}/api"/>
   <property name="dir.onpub.manage" value="${dir.onpub}/manage"/>
-  <property name="dir.onpub.scripts" value="${dir.onpub}/scripts"/>
   <property name="dir.onpub.local" value="${dir.onpub}/local"/>  
   <property name="dir.ckeditor" value="${dir.build}/ckeditor"/>
   <property name="dir.ckeditor.samples" value="${dir.ckeditor}/_samples"/>
@@ -64,8 +63,7 @@
     <mkdir dir="${dir.onpub.local}"/>    
     <delete file="${dir.onpub}/build.xml"/>
     <delete file="${dir.onpub}/.gitignore"/>
-    <delete dir="${dir.onpub}/.git"/>   
-    <delete dir="${dir.onpub.scripts}"/>
+    <delete dir="${dir.onpub}/.git"/>
     <move file="${dir.yui}" todir="${dir.onpub.api}"/>
     <move file="${dir.phpthumb}" todir="${dir.onpub.api}"/>
     <move file="${dir.ckeditor}" todir="${dir.onpub.manage}"/>
