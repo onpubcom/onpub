@@ -17,7 +17,7 @@ define("ONPUBGUI_PDO_HOST", "localhost");
 // Icons, buttons and other Onpub GUI graphics are stored in this directory
 define("ONPUBGUI_IMAGE_DIRECTORY", "images/");
 define("ONPUBGUI_YUI_DIRECTORY", "../api/yui/build/");
-define("ONPUBGUI_YUI_VERSION", "3.4.1");
+define("ONPUBGUI_YUI_VERSION", "3.5.0");
 
 // UI Configuration
 // Controls how many rows get displayed on each page in the Select UIs
