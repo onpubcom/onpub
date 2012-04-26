@@ -20,6 +20,7 @@ class OnpubFrontend
   private $onpub_section_parent;
   private $onpub_section_id;
   private $onpub_sections;
+  private $onpub_article;
 
   function __construct()
   {
@@ -36,8 +37,8 @@ class OnpubFrontend
     $this->onpub_index = 'home';
     $this->onpub_section_id = null;
     $this->onpub_section = null;
-    $onpub_article_id = null;
-    $onpub_article = null;
+    $this->onpub_article_id = null;
+    $this->onpub_article = null;
     $onpub_schema_installed = false;
 
     if (class_exists('PDO')) {
@@ -61,7 +62,7 @@ class OnpubFrontend
     }
 
     if ($onpub_pdo) {
-      $onpub_websites = new OnpubWebsites($onpub_pdo);
+      $this->onpub_websites = new OnpubWebsites($onpub_pdo);
       $this->onpub_sections = new OnpubSections($onpub_pdo);
       $this->onpub_articles = new OnpubArticles($onpub_pdo);
       $this->onpub_samaps = new OnpubSAMaps($onpub_pdo);
@@ -72,7 +73,7 @@ class OnpubFrontend
       $qo->includeSections = true;
 
       try {
-        $this->onpub_website = $onpub_websites->get($onpub_disp_website, $qo);
+        $this->onpub_website = $this->onpub_websites->get($onpub_disp_website, $qo);
         $onpub_schema_installed = true;
         $onpub_pdo_exception = null;
       }
@@ -122,11 +123,11 @@ class OnpubFrontend
         }
 
         $this->onpub_index = 'article';
-        $onpub_article_id = $_GET['articleID'];
+        $this->onpub_article_id = $_GET['articleID'];
 
         $qo = new OnpubQueryOptions();
         $qo->includeAuthors = true;
-        $onpub_article = $this->onpub_articles->get($onpub_article_id, $qo);
+        $this->onpub_article = $this->onpub_articles->get($this->onpub_article_id, $qo);
       }
       elseif (isset($_GET['sectionID']) && isset($_GET['articleID'])) {
         if (!ctype_digit($_GET['sectionID'])) {
@@ -141,7 +142,7 @@ class OnpubFrontend
 
         $this->onpub_index = 'section-article';
         $this->onpub_section_id = $_GET['sectionID'];
-        $onpub_article_id = $_GET['articleID'];
+        $this->onpub_article_id = $_GET['articleID'];
 
         $this->onpub_section = $this->onpub_sections->get($this->onpub_section_id);
 
@@ -153,7 +154,7 @@ class OnpubFrontend
 
         $qo = new OnpubQueryOptions();
         $qo->includeAuthors = true;
-        $onpub_article = $this->onpub_articles->get($onpub_article_id, $qo);
+        $this->onpub_article = $this->onpub_articles->get($this->onpub_article_id, $qo);
       }
       elseif (isset($_GET['rss'])) {
         $this->onpub_index = 'rss';
@@ -184,11 +185,11 @@ class OnpubFrontend
         }
 
         $this->onpub_index = 'article';
-        $onpub_article_id = $_GET['a'];
+        $this->onpub_article_id = $_GET['a'];
 
         $qo = new OnpubQueryOptions();
         $qo->includeAuthors = true;
-        $onpub_article = $this->onpub_articles->get($_GET['a'], $qo);
+        $this->onpub_article = $this->onpub_articles->get($_GET['a'], $qo);
       }
       elseif (isset($_GET['s']) && isset($_GET['a'])) {
         if (!ctype_digit($_GET['s'])) {
@@ -203,7 +204,7 @@ class OnpubFrontend
 
         $this->onpub_index = 'section-article';
         $this->onpub_section_id = $_GET['s'];
-        $onpub_article_id = $_GET['a'];
+        $this->onpub_article_id = $_GET['a'];
 
         $this->onpub_section = $this->onpub_sections->get($this->onpub_section_id);
 
@@ -215,7 +216,7 @@ class OnpubFrontend
 
         $qo = new OnpubQueryOptions();
         $qo->includeAuthors = true;
-        $onpub_article = $this->onpub_articles->get($onpub_article_id, $qo);
+        $this->onpub_article = $this->onpub_articles->get($this->onpub_article_id, $qo);
       }
       elseif (isset($_GET['rss'])) {
         $this->onpub_index = 'rss';
@@ -232,7 +233,7 @@ class OnpubFrontend
     switch ($this->onpub_index) {
       case 'rss':
       include $onpub_dir_frontend . 'libs/FeedWriter.php';
-      include $onpub_dir_frontend . 'rss.php';
+      $this->rss();
       break;
 
       default:
@@ -263,33 +264,33 @@ class OnpubFrontend
         }
       }
       elseif ($this->onpub_index == 'article') {
-        if ($onpub_article) {
-          en('<title>' . $onpub_article->title . ' - ' . $this->onpub_website->name . '</title>');
+        if ($this->onpub_article) {
+          en('<title>' . $this->onpub_article->title . ' - ' . $this->onpub_website->name . '</title>');
         }
         else {
-          en('<title>' . $this->onpub_website->name . ' - Article ' . $onpub_article_id . ' not found...</title>');
+          en('<title>' . $this->onpub_website->name . ' - Article ' . $this->onpub_article_id . ' not found...</title>');
         }
       }
       elseif ($this->onpub_index == 'section-article') {
-        if ($this->onpub_section && $onpub_article) {
+        if ($this->onpub_section && $this->onpub_article) {
           if ($this->onpub_section_parent) {
-            en('<title>' . $onpub_article->title . ' - ' . $this->onpub_section->name . ' - ' . $this->onpub_section_parent->name . ' - ' . $this->onpub_website->name . '</title>');
+            en('<title>' . $this->onpub_article->title . ' - ' . $this->onpub_section->name . ' - ' . $this->onpub_section_parent->name . ' - ' . $this->onpub_website->name . '</title>');
           }
           else {
-            en('<title>' . $onpub_article->title . ' - ' . $this->onpub_section->name . ' - ' . $this->onpub_website->name . '</title>');
+            en('<title>' . $this->onpub_article->title . ' - ' . $this->onpub_section->name . ' - ' . $this->onpub_website->name . '</title>');
           }
         }
 
-        if ($this->onpub_section && !$onpub_article) {
-          en('<title>' . $this->onpub_website->name . ' - Article ' . $onpub_article_id . ' not found...</title>');
+        if ($this->onpub_section && !$this->onpub_article) {
+          en('<title>' . $this->onpub_website->name . ' - Article ' . $this->onpub_article_id . ' not found...</title>');
         }
 
-        if (!$this->onpub_section && $onpub_article) {
+        if (!$this->onpub_section && $this->onpub_article) {
           en('<title>' . $this->onpub_website->name . ' - Section ' . $this->onpub_section_id . ' not found...</title>');
         }
 
-        if (!$this->onpub_section && !$onpub_article) {
-          en('<title>' . $this->onpub_website->name . ' - Section ' . $this->onpub_section_id . ' and Article ' . $onpub_article_id . ' not found...</title>');
+        if (!$this->onpub_section && !$this->onpub_article) {
+          en('<title>' . $this->onpub_website->name . ' - Section ' . $this->onpub_section_id . ' and Article ' . $this->onpub_article_id . ' not found...</title>');
         }
       }
     }
@@ -448,10 +449,10 @@ class OnpubFrontend
         en('<div class="yui3-u-3-4">');
 
         if ($onpub_disp_article) {
-          $onpub_article = $this->onpub_articles->get($onpub_disp_article);
+          $this->onpub_article = $this->onpub_articles->get($onpub_disp_article);
 
-          if ($onpub_article) {
-            en($onpub_article->content);
+          if ($this->onpub_article) {
+            en($this->onpub_article->content);
           }
           else {
             en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
@@ -480,7 +481,7 @@ class OnpubFrontend
             en('<h1 style="margin-right: 0;">What\'s New</h1>');
           }
 
-          $onpub_website_section_ids = $this->onpub_extract_section_ids($this->onpub_website->sections);
+          $this->onpub_website_section_ids = $this->onpub_extract_section_ids($this->onpub_website->sections);
 
           $i = 0;
 
@@ -498,7 +499,7 @@ class OnpubFrontend
                 $sectionIDs[] = $samap->sectionID;
               }
 
-              $visibleSIDs = array_values(array_intersect($onpub_website_section_ids, $sectionIDs));
+              $visibleSIDs = array_values(array_intersect($this->onpub_website_section_ids, $sectionIDs));
 
               if ($a->url) {
                 $url = $a->url;
@@ -556,10 +557,10 @@ class OnpubFrontend
       }
       else {
         if ($onpub_disp_article) {
-          $onpub_article = $this->onpub_articles->get($onpub_disp_article);
+          $this->onpub_article = $this->onpub_articles->get($onpub_disp_article);
 
-          if ($onpub_article) {
-            en($onpub_article->content);
+          if ($this->onpub_article) {
+            en($this->onpub_article->content);
           }
           else {
             en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
@@ -567,16 +568,16 @@ class OnpubFrontend
         }
       }
 
-      if ($this->onpub_login_status && $onpub_article) {
+      if ($this->onpub_login_status && $this->onpub_article) {
         en('<div class="yui3-g">');
         en('<div class="yui3-u-1">');
         en('<span class="onpub-edit">');
         en('<a href="' . $onpub_dir_manage .
-          'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
+          'index.php?onpub=EditArticle&amp;articleID=' . $this->onpub_article->ID .
           '" target="_onpub"><img src="' . $onpub_dir_frontend .
           'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a> ' .
           '<a href="' . $onpub_dir_manage .
-          'index.php?onpub=EditArticle&amp;articleID=' . $onpub_article->ID .
+          'index.php?onpub=EditArticle&amp;articleID=' . $this->onpub_article->ID .
           '" target="_onpub" title="Edit this Article">EDIT</a>');
         en('</span>');
         en('</div>');
@@ -905,6 +906,240 @@ class OnpubFrontend
     }
   }
 
+  function sectionarticle()
+  {
+    global $onpub_inc_article_info, $onpub_dir_phpthumb, $onpub_inc_article_foot,
+           $onpub_dir_manage, $onpub_dir_frontend;
+
+    if ($this->onpub_section && $this->onpub_article) {
+      en('<div class="yui3-g">');
+      en('<div class="yui3-u-3-4">');
+
+      en('<h1>' . $this->onpub_article->title . '</h1>');
+
+      en('<div class="yui3-g">');
+      en('<div class="yui3-u-1-2">');
+      en('<p class="onpub-article-info">');
+
+      $created = $this->onpub_article->getCreated();
+      $modified = $this->onpub_article->getModified();
+
+      if (function_exists('date_diff')) {
+        $diff = $created->diff($modified);
+
+        if (sizeof($this->onpub_article->authors)) {
+          $author = $this->onpub_article->authors[0];
+
+          if ($diff->days > 0) {
+            en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '. Updated: ' .  $modified->format('M j, Y') . '.');
+          }
+          else {
+            en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '.');
+          }
+        }
+        else {
+          if ($diff->days > 0) {
+            en('Published: ' . $created->format('M j, Y') . '. Updated: ' .  $modified->format('M j, Y') . '.');
+          }
+          else {
+            en('Published: ' . $created->format('M j, Y') . '.');
+          }
+        }
+      }
+      else {
+        if (sizeof($this->onpub_article->authors)) {
+          $author = $this->onpub_article->authors[0];
+
+          en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '. Updated: ' .  $modified->format('M j, Y') . '.');
+        }
+        else {
+          en('Published: ' . $created->format('M j, Y') . '. Updated: ' .  $modified->format('M j, Y') . '.');
+        }
+      }
+
+      en('</p>');
+      en('</div>');
+      en('<div class="yui3-u-1-2">');
+
+      if (file_exists($onpub_inc_article_info)) include $onpub_inc_article_info;
+
+      en('</div>');
+      en('</div>');
+
+      en('<div style="padding-right: 0.5em;">');
+      if ($this->onpub_article->image) {
+        $this->onpub_article->image->website = $this->onpub_website;
+        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->onpub_article->image->getFullPath()) . '&w=280&f=png', $onpub_dir_phpthumb) . '" align="right" style="margin-right: 0.75em;" alt="' . $this->onpub_article->image->fileName . '" title="' . $this->onpub_article->image->description . '">');
+      }
+
+      en($this->onpub_article->content);
+      en('</div>');
+
+      if ($this->onpub_login_status) {
+        en('<div class="yui3-g">');
+        en('<div class="yui3-u-1">');
+        en('<span class="onpub-edit">');
+        en('<a href="' . $onpub_dir_manage .
+          'index.php?onpub=EditArticle&amp;articleID=' . $this->onpub_article->ID .
+          '" target="_onpub"><img src="' . $onpub_dir_frontend .
+          'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a> ' .
+          '<a href="' . $onpub_dir_manage .
+          'index.php?onpub=EditArticle&amp;articleID=' . $this->onpub_article->ID .
+          '" target="_onpub" title="Edit this Article">EDIT</a>');
+        en('</span>');
+        en('</div>');
+        en('</div>');
+      }
+
+      if (file_exists($onpub_inc_article_foot)) include $onpub_inc_article_foot;
+
+      en('</div>');
+      en('<div class="yui3-u-1-4 onpub-section-nav">');
+
+      en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $this->onpub_section->ID . '" class="onpub-section-nav">' . $this->onpub_section->name . '</a></h1>');
+
+      $articles = $this->onpub_articles->select(null, $this->onpub_section->ID);
+
+      en('<ul class="onpub-section-nav">');
+
+      foreach ($articles as $a) {
+        if ($a->ID == $this->onpub_article->ID) {
+          en('<li>' . $a->title . '</li>');
+        }
+        else {
+          if ($a->url) {
+            en('<li><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></li>');
+          }
+          else {
+            en('<li><a href="index.php?s=' . $this->onpub_section->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></li>');
+          }
+        }
+      }
+
+      // Get subsections.
+      $sections = $this->onpub_sections->select(null, null, true, $this->onpub_section->ID);
+
+      foreach ($sections as $s) {
+        if ($s->url) {
+          en('<li><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></li>');
+        }
+        else {
+          en('<li><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></li>');
+        }
+      }
+
+      en('</ul>');
+
+      en('</div>');
+      en('</div>');
+    }
+
+    if ($this->onpub_section && !$this->onpub_article) {
+      en('<h1>Article ' . $this->onpub_article_id . ' not found... <a href="index.php">Home</a></h1>');
+    }
+
+    if (!$this->onpub_section && $this->onpub_article) {
+      en('<h1>Section ' . $this->onpub_section_id . ' not found... <a href="index.php">Home</a></h1>');
+    }
+
+    if (!$this->onpub_section && !$this->onpub_article) {
+      en('<h1>Section ' . $this->onpub_section_id . ' and Article ' . $this->onpub_article_id . ' not found... <a href="index.php">Home</a></h1>');
+    }
+  }
+
+  function article()
+  {
+    global $onpub_inc_article_info, $onpub_dir_phpthumb, $onpub_dir_manage,
+           $onpub_dir_frontend, $onpub_inc_article_foot;
+
+    en('<div class="yui3-g">');
+    en('<div class="yui3-u-1">');
+
+    if ($this->onpub_article) {
+      en('<h1 style="margin-right: 0;">' . $this->onpub_article->title . '</h1>');
+
+      en('<div class="yui3-g">');
+      en('<div class="yui3-u-1-2">');
+      en('<p class="onpub-article-info">');
+
+      $created = $this->onpub_article->getCreated();
+      $modified = $this->onpub_article->getModified();
+
+      if (function_exists('date_diff')) {
+        $diff = $created->diff($modified);
+
+        if (sizeof($this->onpub_article->authors)) {
+          $author = $this->onpub_article->authors[0];
+
+          if ($diff->days > 0) {
+            en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '. Updated: ' .  $modified->format('M j, Y') . '.');
+          }
+          else {
+            en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '.');
+          }
+        }
+        else {
+          if ($diff->days > 0) {
+            en('Published: ' . $created->format('M j, Y') . '. Updated: ' .  $modified->format('M j, Y') . '.');
+          }
+          else {
+            en('Published: ' . $created->format('M j, Y') . '.');
+          }
+        }
+      }
+      else {
+        if (sizeof($this->onpub_article->authors)) {
+          $author = $this->onpub_article->authors[0];
+
+          en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '. Updated: ' .  $modified->format('M j, Y') . '.');
+        }
+        else {
+          en('Published: ' . $created->format('M j, Y') . '. Updated: ' .  $modified->format('M j, Y') . '.');
+        }
+      }
+
+      en('</p>');
+      en('</div>');
+      en('<div class="yui3-u-1-2">');
+
+      if (file_exists($onpub_inc_article_info)) include $onpub_inc_article_info;
+
+      en('</div>');
+      en('</div>');
+
+      if ($this->onpub_article->imageID) {
+        $this->onpub_article->image->website = $this->onpub_website;
+        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->onpub_article->image->getFullPath()) . '&w=400&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $this->onpub_article->image->fileName . '" title="' . $this->onpub_article->image->description . '">');
+      }
+
+      en ($this->onpub_article->content);
+
+      if ($this->onpub_login_status) {
+        en('<div class="yui3-g">');
+        en('<div class="yui3-u-1">');
+        en('<span class="onpub-edit">');
+        en('<a href="' . $onpub_dir_manage .
+          'index.php?onpub=EditArticle&amp;articleID=' . $this->onpub_article->ID .
+          '" target="_onpub"><img src="' . $onpub_dir_frontend .
+          'images/page_edit.png" width="16" height="16" alt="Edit this Article" title="Edit this Article"></a> ' .
+          '<a href="' . $onpub_dir_manage .
+          'index.php?onpub=EditArticle&amp;articleID=' . $this->onpub_article->ID .
+          '" target="_onpub" title="Edit this Article">EDIT</a>');
+        en('</span>');
+        en('</div>');
+        en('</div>');
+      }
+
+      if (file_exists($onpub_inc_article_foot)) include $onpub_inc_article_foot;
+    }
+    else {
+      en('<h1>Article ' . $this->onpub_article_id . ' not found... <a href="index.php">Home</a></h1>');
+    }
+
+    en('</div>');
+    en('</div>');
+  }
+
   function skel()
   {
     global $onpub_disp_rss, $onpub_dir_yui, $onpub_inc_css, $onpub_inc_css_menu,
@@ -1014,13 +1249,13 @@ class OnpubFrontend
 
       case 'article':
         en('<div id="onpub-body">');
-        include $onpub_dir_frontend . 'article.php';
+        $this->article();
         en('</div>');
         break;
 
       case 'section-article':
         en('<div id="onpub-body" style="padding-right: 0em;">');
-        include $onpub_dir_frontend . 'section-article.php';
+        $this->sectionarticle();
         en('</div>');
         break;
 
@@ -1048,6 +1283,89 @@ class OnpubFrontend
 
     en('</body>');
     en('</html>');
+  }
+
+  function rss()
+  {
+    global $onpub_disp_rss, $onpub_disp_updates_num;
+
+    if ($this->onpub_website && $onpub_disp_rss) {
+      // See the following OnpubAPI tutorial for more info:
+      // http://onpub.com/index.php?s=20&a=78
+
+      // This example is based on an example by Anis uddin Ahmad, the author of
+      // Universal Feed Writer.
+
+      //Creating an instance of FeedWriter class.
+      //The constant RSS2 is passed to mention the version
+      $feed = new FeedWriter(RSS2);
+
+      //Setting the channel elements
+      //Use wrapper functions for common channel elements
+      $feed->setTitle($this->onpub_website->name);
+      $feed->setLink(addTrailingSlash($this->onpub_website->url));
+      $feed->setDescription('');
+
+      //Image title and link must match with the 'title' and 'link' channel elements for RSS 2.0
+      if ($this->onpub_website->image) {
+        $feed->setImage($this->onpub_website->name, addTrailingSlash($this->onpub_website->url), addTrailingSlash($this->onpub_website->imagesURL) . $this->onpub_website->image->fileName);
+      }
+      else {
+        $feed->setImage($this->onpub_website->name, addTrailingSlash($this->onpub_website->url), null);
+      }
+
+      //Use core setChannelElement() function for other optional channels
+      $feed->setChannelElement('language', 'en-us');
+      $feed->setChannelElement('pubDate', date(DATE_RSS, time()));
+
+      $qo = new OnpubQueryOptions();
+      $qo->includeContent = true;
+      $qo->includeAuthors = true;
+      $qo->orderBy = 'created';
+      $qo->order = 'DESC';
+      $qo->rowLimit = $onpub_disp_updates_num;
+
+      $articles = $this->onpub_articles->select($qo, null, $this->onpub_website->ID);
+
+      //Adding a feed. Genarally this portion will be in a loop and add all feeds.
+      foreach ($articles as $article) {
+        // Get the article's authors.
+        $authors = $article->authors;
+
+        //Create an empty FeedItem
+        $newItem = $feed->createNewItem();
+
+        //Add elements to the feed item
+        //Use wrapper functions to add common feed elements
+        // Use the OnpubArticle object to set the various properties of the FeedItem.
+        $newItem->setTitle($article->title);
+
+        $samaps = $this->onpub_samaps->select(null, null, $article->ID);
+
+        if (sizeof($samaps)) {
+          $newItem->setLink(addTrailingSlash($this->onpub_website->url) . 'index.php?s=' . $samaps[0]->sectionID . '&a=' . $article->ID);
+        }
+        else {
+          $newItem->setLink(addTrailingSlash($this->onpub_website->url) . 'index.php?a=' . $article->ID);
+        }
+
+        //The parameter is a timestamp for setDate() function
+        $newItem->setDate($article->getCreated()->format('c'));
+
+        $newItem->setDescription($article->content);
+
+        if (sizeof($authors)) {
+          //Use core addElement() function for other supported optional elements
+          $newItem->addElement('author', $authors[0]->displayAs);
+        }
+
+        //Now add the feed item
+        $feed->addItem($newItem);
+      }
+
+      //OK. Everything is done. Now genarate the feed.
+      $feed->genarateFeed();
+    }
   }
 }
 
