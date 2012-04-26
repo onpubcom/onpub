@@ -245,8 +245,6 @@ class OnpubFrontend
 
   protected function title()
   {
-    global $onpub_disp_rss;
-
     if ($this->onpub_website) {
       if ($this->onpub_index == 'home') {
         en('<title>' . $this->onpub_website->name . '</title>');
