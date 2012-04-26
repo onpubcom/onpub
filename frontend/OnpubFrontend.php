@@ -22,6 +22,9 @@ class OnpubFrontend
   private $onpub_sections;
   private $onpub_article;
   private $onpub_article_id;
+  private $onpub_pdo_exception;
+  private $onpub_schema_installed;
+  private $onpub_pdo_installed;
 
   function __construct()
   {
@@ -40,26 +43,26 @@ class OnpubFrontend
     $this->onpub_section = null;
     $this->onpub_article_id = null;
     $this->onpub_article = null;
-    $onpub_schema_installed = false;
+    $this->onpub_schema_installed = false;
 
     if (class_exists('PDO')) {
-      $onpub_pdo_installed = true;
+      $this->onpub_pdo_installed = true;
 
       try {
         $onpub_pdo = new PDO('mysql:host=' . $onpub_db_host . ';dbname=' . $onpub_db_name, $onpub_db_user, $onpub_db_pass);
-        $onpub_pdo_exception = null;
+        $this->onpub_pdo_exception = null;
       }
       catch (PDOException $e) {
         // Connection error. PDO_MYSQL driver isn't installed or DB credentials are incorrect.
         $onpub_pdo = null;
-        $onpub_pdo_exception = $e;
+        $this->onpub_pdo_exception = $e;
       }
     }
     else {
       // PDO is not install at all.
-      $onpub_pdo_installed = false;
+      $this->onpub_pdo_installed = false;
       $onpub_pdo = null;
-      $onpub_pdo_exception = null;
+      $this->onpub_pdo_exception = null;
     }
 
     if ($onpub_pdo) {
@@ -75,30 +78,30 @@ class OnpubFrontend
 
       try {
         $this->onpub_website = $onpub_websites->get($onpub_disp_website, $qo);
-        $onpub_schema_installed = true;
-        $onpub_pdo_exception = null;
+        $this->onpub_schema_installed = true;
+        $this->onpub_pdo_exception = null;
       }
       catch (PDOException $e) {
         $this->onpub_website = null;
 
         if ($e->getCode() == 1146) {
           // Schema has not yet been installed.
-          $onpub_schema_installed = false;
-          $onpub_pdo_exception = null;
+          $this->onpub_schema_installed = false;
+          $this->onpub_pdo_exception = null;
         }
         else {
           // There was some other DB error.
-          $onpub_schema_installed = true;
-          $onpub_pdo_exception = $e;
+          $this->onpub_schema_installed = true;
+          $this->onpub_pdo_exception = $e;
         }
       }
     }
     else {
       $this->onpub_website = null;
-      $onpub_schema_installed = false;
+      $this->onpub_schema_installed = false;
     }
 
-    if ($onpub_schema_installed) {
+    if ($this->onpub_schema_installed) {
       // Check for legacy GET query params..
       if (isset($_GET['sectionID']) && !isset($_GET['articleID'])) {
         if (!ctype_digit($_GET['sectionID'])) {
@@ -300,6 +303,8 @@ class OnpubFrontend
 
   protected function hd()
   {
+    global $onpub_dir_manage;
+
     if ($this->onpub_website) {
       if ($this->onpub_website->image) {
         en('<div id="onpub-logo"><a href="index.php"><img src="' . addTrailingSlash($this->onpub_website->imagesURL) . $this->onpub_website->image->fileName . '" alt="' . $this->onpub_website->image->fileName . '" title="' . $this->onpub_website->image->description . '"></a></div>');
@@ -586,10 +591,10 @@ class OnpubFrontend
     else {
       en('<h1 style="margin-right: 0;">Welcome to Onpub</h1>');
 
-      if ($onpub_pdo_exception) {
-        en('<h3><span class="onpub-error">PDOException:</span> ' . $onpub_pdo_exception->getMessage() . '</h3>');
+      if ($this->onpub_pdo_exception) {
+        en('<h3><span class="onpub-error">PDOException:</span> ' . $this->onpub_pdo_exception->getMessage() . '</h3>');
 
-        switch ($onpub_pdo_exception->getCode()) {
+        switch ($this->onpub_pdo_exception->getCode()) {
           case 1044: // Bad database name.
             en('<p>Onpub is unable to connect to the specified MySQL database.</p>');
             en('<p>Please make sure the Onpub frontend database configuration is correct.</p>');
@@ -622,7 +627,7 @@ class OnpubFrontend
             break;
         }
 
-        if ($onpub_pdo_exception->getMessage() == 'could not find driver') {
+        if ($this->onpub_pdo_exception->getMessage() == 'could not find driver') {
           en('<p>PDO_MYSQL is not installed or is not configured correctly.</p>');
           en('<p>Onpub requires the PDO and PDO_MYSQL PHP extensions in order to connect to a MySQL database server.</p>');
           en('<p>You will be unable to use Onpub until PDO_MYSQL is installed.</p>');
@@ -630,13 +635,13 @@ class OnpubFrontend
         }
       }
       else {
-        if ($onpub_schema_installed) {
+        if ($this->onpub_schema_installed) {
           en('<h3>You have successfully installed Onpub. This is the default Onpub frontend interface.</h3>');
           en('<p>The frontend is now configured to instantly display the content you publish using the Onpub content management interface.</p>');
           en('<p><a href="' . $onpub_dir_manage .
             'index.php?onpub=NewWebsite" target="_onpub">Create a website</a> and then reload this page to get started.</p>');
         }
-        elseif ($onpub_pdo_installed) {
+        elseif ($this->onpub_pdo_installed) {
           en('<h3>Almost there.. Follow the instructions below to complete the Onpub installation.</h3>');
           en('<p><a href="' . $onpub_dir_manage .
             'index.php" target="_onpub">Login</a> to the Onpub content management interface to install the Onpub database schema. You will be unable to publish a website until you perform this step.</p>');
