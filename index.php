@@ -27,10 +27,10 @@ include './onpub_conf.php';
 // Include all OnpubAPI classes.
 include $onpub_dir_api . 'onpubapi.php';
 
-// Include frontend initialization file.
-//include $onpub_dir_frontend . 'init.php';
-
+// Include frontend class.
 include $onpub_dir_frontend . 'OnpubFrontend.php';
+
+// Construct and display the frontend.
 $onpub_frontend = new OnpubFrontend();
 $onpub_frontend->display();
 

@@ -21,12 +21,13 @@ class OnpubFrontend
   private $onpub_section_id;
   private $onpub_sections;
   private $onpub_article;
+  private $onpub_article_id;
 
   function __construct()
   {
   }
 
-  function init()
+  private function init()
   {
     global $onpub_db_host, $onpub_db_name, $onpub_db_user, $onpub_db_pass, $onpub_disp_website;
 
@@ -62,7 +63,7 @@ class OnpubFrontend
     }
 
     if ($onpub_pdo) {
-      $this->onpub_websites = new OnpubWebsites($onpub_pdo);
+      $onpub_websites = new OnpubWebsites($onpub_pdo);
       $this->onpub_sections = new OnpubSections($onpub_pdo);
       $this->onpub_articles = new OnpubArticles($onpub_pdo);
       $this->onpub_samaps = new OnpubSAMaps($onpub_pdo);
@@ -73,7 +74,7 @@ class OnpubFrontend
       $qo->includeSections = true;
 
       try {
-        $this->onpub_website = $this->onpub_websites->get($onpub_disp_website, $qo);
+        $this->onpub_website = $onpub_websites->get($onpub_disp_website, $qo);
         $onpub_schema_installed = true;
         $onpub_pdo_exception = null;
       }
@@ -224,7 +225,7 @@ class OnpubFrontend
     }
   }
 
-  function display()
+  public function display()
   {
     global $onpub_dir_frontend;
 
@@ -242,7 +243,7 @@ class OnpubFrontend
     }
   }
 
-  function title()
+  protected function title()
   {
     global $onpub_disp_rss;
 
@@ -299,7 +300,7 @@ class OnpubFrontend
     }
   }
 
-  function hd()
+  protected function hd()
   {
     if ($this->onpub_website) {
       if ($this->onpub_website->image) {
@@ -314,7 +315,7 @@ class OnpubFrontend
     }
   }
 
-  function onpub_output_sub_sections($section)
+  protected function onpub_output_sub_sections($section)
   {
     $subsections = $section->sections;
 
@@ -354,7 +355,7 @@ class OnpubFrontend
     }
   }
 
-  function menu()
+  protected function menu()
   {
     global $onpub_disp_menu;
 
@@ -422,7 +423,7 @@ class OnpubFrontend
     }
   }
 
-  function onpub_extract_section_ids($sections)
+  private function onpub_extract_section_ids($sections)
   {
     static $ids = array();
 
@@ -437,7 +438,7 @@ class OnpubFrontend
     return $ids;
   }
 
-  function home()
+  protected function home()
   {
     global $onpub_disp_updates, $onpub_disp_article, $onpub_disp_updates_num,
            $onpub_disp_rss, $onpub_dir_frontend, $onpub_dir_phpthumb,
@@ -481,7 +482,7 @@ class OnpubFrontend
             en('<h1 style="margin-right: 0;">What\'s New</h1>');
           }
 
-          $this->onpub_website_section_ids = $this->onpub_extract_section_ids($this->onpub_website->sections);
+          $onpub_website_section_ids = $this->onpub_extract_section_ids($this->onpub_website->sections);
 
           $i = 0;
 
@@ -499,7 +500,7 @@ class OnpubFrontend
                 $sectionIDs[] = $samap->sectionID;
               }
 
-              $visibleSIDs = array_values(array_intersect($this->onpub_website_section_ids, $sectionIDs));
+              $visibleSIDs = array_values(array_intersect($onpub_website_section_ids, $sectionIDs));
 
               if ($a->url) {
                 $url = $a->url;
@@ -653,7 +654,7 @@ class OnpubFrontend
     }
   }
 
-  function ft()
+  protected function ft()
   {
     global $onpub_disp_login, $onpub_dir_manage;
 
@@ -687,7 +688,7 @@ class OnpubFrontend
     en('</div>');
   }
 
-  function section()
+  protected function section()
   {
     global $onpub_dir_phpthumb, $onpub_dir_manage, $onpub_dir_frontend;
 
@@ -906,7 +907,7 @@ class OnpubFrontend
     }
   }
 
-  function sectionarticle()
+  protected function sectionarticle()
   {
     global $onpub_inc_article_info, $onpub_dir_phpthumb, $onpub_inc_article_foot,
            $onpub_dir_manage, $onpub_dir_frontend;
@@ -1047,7 +1048,7 @@ class OnpubFrontend
     }
   }
 
-  function article()
+  protected function article()
   {
     global $onpub_inc_article_info, $onpub_dir_phpthumb, $onpub_dir_manage,
            $onpub_dir_frontend, $onpub_inc_article_foot;
@@ -1140,7 +1141,7 @@ class OnpubFrontend
     en('</div>');
   }
 
-  function skel()
+  protected function skel()
   {
     global $onpub_disp_rss, $onpub_dir_yui, $onpub_inc_css, $onpub_inc_css_menu,
            $onpub_inc_head, $onpub_inc_banner, $onpub_dir_root, $onpub_yui_version,
@@ -1285,7 +1286,7 @@ class OnpubFrontend
     en('</html>');
   }
 
-  function rss()
+  protected function rss()
   {
     global $onpub_disp_rss, $onpub_disp_updates_num;
 
