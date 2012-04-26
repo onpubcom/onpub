@@ -16,10 +16,13 @@ class OnpubFrontend
   private $onpub_articles;
   private $onpub_samaps;
   private $onpub_login_status;
+  private $onpub_section;
+  private $onpub_section_parent;
+  private $onpub_section_id;
+  private $onpub_sections;
 
   function __construct()
   {
-    $this->init();
   }
 
   function init()
@@ -31,8 +34,8 @@ class OnpubFrontend
     }
 
     $this->onpub_index = 'home';
-    $onpub_section_id = null;
-    $onpub_section = null;
+    $this->onpub_section_id = null;
+    $this->onpub_section = null;
     $onpub_article_id = null;
     $onpub_article = null;
     $onpub_schema_installed = false;
@@ -58,8 +61,8 @@ class OnpubFrontend
     }
 
     if ($onpub_pdo) {
-      $this->onpub_websites = new OnpubWebsites($onpub_pdo);
-      $onpub_sections = new OnpubSections($onpub_pdo);
+      $onpub_websites = new OnpubWebsites($onpub_pdo);
+      $this->onpub_sections = new OnpubSections($onpub_pdo);
       $this->onpub_articles = new OnpubArticles($onpub_pdo);
       $this->onpub_samaps = new OnpubSAMaps($onpub_pdo);
       $onpub_images = new OnpubImages($onpub_pdo);
@@ -69,7 +72,7 @@ class OnpubFrontend
       $qo->includeSections = true;
 
       try {
-        $this->onpub_website = $this->onpub_websites->get($onpub_disp_website, $qo);
+        $this->onpub_website = $onpub_websites->get($onpub_disp_website, $qo);
         $onpub_schema_installed = true;
         $onpub_pdo_exception = null;
       }
@@ -102,14 +105,14 @@ class OnpubFrontend
         }
 
         $this->onpub_index = 'section';
-        $onpub_section_id = $_GET['sectionID'];
+        $this->onpub_section_id = $_GET['sectionID'];
 
-        $onpub_section = $onpub_sections->get($onpub_section_id);
+        $this->onpub_section = $this->onpub_sections->get($this->onpub_section_id);
 
-        $onpub_section_parent = null;
+        $this->onpub_section_parent = null;
 
-        if ($onpub_section && $onpub_section->parentID) {
-          $onpub_section_parent = $onpub_sections->get($onpub_section->parentID);
+        if ($this->onpub_section && $this->onpub_section->parentID) {
+          $this->onpub_section_parent = $this->onpub_sections->get($this->onpub_section->parentID);
         }
       }
       elseif (!isset($_GET['sectionID']) && isset($_GET['articleID'])) {
@@ -137,15 +140,15 @@ class OnpubFrontend
         }
 
         $this->onpub_index = 'section-article';
-        $onpub_section_id = $_GET['sectionID'];
+        $this->onpub_section_id = $_GET['sectionID'];
         $onpub_article_id = $_GET['articleID'];
 
-        $onpub_section = $onpub_sections->get($onpub_section_id);
+        $this->onpub_section = $this->onpub_sections->get($this->onpub_section_id);
 
-        $onpub_section_parent = null;
+        $this->onpub_section_parent = null;
 
-        if ($onpub_section && $onpub_section->parentID) {
-          $onpub_section_parent = $onpub_sections->get($onpub_section->parentID);
+        if ($this->onpub_section && $this->onpub_section->parentID) {
+          $this->onpub_section_parent = $this->onpub_sections->get($this->onpub_section->parentID);
         }
 
         $qo = new OnpubQueryOptions();
@@ -164,14 +167,14 @@ class OnpubFrontend
         }
 
         $this->onpub_index = 'section';
-        $onpub_section_id = $_GET['s'];
+        $this->onpub_section_id = $_GET['s'];
 
-        $onpub_section = $onpub_sections->get($onpub_section_id);
+        $this->onpub_section = $this->onpub_sections->get($this->onpub_section_id);
 
-        $onpub_section_parent = null;
+        $this->onpub_section_parent = null;
 
-        if ($onpub_section && $onpub_section->parentID) {
-          $onpub_section_parent = $onpub_sections->get($onpub_section->parentID);
+        if ($this->onpub_section && $this->onpub_section->parentID) {
+          $this->onpub_section_parent = $this->onpub_sections->get($this->onpub_section->parentID);
         }
       }
       elseif (!isset($_GET['s']) && isset($_GET['a'])) {
@@ -199,15 +202,15 @@ class OnpubFrontend
         }
 
         $this->onpub_index = 'section-article';
-        $onpub_section_id = $_GET['s'];
+        $this->onpub_section_id = $_GET['s'];
         $onpub_article_id = $_GET['a'];
 
-        $onpub_section = $onpub_sections->get($onpub_section_id);
+        $this->onpub_section = $this->onpub_sections->get($this->onpub_section_id);
 
-        $onpub_section_parent = null;
+        $this->onpub_section_parent = null;
 
-        if ($onpub_section && $onpub_section->parentID) {
-          $onpub_section_parent = $onpub_sections->get($onpub_section->parentID);
+        if ($this->onpub_section && $this->onpub_section->parentID) {
+          $this->onpub_section_parent = $this->onpub_sections->get($this->onpub_section->parentID);
         }
 
         $qo = new OnpubQueryOptions();
@@ -223,6 +226,8 @@ class OnpubFrontend
   function display()
   {
     global $onpub_dir_frontend;
+
+    $this->init();
 
     switch ($this->onpub_index) {
       case 'rss':
@@ -245,16 +250,16 @@ class OnpubFrontend
         en('<title>' . $this->onpub_website->name . '</title>');
       }
       elseif ($this->onpub_index == 'section') {
-        if ($onpub_section) {
-          if ($onpub_section_parent) {
-            en('<title>' . $onpub_section->name . ' - ' . $onpub_section_parent->name . ' - ' . $this->onpub_website->name . '</title>');
+        if ($this->onpub_section) {
+          if ($this->onpub_section_parent) {
+            en('<title>' . $this->onpub_section->name . ' - ' . $this->onpub_section_parent->name . ' - ' . $this->onpub_website->name . '</title>');
           }
           else {
-            en('<title>' . $onpub_section->name . ' - ' . $this->onpub_website->name . '</title>');
+            en('<title>' . $this->onpub_section->name . ' - ' . $this->onpub_website->name . '</title>');
           }
         }
         else {
-          en('<title>' . $this->onpub_website->name . ' - Section ' . $onpub_section_id . ' not found...</title>');
+          en('<title>' . $this->onpub_website->name . ' - Section ' . $this->onpub_section_id . ' not found...</title>');
         }
       }
       elseif ($this->onpub_index == 'article') {
@@ -266,25 +271,25 @@ class OnpubFrontend
         }
       }
       elseif ($this->onpub_index == 'section-article') {
-        if ($onpub_section && $onpub_article) {
-          if ($onpub_section_parent) {
-            en('<title>' . $onpub_article->title . ' - ' . $onpub_section->name . ' - ' . $onpub_section_parent->name . ' - ' . $this->onpub_website->name . '</title>');
+        if ($this->onpub_section && $onpub_article) {
+          if ($this->onpub_section_parent) {
+            en('<title>' . $onpub_article->title . ' - ' . $this->onpub_section->name . ' - ' . $this->onpub_section_parent->name . ' - ' . $this->onpub_website->name . '</title>');
           }
           else {
-            en('<title>' . $onpub_article->title . ' - ' . $onpub_section->name . ' - ' . $this->onpub_website->name . '</title>');
+            en('<title>' . $onpub_article->title . ' - ' . $this->onpub_section->name . ' - ' . $this->onpub_website->name . '</title>');
           }
         }
 
-        if ($onpub_section && !$onpub_article) {
+        if ($this->onpub_section && !$onpub_article) {
           en('<title>' . $this->onpub_website->name . ' - Article ' . $onpub_article_id . ' not found...</title>');
         }
 
-        if (!$onpub_section && $onpub_article) {
-          en('<title>' . $this->onpub_website->name . ' - Section ' . $onpub_section_id . ' not found...</title>');
+        if (!$this->onpub_section && $onpub_article) {
+          en('<title>' . $this->onpub_website->name . ' - Section ' . $this->onpub_section_id . ' not found...</title>');
         }
 
-        if (!$onpub_section && !$onpub_article) {
-          en('<title>' . $this->onpub_website->name . ' - Section ' . $onpub_section_id . ' and Article ' . $onpub_article_id . ' not found...</title>');
+        if (!$this->onpub_section && !$onpub_article) {
+          en('<title>' . $this->onpub_website->name . ' - Section ' . $this->onpub_section_id . ' and Article ' . $onpub_article_id . ' not found...</title>');
         }
       }
     }
@@ -435,7 +440,7 @@ class OnpubFrontend
   {
     global $onpub_disp_updates, $onpub_disp_article, $onpub_disp_updates_num,
            $onpub_disp_rss, $onpub_dir_frontend, $onpub_dir_phpthumb,
-           $onpub_inc_article_updates;
+           $onpub_inc_article_updates, $onpub_dir_manage;
 
     if ($this->onpub_website) {
       if ($onpub_disp_updates) {
@@ -475,7 +480,7 @@ class OnpubFrontend
             en('<h1 style="margin-right: 0;">What\'s New</h1>');
           }
 
-          $this->onpub_website_section_ids = $this->onpub_extract_section_ids($this->onpub_website->sections);
+          $onpub_website_section_ids = $this->onpub_extract_section_ids($this->onpub_website->sections);
 
           $i = 0;
 
@@ -493,7 +498,7 @@ class OnpubFrontend
                 $sectionIDs[] = $samap->sectionID;
               }
 
-              $visibleSIDs = array_values(array_intersect($this->onpub_website_section_ids, $sectionIDs));
+              $visibleSIDs = array_values(array_intersect($onpub_website_section_ids, $sectionIDs));
 
               if ($a->url) {
                 $url = $a->url;
@@ -681,6 +686,225 @@ class OnpubFrontend
     en('</div>');
   }
 
+  function section()
+  {
+    global $onpub_dir_phpthumb, $onpub_dir_manage, $onpub_dir_frontend;
+
+    if ($this->onpub_section) {
+      // Get subsections.
+      $sections = $this->onpub_sections->select(null, null, true, $this->onpub_section->ID);
+      $subsections = false;
+
+      if (sizeof($sections) || $this->onpub_section_parent) {
+        $subsections = true;
+      }
+
+      en('<div class="yui3-g">');
+
+      if ($subsections) {
+        en('<div class="yui3-u-3-4">');
+        en('<h1>' . $this->onpub_section->name . '</h1>');
+      }
+      else {
+        en('<div class="yui3-u-1">');
+        en('<h1>' . $this->onpub_section->name . '</h1>');
+      }
+
+      /* Code for displaying section image
+      if ($this->onpub_section->imageID) {
+        if (($section_image = $onpub_images->get($this->onpub_section->imageID))) {
+          if ($this->onpub_website->ID == $section_image->websiteID) {
+            en('<img src="' . addTrailingSlash($this->onpub_website->imagesURL) . $section_image->fileName . '" align="right" alt="' . $section_image->fileName . '" title="' . $section_image->description . '">');
+          }
+        }
+      }
+      */
+
+      $qo = new OnpubQueryOptions();
+      $qo->includeContent = true;
+
+      $articles = $this->onpub_articles->select($qo, $this->onpub_section->ID);
+      $i = 0;
+      $even = true;
+
+      foreach ($articles as $a) {
+        if ($i % 2 == 0) {
+          $even = true;
+        }
+        else {
+          $even = false;
+        }
+
+        if ($even) {
+          en('<div class="yui3-g">');
+          en('<div class="yui3-u-1-2">');
+          en('<div style="padding-right: 1em;">');
+        }
+        else {
+          en('<div class="yui3-u-1-2">');
+          en('<div style="padding-right: 1em;">');
+        }
+
+        $url = '';
+
+        if ($a->url) {
+          $url = $a->url;
+        }
+        else {
+          $url = 'index.php?s=' . $this->onpub_section_id . '&amp;a=' . $a->ID;
+        }
+
+        en('<div class="yui3-g">');
+
+        if ($a->image) {
+          en('<div class="yui3-u-1-4">');
+          $a->image->website = $this->onpub_website;
+          en('<a href="' . $url . '"><img src="' . OnpubImages::getThumbURL('src=' . urlencode($a->image->getFullPath()) . '&w=80&f=png', $onpub_dir_phpthumb) . '" align="left" style="margin-right: 0.75em;" alt="' . $a->image->fileName . '" title="' . $a->image->description . '"></a>');
+          en('</div>');
+          en('<div class="yui3-u-3-4">');
+        }
+        else {
+          en('<div class="yui3-u-1">');
+        }
+
+        en('<h2 class="onpub-article-link"><a href="' . $url . '">' . $a->title . '</a></h2>');
+
+        en('<p class="onpub-article-summary">' . $a->getCreated()->format('M j, Y'));
+
+        if (($summary = $a->getSummary(20))) {
+          if (substr($summary, -1, 1) == '.') {
+            en(' &ndash; ' . $summary . '..</p>');
+          }
+          else {
+            en(' &ndash; ' . $summary . '...</p>');
+          }
+        }
+        else {
+          en('</p>');
+        }
+
+        en('</div>');
+
+        en('</div>');
+
+        if ($even) {
+          if ($i + 1 == sizeof($articles)) {
+            en('</div>');
+            en('</div>');
+            en('<div class="yui3-u-1-2">&nbsp;</div>');
+            en('</div>');
+          }
+          else {
+            en('</div>');
+            en('</div>');
+          }
+        }
+        else {
+          en('</div>');
+          en('</div>');
+          en('</div>');
+        }
+
+        $i++;
+      }
+
+      if ($this->onpub_login_status) {
+        en('<div class="yui3-g">');
+        en('<div class="yui3-u-1">');
+        en('<span class="onpub-edit">');
+        en('<a href="' . $onpub_dir_manage .
+          'index.php?onpub=EditSection&amp;sectionID=' . $this->onpub_section->ID .
+          '" target="_onpub"><img src="' . $onpub_dir_frontend .
+          'images/page_edit.png" width="16" height="16" alt="Edit this Section" title="Edit this Section"></a> ' .
+          '<a href="' . $onpub_dir_manage .
+          'index.php?onpub=EditSection&amp;sectionID=' . $this->onpub_section->ID .
+          '" target="_onpub" title="Edit this Section">EDIT</a>');
+        en('</span>');
+        en('</div>');
+        en('</div>');
+      }
+
+      en('</div>');
+
+      if ($subsections) {
+        en('<div class="yui3-u-1-4 onpub-section-nav">');
+
+        if ($this->onpub_section_parent) {
+          if ($this->onpub_section_parent->url) {
+            en('<h1 class="onpub-section-nav"><a href="' . $this->onpub_section_parent->url . '" class="onpub-section-nav">' . $this->onpub_section_parent->name . '</a></h1>');
+          }
+          else {
+            en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $this->onpub_section_parent->ID . '" class="onpub-section-nav">' . $this->onpub_section_parent->name . '</a></h1>');
+          }
+
+          $articles = $this->onpub_articles->select(null, $this->onpub_section_parent->ID);
+
+          en('<ul class="onpub-section-nav">');
+
+          foreach ($articles as $a) {
+            if ($a->url) {
+              en('<li><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></li>');
+            }
+            else {
+              en('<li><a href="index.php?s=' . $this->onpub_section_parent->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></li>');
+            }
+          }
+
+          // Get subsections.
+          $sections = $this->onpub_sections->select(null, null, true, $this->onpub_section_parent->ID);
+
+          foreach ($sections as $s) {
+            if ($s->ID == $this->onpub_section->ID) {
+              en('<li>' . $s->name . '</li>');
+            }
+            else {
+              if ($s->url) {
+                en('<li><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></li>');
+              }
+              else {
+                en('<li><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></li>');
+              }
+            }
+          }
+
+          en('</ul>');
+        }
+        else {
+          foreach ($sections as $s) {
+            if ($s->url) {
+              en('<h1 class="onpub-section-nav"><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></h1>');
+            }
+            else {
+              en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></h1>');
+            }
+
+            $articles = $this->onpub_articles->select(null, $s->ID);
+
+            en('<ul class="onpub-section-nav">');
+
+            foreach ($articles as $a) {
+              if ($a->url) {
+                en('<li><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></li>');
+              }
+              else {
+                en('<li><a href="index.php?s=' . $s->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></li>');
+              }
+            }
+
+            en('</ul>');
+          }
+        }
+
+        en('</div>');
+      }
+
+      en('</div>');
+    }
+    else {
+      en('<h1>Section ' . $this->onpub_section_id . ' not found... <a href="index.php">Home</a></h1>');
+    }
+  }
+
   function skel()
   {
     global $onpub_disp_rss, $onpub_dir_yui, $onpub_inc_css, $onpub_inc_css_menu,
@@ -784,7 +1008,7 @@ class OnpubFrontend
 
       case 'section':
         en('<div id="onpub-body" style="padding-right: 0em;">');
-        include $onpub_dir_frontend . 'section.php';
+        $this->section();
         en('</div>');
         break;
 
