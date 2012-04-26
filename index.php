@@ -30,4 +30,11 @@ include $onpub_dir_api . 'onpubapi.php';
 // Include frontend initialization file.
 include $onpub_dir_frontend . 'init.php';
 
+/*
+include $onpub_dir_frontend . 'OnpubFrontend.php';
+$onpub_frontend = new OnpubFrontend();
+$onpub_frontend->display();
+ *
+ */
+
 ?>

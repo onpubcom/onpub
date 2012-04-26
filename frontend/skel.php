@@ -9,7 +9,7 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-header ("Content-Type: text/html; charset=iso-8859-1");
+header("Content-Type: text/html; charset=iso-8859-1");
 
 session_name("onpubpdo");
 session_set_cookie_params(0, '/', '', false, true);
@@ -21,16 +21,12 @@ if (isset($_SESSION['PDO_HOST']) && isset($_SESSION['PDO_USER']) && isset($_SESS
   $onpub_login_status = true;
 }
 
-?>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<?php include $onpub_dir_frontend . 'title.php'; ?>
-
-<?php
+en('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">');
+en('<html>');
+en('<head>');
+en('<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">');
+en('<meta http-equiv="Content-Style-Type" content="text/css">');
+include $onpub_dir_frontend . 'title.php';
 
 if ($onpub_website && $onpub_disp_rss) {
   en('<link rel="alternate" type="application/rss+xml" href="index.php?rss" title="' . $onpub_website->name . ' RSS Feed">');
@@ -67,29 +63,24 @@ else {
   en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_frontend . 'css/onpub-menu.css">');
 }
 
-?>
+en('<script type="text/javascript">');
+en('document.documentElement.className = "yui3-loading";');
+en('var onpub_dir_root = "' . $onpub_dir_root . '";');
 
-<script type="text/javascript">
-document.documentElement.className = "yui3-loading";
-var onpub_dir_root = "<?php echo $onpub_dir_root; ?>";
-<?php
 if ($onpub_dir_yui) {
   en('var onpub_dir_yui = "' . $onpub_dir_yui . '";');
 }
 else {
   en('var onpub_dir_yui = null;');
 }
-en('var onpub_yui_version = "' . $onpub_yui_version . '";', 0);
-?>
 
-</script>
+en('var onpub_yui_version = "' . $onpub_yui_version . '";');
+en('</script>');
 
-<?php if (file_exists($onpub_inc_head)) include $onpub_inc_head; ?>
-</head>
+if (file_exists($onpub_inc_head)) include $onpub_inc_head;
+en('</head>');
 
-<body class="yui3-skin-sam">
-
-<?php
+en('<body class="yui3-skin-sam">');
 
 if (file_exists($onpub_inc_banner)) {
   en('<div id="onpub-banner">');
@@ -97,15 +88,11 @@ if (file_exists($onpub_inc_banner)) {
   en('</div>');
 }
 
-?>
+en('<div id="onpub-header">');
+include $onpub_dir_frontend . 'hd.php';
+en('</div>');
 
-<div id="onpub-header">
-<?php include $onpub_dir_frontend . 'hd.php'; ?>
-</div>
-
-<div id="onpub-page">
-
-<?php
+en('<div id="onpub-page">');
 
 include $onpub_dir_frontend . 'menu.php';
 
@@ -138,17 +125,13 @@ switch ($onpub_index)
   default: break;
 }
 
-?>
+en('</div>');
 
-</div>
-
-<div id="onpub-footer">
-<div id="onpub-footer-content">
-<?php include $onpub_dir_frontend . 'ft.php'; ?>
-</div>
-</div>
-
-<?php
+en('<div id="onpub-footer">');
+en('<div id="onpub-footer-content">');
+include $onpub_dir_frontend . 'ft.php';
+en('</div>');
+en('</div>');
 
 if ($onpub_dir_yui) {
   en('<script type="text/javascript" src="' . $onpub_dir_yui . 'yui/yui-min.js"></script>');
@@ -161,7 +144,5 @@ en('<script type="text/javascript" src="' . $onpub_dir_frontend . 'js/site.js"><
 
 if (file_exists($onpub_inc_foot)) include $onpub_inc_foot;
 
-?>
-
-</body>
-</html>
+en('</body>');
+en('</html>');
