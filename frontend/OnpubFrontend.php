@@ -16,11 +16,11 @@ class OnpubFrontend
   protected $articles;
   protected $samaps;
   protected $loginStatus;
-  protected $currentSection;
+  public $currentSection;
   protected $parentSection;
   protected $requestedSectionID;
   protected $sections;
-  protected $currentArticle;
+  public $currentArticle;
   protected $requestedArticleID;
   protected $lastPDOException;
   protected $schemaInstalled;
