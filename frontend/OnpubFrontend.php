@@ -434,7 +434,7 @@ class OnpubFrontend
       $ids[] = $s->ID;
 
       if (sizeof($s->sections)) {
-        onpub_extract_section_ids($s->sections);
+        $this->onpub_extract_section_ids($s->sections);
       }
     }
 
