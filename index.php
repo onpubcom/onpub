@@ -30,9 +30,22 @@ include $onpub_dir_api . 'onpubapi.php';
 // Include frontend class.
 include $onpub_dir_frontend . 'OnpubFrontend.php';
 
-// Construct and display the frontend.
-$onpub_frontend = new OnpubFrontend();
-$onpub_frontend->display();
+if (file_exists($onpub_dir_local . 'OnpubFrontendCustom.php'))
+{
+  // We've found a custom frontend.
+  include $onpub_dir_local . 'OnpubFrontendCustom.php';
+}
 
+if (class_exists('OnpubFrontendCustom') && is_subclass_of('OnpubFrontendCustom', 'OnpubFrontend'))
+{
+  // Custom frontend class is defined and correctly extends standard object.
+  $onpub_frontend = new OnpubFrontendCustom();
+}
+else {
+  // No custom frontend is defined, use standard implementation.
+  $onpub_frontend = new OnpubFrontend();
+}
+
+$onpub_frontend->display();
 
 ?>
