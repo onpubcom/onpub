@@ -4,7 +4,7 @@
  * An image.
  *
  * @author {@link mailto:corey@onpub.com Corey H.M. Taylor}
- * @copyright Onpub (TM). Copyright 2011, Onpub.com.
+ * @copyright Onpub (TM). Copyright 2012, Onpub.com.
  * {@link http://onpub.com/}
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * Version 2

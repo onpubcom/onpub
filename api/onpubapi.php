@@ -1,7 +1,7 @@
 <?php
 
 /* Onpub (TM)
- * Copyright (C) 2011 Onpub.com <http://onpub.com/>
+ * Copyright (C) 2012 Onpub.com <http://onpub.com/>
  * Author: Corey H.M. Taylor <corey@onpub.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -9,7 +9,7 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-define("ONPUBAPI_VERSION", "1.2.5");
+define("ONPUBAPI_VERSION", "1.3");
 define("ONPUBAPI_SCHEMA_VERSION", 1);
 
 // phpThumb
