@@ -323,7 +323,7 @@ class OnpubFrontend
     }
   }
 
-  protected function hd()
+  protected function header()
   {
     global $onpub_dir_manage;
 
@@ -340,7 +340,7 @@ class OnpubFrontend
     }
   }
 
-  protected function onpub_output_sub_sections($section)
+  protected function outputSubSections($section)
   {
     $subsections = $section->sections;
 
@@ -429,7 +429,7 @@ class OnpubFrontend
                 }
               }
 
-              $this->onpub_output_sub_sections($s);
+              $this->outputSubSections($s);
 
               en('</ul>');
               en('</div>');
@@ -448,7 +448,7 @@ class OnpubFrontend
     }
   }
 
-  protected function onpub_extract_section_ids($sections)
+  protected function extractSectionIDs($sections)
   {
     static $ids = array();
 
@@ -456,7 +456,7 @@ class OnpubFrontend
       $ids[] = $s->ID;
 
       if (sizeof($s->sections)) {
-        $this->onpub_extract_section_ids($s->sections);
+        $this->extractSectionIDs($s->sections);
       }
     }
 
@@ -507,7 +507,7 @@ class OnpubFrontend
             en('<h1 style="margin-right: 0;">What\'s New</h1>');
           }
 
-          $onpub_website_section_ids = $this->onpub_extract_section_ids($this->website->sections);
+          $onpub_website_section_ids = $this->extractSectionIDs($this->website->sections);
 
           $i = 0;
 
@@ -679,7 +679,7 @@ class OnpubFrontend
     }
   }
 
-  protected function ft()
+  protected function footer()
   {
     global $onpub_disp_login, $onpub_dir_manage;
 
@@ -932,7 +932,7 @@ class OnpubFrontend
     }
   }
 
-  protected function sectionarticle()
+  protected function sectionArticle()
   {
     global $onpub_inc_article_info, $onpub_dir_phpthumb, $onpub_inc_article_foot,
            $onpub_dir_manage, $onpub_dir_frontend;
@@ -1253,7 +1253,7 @@ class OnpubFrontend
     }
 
     en('<div id="onpub-header">');
-    $this->hd();
+    $this->header();
     en('</div>');
 
     en('<div id="onpub-page">');
@@ -1282,7 +1282,7 @@ class OnpubFrontend
 
       case 'section-article':
         en('<div id="onpub-body" style="padding-right: 0em;">');
-        $this->sectionarticle();
+        $this->sectionArticle();
         en('</div>');
         break;
 
@@ -1293,7 +1293,7 @@ class OnpubFrontend
 
     en('<div id="onpub-footer">');
     en('<div id="onpub-footer-content">');
-    $this->ft();
+    $this->footer();
     en('</div>');
     en('</div>');
 
