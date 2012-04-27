@@ -246,6 +246,28 @@ class OnpubFrontend
     }
   }
 
+  protected function meta()
+  {
+    en('<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">');
+    en('<meta http-equiv="Content-Style-Type" content="text/css">');
+
+    if ($this->currentArticle)
+    {
+      // Add the meta description tag for article pages.
+      $description = $this->currentArticle->getSummary();
+
+      if (substr($description, -1, 1) == '.') {
+        $description = $description . '..';
+      }
+      else
+      {
+        $description = $description . '...';
+      }
+
+      en('<meta name="description" content="' . $description . '">');
+    }
+  }
+
   protected function title()
   {
     if ($this->website) {
@@ -1165,8 +1187,9 @@ class OnpubFrontend
     en('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">');
     en('<html>');
     en('<head>');
-    en('<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">');
-    en('<meta http-equiv="Content-Style-Type" content="text/css">');
+
+    $this->meta();
+
     $this->title();
 
     if ($this->website && $onpub_disp_rss) {
