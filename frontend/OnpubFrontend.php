@@ -25,6 +25,7 @@ class OnpubFrontend
   protected $lastPDOException;
   protected $schemaInstalled;
   protected $pdoInstalled;
+  protected $labelUpdates = 'What\'s New';
 
   function __construct()
   {
@@ -500,14 +501,14 @@ class OnpubFrontend
         if (sizeof($articles) && !(sizeof($articles) == 1 && $articles[0]->ID == $onpub_disp_article)) {
           if ($onpub_disp_rss)
           {
-            en('<h1 style="margin-right: 0;">What\'s New <a href="index.php?rss"><img src="' . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $this->website->name . ' RSS Feed" title="' . $this->website->name . ' RSS Feed"></a></h1>');
+            en('<h1 style="margin-right: 0;">' . $this->labelUpdates . ' <a href="index.php?rss"><img src="' . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $this->website->name . ' RSS Feed" title="' . $this->website->name . ' RSS Feed"></a></h1>');
           }
           else
           {
-            en('<h1 style="margin-right: 0;">What\'s New</h1>');
+            en('<h1 style="margin-right: 0;">' . $this->labelUpdates . '</h1>');
           }
 
-          $onpub_website_section_ids = $this->extractSectionIDs($this->website->sections);
+          $websiteSectionIDs = $this->extractSectionIDs($this->website->sections);
 
           $i = 0;
 
@@ -525,7 +526,7 @@ class OnpubFrontend
                 $sectionIDs[] = $samap->sectionID;
               }
 
-              $visibleSIDs = array_values(array_intersect($onpub_website_section_ids, $sectionIDs));
+              $visibleSIDs = array_values(array_intersect($websiteSectionIDs, $sectionIDs));
 
               if ($a->url) {
                 $url = $a->url;
