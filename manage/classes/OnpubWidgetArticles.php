@@ -58,7 +58,7 @@ class OnpubWidgetArticles
 
     for ($i = 0; $i < sizeof($articles); $i++) {
       $created = $articles[$i]->getCreated();
-      en('{ID: ' . $articles[$i]->ID . ', title: "' . $articles[$i]->title . '", created: new Date(' . $created->format("Y") . ', ' . ($created->format("n") - 1) . ', ' . $created->format("j") . ', ' . $created->format("G") . ', ' . $created->format("i") . ', ' . $created->format("s") . ')}', 0);
+      en('{ID: ' . $articles[$i]->ID . ', title: "' . str_replace('"', '\"', strip_tags($articles[$i]->title)) . '", created: new Date(' . $created->format("Y") . ', ' . ($created->format("n") - 1) . ', ' . $created->format("j") . ', ' . $created->format("G") . ', ' . $created->format("i") . ', ' . $created->format("s") . ')}', 0);
       if ($i + 1 < sizeof($articles)) {
         en(',');
       }
