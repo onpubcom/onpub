@@ -22,7 +22,7 @@ class OnpubDeleteArticles
   public function display()
   {
     $oarticles = new OnpubArticles($this->pdo);
-    $articles = array ();
+    $articles = array();
 
     try {
       if (is_array($this->articleIDs)) {

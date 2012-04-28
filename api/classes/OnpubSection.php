@@ -85,8 +85,8 @@ class OnpubSection
     $this->url = "";
     $this->created = NULL;
     $this->modified = NULL;
-    $this->articles = array ();
-    $this->sections = array ();
+    $this->articles = array();
+    $this->sections = array();
     $this->image = NULL;
     $this->parent = NULL;
   }

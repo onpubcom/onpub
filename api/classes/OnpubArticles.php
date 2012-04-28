@@ -159,8 +159,8 @@ class OnpubArticles
 
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $articles = array ();
-    $authors = array ();
+    $articles = array();
+    $authors = array();
     $lastAID = 0;
     $lastArticle = NULL;
     $content = "";
@@ -172,7 +172,7 @@ class OnpubArticles
         $currAIID = $row["authorImageID"];
 
         if ($lastAID != $currAID) {
-          $authors = array ();
+          $authors = array();
         }
 
         $author = new OnpubAuthor();
@@ -385,7 +385,7 @@ class OnpubArticles
       $article->image = $image;
     }
 
-    $authorsassoc = array ();
+    $authorsassoc = array();
 
     foreach ($rows as $row) {
       $authorID = $row["authorID"];
@@ -544,7 +544,7 @@ class OnpubArticles
     $oauthors = new OnpubAuthors($this->pdo, FALSE);
     $oaamaps = new OnpubAAMaps($this->pdo, FALSE);
     $osamaps = new OnpubSAMaps($this->pdo, FALSE);
-    $IDs = array ();
+    $IDs = array();
     $isArray = TRUE;
 
     if (!is_array($articles)) {
@@ -623,7 +623,7 @@ class OnpubArticles
         throw $e;
       }
 
-      $aamaps = array ();
+      $aamaps = array();
 
       foreach ($authors as $author) {
         $aamap = new OnpubAAMap();
@@ -647,7 +647,7 @@ class OnpubArticles
       }
 
       $sectionIDs = $article->sectionIDs;
-      $samaps = array ();
+      $samaps = array();
 
       foreach ($sectionIDs as $sectionID) {
         $samap = new OnpubSAMap();
@@ -700,7 +700,7 @@ class OnpubArticles
     OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $articles = array ();
+    $articles = array();
 
     if ($rows) {
       $lastID = null;
@@ -786,8 +786,7 @@ class OnpubArticles
     }
 
     if ($queryOptions->dateLimit) {
-      $where = "WHERE articles.created <= "
-        . $this->pdo->quote($queryOptions->dateLimit->format('Y-m-d H:i:s'));
+      $where = "WHERE articles.created <= " . $this->pdo->quote($queryOptions->dateLimit->format('Y-m-d H:i:s'));
 
       if ($sectionID && !$websiteID) {
         $where .= " AND samaps.sectionID = $sectionID";
@@ -814,11 +813,15 @@ class OnpubArticles
         $orderBy .= " " . $queryOptions->order;
       }
     }
+    else {
+      if ($sectionID && !$websiteID) {
+        $orderBy = "ORDER BY samaps.ID ASC";
+      }
+    }
 
     if ($queryOptions->getPage() && $queryOptions->rowLimit && $queryOptions->rowLimit > 0) {
-      $limit = "LIMIT "
-        . (($queryOptions->getPage() - 1) * $queryOptions->rowLimit) . ","
-        . $queryOptions->rowLimit;
+      $limit = "LIMIT " . (($queryOptions->getPage() - 1) * $queryOptions->rowLimit) .
+               "," . $queryOptions->rowLimit;
     }
     elseif ($queryOptions->rowLimit && $queryOptions->rowLimit > 0) {
       $limit = "LIMIT 0," . $queryOptions->rowLimit;

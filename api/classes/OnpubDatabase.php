@@ -63,9 +63,9 @@ class OnpubDatabase
    */
   public function delete()
   {
-    $sqlfile = array ();
+    $sqlfile = array();
     $line = 0;
-    $exceptions = array ();
+    $exceptions = array();
 
     $sqlfile = file('../api/sql/deleteonpubtables.sql');
 
@@ -126,9 +126,9 @@ class OnpubDatabase
    */
   public function install($version = NULL)
   {
-    $sqlfile = array ();
+    $sqlfile = array();
     $line = 0;
-    $exceptions = array ();
+    $exceptions = array();
 
     $sqlfile = file('../api/sql/createonpubtables-rev0.sql');
 
@@ -224,7 +224,7 @@ class OnpubDatabase
     $owsmaps = new OnpubWSMaps($this->pdo);
     $queryOptions = new OnpubQueryOptions($this->pdo);
     $queryOptions->setPage(1, 1);
-    $exceptions = array ();
+    $exceptions = array();
     $version = 0;
 
     try {

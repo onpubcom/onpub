@@ -75,9 +75,9 @@ class OnpubArticle
     $this->url = "";
     $this->created = NULL;
     $this->modified = NULL;
-    $this->authors = array ();
+    $this->authors = array();
     $this->image = NULL;
-    $this->sectionIDs = array ();
+    $this->sectionIDs = array();
   }
 
   /**

@@ -26,8 +26,8 @@ class OnpubMoveArticles
     $oarticles = new OnpubArticles($this->pdo);
     $osections = new OnpubSections($this->pdo);
     $owebsites = new OnpubWebsites($this->pdo);
-    $articles = array ();
-    $websites = array ();
+    $articles = array();
+    $websites = array();
 
     try {
       if (is_array($this->articleIDs)) {

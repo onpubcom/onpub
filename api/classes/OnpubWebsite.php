@@ -79,8 +79,8 @@ class OnpubWebsite
     $this->imagesDirectory = "";
     $this->created = NULL;
     $this->modified = NULL;
-    $this->sections = array ();
-    $this->articles = array ();
+    $this->sections = array();
+    $this->articles = array();
     $this->image = NULL;
   }
 

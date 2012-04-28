@@ -75,7 +75,7 @@ class OnpubImages
    */
   public function insert($images)
   {
-    $IDs = array ();
+    $IDs = array();
     $isArray = TRUE;
 
     if (!is_array($images)) {
@@ -233,7 +233,7 @@ class OnpubImages
     OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $images = array ();
+    $images = array();
 
     if ($rows) {
       foreach ($rows as $row) {
@@ -323,7 +323,7 @@ class OnpubImages
 
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $images = array ();
+    $images = array();
 
     if ($rows) {
       foreach ($rows as $row) {

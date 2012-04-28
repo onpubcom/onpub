@@ -124,7 +124,7 @@ class OnpubWSMaps
     OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $wsmaps = array ();
+    $wsmaps = array();
 
     if ($rows) {
       foreach ($rows as $row) {
@@ -194,7 +194,7 @@ class OnpubWSMaps
    */
   public function insert($wsmaps)
   {
-    $wsmapIDs = array ();
+    $wsmapIDs = array();
     $isArray = TRUE;
 
     if (!is_array($wsmaps)) {

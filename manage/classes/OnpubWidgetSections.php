@@ -25,10 +25,10 @@ class OnpubWidgetSections
 
   function __construct()
   {
-    $this->sectionIDs = array ();
-    $this->websites = array ();
+    $this->sectionIDs = array();
+    $this->websites = array();
     $this->osections = NULL;
-    $this->samaps = array ();
+    $this->samaps = array();
     $this->heading = "Sections";
     $this->multiple = TRUE;
     $this->fieldName = "sectionIDs[]";
@@ -36,9 +36,9 @@ class OnpubWidgetSections
     $this->parentID = NULL;
     $this->size = "10";
     $this->osection = NULL;
-    $this->parentIDs = array ();
-    $this->sectionsMap = array ();
-    $this->websitesMap = array ();
+    $this->parentIDs = array();
+    $this->sectionsMap = array();
+    $this->websitesMap = array();
     $this->ID = "sections";
     $this->tooltip = "Hold Ctrl to select/deselect multiple sections";
     $this->defaultOptionText = "None";
@@ -94,7 +94,7 @@ class OnpubWidgetSections
       }
 
       if (sizeof($this->samaps)) {
-        $this->sectionIDs = array ();
+        $this->sectionIDs = array();
 
         for ($i = 0; $i < sizeof($this->samaps); $i++) {
           $this->sectionIDs[$i] = $this->samaps[$i]->sectionID;
@@ -184,7 +184,7 @@ class OnpubWidgetSections
     for ($i = 0; $i < sizeof($subSections); $i++) {
       $subSection = $subSections[$i];
       $sectionName = $websiteName;
-      $sectionNames = array ();
+      $sectionNames = array();
 
       $sectionNames[] = $subSection->name;
 
@@ -226,7 +226,7 @@ class OnpubWidgetSections
       $this->outputSections($websiteName, $subSection);
     }
 
-    $this->parentIDs = array ();
+    $this->parentIDs = array();
   }
 }
 ?>

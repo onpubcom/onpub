@@ -179,7 +179,7 @@ if (isset($_POST['onpub'])) {
         $sectionIDs = $_POST['sectionIDs'];
       }
       else {
-        $sectionIDs = array ();
+        $sectionIDs = array();
       }
 
       if (isset($_POST['displayAs'])) {
@@ -497,7 +497,7 @@ if (isset($_POST['onpub'])) {
         $articleIDs = $_POST['articleIDs'];
       }
       else {
-        $articleIDs = array ();
+        $articleIDs = array();
       }
 
       $delete = new OnpubDeleteArticles($pdo, $articleIDs);
@@ -523,14 +523,14 @@ if (isset($_POST['onpub'])) {
         $articleIDs = $_POST['articleIDs'];
       }
       else {
-        $articleIDs = array ();
+        $articleIDs = array();
       }
 
       if (isset($_POST['sectionIDs'])) {
         $sectionIDs = $_POST['sectionIDs'];
       }
       else {
-        $sectionIDs = array ();
+        $sectionIDs = array();
       }
 
       $move = new OnpubMoveArticles($pdo, $articleIDs, $sectionIDs);
@@ -694,7 +694,7 @@ if (isset($_POST['onpub'])) {
         $visible = FALSE;
       }
 
-      $oarticles = array ();
+      $oarticles = array();
 
       foreach ($articleIDs as $aID) {
         if ($aID) {
@@ -886,7 +886,7 @@ else {
         break;
 
       case "DeleteArticle":
-        $articleIDs = array ();
+        $articleIDs = array();
 
         if (isset($_GET['articleID'])) {
           $articleIDs[] = $_GET['articleID'];
@@ -930,7 +930,7 @@ else {
         break;
 
       case "ArticleMove":
-        $articleIDs = array ();
+        $articleIDs = array();
 
         if (isset($_GET['articleID'])) {
           $articleIDs[] = $_GET['articleID'];

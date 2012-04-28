@@ -369,7 +369,7 @@ class OnpubFrontend
         }
 
         if (sizeof($sub->sections)) {
-          onpub_output_sub_sections($sub);
+          $this->outputSubSections($sub);
         }
 
         en('</ul>');

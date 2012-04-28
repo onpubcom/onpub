@@ -563,7 +563,7 @@ class OnpubEditSections
         $websiteName = $website->name;
 
         if ($section->parentID) {
-          $names = array ();
+          $names = array();
           $names[] = $name;
           $name = "";
 

@@ -94,7 +94,7 @@ class OnpubEditSection
       $sectionIDs = array ($this->osection->parentID);
     }
     else {
-      $sectionIDs = array ();
+      $sectionIDs = array();
     }
 
     $widget = new OnpubWidgetSections();

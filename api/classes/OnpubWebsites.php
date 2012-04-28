@@ -99,7 +99,7 @@ class OnpubWebsites
 
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $websites = array ();
+    $websites = array();
 
     if ($rows) {
       foreach ($rows as $row) {
@@ -170,7 +170,7 @@ class OnpubWebsites
     OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $websites = array ();
+    $websites = array();
 
     if ($rows) {
       foreach ($rows as $row) {
@@ -364,7 +364,7 @@ class OnpubWebsites
       return $website;
     }
 
-    $articlesassoc = array ();
+    $articlesassoc = array();
 
     reset ($rows);
 
@@ -430,7 +430,7 @@ class OnpubWebsites
     }
 
     if ($flatArticleList) {
-      $articles = array ();
+      $articles = array();
 
       foreach ($articlesassoc as $article) {
         $articles[] = $article;
@@ -439,7 +439,7 @@ class OnpubWebsites
       $website->articles = $articles;
     }
 
-    $authorsassoc = array ();
+    $authorsassoc = array();
 
     reset ($rows);
 
@@ -688,7 +688,7 @@ class OnpubWebsites
   public function insert($websites)
   {
     $oimages = new OnpubImages($this->pdo, FALSE);
-    $IDs = array ();
+    $IDs = array();
     $isArray = TRUE;
 
     if (!is_array($websites)) {
@@ -817,7 +817,7 @@ class OnpubWebsites
     }
 
     $sections = $website->sections;
-    $wsmaps = array ();
+    $wsmaps = array();
 
     foreach ($sections as $section) {
       $wsmap = new OnpubWSMap();

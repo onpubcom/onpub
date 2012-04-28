@@ -100,7 +100,7 @@ class OnpubAAMaps
     OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $aamaps = array ();
+    $aamaps = array();
 
     if ($rows) {
       foreach ($rows as $row) {
@@ -185,7 +185,7 @@ class OnpubAAMaps
    */
   public function insert($aamaps)
   {
-    $aamapIDs = array ();
+    $aamapIDs = array();
     $isArray = TRUE;
 
     if (!is_array($aamaps)) {

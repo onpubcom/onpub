@@ -133,7 +133,7 @@ class OnpubSections
 
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $sections = array ();
+    $sections = array();
 
     if ($rows) {
       foreach ($rows as $row) {
@@ -209,7 +209,7 @@ class OnpubSections
     OnpubDatabase::verifyQuery($this->pdo, $result, $this->enableTransactions);
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $sections = array ();
+    $sections = array();
 
     if ($rows) {
       foreach ($rows as $row) {
@@ -238,7 +238,7 @@ class OnpubSections
       return $sections;
     }
 
-    $sectionsassoc = array ();
+    $sectionsassoc = array();
 
     for ($i = 0; $i < sizeof($sections); $i++) {
       $sectionsassoc[$sections[$i]->ID] = $sections[$i];
@@ -294,7 +294,7 @@ class OnpubSections
       }
     }
 
-    $sections = array ();
+    $sections = array();
 
     foreach ($sectionsassoc as $s) {
       if ($flatSectionList) {
@@ -412,7 +412,7 @@ class OnpubSections
       $section->image = $image;
     }
 
-    $articlesassoc = array ();
+    $articlesassoc = array();
 
     foreach ($rows as $row) {
       $articleID = $row["articleID"];
@@ -472,7 +472,7 @@ class OnpubSections
       }
     }
 
-    $authorsassoc = array ();
+    $authorsassoc = array();
 
     reset ($rows);
 
@@ -620,9 +620,9 @@ class OnpubSections
   {
     $oimages = new OnpubImages($this->pdo, FALSE);
     $owsmaps = new OnpubWSMaps($this->pdo, FALSE);
-    $IDs = array ();
+    $IDs = array();
     $isArray = TRUE;
-    $wsmaps = array ();
+    $wsmaps = array();
 
     if (!is_array($sections)) {
       $sections = array ($sections);
@@ -807,7 +807,7 @@ class OnpubSections
     }
 
     $articles = $section->articles;
-    $samaps = array ();
+    $samaps = array();
 
     foreach ($articles as $article) {
       if ($article->ID) {

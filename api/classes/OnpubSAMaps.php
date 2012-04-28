@@ -124,7 +124,7 @@ class OnpubSAMaps
     OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $samaps = array ();
+    $samaps = array();
 
     if ($rows) {
       foreach ($rows as $row) {
@@ -200,7 +200,7 @@ class OnpubSAMaps
    */
   public function insert($samaps)
   {
-    $samapIDs = array ();
+    $samapIDs = array();
     $isArray = TRUE;
 
     if (!is_array($samaps)) {

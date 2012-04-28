@@ -185,7 +185,7 @@ class OnpubLogin
   public function process()
   {
     if ($this->logout) {
-      $_SESSION = array ();
+      $_SESSION = array();
 
       if (isset($_COOKIE[session_name()])) {
         setcookie(session_name(), "", (time() - 42000), "/");

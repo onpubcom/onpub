@@ -51,7 +51,7 @@ class OnpubNewSection
     }
 
     if ($this->osection->parentID) {
-      $sectionIDs = array ();
+      $sectionIDs = array();
       $sectionIDs[] = $this->osection->parentID;
     }
     else {

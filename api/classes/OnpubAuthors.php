@@ -138,7 +138,7 @@ class OnpubAuthors
     OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
-    $authors = array ();
+    $authors = array();
 
     if ($rows) {
       foreach ($rows as $row) {
@@ -203,7 +203,7 @@ class OnpubAuthors
   public function insert($authors)
   {
     $oimages = new OnpubImages($this->pdo, FALSE);
-    $IDs = array ();
+    $IDs = array();
     $isArray = TRUE;
 
     if (!is_array($authors)) {

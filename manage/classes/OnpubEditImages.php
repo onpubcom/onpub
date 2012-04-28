@@ -496,7 +496,7 @@ class OnpubEditImages
         $index = 0;
       }
 
-      $websites = array ();
+      $websites = array();
 
       for ($i = 0; $i < ONPUBGUI_PDO_ROW_LIMIT && $index < sizeof($images); $i++) {
         $image = $images[$index];
