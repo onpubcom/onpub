@@ -10,6 +10,7 @@
   <property name="dir.ckeditor" value="${dir.build}/ckeditor"/>
   <property name="dir.ckeditor.samples" value="${dir.ckeditor}/_samples"/>
   <property name="dir.yui" value="${dir.build}/yui"/>
+  <property name="dir.yui.api" value="${dir.yui}/api"/>
   <property name="dir.yui.docs" value="${dir.yui}/docs"/>
   <property name="dir.yui.releasenotes" value="${dir.yui}/releasenotes"/>
   <property name="dir.yui.tests" value="${dir.yui}/tests"/>
@@ -57,6 +58,7 @@
 
   <target name="prunedeps" depends="unzipdeps">
     <delete dir="${dir.ckeditor.samples}"/>
+    <delete dir="${dir.yui.api}"/>
     <delete dir="${dir.yui.docs}"/>
     <delete dir="${dir.yui.releasenotes}"/>
     <delete dir="${dir.yui.tests}"/>
