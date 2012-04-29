@@ -734,7 +734,7 @@ class OnpubFrontend
         en('<h1>' . $this->currentSection->name . '</h1>');
       }
       else {
-        en('<div class="yui3-u-1">');
+        en('<div class="yui3-u">');
         en('<h1>' . $this->currentSection->name . '</h1>');
       }
 
@@ -1080,7 +1080,7 @@ class OnpubFrontend
            $onpub_dir_frontend, $onpub_inc_article_foot;
 
     en('<div class="yui3-g">');
-    en('<div class="yui3-u-1">');
+    en('<div class="yui3-u">');
 
     if ($this->currentArticle) {
       en('<h1 style="margin-right: 0;">' . $this->currentArticle->title . '</h1>');
