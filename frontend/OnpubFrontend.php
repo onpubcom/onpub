@@ -252,20 +252,20 @@ class OnpubFrontend
     en('<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">');
     en('<meta http-equiv="Content-Style-Type" content="text/css">');
 
-    if ($this->currentArticle)
-    {
+    if ($this->currentArticle) {
       // Add the meta description tag for article pages.
       $description = $this->currentArticle->getSummary();
 
-      if (substr($description, -1, 1) == '.') {
-        $description = $description . '..';
-      }
-      else
-      {
-        $description = $description . '...';
-      }
+      if ($description) {
+        if (substr($description, -1, 1) == '.') {
+          $description = $description . '..';
+        }
+        else {
+          $description = $description . '...';
+        }
 
-      en('<meta name="description" content="' . $description . '">');
+        en('<meta name="description" content="' . $description . '">');
+      }
     }
   }
 
