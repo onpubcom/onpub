@@ -30,8 +30,8 @@ text-align: center;
 }
 
 #onpub-header {
-background-color: #E3E9EF;
-/*border-bottom: 1px solid #DADFE5;*/
+background-color: #D0D8E0;
+border-bottom: 1px solid #C2CCD6;
 }
 
 #onpub-logo {
@@ -74,7 +74,7 @@ background-color: transparent;
 width: 970px;
 margin: auto;
 font-size: 93%;
-color: #A3A5AA;
+color: #898993;
 }
 
 .yui3-loading #onpub-menubar {
