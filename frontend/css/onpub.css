@@ -7,15 +7,15 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-a:link { color: #0077CF; text-decoration: none; }
-a:visited { color: #0077CF; text-decoration: none; }
-a:hover { color: #0077CF; text-decoration: underline; }
-a:active { color: #0077CF; text-decoration: underline; }
+a:link { color: #0068BA; text-decoration: none; }
+a:visited { color: #0068BA; text-decoration: none; }
+a:hover { color: #0068BA; text-decoration: underline; }
+a:active { color: #0068BA; text-decoration: underline; }
 
-a.onpub-section-nav:link { color: #0077CF; text-decoration: none; }
-a.onpub-section-nav:visited { color: #0077CF; text-decoration: none; }
-a.onpub-section-nav:hover { color: #0077CF; text-decoration: underline; }
-a.onpub-section-nav:active { color: #0077CF; text-decoration: underline; }
+a.onpub-section-nav:link { color: #0068BA; text-decoration: none; }
+a.onpub-section-nav:visited { color: #0068BA; text-decoration: none; }
+a.onpub-section-nav:hover { color: #0068BA; text-decoration: underline; }
+a.onpub-section-nav:active { color: #0068BA; text-decoration: underline; }
 
 html {
 background-color: #E3E9EF;
@@ -58,7 +58,7 @@ border: 1px solid #DADFE5;
 padding-left: 1em;
 padding-right: 1em;
 padding-bottom: 1em;
-margin-top: .75em;
+margin-top: 1em;
 -webkit-border-radius: 4px;
 -moz-border-radius: 4px;
 border-radius: 4px;
@@ -105,8 +105,8 @@ font-size: 108%;
 }
 
 div.onpub-section-nav {
-background-color: #EFEFEF;
-color: #7A8087;
+background-color: #F7F7F7;
+color: #AFAFAF;
 -webkit-border-top-right-radius: 4px;
 -webkit-border-bottom-left-radius: 4px;
 -moz-border-radius-topright: 4px;
@@ -141,6 +141,7 @@ border-bottom: 1px solid #DADFE5;
 h1.onpub-section-nav {
 padding-left: 1em;
 background: none;
+border-bottom-style: none;
 }
 
 h2, h3 {
