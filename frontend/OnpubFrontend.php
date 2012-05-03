@@ -473,7 +473,7 @@ class OnpubFrontend
     if ($this->website) {
       if ($onpub_disp_updates) {
         en('<div class="yui3-g">');
-        en('<div class="yui3-u-3-4">');
+        en('<div class="yui3-u-2-3">');
 
         if ($onpub_disp_article) {
           $this->currentArticle = $this->articles->get($onpub_disp_article);
@@ -487,7 +487,7 @@ class OnpubFrontend
         }
 
         en('</div>');
-        en('<div class="yui3-u-1-4">');
+        en('<div class="yui3-u-1-3">');
 
         $qo = new OnpubQueryOptions();
         $qo->includeContent = true;

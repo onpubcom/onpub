@@ -198,17 +198,19 @@ border: 1px solid #DADFE5;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 border-radius: 3px;
+background-color: #DADFE5;
 }
 
 span.onpub-login {
 color: #7A8087;
 padding: 0.5em;
 padding-top: .75em;
-border: 1px solid #CED5DD;
+border: 1px solid #D3DEEA;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 border-radius: 3px;
 text-align: right;
+background-color: #D3DEEA;
 }
 
 span.onpub-field-header {
