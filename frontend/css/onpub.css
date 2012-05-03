@@ -74,7 +74,7 @@ background-color: transparent;
 width: 970px;
 margin: auto;
 font-size: 93%;
-color: #494F59;
+color: #A3A5AA;
 }
 
 .yui3-loading #onpub-menubar {
@@ -191,7 +191,6 @@ margin-bottom: 1.75em;
 
 span.onpub-edit {
 font-size: 93%;
-color: #7A8087;
 padding: 0.25em;
 padding-top: .75em;
 border: 1px solid #DADFE5;
@@ -202,7 +201,6 @@ background-color: #DADFE5;
 }
 
 span.onpub-login {
-color: #7A8087;
 padding: 0.5em;
 padding-top: .75em;
 border: 1px solid #D3DEEA;
