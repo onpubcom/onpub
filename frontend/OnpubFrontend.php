@@ -25,7 +25,7 @@ class OnpubFrontend
   protected $lastPDOException;
   protected $schemaInstalled;
   protected $pdoInstalled;
-  protected $labelUpdates = 'What\'s New';
+  protected $labelUpdates = 'News';
 
   function __construct()
   {
