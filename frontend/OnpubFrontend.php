@@ -499,14 +499,7 @@ class OnpubFrontend
         $articles = $this->articles->select($qo, null, $this->website->ID);
 
         if (sizeof($articles) && !(sizeof($articles) == 1 && $articles[0]->ID == $onpub_disp_article)) {
-          if ($onpub_disp_rss)
-          {
-            en('<h1 style="margin-right: 0;">' . $this->labelUpdates . ' <a href="index.php?rss"><img src="' . $onpub_dir_frontend . 'images/rss.png" width="14" height="14" alt="' . $this->website->name . ' RSS Feed" title="' . $this->website->name . ' RSS Feed"></a></h1>');
-          }
-          else
-          {
-            en('<h1 style="margin-right: 0;">' . $this->labelUpdates . '</h1>');
-          }
+          en('<h1 style="margin-right: 0;">' . $this->labelUpdates . '</h1>');
 
           $websiteSectionIDs = $this->extractSectionIDs($this->website->sections);
 

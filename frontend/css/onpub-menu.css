@@ -10,13 +10,18 @@
 /* Menu background */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-content {
 background-image: none;
-background-color: none;
+background-color: transparent;
+/*
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+*/
 }
 
 /* Menu borders */
 .yui3-skin-sam .yui3-menu-content {
 border: none;
-border-left: 2px solid #0060B0;
+border-left: 1px solid #1080CC;
 }
 
 /* Menu buttons background */
@@ -55,30 +60,32 @@ font-size: 116%;
 
 /* Menu buttons top and bottom borders */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label, .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-content {
-border-color: #0060B0;
-border-top-width: 2px;
-border-bottom-width: 2px;
+border-color: #1080CC;
+border-top-width: 1px;
+border-bottom-width: 1px;
 }
 
 /* Menu buttons right border */
 .yui3-skin-sam .yui3-menubuttonnav li {
-border-right: 2px solid #0060B0;
+border-right: 1px solid #1080CC;
 }
 
 /* Submenu borders */
 .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-content {
-border: 1px solid #0060B0;
+border: 1px solid #1080CC;
+/*
 -webkit-border-bottom-right-radius: 6px;
 -webkit-border-bottom-left-radius: 6px;
 -moz-border-radius-bottomright: 6px;
 -moz-border-radius-bottomleft: 6px;
 border-bottom-right-radius: 6px;
 border-bottom-left-radius: 6px;
+*/
 }
 
 /* Menu buttons mouseover borders and background */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label-active, .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-active .yui3-menuitem-content, .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label-menuvisible {
-border-color: #0060B0;
+border-color: #1080CC;
 background-image: none;
 background-color: #1BC2F9;
 }
