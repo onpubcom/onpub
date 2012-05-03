@@ -205,6 +205,18 @@ border: 2px solid #7F7F7F;
 border-radius: 3px;
 }
 
+span.onpub-login {
+color: #7A8087;
+padding: 0.5em;
+padding-top: .75em;
+border: 0px solid #DFDFDF;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+text-align: right;
+background-color: #EFEFEF;
+}
+
 span.onpub-field-header {
 font-size: 108%;
 }

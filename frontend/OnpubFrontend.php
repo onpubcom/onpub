@@ -697,14 +697,14 @@ class OnpubFrontend
     }
 
     en('</div>');
-    en('<div class="yui3-u-1-4">');
+    en('<div class="yui3-u-1-4" style="text-align: right;">');
 
     if ($onpub_disp_login) {
       if ($this->loginStatus) {
-        en('<p style="text-align: right;"><a href="' . $onpub_dir_manage . 'index.php?onpub=Logout" target="_onpub">Logout</a></p>');
+        en('<span class="onpub-login"><a href="' . $onpub_dir_manage . 'index.php?onpub=Logout" target="_onpub">Logout</a></span>');
       }
       else {
-        en('<p style="text-align: right;"><a href="' . $onpub_dir_manage . 'index.php" target="_onpub">Login</a></p>');
+        en('<span class="onpub-login"><a href="' . $onpub_dir_manage . 'index.php" target="_onpub">Login</a></span>');
       }
     }
 
