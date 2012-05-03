@@ -701,12 +701,10 @@ class OnpubFrontend
 
     if ($onpub_disp_login) {
       if ($this->loginStatus) {
-        en('<p style="text-align: right;">Powered by <a href="' . $onpub_dir_manage . 'index.php" target="_onpub">Onpub</a> &raquo; ');
-        en('<a href="' . $onpub_dir_manage . 'index.php?onpub=Logout" target="_onpub">Logout</a></p>');
+        en('<p style="text-align: right;"><a href="' . $onpub_dir_manage . 'index.php?onpub=Logout" target="_onpub">Logout</a></p>');
       }
       else {
-        en('<p style="text-align: right;">Powered by <a href="http://onpub.com/" target="_blank">Onpub</a> &raquo; ');
-        en('<a href="' . $onpub_dir_manage . 'index.php" target="_onpub">Login</a></p>');
+        en('<p style="text-align: right;"><a href="' . $onpub_dir_manage . 'index.php" target="_onpub">Login</a></p>');
       }
     }
 
