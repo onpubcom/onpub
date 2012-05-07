@@ -464,6 +464,124 @@ class OnpubFrontend
     return $ids;
   }
 
+  protected function news()
+  {
+    global $onpub_disp_article, $onpub_disp_updates_num, $onpub_inc_article_updates;
+
+    $qo = new OnpubQueryOptions();
+    $qo->includeContent = true;
+    $qo->includeAuthors = true;
+    $qo->orderBy = 'created';
+    $qo->order = 'DESC';
+    $qo->rowLimit = $onpub_disp_updates_num + 1;
+
+    $articles = $this->articles->select($qo, null, $this->website->ID);
+
+    $isNews = sizeof($articles) && !(sizeof($articles) == 1 && $articles[0]->ID == $onpub_disp_article);
+
+    en('<div class="yui3-g">');
+
+    if ($isNews) {
+      en('<div class="yui3-u-3-4">');
+    }
+    else {
+      en('<div class="yui3-u-1">');
+    }
+
+    if ($onpub_disp_article) {
+      $this->currentArticle = $this->articles->get($onpub_disp_article);
+
+      if ($this->currentArticle) {
+        en($this->currentArticle->content);
+      }
+      else {
+        en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
+      }
+    }
+
+    en('</div>');
+
+    if ($isNews) {
+      en('<div class="yui3-u-1-4">');
+
+      en('<h1 style="margin-right: 0;">' . $this->labelUpdates . '</h1>');
+
+      $websiteSectionIDs = $this->extractSectionIDs($this->website->sections);
+
+      $i = 0;
+
+      foreach ($articles as $a) {
+        if ($i == $onpub_disp_updates_num) {
+          break;
+        }
+
+        if ($a->ID != $onpub_disp_article) {
+          $samaps = $this->samaps->select(null, null, $a->ID);
+
+          $sectionIDs = array();
+
+          foreach ($samaps as $samap) {
+            $sectionIDs[] = $samap->sectionID;
+          }
+
+          $visibleSIDs = array_values(array_intersect($websiteSectionIDs, $sectionIDs));
+
+          if ($a->url) {
+            $url = $a->url;
+          }
+          else {
+            $url = 'index.php?s=' . $visibleSIDs[0] . '&amp;a=' . $a->ID;
+          }
+
+          en('<div class="yui3-g">');
+
+          if ($a->image) {
+            en('<div class="yui3-u-1-4">');
+            $a->image->website = $this->website;
+            en('<a href="' . $url . '"><img src="' . OnpubImages::getThumbURL('src=' . urlencode($a->image->getFullPath()) . '&w=50&f=png', $onpub_dir_phpthumb) . '" align="left" style="margin-right: 0.75em;" alt="' . $a->image->fileName . '" title="' . $a->image->description . '"></a>');
+            en('</div>');
+            en('<div class="yui3-u-3-4">');
+          }
+          else {
+            en('<div class="yui3-u-1">');
+          }
+
+          en('<h2 class="onpub-article-link"><a href="' . $url . '">' . $a->title . '</a></h2>');
+
+          en('<p class="onpub-article-summary">' . $a->getCreated()->format('M j, Y'));
+
+          if (($summary = $a->getSummary(10))) {
+            if (substr($summary, -1, 1) == '.') {
+              en(' &ndash; ' . $summary . '..</p>');
+            }
+            else {
+              en(' &ndash; ' . $summary . '...</p>');
+            }
+          }
+          else {
+            en('</p>');
+          }
+
+          en('</div>');
+
+          en('</div>');
+
+          $i++;
+        }
+      }
+
+      if (file_exists($onpub_inc_article_updates)) {
+        en('<div>');
+        include $onpub_inc_article_updates;
+        en('</div>');
+      }
+
+      en('</div>');
+    }
+    
+    en('</div>');
+  }
+
   protected function home()
   {
     global $onpub_disp_updates, $onpub_disp_article, $onpub_disp_updates_num,
@@ -472,108 +590,7 @@ class OnpubFrontend
 
     if ($this->website) {
       if ($onpub_disp_updates) {
-        en('<div class="yui3-g">');
-        en('<div class="yui3-u-3-4">');
-
-        if ($onpub_disp_article) {
-          $this->currentArticle = $this->articles->get($onpub_disp_article);
-
-          if ($this->currentArticle) {
-            en($this->currentArticle->content);
-          }
-          else {
-            en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
-          }
-        }
-
-        en('</div>');
-        en('<div class="yui3-u-1-4">');
-
-        $qo = new OnpubQueryOptions();
-        $qo->includeContent = true;
-        $qo->includeAuthors = true;
-        $qo->orderBy = 'created';
-        $qo->order = 'DESC';
-        $qo->rowLimit = $onpub_disp_updates_num + 1;
-
-        $articles = $this->articles->select($qo, null, $this->website->ID);
-
-        if (sizeof($articles) && !(sizeof($articles) == 1 && $articles[0]->ID == $onpub_disp_article)) {
-          en('<h1 style="margin-right: 0;">' . $this->labelUpdates . '</h1>');
-
-          $websiteSectionIDs = $this->extractSectionIDs($this->website->sections);
-
-          $i = 0;
-
-          foreach ($articles as $a) {
-            if ($i == $onpub_disp_updates_num) {
-              break;
-            }
-
-            if ($a->ID != $onpub_disp_article) {
-              $samaps = $this->samaps->select(null, null, $a->ID);
-
-              $sectionIDs = array();
-
-              foreach ($samaps as $samap) {
-                $sectionIDs[] = $samap->sectionID;
-              }
-
-              $visibleSIDs = array_values(array_intersect($websiteSectionIDs, $sectionIDs));
-
-              if ($a->url) {
-                $url = $a->url;
-              }
-              else {
-                $url = 'index.php?s=' . $visibleSIDs[0] . '&amp;a=' . $a->ID;
-              }
-
-              en('<div class="yui3-g">');
-
-              if ($a->image) {
-                en('<div class="yui3-u-1-4">');
-                $a->image->website = $this->website;
-                en('<a href="' . $url . '"><img src="' . OnpubImages::getThumbURL('src=' . urlencode($a->image->getFullPath()) . '&w=50&f=png', $onpub_dir_phpthumb) . '" align="left" style="margin-right: 0.75em;" alt="' . $a->image->fileName . '" title="' . $a->image->description . '"></a>');
-                en('</div>');
-                en('<div class="yui3-u-3-4">');
-              }
-              else {
-                en('<div class="yui3-u-1">');
-              }
-
-              en('<h2 class="onpub-article-link"><a href="' . $url . '">' . $a->title . '</a></h2>');
-
-              en('<p class="onpub-article-summary">' . $a->getCreated()->format('M j, Y'));
-
-              if (($summary = $a->getSummary(10))) {
-                if (substr($summary, -1, 1) == '.') {
-                  en(' &ndash; ' . $summary . '..</p>');
-                }
-                else {
-                  en(' &ndash; ' . $summary . '...</p>');
-                }
-              }
-              else {
-                en('</p>');
-              }
-
-              en('</div>');
-
-              en('</div>');
-
-              $i++;
-            }
-          }
-        }
-
-        if (file_exists($onpub_inc_article_updates)) {
-          en('<div>');
-          include $onpub_inc_article_updates;
-          en('</div>');
-        }
-
-        en('</div>');
-        en('</div>');
+        $this->news();
       }
       else {
         if ($onpub_disp_article) {
