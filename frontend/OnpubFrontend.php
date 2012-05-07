@@ -466,7 +466,8 @@ class OnpubFrontend
 
   protected function news()
   {
-    global $onpub_disp_article, $onpub_disp_updates_num, $onpub_inc_article_updates;
+    global $onpub_disp_article, $onpub_disp_updates_num, $onpub_inc_article_updates,
+           $onpub_dir_phpthumb;
 
     $qo = new OnpubQueryOptions();
     $qo->includeContent = true;
