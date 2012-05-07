@@ -10,13 +10,13 @@
 /* Menu background */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-content {
 background-image: none;
-background-color: none;
+background-color: transparent;
 }
 
 /* Menu borders */
 .yui3-skin-sam .yui3-menu-content {
 border: none;
-border-left: 2px solid #0060B0;
+border-left: 1px solid #1080CC;
 }
 
 /* Menu buttons background */
@@ -27,7 +27,7 @@ background-color: #1B8CDF;
 /* Menu font */
 .yui3-skin-sam .yui3-menu-label, .yui3-skin-sam .yui3-menuitem-content {
 color: #FCFCFC;
-font-size: 116%;
+font-size: 108%;
 }
 
 /* Menu item background */
@@ -38,47 +38,40 @@ background-color: #1B8CDF;
 /* Submenus background */
 .yui3-skin-sam .yui3-menu-content, .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-content {
 background-color: #1B8CDF;
-/*opacity: .97;*/
 }
 
 /* Submenu items font */
 .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menuitem-content {
 color: #FCFCFC;
-font-size: 116%;
+font-size: 108%;
 }
 
 /* Submenus font */
 .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label {
 color: #FCFCFC;
-font-size: 116%;
+font-size: 108%;
 }
 
 /* Menu buttons top and bottom borders */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label, .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-content {
-border-color: #0060B0;
-border-top-width: 2px;
-border-bottom-width: 2px;
+border-color: #1080CC;
+border-top-width: 1px;
+border-bottom-width: 1px;
 }
 
 /* Menu buttons right border */
 .yui3-skin-sam .yui3-menubuttonnav li {
-border-right: 2px solid #0060B0;
+border-right: 1px solid #1080CC;
 }
 
 /* Submenu borders */
 .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-content {
-border: 1px solid #0060B0;
--webkit-border-bottom-right-radius: 6px;
--webkit-border-bottom-left-radius: 6px;
--moz-border-radius-bottomright: 6px;
--moz-border-radius-bottomleft: 6px;
-border-bottom-right-radius: 6px;
-border-bottom-left-radius: 6px;
+border: 1px solid #1080CC;
 }
 
 /* Menu buttons mouseover borders and background */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label-active, .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-active .yui3-menuitem-content, .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label-menuvisible {
-border-color: #0060B0;
+border-color: #1080CC;
 background-image: none;
 background-color: #1BC2F9;
 }

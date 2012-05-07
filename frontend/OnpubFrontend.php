@@ -333,7 +333,7 @@ class OnpubFrontend
         en('<div id="onpub-logo"><a href="index.php"><img src="' . addTrailingSlash($this->website->imagesURL) . $this->website->image->fileName . '" alt="' . $this->website->image->fileName . '" title="' . $this->website->image->description . '"></a></div>');
       }
       else {
-        en('<div id="onpub-logo" style="margin-bottom: .5em;"><a href="index.php">' . $this->website->name . '</a></div>');
+        en('<div id="onpub-logo" style="margin-bottom: .25em; font-size: 197%;"><a href="index.php">' . $this->website->name . '</a></div>');
       }
     }
     else {

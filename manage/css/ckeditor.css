@@ -14,7 +14,7 @@ a:active { color: #0077CF; text-decoration: underline; }
 
 body {
 font: 13px/1.231 arial,helvetica,clean,sans-serif;
-color: #525861;
+color: #494F59;
 background-color: #FFFFFF;
 }
 
@@ -23,22 +23,18 @@ border-style: none;
 }
 
 h1 {
-color: #FCFCFC;
-background-color: #0C7CCF;
-padding: .2em;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
+color: #494F59;
 font-weight: normal;
 margin: 1em 0;
 margin-right: 1em;
 font-size: 18px;
 margin-top: .75em;
 margin-bottom: .75em;
+border-bottom: 1px solid #DADFE5;
 }
 
 h2 {
-color: #5F5F5F;
+color: #494F59;
 font-weight: normal;
 margin-top: 0;
 font-size: 16px;
@@ -46,7 +42,7 @@ padding: 0;
 }
 
 h3 {
-color: #5F5F5F;
+color: #494F59;
 font-weight: normal;
 margin-top: 0;
 font-size: 14px;
@@ -54,7 +50,7 @@ padding: 0;
 }
 
 h4, h5, h6 {
-color: #5F5F5F;
+color: #494F59;
 font-weight: normal;
 font-size: 13px;
 margin: 0;
@@ -62,5 +58,5 @@ padding: 0;
 }
 
 b, strong {
-color: #5F5F5F;
+color: #494F59;
 }
