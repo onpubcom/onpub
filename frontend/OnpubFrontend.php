@@ -341,7 +341,7 @@ class OnpubFrontend
     }
   }
 
-  protected function outputSubSections($section)
+  protected function menuSubSections($section)
   {
     $subsections = $section->sections;
 
@@ -370,7 +370,7 @@ class OnpubFrontend
         }
 
         if (sizeof($sub->sections)) {
-          $this->outputSubSections($sub);
+          $this->menuSubSections($sub);
         }
 
         en('</ul>');
@@ -430,7 +430,7 @@ class OnpubFrontend
                 }
               }
 
-              $this->outputSubSections($s);
+              $this->menuSubSections($s);
 
               en('</ul>');
               en('</div>');
@@ -585,9 +585,8 @@ class OnpubFrontend
 
   protected function home()
   {
-    global $onpub_disp_updates, $onpub_disp_article, $onpub_disp_updates_num,
-           $onpub_disp_rss, $onpub_dir_frontend, $onpub_dir_phpthumb,
-           $onpub_inc_article_updates, $onpub_dir_manage;
+    global $onpub_disp_updates, $onpub_disp_article, $onpub_dir_frontend,
+           $onpub_dir_manage;
 
     if ($this->website) {
       if ($onpub_disp_updates) {
