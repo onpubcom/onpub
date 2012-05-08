@@ -18,11 +18,11 @@ a.onpub-section-nav:hover { color: #0B75C1; text-decoration: underline; }
 a.onpub-section-nav:active { color: #0B75C1; text-decoration: underline; }
 
 html {
-background-color: #D5E0EA;
+background-color: #DAE5EF;
 }
 
 body {
-background-color: #D5E0EA;
+background-color: #DAE5EF;
 }
 
 #onpub-banner {
@@ -53,7 +53,7 @@ margin: auto;
 #onpub-body {
 color: #494F59;
 background-color: #FCFCFC;
-border: 1px solid #C7DBEA;
+border: 1px solid #CEDCE8;
 padding-left: 1em;
 padding-right: 1em;
 padding-bottom: 1em;
@@ -192,11 +192,11 @@ span.onpub-edit {
 font-size: 93%;
 padding: 0.25em;
 padding-top: .75em;
-border: 1px solid #FDF7C7;
+border: 1px solid #F7EFB2;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 border-radius: 3px;
-background-color: #FDF7C7;
+background-color: #F7EFB2;
 }
 
 span.onpub-login {
