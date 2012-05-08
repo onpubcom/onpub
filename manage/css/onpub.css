@@ -85,13 +85,13 @@ color: red;
 }
 
 textarea, select {
-color: #494F59;
+color: #575D66;
 font-size: 100%;
 width:auto;*width:auto;
 }
 
 input[type=text], input[type=password] {
-color: #494F59;
+color: #575D66;
 padding: 0.1em;
 font-size: 100%;
 width:auto;*width:auto;
