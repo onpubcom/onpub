@@ -53,7 +53,7 @@ class OnpubLogin
     en('</head>');
     en('<body>');
 
-    en('<div id="onpub-page" style="margin-top: 2em;">');
+    en('<div id="onpub-page" style="margin-top: 2em; width: 800px;">');
     en('<div id="onpub-body">');
 
     en('<div style="text-align: center; margin-top: 2em; margin-bottom: 1em;"><a href="index.php"><img src="images/onpub.png" width="222" height="89" alt="Onpub" title="Onpub"></a></div>');
