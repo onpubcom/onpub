@@ -56,13 +56,13 @@ class OnpubLogin
     en('<div id="onpub-page" style="margin-top: 2em; width: 800px;">');
     en('<div id="onpub-body">');
 
-    en('<div style="text-align: center; margin-top: 2em; margin-bottom: 1em;"><a href="index.php"><img src="images/onpub.png" width="222" height="89" alt="Onpub" title="Onpub"></a></div>');
+    en('<div style="text-align: center; margin-top: 2em; margin-bottom: 1.5em;"><a href="index.php"><img src="images/onpub.png" width="222" height="89" alt="Onpub" title="Onpub"></a></div>');
 
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1">');
     en('<form id="onpub-form" action="index.php" method="post">');
-    en('<div style="width: 20%; margin-left: auto; margin-right: auto; margin-bottom: 2em;">');
+    en('<div style="width: 21%; margin-left: auto; margin-right: auto; margin-bottom: 2.25em;">');
 
     if (defined('ONPUBGUI_PDO_HOST')) {
       en('<input type="hidden" name="pdoHost" value="' . ONPUBGUI_PDO_HOST . '">');
