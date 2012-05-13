@@ -706,7 +706,7 @@ class OnpubFrontend
       en('<p>&copy; ' . $dt->format('Y') . ' <a href="index.php">' . $this->website->name . '</a>. All rights reserved.</p>');
     }
     else {
-      en('<p>Onpub ' . ONPUBAPI_VERSION . ', &copy; 2011 <a href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
+      en('<p>Onpub ' . ONPUBAPI_VERSION . ', &copy; 2012 <a href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
     }
 
     en('</div>');
