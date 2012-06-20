@@ -70,7 +70,7 @@ class OnpubEditWebsite
       $message = '<small>This URL should be set to the top-level frontend address for this website, example: http://onpub.com/</small>';
     }
 
-    en('<h3 class="onpub-field-header">URL</h3><p>' . $message . '<br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->owebsite->url) . '">' . $go . '</p>');
+    en('<h3 class="onpub-field-header">Frontend URL</h3><p>' . $message . '<br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->owebsite->url) . '">' . $go . '</p>');
     en('</div>');
     en('</div>');
 

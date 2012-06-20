@@ -135,7 +135,72 @@ class OnpubEditArticle
       $go = '';
     }
 
+    en('<div class="yui3-g">');
+
+    en('<div class="yui3-u-1-2">');
     en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this article (recommended).</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '</p>');
+    en('</div>');
+
+    en('<div class="yui3-u-1-2">');
+
+    if (sizeof($samaps))
+    {
+      $websitesMap = array();
+
+      foreach ($websites as $website)
+      {
+        $websitesMap["{$website->ID}"] = $website;
+      }
+
+      $sections = array();
+      $articleIDs = array();
+
+      foreach ($samaps as $samap)
+      {
+        $section = $osections->get($samap->sectionID);
+
+        if ($section && isset($websitesMap["{$section->websiteID}"]))
+        {
+          $website = $websitesMap["{$section->websiteID}"];
+
+          if ($website->url)
+          {
+            $sections[] = $section;
+            $articleIDs[] = $samap->articleID;
+          }
+        }
+      }
+
+      if (sizeof($sections))
+      {
+        if (sizeof($sections) > 1)
+        {
+          en('<h3 class="onpub-field-header">Frontend URLs</h3>');
+        }
+        else
+        {
+          en('<h3 class="onpub-field-header">Frontend URL</h3>');
+        }
+
+        en('<p>');
+        en('<small>This article is displayed by the frontend at the URLs listed below.</small><br>');
+
+        for ($i = 0; $i < sizeof($sections); $i++)
+        {
+          $section = $sections[$i];
+          $website = $websitesMap["{$section->websiteID}"];
+          
+          $frontendURL = addTrailingSlash($website->url) . 'index.php?s=' . $section->ID . '&amp;a=' . $articleIDs[$i];
+          en('&bull; <a href="' . $frontendURL . '" target="_blank">' . $frontendURL . '</a><br>');
+        }
+
+        en('</p>');
+      }
+    }
+
+    en('</div>');
+
+    en('</div>');
 
     $widget = new OnpubWidgetDateCreated($this->oarticle->getCreated());
     $widget->display();
