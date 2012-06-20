@@ -173,7 +173,62 @@ class OnpubEditWebsite
       return FALSE;
     }
 
+    if ($this->owebsite->url) {
+      $url = $this->validateURL($this->owebsite->url);
+
+      if ($url) {
+        $this->owebsite->url = $url;
+      }
+      else {
+        return FALSE;
+      }
+    }
+
+    if ($this->owebsite->imagesURL) {
+      $url = $this->validateURL($this->owebsite->imagesURL);
+
+      if ($url) {
+        $this->owebsite->imagesURL = $url;
+      }
+      else {
+        return FALSE;
+      }
+    }
+
     return TRUE;
+  }
+
+  private function validateURL($url)
+  {
+    $parsed_url = parse_url($url);
+
+    if ($parsed_url === FALSE) {
+      return FALSE;
+    }
+
+    if (!isset($parsed_url['scheme']) || !isset($parsed_url['host'])) {
+      return FALSE;
+    }
+
+    if (isset($parsed_url['path'])) {
+      $path = pathinfo($parsed_url['path']);
+
+      if (isset($path['extension'])) {
+        $dirname = $path['dirname'];
+      }
+      else {
+        $dirname = addTrailingSlash($path['dirname']) . $path['basename'];
+      }
+    }
+    else {
+      $dirname = '';
+    }
+
+    if (isset($parsed_url['user']) && isset($parsed_url['pass'])) {
+      return $parsed_url['scheme'] . '://' . $parsed_url['user'] . ':' . $parsed_url['pass'] . '@' . $parsed_url['host'] . $dirname;
+    }
+
+    return $parsed_url['scheme'] . '://' . $parsed_url['host'] . $dirname;
   }
 
   public function process()
