@@ -191,7 +191,12 @@ class OnpubEditArticle
           $website = $websitesMap["{$section->websiteID}"];
           
           $frontendURL = addTrailingSlash($website->url) . 'index.php?s=' . $section->ID . '&amp;a=' . $articleIDs[$i];
-          en('&bull; <a href="' . $frontendURL . '" target="_blank">' . $frontendURL . '</a><br>');
+          en('&bull; <a href="' . $frontendURL . '" target="_blank">' . $frontendURL . '</a>');
+
+          if (($i + 1) != sizeof($sections))
+          {
+            en('<br>');
+          }
         }
 
         en('</p>');
