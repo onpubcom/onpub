@@ -109,11 +109,13 @@ class OnpubEditImage
       en('</div>');
     }
 
-    en('<div class="yui3-g">');
-    en('<div class="yui3-u-1">');
-    en('<h3 class="onpub-field-header">URL</h3><p><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a></p>');
-    en('</div>');
-    en('</div>');
+    if ($website->imagesURL) {
+      en('<div class="yui3-g">');
+      en('<div class="yui3-u-1">');
+      en('<h3 class="onpub-field-header">Frontend URL</h3><p><a href="' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '" target="_blank">' . addTrailingSlash($website->imagesURL) . $this->oimage->fileName . '</a></p>');
+      en('</div>');
+      en('</div>');
+    }
 
     if ($fileExists) {
       en('<div class="yui3-g">');
