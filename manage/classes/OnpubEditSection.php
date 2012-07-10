@@ -176,7 +176,7 @@ class OnpubEditSection
       en('<h3 class="onpub-field-header">Frontend ' . $urlLabel . '</h3>');
 
       en('<p>');
-      en('<small>This article is displayed by the Frontend at the ' . $urlLabel . ' listed below.</small><br>');
+      en('<small>This section is displayed by the Frontend at the ' . $urlLabel . ' listed below.</small><br>');
 
       for ($i = 0; $i < sizeof($wsmaps); $i++)
       {
