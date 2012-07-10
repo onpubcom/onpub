@@ -30,7 +30,7 @@ class OnpubWidgetImages
       en('<h3 class="onpub-field-header">' . $this->heading . '</h3>');
 
       en('<p>');
-      en('<small>Mouse-over an image name below for a live preview</small>', 1, 1);
+      en('<small>Mouse-over an image name below for a live preview.</small>', 1, 1);
       en('<span id="widgetimagepreview">');
       en('<select id="widgetimages" name="imageID" size="10">');
 

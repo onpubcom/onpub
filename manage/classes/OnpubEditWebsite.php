@@ -55,7 +55,7 @@ class OnpubEditWebsite
 
     en('<div class="yui3-g">');
     en('<div class="yui3-u-1-2">');
-    en('<h3 class="onpub-field-header">Name</h3><p><small>This website\'s name</small><br><input type="text" maxlength="255" size="40" name="name" value="' . htmlentities($this->owebsite->name) . '"></p>');
+    en('<h3 class="onpub-field-header">Name</h3><p><small>This website\'s name.</small><br><input type="text" maxlength="255" size="40" name="name" value="' . htmlentities($this->owebsite->name) . '"></p>');
     en('</div>');
     en('<div class="yui3-u-1-2">');
 
@@ -63,11 +63,11 @@ class OnpubEditWebsite
 
     if ($this->owebsite->url) {
       $go = ' <a href="' . $this->owebsite->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a>';
-      $message = '<small>This URL should be set to the top-level frontend address for this website</small>';
+      $message = '<small>This URL should be set to the Frontend address for this website.</small>';
     }
     else {
       $go = '';
-      $message = '<small>This URL should be set to the top-level frontend address for this website, example: http://onpub.com/</small>';
+      $message = '<small>This URL should be set to the Frontend address for this website, example: http://onpub.com/tryonpub.</small>';
     }
 
     en('<h3 class="onpub-field-header">Frontend URL</h3><p>' . $message . '<br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->owebsite->url) . '">' . $go . '</p>');
@@ -89,17 +89,17 @@ class OnpubEditWebsite
 
     en('<div class="yui3-g">');
     en('<div class="yui3-u-1-2">');
-    en('<h3 class="onpub-field-header">Image Uploads Directory</h3><p><small>Images uploaded to this website will be saved to this directory on <i>' . $_SERVER['SERVER_NAME'] . '</i></small><br><input type="text" maxlength="255" size="40" name="imagesDirectory" value="' . htmlentities($this->owebsite->imagesDirectory) . '"> ' . $message . '</p>');
+    en('<h3 class="onpub-field-header">Image Uploads Directory</h3><p><small>Images uploaded to this website will be saved to this directory on <i>' . $_SERVER['SERVER_NAME'] . '.</i></small><br><input type="text" maxlength="255" size="40" name="imagesDirectory" value="' . htmlentities($this->owebsite->imagesDirectory) . '"> ' . $message . '</p>');
     en('</div>');
     en('<div class="yui3-u-1-2">');
 
     $message = "";
 
     if ($this->owebsite->imagesURL) {
-      $message = '<small>This URL should map to the Image Uploads Directory</small>';
+      $message = '<small>This URL should map to the Image Uploads Directory.</small>';
     }
     else {
-      $message = '<small>This URL should map to the Image Uploads Directory, example: http://onpub.com/images/</small>';
+      $message = '<small>This URL should map to the Image Uploads Directory, example: http://onpub.com/images/.</small>';
     }
 
     if ($this->owebsite->imagesURL) {
@@ -132,7 +132,7 @@ class OnpubEditWebsite
       $widget->osections = $osections;
       $widget->heading = "Visible Sections";
       $widget->owebsite = $this->owebsite;
-      $widget->tooltip = 'These sections are displayed by the frontend navigation menu in the same order as listed below';
+      $widget->tooltip = 'These sections will be displayed by the Frontend in the same order as listed below.';
       $widget->display();
       en('<p><input type="button" value="Move Up" id="moveUp"> <input type="button" value="Move Down" id="moveDown"> <input type="button" value="Hide" id="hide"></p>');
       en('</div>');

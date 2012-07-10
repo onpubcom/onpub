@@ -88,11 +88,11 @@ class OnpubEditSection
 
     if ($this->visible !== NULL) {
       en('<h3 class="onpub-field-header">Visibility</h3>');
-      en('<p><input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">De-select to hide this section from the frontend navigation menu</label></p>');
+      en('<p><input type="checkbox" id="id_visible" name="visible" value="1" checked="checked"> <label for="id_visible">De-select to hide this section from the Frontend.</label></p>');
     }
     else {
       en('<h3 class="onpub-field-header">Visibility</h3>');
-      en('<p><input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Select to show this section on the frontend navigation menu</label></p>');
+      en('<p><input type="checkbox" id="id_visible" name="visible" value="1"> <label for="id_visible">Select to show this section on the Frontend.</label></p>');
     }
 
     en('</div>');
@@ -158,7 +158,7 @@ class OnpubEditSection
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-2">');
-    en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this section (recommended).</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->osection->url) . '">' . $go . '</p>');
+    en('<h3 class="onpub-field-header">Static Link</h3><p><small>The Frontend will link this Section to the path or URL entered below.<br>Leave blank to use auto-generated Frontend URLs.</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->osection->url) . '">' . $go . '</p>');
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
@@ -176,7 +176,7 @@ class OnpubEditSection
       en('<h3 class="onpub-field-header">Frontend ' . $urlLabel . '</h3>');
 
       en('<p>');
-      en('<small>This article is displayed by the frontend at the ' . $urlLabel . ' listed below.</small><br>');
+      en('<small>This article is displayed by the Frontend at the ' . $urlLabel . ' listed below.</small><br>');
 
       for ($i = 0; $i < sizeof($wsmaps); $i++)
       {

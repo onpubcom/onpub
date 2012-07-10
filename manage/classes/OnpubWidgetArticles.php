@@ -27,7 +27,7 @@ class OnpubWidgetArticles
 
     en('<h3 class="onpub-field-header">Visible Articles</h3>');
     en('<p>');
-    en('<small>These articles are displayed by the frontend navigation menu in the same order as listed below</small>', 1, 1);
+    en('<small>These articles will be displayed by the Frontend in the same order as listed below.</small>', 1, 1);
 
     en('<select name="articleIDs[]" size="10" multiple="multiple" id="articles">');
 

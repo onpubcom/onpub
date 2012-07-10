@@ -40,7 +40,7 @@ class OnpubWidgetSections
     $this->sectionsMap = array();
     $this->websitesMap = array();
     $this->ID = "sections";
-    $this->tooltip = "Hold Ctrl to select/deselect multiple sections";
+    $this->tooltip = "Hold Ctrl to select/deselect multiple sections.";
     $this->defaultOptionText = "None";
   }
 
