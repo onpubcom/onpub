@@ -47,6 +47,19 @@ class OnpubEditSection
       $wsmap->websiteID = $this->osection->websiteID;
       $wsmap->sectionID = $this->osection->ID;
       $this->visible = $owsmaps->getID($wsmap);
+
+      $wsmaps = $owsmaps->select(NULL, NULL, $this->osection->ID);
+
+      $queryOptions = new OnpubQueryOptions();
+      $queryOptions->orderBy = "name";
+      $queryOptions->order = "ASC";
+
+      if (sizeof($wsmaps)) {
+        $websites = $owebsites->select($queryOptions);
+      }
+      else {
+        $websites = array();
+      }
     }
     catch (PDOException $e) {
       throw $e;
@@ -142,7 +155,49 @@ class OnpubEditSection
       $go = '';
     }
 
+    en('<div class="yui3-g">');
+
+    en('<div class="yui3-u-1-2">');
     en('<h3 class="onpub-field-header">Static Link</h3><p><small>Leave this field blank to make the frontend manage the link for this section (recommended).</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->osection->url) . '">' . $go . '</p>');
+    en('</div>');
+
+    en('<div class="yui3-u-1-2">');
+
+    if (sizeof($wsmaps)) {
+      $websitesMap = array();
+
+      foreach ($websites as $website)
+      {
+        $websitesMap["{$website->ID}"] = $website;
+      }
+
+      $urlLabel = (sizeof($wsmaps) > 1) ? 'URLs' : 'URL';
+
+      en('<h3 class="onpub-field-header">Frontend ' . $urlLabel . '</h3>');
+
+      en('<p>');
+      en('<small>This article is displayed by the frontend at the ' . $urlLabel . ' listed below.</small><br>');
+
+      for ($i = 0; $i < sizeof($wsmaps); $i++)
+      {
+        $wsmap = $wsmaps[$i];
+        $website = $websitesMap["{$wsmap->websiteID}"];
+
+        $frontendURL = addTrailingSlash($website->url) . 'index.php?s=' . $wsmap->sectionID;
+        en('&bull; <a href="' . $frontendURL . '" target="_blank">' . $frontendURL . '</a>');
+
+        if (($i + 1) != sizeof($wsmaps))
+        {
+          en('<br>');
+        }
+      }
+
+      en('</p>');
+    }
+
+    en('</div>');
+
+    en('</div>');
 
     en('<div class="yui3-g">');
 

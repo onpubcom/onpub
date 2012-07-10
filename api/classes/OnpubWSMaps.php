@@ -114,12 +114,12 @@ class OnpubWSMaps
    * @param OnpubQueryOptions $queryOptions Database query options.
    * @return array An array of {@link OnpubWSMap} objects.
    */
-  public function select(OnpubQueryOptions $queryOptions = NULL, $websiteID = NULL)
+  public function select(OnpubQueryOptions $queryOptions = NULL, $websiteID = NULL, $sectionID = NULL)
   {
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 
-    $query = $this->selectQuery($queryOptions, $websiteID);
+    $query = $this->selectQuery($queryOptions, $websiteID, $sectionID);
     $result = $this->pdo->query($query);
     OnpubDatabase::verifyQuery($this->pdo, $result, FALSE);
     $rows = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -144,7 +144,7 @@ class OnpubWSMaps
     return $wsmaps;
   }
 
-  private function selectQuery(OnpubQueryOptions $queryOptions = NULL, $websiteID)
+  private function selectQuery(OnpubQueryOptions $queryOptions = NULL, $websiteID, $sectionID)
   {
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
@@ -154,16 +154,21 @@ class OnpubWSMaps
     $limit = "";
 
     if ($queryOptions->dateLimit) {
-      $where = "WHERE created <= "
-        . $this->pdo->quote($queryOptions->dateLimit->format('Y-m-d H:i:s'));
+      $where = "WHERE created <= " . $this->pdo->quote($queryOptions->dateLimit->format('Y-m-d H:i:s'));
 
       if ($websiteID) {
         $where .= " AND websiteID = $websiteID";
+      }
+      elseif ($sectionID) {
+        $where .= " AND sectionID = $sectionID";
       }
     }
     else {
       if ($websiteID) {
         $where = "WHERE websiteID = $websiteID";
+      }
+      elseif ($sectionID) {
+        $where = "WHERE sectionID = $sectionID";
       }
     }
 
@@ -176,9 +181,8 @@ class OnpubWSMaps
     }
 
     if ($queryOptions->getPage() && $queryOptions->rowLimit && $queryOptions->rowLimit > 0) {
-      $limit = "LIMIT "
-        . (($queryOptions->getPage() - 1) * $queryOptions->rowLimit) . ","
-        . $queryOptions->rowLimit;
+      $limit = "LIMIT " . (($queryOptions->getPage() - 1) * $queryOptions->rowLimit) .
+               "," . $queryOptions->rowLimit;
     }
     elseif ($queryOptions->rowLimit && $queryOptions->rowLimit > 0) {
       $limit = "LIMIT 0," . $queryOptions->rowLimit;

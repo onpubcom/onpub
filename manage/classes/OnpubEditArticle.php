@@ -173,17 +173,12 @@ class OnpubEditArticle
 
       if (sizeof($sections))
       {
-        if (sizeof($sections) > 1)
-        {
-          en('<h3 class="onpub-field-header">Frontend URLs</h3>');
-        }
-        else
-        {
-          en('<h3 class="onpub-field-header">Frontend URL</h3>');
-        }
+        $urlLabel = (sizeof($sections) > 1) ? 'URLs' : 'URL';
+
+        en('<h3 class="onpub-field-header">Frontend ' . $urlLabel . '</h3>');
 
         en('<p>');
-        en('<small>This article is displayed by the frontend at the URLs listed below.</small><br>');
+        en('<small>This article is displayed by the frontend at the ' . $urlLabel . ' listed below.</small><br>');
 
         for ($i = 0; $i < sizeof($sections); $i++)
         {
