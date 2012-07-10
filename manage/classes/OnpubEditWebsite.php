@@ -201,13 +201,14 @@ class OnpubEditWebsite
   private function validateURL($url)
   {
     $parsed_url = parse_url($url);
+    $validated_url = FALSE;
 
     if ($parsed_url === FALSE) {
-      return FALSE;
+      return $validated_url;
     }
 
     if (!isset($parsed_url['scheme']) || !isset($parsed_url['host'])) {
-      return FALSE;
+      return $validated_url;
     }
 
     if (isset($parsed_url['path'])) {
@@ -225,10 +226,17 @@ class OnpubEditWebsite
     }
 
     if (isset($parsed_url['user']) && isset($parsed_url['pass'])) {
-      return $parsed_url['scheme'] . '://' . $parsed_url['user'] . ':' . $parsed_url['pass'] . '@' . $parsed_url['host'] . $dirname;
+      $validated_url = $parsed_url['scheme'] . '://' . $parsed_url['user'] . ':' . $parsed_url['pass'] . '@' . $parsed_url['host'] . $dirname;
+    }
+    else {
+      $validated_url = $parsed_url['scheme'] . '://' . $parsed_url['host'] . $dirname;
     }
 
-    return $parsed_url['scheme'] . '://' . $parsed_url['host'] . $dirname;
+    if (hasTrailingSlash($url)) {
+      return addTrailingSlash($validated_url);
+    }
+
+    return $validated_url;
   }
 
   public function process()
