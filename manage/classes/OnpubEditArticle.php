@@ -138,7 +138,7 @@ class OnpubEditArticle
     en('<div class="yui3-g">');
 
     en('<div class="yui3-u-1-2">');
-    en('<h3 class="onpub-field-header">Static Link</h3><p><small>The Frontend will link this Article to the path or URL entered below.<br>Leave blank to use auto-generated Frontend URLs.</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '</p>');
+    en('<h3 class="onpub-field-header">Static Link</h3><p><small>The Frontend will link this article to the path or URL entered below.<br>Leave blank to use auto-generated Frontend URLs.</small><br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->oarticle->url) . '">' . $go . '</p>');
     en('</div>');
 
     en('<div class="yui3-u-1-2">');
