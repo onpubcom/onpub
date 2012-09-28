@@ -105,18 +105,23 @@ font-size: 100%;
 
 div.onpub-section-nav {
 background-color: #F7F7F7;
-color: #8B939B;
+color: #636C75;
 -webkit-border-top-right-radius: 4px;
 -webkit-border-bottom-left-radius: 4px;
 -moz-border-radius-topright: 4px;
 -moz-border-radius-bottomleft: 4px;
 border-top-right-radius: 4px;
 border-bottom-left-radius: 4px;
+padding-bottom: 1em;
 }
 
-ul.onpub-section-nav {
+div.onpub-section-nav-link {
 font-size: 93%;
-padding-left: 1em;
+margin-left: 1.5em;  
+margin-right: 1.5em;
+margin-bottom: .5em;
+padding-bottom: .5em;
+border-bottom: 1px dotted #DADFE5;
 }
 
 th, td {
@@ -125,12 +130,12 @@ border-color: #E6EAEF;
 
 th {
 font-size: 108%;
-font-weight: normal;
+font-weight: bold;
 }
 
 h1 {
 color: #494F59;
-font-weight: normal;
+font-weight: bold;
 margin-right: .75em;
 margin-top: .75em;
 margin-bottom: .75em;
@@ -141,6 +146,7 @@ h1.onpub-section-nav {
 padding-left: 1em;
 background: none;
 border-bottom-style: none;
+font-weight: bold;
 }
 
 h2, h3 {
@@ -149,7 +155,7 @@ margin-top: 0;
 
 h2, h3, h4, h5, h6 {
 color: #494F59;
-font-weight: normal;
+font-weight: bold;
 }
 
 h4, h5, h6 {
@@ -177,15 +183,21 @@ background-color: #DFDFDF;
 }
 
 p.onpub-article-info {
-font-size: 93%;
+font-size: 85%;
 color: #7A8087;
 margin-bottom: 1.75em;
+font-weight: bold;
 }
 
 p.onpub-article-summary {
 font-size: 85%;
 color: #7A8087;
 margin-bottom: 1.75em;
+}
+
+span.onpub-article-summary-date {
+color: #5E6670;
+font-weight: bold;
 }
 
 span.onpub-edit {
@@ -212,6 +224,7 @@ background-color: #CEDCE8;
 
 span.onpub-field-header {
 font-size: 108%;
+font-weight: bold;
 }
 
 div.onpub-save-overlay {
