@@ -104,8 +104,8 @@ font-size: 100%;
 }
 
 div.onpub-section-nav {
-background-color: #F7F7F7;
-color: #636C75;
+background-color: #FCE69C;
+color: #494F59;
 -webkit-border-top-right-radius: 4px;
 -webkit-border-bottom-left-radius: 4px;
 -moz-border-radius-topright: 4px;
@@ -121,7 +121,7 @@ margin-left: 1.5em;
 margin-right: 1.5em;
 margin-bottom: .5em;
 padding-bottom: .5em;
-border-bottom: 1px dotted #DADFE5;
+border-bottom: 1px solid #F4D777;
 }
 
 th, td {
@@ -204,11 +204,11 @@ span.onpub-edit {
 font-size: 93%;
 padding: 0.25em;
 padding-top: .75em;
-border: 1px solid #F4E995;
+border: 1px solid #F4D777;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 border-radius: 3px;
-background-color: #F7EFB2;
+background-color: #FCE69C;
 }
 
 span.onpub-login {
