@@ -999,7 +999,7 @@ class OnpubFrontend
       en('</div>');
       en('</div>');
 
-      en('<div style="padding-right: 0.5em;">');
+      en('<div style="padding-right: 1em;">');
       if ($this->currentArticle->image) {
         $this->currentArticle->image->website = $this->website;
         en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=280&f=png', $onpub_dir_phpthumb) . '" align="right" style="margin-right: 0.75em;" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
