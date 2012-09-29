@@ -62,7 +62,7 @@ class OnpubLogin
 
     en('<div class="yui3-u-1">');
     en('<form id="onpub-form" action="index.php" method="post">');
-    en('<div style="width: 21%; margin-left: auto; margin-right: auto; margin-bottom: 2.25em;">');
+    en('<div style="width: 25%; margin-left: auto; margin-right: auto; margin-bottom: 2.25em;">');
 
     if (defined('ONPUBGUI_PDO_HOST')) {
       en('<input type="hidden" name="pdoHost" value="' . ONPUBGUI_PDO_HOST . '">');

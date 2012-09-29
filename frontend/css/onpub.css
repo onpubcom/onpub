@@ -17,6 +17,11 @@ a.onpub-section-nav:visited { color: #0B75C1; text-decoration: none; }
 a.onpub-section-nav:hover { color: #0B75C1; text-decoration: underline; }
 a.onpub-section-nav:active { color: #0B75C1; text-decoration: underline; }
 
+a.onpub-footer-nav:link { color: #F4D777; text-decoration: none; }
+a.onpub-footer-nav:visited { color: #F4D777; text-decoration: none; }
+a.onpub-footer-nav:hover { color: #F4D777; text-decoration: underline; }
+a.onpub-footer-nav:active { color: #F4D777; text-decoration: underline; }
+
 html {
 background-color: #7F8387;
 }
@@ -30,8 +35,8 @@ text-align: center;
 }
 
 #onpub-header {
-background-color: #F7F7F7;
-border-bottom: 1px solid #6F7377;
+background-color: #64696D;
+border-bottom: 1px dotted #555B60;
 }
 
 #onpub-logo {
@@ -212,9 +217,9 @@ background-color: #FCE69C;
 span.onpub-login {
 padding: 0.5em;
 padding-top: .75em;
-border: 1px solid #6F7377;
+border: 1px dotted #555B60;
 text-align: right;
-background-color: #F7F7F7;
+background-color: #64696D;
 }
 
 span.onpub-field-header {

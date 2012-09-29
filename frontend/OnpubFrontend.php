@@ -703,7 +703,7 @@ class OnpubFrontend
     en('<div class="yui3-u-3-4">');
 
     if ($this->website) {
-      en('<p>&copy; ' . $dt->format('Y') . ' <a href="index.php">' . $this->website->name . '</a>. All rights reserved.</p>');
+      en('<p>&copy; ' . $dt->format('Y') . ' <a class="onpub-footer-nav" href="index.php">' . $this->website->name . '</a>. All rights reserved.</p>');
     }
     else {
       en('<p>Onpub ' . ONPUBAPI_VERSION . ', &copy; 2012 <a href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
@@ -714,10 +714,10 @@ class OnpubFrontend
 
     if ($onpub_disp_login) {
       if ($this->loginStatus) {
-        en('<span class="onpub-login"><a href="' . $onpub_dir_manage . 'index.php?onpub=Logout" target="_onpub">Logout</a></span>');
+        en('<span class="onpub-login"><a class="onpub-footer-nav" href="' . $onpub_dir_manage . 'index.php?onpub=Logout" target="_onpub">Logout</a></span>');
       }
       else {
-        en('<span class="onpub-login"><a href="' . $onpub_dir_manage . 'index.php" target="_onpub">Login</a></span>');
+        en('<span class="onpub-login"><a class="onpub-footer-nav" href="' . $onpub_dir_manage . 'index.php" target="_onpub">Login</a></span>');
       }
     }
 
