@@ -18,11 +18,11 @@ a.onpub-section-nav:hover { color: #0B75C1; text-decoration: underline; }
 a.onpub-section-nav:active { color: #0B75C1; text-decoration: underline; }
 
 html {
-background-color: #AEB4BA;
+background-color: #7F8387;
 }
 
 body {
-background-color: #AEB4BA;
+background-color: #7F8387;
 }
 
 #onpub-banner {
@@ -31,7 +31,7 @@ text-align: center;
 
 #onpub-header {
 background-color: #F7F7F7;
-border-bottom: 1px solid #A2AAB2;
+border-bottom: 1px solid #6F7377;
 }
 
 #onpub-logo {
@@ -53,14 +53,11 @@ margin: auto;
 #onpub-body {
 color: #494F59;
 background-color: #FCFCFC;
-border: 1px solid #A2AAB2;
+border: 1px solid #6F7377;
 padding-left: 1em;
 padding-right: 1em;
 padding-bottom: 1em;
 margin-top: .75em;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
-border-radius: 4px;
 }
 
 #onpub-footer {
@@ -72,7 +69,8 @@ background-color: transparent;
 #onpub-footer-content {
 width: 970px;
 margin: auto;
-font-size: 93%;
+font-size: 85%;
+font-weight: bold;
 color: #F7F7F7;
 }
 
@@ -214,10 +212,7 @@ background-color: #FCE69C;
 span.onpub-login {
 padding: 0.5em;
 padding-top: .75em;
-border: 1px solid #A2AAB2;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
+border: 1px solid #6F7377;
 text-align: right;
 background-color: #F7F7F7;
 }

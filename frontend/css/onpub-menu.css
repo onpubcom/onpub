@@ -73,17 +73,17 @@ border: 1px solid #0C73B7;
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label-active, .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-active .yui3-menuitem-content, .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label-menuvisible {
 border-color: #0C73B7;
 background-image: none;
-background-color: #1BC2F9;
+background-color: #3EABF9;
 }
 
 /* Submenu items mouseover */
 .yui3-skin-sam .yui3-menuitem-active .yui3-menuitem-content, .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menuitem-active .yui3-menuitem-content {
-background-color: #1BC2F9;
+background-color: #3EABF9;
 }
 
 /* Submenus mouseover */
 .yui3-skin-sam .yui3-menu-label-active, .yui3-skin-sam .yui3-menu-label-menuvisible, .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label-active, .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-label-menuvisible {
-background-color: #1BC2F9;
+background-color: #3EABF9;
 }
 
 /* Menu indicator background image */
