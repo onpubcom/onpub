@@ -40,7 +40,7 @@ class OnpubWidgetHeader
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'overlay/assets/skins/sam/overlay.css">');
     }
     else {
-      en('<link rel="stylesheet" type="text/css" href="//yui.yahooapis.com/combo?' .
+      en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' .
          ONPUBGUI_YUI_VERSION . '/build/cssreset/cssreset-min.css&' . ONPUBGUI_YUI_VERSION .
          '/build/cssfonts/cssfonts-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/cssgrids-min.css&' .
          ONPUBGUI_YUI_VERSION . '/build/cssbase/cssbase-min.css&' . ONPUBGUI_YUI_VERSION .

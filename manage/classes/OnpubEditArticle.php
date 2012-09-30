@@ -82,7 +82,7 @@ class OnpubEditArticle
         $config['contentsCss'] = array('ckeditor/contents.css', ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css', 'css/ckeditor.css');
       }
       else {
-        $config['contentsCss'] = array('ckeditor/contents.css', '//yui.yahooapis.com/' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css', 'css/ckeditor.css');
+        $config['contentsCss'] = array('ckeditor/contents.css', 'http://yui.yahooapis.com/' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css', 'css/ckeditor.css');
       }
 
       $events['instanceReady'] = 'function (ev) {

@@ -9,7 +9,7 @@
 
 YUI(
 {
-  base: (onpub_dir_yui == null) ? "//yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui,
+  base: (onpub_dir_yui == null) ? "http://yui.yahooapis.com/combo?" + onpub_yui_version + "/build/" : onpub_dir_yui,
   fetchCSS: false // Don't fetch CSS dependencies since we load them in <head>
 }).use("node-menunav", function(Y)
 {

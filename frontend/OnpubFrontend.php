@@ -1208,7 +1208,7 @@ class OnpubFrontend
     }
     else {
       $onpub_dir_yui = null;
-      en('<link rel="stylesheet" type="text/css" href="//yui.yahooapis.com/combo?' .
+      en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' .
         $onpub_yui_version . '/build/cssreset/cssreset-min.css&' . $onpub_yui_version .
         '/build/cssfonts/cssfonts-min.css&' . $onpub_yui_version .
         '/build/cssgrids/cssgrids-min.css&' . $onpub_yui_version .
@@ -1304,7 +1304,7 @@ class OnpubFrontend
       en('<script type="text/javascript" src="' . $onpub_dir_yui . 'yui/yui-min.js"></script>');
     }
     else {
-      en('<script type="text/javascript" src="//yui.yahooapis.com/combo?' . $onpub_yui_version . '/build/yui/yui-min.js"></script>');
+      en('<script type="text/javascript" src="http://yui.yahooapis.com/combo?' . $onpub_yui_version . '/build/yui/yui-min.js"></script>');
     }
 
     en('<script type="text/javascript" src="' . $onpub_dir_frontend . 'js/site.js"></script>');

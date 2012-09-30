@@ -75,7 +75,6 @@ background-color: transparent;
 width: 970px;
 margin: auto;
 font-size: 85%;
-font-weight: bold;
 color: #F7F7F7;
 }
 
@@ -96,7 +95,7 @@ width:auto;*width:auto;
 input[type=text], input[type=password] {
 color: #3F4247;
 background-color: #FCE69C;
-border: 1px solid #68707F;
+border: 1px solid #666D7A;
 padding: 0.2em;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;

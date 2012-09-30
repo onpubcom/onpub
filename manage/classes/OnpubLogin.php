@@ -46,7 +46,7 @@ class OnpubLogin
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssbase/cssbase-min.css">');
     }
     else {
-      en('<link rel="stylesheet" type="text/css" href="//yui.yahooapis.com/combo?' . ONPUBGUI_YUI_VERSION . '/build/cssreset/cssreset-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssfonts/cssfonts-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/cssgrids-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssbase/cssbase-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' . ONPUBGUI_YUI_VERSION . '/build/cssreset/cssreset-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssfonts/cssfonts-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/cssgrids-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssbase/cssbase-min.css">');
     }
 
     en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
@@ -62,7 +62,7 @@ class OnpubLogin
 
     en('<div class="yui3-u-1">');
     en('<form id="onpub-form" action="index.php" method="post">');
-    en('<div style="width: 25%; margin-left: auto; margin-right: auto; margin-bottom: 2.25em;">');
+    en('<div style="width: 24%; margin-left: auto; margin-right: auto; margin-bottom: 2.25em;">');
 
     if (defined('ONPUBGUI_PDO_HOST')) {
       en('<input type="hidden" name="pdoHost" value="' . ONPUBGUI_PDO_HOST . '">');
