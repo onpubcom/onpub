@@ -333,7 +333,7 @@ class OnpubFrontend
         en('<div id="onpub-logo"><a href="index.php"><img src="' . addTrailingSlash($this->website->imagesURL) . $this->website->image->fileName . '" alt="' . $this->website->image->fileName . '" title="' . $this->website->image->description . '"></a></div>');
       }
       else {
-        en('<div id="onpub-logo" style="margin-bottom: .25em; font-size: 197%;"><a href="index.php">' . $this->website->name . '</a></div>');
+        en('<div id="onpub-logo" style="margin-bottom: .25em; font-size: 197%;"><a class="onpub-footer-nav" href="index.php">' . $this->website->name . '</a></div>');
       }
     }
     else {
@@ -467,7 +467,7 @@ class OnpubFrontend
   protected function news()
   {
     global $onpub_disp_article, $onpub_disp_updates_num, $onpub_inc_article_updates,
-           $onpub_dir_phpthumb;
+           $onpub_dir_phpthumb, $onpub_dir_manage;
 
     $qo = new OnpubQueryOptions();
     $qo->includeContent = true;
@@ -706,7 +706,7 @@ class OnpubFrontend
       en('<p>&copy; ' . $dt->format('Y') . ' <a class="onpub-footer-nav" href="index.php">' . $this->website->name . '</a>. All rights reserved.</p>');
     }
     else {
-      en('<p>Onpub ' . ONPUBAPI_VERSION . ', &copy; 2012 <a href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
+      en('<p>Onpub ' . ONPUBAPI_VERSION . ', &copy; 2012 <a class="onpub-footer-nav" href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
     }
 
     en('</div>');

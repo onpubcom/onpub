@@ -7,15 +7,15 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-a:link { color: #0B75C1; text-decoration: none; }
-a:visited { color: #0B75C1; text-decoration: none; }
-a:hover { color: #0B75C1; text-decoration: underline; }
-a:active { color: #0B75C1; text-decoration: underline; }
+a:link { color: #0D72BA; text-decoration: none; }
+a:visited { color: #0D72BA; text-decoration: none; }
+a:hover { color: #0D72BA; text-decoration: underline; }
+a:active { color: #0D72BA; text-decoration: underline; }
 
-a.onpub-section-nav:link { color: #0B75C1; text-decoration: none; }
-a.onpub-section-nav:visited { color: #0B75C1; text-decoration: none; }
-a.onpub-section-nav:hover { color: #0B75C1; text-decoration: underline; }
-a.onpub-section-nav:active { color: #0B75C1; text-decoration: underline; }
+a.onpub-section-nav:link { color: #0D72BA; text-decoration: none; }
+a.onpub-section-nav:visited { color: #0D72BA; text-decoration: none; }
+a.onpub-section-nav:hover { color: #0D72BA; text-decoration: underline; }
+a.onpub-section-nav:active { color: #0D72BA; text-decoration: underline; }
 
 a.onpub-footer-nav:link { color: #F4D777; text-decoration: none; }
 a.onpub-footer-nav:visited { color: #F4D777; text-decoration: none; }
@@ -230,11 +230,11 @@ font-weight: bold;
 div.onpub-save-overlay {
 width: 15em;
 font-size: 93%;
-font-weight: normal;
+font-weight: bold;
 text-align: center;
 padding: 0.5em;
-background-color: #1BC2F9;
-color: #F7F7F7;
+background-color: #F4D777;
+color: #494F59;
 -webkit-border-bottom-right-radius: 3px;
 -webkit-border-bottom-left-radius: 3px;
 -moz-border-radius-bottomright: 3px;

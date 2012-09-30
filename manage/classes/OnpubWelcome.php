@@ -150,8 +150,8 @@ class OnpubWelcome
       if ($odatabase->current())
       {
         en('<p>This appears to be the first time you have connected to this MySQL database with Onpub.</p>');
-        en('<p>Before you can publish a website with Onpub you must add the Onpub schema to the connected database: <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
-        en('<p>Please click the link below to continue...</p>');
+        en('<p>Before you can publish a website with Onpub, you must add the Onpub schema to the connected database: <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
+        en('<p>Please click the link below to continue:</p>');
         en('<ul><li><a href="index.php?onpub=SchemaInstall">Install the Onpub MySQL database schema</a></li></ul>');
       }
       else
@@ -160,7 +160,7 @@ class OnpubWelcome
 
         if (sizeof($dbs))
         {
-          en('<p>Please select the MySQL Database that you would like to work with...</p>');
+          en('<p>Please select the MySQL Database that you would like to work with and click Connect.</p>');
 
           en('<form id="onpub-form" action="index.php" method="post">');
           en('<div>');
