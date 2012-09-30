@@ -46,7 +46,7 @@ class OnpubLogin
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssbase/cssbase-min.css">');
     }
     else {
-      en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' . ONPUBGUI_YUI_VERSION . '/build/cssreset/cssreset-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssfonts/cssfonts-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/cssgrids-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssbase/cssbase-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="//yui.yahooapis.com/combo?' . ONPUBGUI_YUI_VERSION . '/build/cssreset/cssreset-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssfonts/cssfonts-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/cssgrids-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssbase/cssbase-min.css">');
     }
 
     en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
