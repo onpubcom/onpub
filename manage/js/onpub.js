@@ -212,7 +212,7 @@ YUI(
       // There was an error.
       try {
         var error = Y.JSON.parse(response.responseText);
-        overlay.set("headerContent", '<div class="onpub-save-overlay"><span style="color: red;">Save error: ' + error.message + '.</span></div>');
+        overlay.set("headerContent", '<div class="onpub-save-overlay">Save error. Try again..</div>');
       }
       catch (e) {
         Y.log(e);
@@ -226,7 +226,7 @@ YUI(
 
   function saveArticleFailure(tid, response, overlay)
   {
-    overlay.set("headerContent", '<div class="onpub-save-overlay"><span style="color: red;">Save error. Try again..</span></div>');
+    overlay.set("headerContent", '<div class="onpub-save-overlay">Save error. Try again..</div>');
   }
 
   function saveArticleEnd(tid, overlay)
