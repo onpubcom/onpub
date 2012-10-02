@@ -229,11 +229,6 @@ YUI(
     overlay.set("headerContent", '<div class="onpub-save-overlay"><span style="color: red;">Save error. Try again..</span></div>');
   }
 
-  function animRun(anim)
-  {
-    anim.run();
-  }
-
   function saveArticleEnd(tid, overlay)
   {
     var anim = new Y.Anim({
@@ -242,7 +237,7 @@ YUI(
       duration: 1
     });
 
-    Y.later(1500, anim, "run", null, false);
+    Y.later(2000, anim, "run", null, false);
   }
 
   function saveArticle(e, textarea, overlay)
@@ -432,12 +427,12 @@ YUI(
         headerContent: '<div class="onpub-save-overlay"></div>',
         visible: false,
         align: {
-          node: "#onpub-body",
-          points: [Y.WidgetPositionAlign.TC, Y.WidgetPositionAlign.TC]
+          node: "#cke_content",
+          points: [Y.WidgetPositionAlign.TR, Y.WidgetPositionAlign.TR]
         }
       });
 
-      overlay.render("#onpub-body");
+      overlay.render("#cke_content");
 
       // Setup the AJAX event handlers
       Y.on("io:start", saveArticleStart, Y, overlay);

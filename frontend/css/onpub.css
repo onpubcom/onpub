@@ -95,7 +95,7 @@ width:auto;*width:auto;
 input[type=text], input[type=password] {
 color: #3F4247;
 background-color: #FCE69C;
-border: 1px solid #666D7A;
+border: 1px dotted #EDCC61;
 padding: 0.2em;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
@@ -237,15 +237,16 @@ font-size: 93%;
 font-weight: bold;
 text-align: center;
 padding: 0.5em;
-background-color: #F4D777;
+background-color: #FCE69C;
 color: #3F4247;
--webkit-border-bottom-right-radius: 3px;
--webkit-border-bottom-left-radius: 3px;
--moz-border-radius-bottomright: 3px;
--moz-border-radius-bottomleft: 3px;
-border-bottom-right-radius: 3px;
-border-bottom-left-radius: 3px;
-margin-top: .15em;
+-webkit-border-top-right-radius: 4px;
+-webkit-border-bottom-left-radius: 4px;
+-moz-border-radius-topright: 4px;
+-moz-border-radius-bottomleft: 4px;
+border-top-right-radius: 4px;
+border-bottom-left-radius: 4px;
+border: 1px solid #D3D3D3;
+margin-right: -1px;
 }
 
 img.onpub-image-preview {
