@@ -39,20 +39,40 @@ background-color: #64696D;
 border-bottom: 1px dotted #555B60;
 }
 
+@media all and (min-width: 970px) {
 #onpub-logo {
 width: 970px;
 margin: auto;
 font-weight: normal;
 padding-top: .25em;
 }
+}
 
+@media all and (max-width: 970px) {
+#onpub-logo {
+width: 98%;
+margin: auto;
+font-weight: normal;
+padding-top: .25em;
+}
+}
+    
 #onpub-menubar {
 margin-top: 0.75em;
 }
 
+@media all and (min-width: 970px) {
 #onpub-page {
 width: 970px;
 margin: auto;
+}
+}
+
+@media all and (max-width: 970px) {
+#onpub-page {
+width: 98%;
+margin: auto;
+}
 }
 
 #onpub-body {
@@ -71,11 +91,22 @@ padding-bottom: .5em;
 background-color: transparent;
 }
 
+@media all and (min-width: 970px) {
 #onpub-footer-content {
 width: 970px;
 margin: auto;
 font-size: 85%;
 color: #F7F7F7;
+}
+}
+
+@media all and (max-width: 970px) {
+#onpub-footer-content {
+width: 98%;
+margin: auto;
+font-size: 85%;
+color: #F7F7F7;
+}
 }
 
 .yui3-loading #onpub-menubar {
