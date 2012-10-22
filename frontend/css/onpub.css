@@ -40,15 +40,15 @@ border-bottom: 1px dotted #555B60;
 }
 
 #onpub-logo {
-width: 98%;
+width: 970px;
 margin: auto;
 font-weight: normal;
 padding-top: .25em;
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (max-width: 980px) {
   #onpub-logo {
-  width: 970px;
+  width: 95%;
   }
 }
     
@@ -57,13 +57,13 @@ margin-top: 0.75em;
 }
 
 #onpub-page {
-width: 98%;
+width: 970px;
 margin: auto;
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (max-width: 980px) {
   #onpub-page {
-  width: 970px;
+  width: 95%;
   }
 }
 
@@ -84,15 +84,15 @@ background-color: transparent;
 }
 
 #onpub-footer-content {
-width: 98%;
+width: 970px;
 margin: auto;
 font-size: 85%;
 color: #F7F7F7;
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (max-width: 980px) {
   #onpub-footer-content {
-  width: 970px;
+  width: 95%;
   }
 }
 
