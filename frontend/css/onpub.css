@@ -46,7 +46,7 @@ font-weight: normal;
 padding-top: .25em;
 }
 
-@media all and (min-width: 980px) {
+@media screen and (min-width: 980px) {
   #onpub-logo {
   width: 970px;
   }
@@ -61,7 +61,7 @@ width: 98%;
 margin: auto;
 }
 
-@media all and (min-width: 980px) {
+@media screen and (min-width: 980px) {
   #onpub-page {
   width: 970px;
   }
@@ -90,7 +90,7 @@ font-size: 85%;
 color: #F7F7F7;
 }
 
-@media all and (min-width: 980px) {
+@media screen and (min-width: 980px) {
   #onpub-footer-content {
   width: 970px;
   }
