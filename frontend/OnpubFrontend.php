@@ -355,7 +355,7 @@ class OnpubFrontend
       else {
         en('<li>');
         en('<a class="yui3-menu-label" href="index.php?s=' . $sub->ID . '">' . $sub->name . '</a>');
-        en('<div class="yui3-menu">');
+        en('<div id="s' . $sub->ID . '" class="yui3-menu">');
         en('<div class="yui3-menu-content">');
         en('<ul>');
 
@@ -395,28 +395,16 @@ class OnpubFrontend
           en('<div class="yui3-menu-content">');
           en('<ul>');
 
-          $i = 0;
-
           foreach ($sections as $s) {
             if ($s->url) {
               en('<li class="yui3-menuitem">');
-              if ($i) {
-                en('<a class="yui3-menuitem-content" href="' . $s->url . '">' . $s->name . '</a>');
-              }
-              else {
-                en('<a class="yui3-menuitem-content" href="' . $s->url . '">' . $s->name . '</a>');
-              }
+              en('<a class="yui3-menuitem-content" href="' . $s->url . '">' . $s->name . '</a>');
               en('</li>');
             }
             else {
               en('<li>');
-              if ($i) {
-                en('<a class="yui3-menu-label" href="index.php?s=' . $s->ID . '"><em>' . $s->name . '</em></a>');
-              }
-              else {
-                en('<a class="yui3-menu-label" href="index.php?s=' . $s->ID . '"><em>' . $s->name . '</em></a>');
-              }
-              en('<div class="yui3-menu">');
+              en('<a class="yui3-menu-label" href="index.php?s=' . $s->ID . '"><em>' . $s->name . '</em></a>');
+              en('<div id="s' . $s->ID . '" class="yui3-menu">');
               en('<div class="yui3-menu-content">');
               en('<ul>');
 
@@ -438,8 +426,6 @@ class OnpubFrontend
               en('</div>');
               en('</li>');
             }
-
-            $i++;
           }
 
           en('</ul>');

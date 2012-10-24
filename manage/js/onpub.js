@@ -14,10 +14,26 @@ YUI(
 }
 ).use("node-menunav", "io-form", "overlay", "anim-base", "json-parse", function(Y)
 {
+  // Converts section links to sub-menu achor links.
+  var linkToAnchor = function(node, index, list) {
+    var li = node.get("parentNode").get("parentNode");
+    var div = li.get("children").item(1);
+    node.get("parentNode").set("href", "#" + div.get("id"));
+  };
+    
   // Render the nav menu.
   Y.on("contentready", function () {
-    this.plug(Y.Plugin.NodeMenuNav);
-    this.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
+    if (Y.UA.touchEnabled) {
+      // Make menu bar touch-friendly.
+      this.plug(Y.Plugin.NodeMenuNav, {autoSubmenuDisplay: false, mouseOutHideDelay: 0});
+      Y.all("a.yui3-menu-label em").each(linkToAnchor);
+    }
+    else {
+      // Make menu bar mouse-friendly.
+      this.plug(Y.Plugin.NodeMenuNav);          
+    }
+
+    this.get("ownerDocument").get("documentElement").removeClass("yui3-loading");    
   }, "#onpub-menubar");
 
   // Event handler functions.
