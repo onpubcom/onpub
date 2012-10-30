@@ -728,11 +728,11 @@ class OnpubFrontend
       en('<div class="yui3-g">');
 
       if ($subsections) {
-        en('<div class="yui3-u-3-4">');
+        en('<div class="yui3-u-3-4 onpub-section">');
         en('<h1>' . $this->currentSection->name . '</h1>');
       }
       else {
-        en('<div class="yui3-u">');
+        en('<div class="yui3-u onpub-section">');
         en('<h1>' . $this->currentSection->name . '</h1>');
       }
 
@@ -933,7 +933,7 @@ class OnpubFrontend
 
     if ($this->currentSection && $this->currentArticle) {
       en('<div class="yui3-g">');
-      en('<div class="yui3-u-3-4">');
+      en('<div class="yui3-u-3-4 onpub-article">');
 
       en('<h1>' . $this->currentArticle->title . '</h1>');
 
@@ -1069,7 +1069,7 @@ class OnpubFrontend
            $onpub_dir_frontend, $onpub_inc_article_foot;
 
     en('<div class="yui3-g">');
-    en('<div class="yui3-u">');
+    en('<div class="yui3-u onpub-article">');
 
     if ($this->currentArticle) {
       en('<h1 style="margin-right: 0;">' . $this->currentArticle->title . '</h1>');

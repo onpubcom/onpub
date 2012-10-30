@@ -279,3 +279,18 @@ box-shadow: 0px 0px 2px #BEBEBE;
   width: 970px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  /* Client's device is at most 480px, hide right-column section navigation */
+  div.onpub-section-nav {
+      display: none;
+  }
+  
+  div.onpub-section {
+      width: 100%;
+  }
+  
+  div.yui3-u-3-4, onpub-article {
+      width: 100%;
+  }
+}
