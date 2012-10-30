@@ -265,6 +265,10 @@ border: 1px solid #BEBEBE;
 box-shadow: 0px 0px 2px #BEBEBE;
 }
 
+img {
+max-width: 100%;
+}
+
 @media screen and (min-width: 980px) {
   /* Client's device at least 980px, fix layout widths to 970px */
   #onpub-logo {
