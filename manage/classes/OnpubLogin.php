@@ -36,7 +36,9 @@ class OnpubLogin
     en('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">');
     en('<html>');
     en('<head>');
+    en('<meta name="viewport" content="width=device-width; initial-scale=1.0">');
     en('<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">');
+    en('<meta http-equiv="Content-Style-Type" content="text/css">');
     en('<title>Onpub (on ' . $_SERVER['SERVER_NAME'] . ')</title>');
 
     if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
