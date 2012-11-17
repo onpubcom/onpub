@@ -47,10 +47,11 @@ class OnpubWelcome
       $numarticles = $oarticles->count();
 
       en('<div class="yui3-u-1-2">');
+      en('<div style="padding-right: 1em;">');
 
       if ($numsites == 0) {
         en('<h3>You are ready to start publishing content with Onpub.</h3>');
-        en('<p><a href="index.php?onpub=NewWebsite">Create a website</a> to get started.</p>');
+        en('<p><b><a href="index.php?onpub=NewWebsite">Create a website</a></b> to get started.</p>');
       }
       else {
         if ($numarticles) {
@@ -81,18 +82,23 @@ class OnpubWelcome
           en('</table>');
         }
 
-        en('<h3>Quick Links</h3>');
-        en('<ul>');
-        en('<li><a href="index.php?onpub=NewArticle">New Article</a></li>');
-        en('<li><a href="index.php?onpub=NewSection">New Section</a></li>');
-        en('<li><a href="index.php?onpub=UploadImages">Upload Images</a></li>');
-        en('</ul>');
+
       }
 
-      en('</div>');
 
-      en('<div class="yui3-u-1-4">');
-      en('<table style="margin-left: auto; margin-right: auto;">');
+      en('<div class="yui3-g">');
+      en('<div class="yui3-u-1-2">');
+
+      en('<h3>Quick Links</h3>');
+      en('<ul>');
+      en('<li><a href="index.php?onpub=NewArticle">New Article</a></li>');
+      en('<li><a href="index.php?onpub=NewSection">New Section</a></li>');
+      en('<li><a href="index.php?onpub=UploadImages">Upload Images</a></li>');
+      en('</ul>');
+
+      en('</div>');
+      en('<div class="yui3-u-1-2">');
+      en('<table style="float: right;">');
       en('<tr><th colspan="2" style="text-align: left;">Content Stats</th></tr>');
       en('<tr><td><a href="index.php?onpub=EditArticles">Articles</a>:</td><td>' . $numarticles . '</td></tr>');
       //en('<tr><td>Authors:</td><td>' . $oauthors->count() . '</td></tr>');
@@ -101,7 +107,12 @@ class OnpubWelcome
       en('<tr><td><a href="index.php?onpub=EditWebsites">Websites</a>:</td><td>' . $numsites . '</td></tr>');
       en('</table>');
       en('</div>');
-      en('<div class="yui3-u-1-4">');
+      en('</div>');
+
+      en('</div>');
+      en('</div>');
+
+      en('<div class="yui3-u-1-2">');
     }
     elseif ($this->pdo === NULL) {
       en('<div class="yui3-u-3-4">');
@@ -144,7 +155,7 @@ class OnpubWelcome
     }
     else {
       // Onpub schema is not installed yet. Prompt user to install.
-      en('<div class="yui3-u-3-4">');
+      en('<div class="yui3-u-1-2">');
       en('<h2>Welcome to Onpub</h2>');
 
       if ($odatabase->current())
@@ -152,7 +163,7 @@ class OnpubWelcome
         en('<p>This appears to be the first time you have connected to this MySQL database with Onpub.</p>');
         en('<p>Before you can publish a website with Onpub, you must add the Onpub schema to the connected database: <em>' . $_SESSION['PDO_DATABASE'] . '</em>.</p>');
         en('<p>Please click the link below to continue:</p>');
-        en('<ul><li><a href="index.php?onpub=SchemaInstall">Install the Onpub MySQL database schema</a></li></ul>');
+        en('<ul><li><b><a href="index.php?onpub=SchemaInstall">Install the Onpub MySQL database schema</a></b></li></ul>');
       }
       else
       {
@@ -190,7 +201,7 @@ class OnpubWelcome
       }
 
       en('</div>');
-      en('<div class="yui3-u-1-4">');
+      en('<div class="yui3-u-1-2">');
     }
 
     if ($this->pdo) {
