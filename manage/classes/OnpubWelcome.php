@@ -81,22 +81,18 @@ class OnpubWelcome
 
           en('</table>');
         }
-
-
       }
-
 
       en('<div class="yui3-g">');
       en('<div class="yui3-u-1-2">');
-
       en('<h3>Quick Links</h3>');
       en('<ul>');
       en('<li><a href="index.php?onpub=NewArticle">New Article</a></li>');
       en('<li><a href="index.php?onpub=NewSection">New Section</a></li>');
       en('<li><a href="index.php?onpub=UploadImages">Upload Images</a></li>');
       en('</ul>');
-
       en('</div>');
+      
       en('<div class="yui3-u-1-2">');
       en('<table style="float: right;">');
       en('<tr><th colspan="2" style="text-align: left;">Content Stats</th></tr>');
@@ -115,7 +111,7 @@ class OnpubWelcome
       en('<div class="yui3-u-1-2">');
     }
     elseif ($this->pdo === NULL) {
-      en('<div class="yui3-u-3-4">');
+      en('<div class="yui3-u-1-2">');
 
       en('<h3><span class="onpub-error">PDOException:</span> ' . $this->pdoException->getMessage() . '</h3>');
 
@@ -151,7 +147,7 @@ class OnpubWelcome
       }
 
       en('</div>');
-      en('<div class="yui3-u-1-4">');
+      en('<div class="yui3-u-1-2">');
     }
     else {
       // Onpub schema is not installed yet. Prompt user to install.
