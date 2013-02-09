@@ -4,3 +4,4 @@ build/
 manage/ckeditor/
 local/
 onpub_conf_local.php
+nbproject/
