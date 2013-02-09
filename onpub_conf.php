@@ -250,6 +250,6 @@ variable will usually be set to whatever the most recent version of YUI 3 is at
 the time new versions of Onpub are released.
 */
 if (!isset($onpub_yui_version))
-  $onpub_yui_version = '3.7.3';
+  $onpub_yui_version = '3.8.1';
 
 ?>
