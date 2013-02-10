@@ -344,6 +344,8 @@ class OnpubFrontend
 
   protected function menuSubSections($section)
   {
+    global $onpub_disp_friendly_urls;
+      
     $subsections = $section->sections;
 
     foreach ($subsections as $sub) {
@@ -354,7 +356,14 @@ class OnpubFrontend
       }
       else {
         en('<li>');
-        en('<a class="yui3-menu-label" href="index.php?s=' . $sub->ID . '">' . $sub->name . '</a>');
+        
+        if ($onpub_disp_friendly_urls) {
+          en('<a class="yui3-menu-label" href="' . $this->generateFriendlyURL($sub) . '">' . $sub->name . '</a>');            
+        }
+        else {
+          en('<a class="yui3-menu-label" href="index.php?s=' . $sub->ID . '">' . $sub->name . '</a>');
+        }
+        
         en('<div id="s' . $sub->ID . '" class="yui3-menu">');
         en('<div class="yui3-menu-content">');
         en('<ul>');
@@ -366,7 +375,12 @@ class OnpubFrontend
             en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $a->url . '">' . $a->title . '</a></li>');
           }
           else {
-            en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?s=' . $sub->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
+            if ($onpub_disp_friendly_urls) {
+              en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $this->generateFriendlyURL($sub, $a) . '">' . $a->title . '</a></li>');
+            }
+            else {
+              en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?s=' . $sub->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
+            }
           }
         }
 
@@ -384,7 +398,7 @@ class OnpubFrontend
 
   protected function menu()
   {
-    global $onpub_disp_menu;
+    global $onpub_disp_menu, $onpub_disp_friendly_urls;
 
     if ($this->website) {
       if ($onpub_disp_menu) {
@@ -398,12 +412,19 @@ class OnpubFrontend
           foreach ($sections as $s) {
             if ($s->url) {
               en('<li class="yui3-menuitem">');
-              en('<a class="yui3-menuitem-content" href="' . $s->url . '">' . $s->name . '</a>');
+              en('<a class="yui3-menuitem-content" href="' . $s->url . '">' . $s->name . '</a>');                  
               en('</li>');
             }
             else {
               en('<li>');
-              en('<a class="yui3-menu-label" href="index.php?s=' . $s->ID . '"><em>' . $s->name . '</em></a>');
+              
+              if ($onpub_disp_friendly_urls) {
+                en('<a class="yui3-menu-label" href="' . $this->generateFriendlyURL($s) . '"><em>' . $s->name . '</em></a>');
+              }
+              else {
+                en('<a class="yui3-menu-label" href="index.php?s=' . $s->ID . '"><em>' . $s->name . '</em></a>');                  
+              }
+              
               en('<div id="s' . $s->ID . '" class="yui3-menu">');
               en('<div class="yui3-menu-content">');
               en('<ul>');
@@ -415,7 +436,12 @@ class OnpubFrontend
                   en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $a->url. '">' . $a->title . '</a></li>');
                 }
                 else {
-                  en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?s=' . $s->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
+                  if ($onpub_disp_friendly_urls) {
+                    en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $this->generateFriendlyURL($s, $a) . '">' . $a->title . '</a></li>');                      
+                  }
+                  else {
+                    en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?s=' . $s->ID . '&amp;a=' . $a->ID . '">' . $a->title . '</a></li>');
+                  }
                 }
               }
 
@@ -714,7 +740,8 @@ class OnpubFrontend
 
   protected function section()
   {
-    global $onpub_dir_phpthumb, $onpub_dir_manage, $onpub_dir_frontend;
+    global $onpub_dir_phpthumb, $onpub_dir_manage, $onpub_dir_frontend,
+           $onpub_disp_friendly_urls;
 
     if ($this->currentSection) {
       // Get subsections.
@@ -777,7 +804,12 @@ class OnpubFrontend
           $url = $a->url;
         }
         else {
-          $url = 'index.php?s=' . $this->requestedSectionID . '&amp;a=' . $a->ID;
+          if ($onpub_disp_friendly_urls) {
+            $url = $this->generateFriendlyURL($this->currentSection, $a);
+          }
+          else {
+            $url = 'index.php?s=' . $this->requestedSectionID . '&amp;a=' . $a->ID;
+          }
         }
 
         en('<div class="yui3-g">');
@@ -863,7 +895,12 @@ class OnpubFrontend
             en('<h1 class="onpub-section-nav"><a href="' . $this->parentSection->url . '" class="onpub-section-nav">' . $this->parentSection->name . '</a></h1>');
           }
           else {
-            en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $this->parentSection->ID . '" class="onpub-section-nav">' . $this->parentSection->name . '</a></h1>');
+            if ($onpub_disp_friendly_urls) {
+              en('<h1 class="onpub-section-nav"><a href="' . $this->generateFriendlyURL($this->parentSection) . '" class="onpub-section-nav">' . $this->parentSection->name . '</a></h1>');              
+            }
+            else {
+              en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $this->parentSection->ID . '" class="onpub-section-nav">' . $this->parentSection->name . '</a></h1>');
+            }
           }
 
           $articles = $this->articles->select(null, $this->parentSection->ID);
@@ -873,7 +910,12 @@ class OnpubFrontend
               en('<div class="onpub-section-nav-link"><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></div>');
             }
             else {
-              en('<div class="onpub-section-nav-link"><a href="index.php?s=' . $this->parentSection->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></div>');
+              if ($onpub_disp_friendly_urls) {
+                en('<div class="onpub-section-nav-link"><a href="' . $this->generateFriendlyURL($this->parentSection, $a) . '" class="onpub-section-nav">' . $a->title . '</a></div>');                
+              }
+              else {
+                en('<div class="onpub-section-nav-link"><a href="index.php?s=' . $this->parentSection->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></div>');
+              }
             }
           }
 
@@ -889,7 +931,12 @@ class OnpubFrontend
                 en('<div class="onpub-section-nav-link"><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></div>');
               }
               else {
-                en('<div class="onpub-section-nav-link"><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></div>');
+                if ($onpub_disp_friendly_urls) {
+                  en('<div class="onpub-section-nav-link"><a href="' . $this->generateFriendlyURL($s) . '" class="onpub-section-nav">' . $s->name . '</a></div>');                  
+                }
+                else {
+                  en('<div class="onpub-section-nav-link"><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></div>');
+                }
               }
             }
           }
@@ -900,7 +947,12 @@ class OnpubFrontend
               en('<h1 class="onpub-section-nav"><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></h1>');
             }
             else {
-              en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></h1>');
+              if ($onpub_disp_friendly_urls) {
+                en('<h1 class="onpub-section-nav"><a href="' . $this->generateFriendlyURL($s) . '" class="onpub-section-nav">' . $s->name . '</a></h1>');                
+              }
+              else {
+                en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></h1>');
+              }
             }
 
             $articles = $this->articles->select(null, $s->ID);
@@ -910,7 +962,12 @@ class OnpubFrontend
                 en('<div class="onpub-section-nav-link"><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></div>');
               }
               else {
-                en('<div class="onpub-section-nav-link"><a href="index.php?s=' . $s->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></div>');
+                if ($onpub_disp_friendly_urls) {
+                  en('<div class="onpub-section-nav-link"><a href="' . $this->generateFriendlyURL($s, $a) . '" class="onpub-section-nav">' . $a->title . '</a></div>');
+                }
+                else {
+                  en('<div class="onpub-section-nav-link"><a href="index.php?s=' . $s->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></div>');                  
+                }
               }
             }
           }
@@ -929,7 +986,7 @@ class OnpubFrontend
   protected function sectionArticle()
   {
     global $onpub_inc_article_info, $onpub_dir_phpthumb, $onpub_inc_article_foot,
-           $onpub_dir_manage, $onpub_dir_frontend;
+           $onpub_dir_manage, $onpub_dir_frontend, $onpub_disp_friendly_urls;
 
     if ($this->currentSection && $this->currentArticle) {
       en('<div class="yui3-g">');
@@ -1016,7 +1073,12 @@ class OnpubFrontend
       en('</div>');
       en('<div class="yui3-u-1-4 onpub-section-nav">');
 
-      en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $this->currentSection->ID . '" class="onpub-section-nav">' . $this->currentSection->name . '</a></h1>');
+      if ($onpub_disp_friendly_urls) {
+        en('<h1 class="onpub-section-nav"><a href="' . $this->generateFriendlyURL($this->currentSection) . '" class="onpub-section-nav">' . $this->currentSection->name . '</a></h1>');        
+      }
+      else {
+        en('<h1 class="onpub-section-nav"><a href="index.php?s=' . $this->currentSection->ID . '" class="onpub-section-nav">' . $this->currentSection->name . '</a></h1>');
+      }
 
       $articles = $this->articles->select(null, $this->currentSection->ID);
 
@@ -1029,7 +1091,12 @@ class OnpubFrontend
             en('<div class="onpub-section-nav-link"><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></div>');
           }
           else {
-            en('<div class="onpub-section-nav-link"><a href="index.php?s=' . $this->currentSection->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></div>');
+            if ($onpub_disp_friendly_urls) {
+              en('<div class="onpub-section-nav-link"><a href="' . $this->generateFriendlyURL($this->currentSection, $a) . '" class="onpub-section-nav">' . $a->title . '</a></div>');    
+            }
+            else {
+              en('<div class="onpub-section-nav-link"><a href="index.php?s=' . $this->currentSection->ID . '&amp;a=' . $a->ID . '" class="onpub-section-nav">' . $a->title . '</a></div>');
+            }
           }
         }
       }
@@ -1042,7 +1109,12 @@ class OnpubFrontend
           en('<div class="onpub-section-nav-link"><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></div>');
         }
         else {
-          en('<div class="onpub-section-nav-link"><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></div>');
+          if ($onpub_disp_friendly_urls) {
+            en('<div class="onpub-section-nav-link"><a href="' . $this->generateFriendlyURL($s) . '" class="onpub-section-nav">' . $s->name . '</a></div>');            
+          }
+          else {
+            en('<div class="onpub-section-nav-link"><a href="index.php?s=' . $s->ID . '" class="onpub-section-nav">' . $s->name . '</a></div>');
+          }
         }
       }
 
@@ -1383,6 +1455,32 @@ class OnpubFrontend
       //OK. Everything is done. Now genarate the feed.
       $feed->genarateFeed();
     }
+  }
+  
+  protected function generateFriendlyURL(OnpubSection $section, OnpubArticle $article = NULL)
+  {
+      $friendlyURL = '';
+      
+      if ($section && $section->name) {
+          $friendlyURL = trim($section->name);
+          $friendlyURL = strtolower($friendlyURL);
+          $friendlyURL = preg_replace('/[\W\s]+/', '-', $friendlyURL);
+          $friendlyURL = $friendlyURL . '-s' . $section->ID;
+      }
+      
+      if ($article && $article->title) {
+          $friendlyURL = trim($article->title);
+          $friendlyURL = strtolower($friendlyURL);
+          $friendlyURL = preg_replace('/[\W\s]+/', '-', $friendlyURL);
+
+          if ($section && $section->ID) {
+            $friendlyURL = $friendlyURL . '-s' . $section->ID;
+          }
+          
+          $friendlyURL = $friendlyURL . '-a' . $article->ID;
+      }
+      
+      return $friendlyURL;
   }
 }
 

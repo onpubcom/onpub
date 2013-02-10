@@ -167,6 +167,14 @@ Set this to false to disable the site's RSS feed.
 if (!isset($onpub_disp_rss))
   $onpub_disp_rss = true;
 
+/*
+Set this to true to enable Onpub's SEO friendly URL support. You must also
+un-comment the Apache URL rewriting rules within the included .htaccess (located
+within the root of your onpub install directory).
+*/
+if (!isset($onpub_disp_friendly_urls))
+  $onpub_disp_friendly_urls = false;
+
 // Local File Includes Config
 
 /*

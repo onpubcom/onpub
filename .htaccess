@@ -1,0 +1,20 @@
+# Apache/httpd .htaccess support for Onpub's SEO friendly URL feature.
+#
+# To enable Onpub friendly URLs, do the following:
+#
+# Add the following line to your onpub_conf_local.php file:
+# $onpub_disp_friendly_urls = true;
+#
+# Make sure the main Apache configuration has the following:
+# AllowOverride FileInfo
+#
+# See https://httpd.apache.org/docs/current/mod/core.html#allowoverride for info.
+# The above Apache config line enables the use of RewriteRules in this .htacess file.
+#
+# Un-comment all the lines below, and you should now have SEO friendly Onpub URLs!
+
+#RewriteEngine On
+
+#RewriteRule [\w-]*(-s(\d+)){1}(-a(\d+)){1}$ index.php?s=$2&a=$4 [L]
+#RewriteRule [\w-]*(-s(\d+)){1}$ index.php?s=$2 [L]
+#RewriteRule [\w-]*(-a(\d+)){1}$ index.php?a=$2 [L]
