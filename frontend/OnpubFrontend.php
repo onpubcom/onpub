@@ -476,11 +476,26 @@ class OnpubFrontend
 
     return $ids;
   }
+  
+  protected function mapSections($sections)
+  {
+    static $map = array();
+
+    foreach ($sections as $s) {
+      $map["$s->ID"] = $s;
+
+      if (sizeof($s->sections)) {
+        $this->mapSections($s->sections);
+      }
+    }
+
+    return $map;
+  }
 
   protected function news()
   {
     global $onpub_disp_article, $onpub_disp_updates_num, $onpub_inc_article_updates,
-           $onpub_dir_phpthumb, $onpub_dir_manage;
+           $onpub_dir_phpthumb, $onpub_dir_manage, $onpub_disp_friendly_urls;
 
     $qo = new OnpubQueryOptions();
     $qo->includeContent = true;
@@ -521,6 +536,7 @@ class OnpubFrontend
       en('<h1 style="margin-right: 0;">' . $this->labelUpdates . '</h1>');
 
       $websiteSectionIDs = $this->extractSectionIDs($this->website->sections);
+      $sectionMap = $this->mapSections($this->website->sections);
 
       $i = 0;
 
@@ -544,7 +560,12 @@ class OnpubFrontend
             $url = $a->url;
           }
           else {
-            $url = 'index.php?s=' . $visibleSIDs[0] . '&amp;a=' . $a->ID;
+            if ($onpub_disp_friendly_urls) {
+              $url = $this->generateFriendlyURL($sectionMap[$visibleSIDs[0]], $a);
+            }
+            else {
+              $url = 'index.php?s=' . $visibleSIDs[0] . '&amp;a=' . $a->ID;
+            }
           }
 
           en('<div class="yui3-g">');
