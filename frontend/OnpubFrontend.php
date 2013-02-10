@@ -1397,7 +1397,7 @@ class OnpubFrontend
 
   protected function rss()
   {
-    global $onpub_disp_rss, $onpub_disp_updates_num;
+    global $onpub_disp_rss, $onpub_disp_updates_num, $onpub_disp_friendly_urls;
 
     if ($this->website && $onpub_disp_rss) {
       // See the following OnpubAPI tutorial for more info:
@@ -1452,11 +1452,11 @@ class OnpubFrontend
 
         $samaps = $this->samaps->select(null, null, $article->ID);
 
-        if (sizeof($samaps)) {
-          $newItem->setLink(addTrailingSlash($this->website->url) . 'index.php?s=' . $samaps[0]->sectionID . '&a=' . $article->ID);
+        if ($onpub_disp_friendly_urls) {
+          $newItem->setLink(addTrailingSlash($this->website->url) . $this->generateFriendlyURL(NULL, $article, $samaps[0]->sectionID));
         }
         else {
-          $newItem->setLink(addTrailingSlash($this->website->url) . 'index.php?a=' . $article->ID);
+          $newItem->setLink(addTrailingSlash($this->website->url) . 'index.php?s=' . $samaps[0]->sectionID . '&a=' . $article->ID);
         }
 
         //The parameter is a timestamp for setDate() function
@@ -1478,7 +1478,7 @@ class OnpubFrontend
     }
   }
   
-  protected function generateFriendlyURL(OnpubSection $section, OnpubArticle $article = NULL)
+  protected function generateFriendlyURL($section, $article = NULL, $sectionID = NULL)
   {
       $friendlyURL = '';
       
@@ -1496,6 +1496,9 @@ class OnpubFrontend
 
           if ($section && $section->ID) {
             $friendlyURL = $friendlyURL . '-s' . $section->ID;
+          }
+          elseif ($sectionID) {
+            $friendlyURL = $friendlyURL . '-s' . $sectionID;            
           }
           
           $friendlyURL = $friendlyURL . '-a' . $article->ID;
