@@ -536,7 +536,6 @@ class OnpubFrontend
       en('<h1 style="margin-right: 0;">' . $this->labelUpdates . '</h1>');
 
       $websiteSectionIDs = $this->extractSectionIDs($this->website->sections);
-      $sectionMap = $this->mapSections($this->website->sections);
 
       $i = 0;
 
@@ -561,7 +560,7 @@ class OnpubFrontend
           }
           else {
             if ($onpub_disp_friendly_urls) {
-              $url = $this->generateFriendlyURL($sectionMap[$visibleSIDs[0]], $a);
+              $url = $this->generateFriendlyURL(NULL, $a, $visibleSIDs[0]);
             }
             else {
               $url = 'index.php?s=' . $visibleSIDs[0] . '&amp;a=' . $a->ID;
