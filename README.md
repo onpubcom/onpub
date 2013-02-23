@@ -51,7 +51,6 @@ Onpub is licensed under version 2 of the GNU GPL. This means you are free to re-
 
 Architecture
 ------------
-
 Onpub consists of 3 main components: the Frontend, the Management Interface and the Application Programming Interface (API).
 
 ### Frontend
