@@ -521,7 +521,12 @@ class OnpubFrontend
       $this->currentArticle = $this->articles->get($onpub_disp_article);
 
       if ($this->currentArticle) {
-        en($this->currentArticle->content);
+        if ($onpub_disp_friendly_urls) {
+          en($this->friendlyURLs($this->currentArticle->content));
+        }
+        else {
+          en($this->currentArticle->content);
+        }
       }
       else {
         en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
@@ -622,7 +627,7 @@ class OnpubFrontend
   protected function home()
   {
     global $onpub_disp_updates, $onpub_disp_article, $onpub_dir_frontend,
-           $onpub_dir_manage;
+           $onpub_dir_manage, $onpub_disp_friendly_urls;
 
     if ($this->website) {
       if ($onpub_disp_updates) {
@@ -633,7 +638,12 @@ class OnpubFrontend
           $this->currentArticle = $this->articles->get($onpub_disp_article);
 
           if ($this->currentArticle) {
-            en($this->currentArticle->content);
+            if ($onpub_disp_friendly_urls) {
+              en($this->friendlyURLs($this->currentArticle->content));
+            }
+            else {
+              en($this->currentArticle->content);
+            }
           }
           else {
             en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
@@ -1471,7 +1481,12 @@ class OnpubFrontend
         //The parameter is a timestamp for setDate() function
         $newItem->setDate($article->getCreated()->format('c'));
 
-        $newItem->setDescription($article->content);
+        if ($onpub_disp_friendly_urls) {
+          $newItem->setDescription($this->friendlyURLs($article->content));
+        }
+        else {
+          $newItem->setDescription($article->content);
+        }
 
         if (sizeof($authors)) {
           //Use core addElement() function for other supported optional elements
