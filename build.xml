@@ -16,10 +16,10 @@
   <property name="dir.yui.tests" value="${dir.yui}/tests"/>
   <property name="dir.yui.build" value="${dir.yui}/build"/>
   <property name="dir.phpthumb" value="${dir.build}/phpThumb"/>
-  <property name="url.ckeditor" value="http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6/ckeditor_3.6.6.zip"/>
-  <property name="url.yui" value="http://yui.zenfs.com/releases/yui3/yui_3.8.1.zip"/>
+  <property name="url.ckeditor" value="http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6.1/ckeditor_3.6.6.1.zip"/>
+  <property name="url.yui" value="http://yui.zenfs.com/releases/yui3/yui_3.9.0.zip"/>
   <property name="url.phpthumb" value="http://sourceforge.net/projects/phpthumb/files/latest/download"/>
-  <property name="ver" value="1.4"/>
+  <property name="ver" value="1.5"/>
 
   <target name="clean">
     <delete dir="${dir.build}"/>

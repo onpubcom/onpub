@@ -1562,10 +1562,10 @@ class OnpubFrontend
     $url = $matches[0];
 
     $delimL = substr($url, 0, 1);
-    if ($delimL != '"' || $delimL != '>') $delimL = '';
+    if ($delimL != '"' && $delimL != '>') $delimL = '';
 
     $delimR = substr($url, -1, 1);
-    if ($delimR != '"' || $delimR != '<') $delimR = '';
+    if ($delimR != '"' && $delimR != '<') $delimR = '';
 
     $articleID = isset($matches[7]) && $matches[7] ? $matches[7] : '';
     $sectionID = isset($matches[4]) && $matches[4] ? $matches[4] : '';
