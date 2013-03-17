@@ -1252,9 +1252,20 @@ class OnpubFrontend
   {
     global $onpub_disp_rss, $onpub_dir_yui, $onpub_inc_css, $onpub_inc_css_menu,
            $onpub_inc_head, $onpub_inc_banner, $onpub_dir_root, $onpub_yui_version,
-           $onpub_dir_frontend, $onpub_inc_foot;
+           $onpub_dir_frontend, $onpub_inc_foot, $onpub_disp_friendly_urls;
 
     header("Content-Type: text/html; charset=iso-8859-1");
+
+    if ($onpub_disp_friendly_urls) {
+      $friendlyURL = $this->friendlyURLs($_SERVER['REQUEST_URI'], true);
+
+      if ($_SERVER['REQUEST_URI'] != $friendlyURL) {
+        // Received a request for a non-friendly URL.
+        // Re-direct permanently to the friendly equivalent.
+        header('Location: ' . $friendlyURL, true, 301);
+        return;
+      }
+    }
 
     session_name("onpubpdo");
     session_set_cookie_params(0, '/', '', false, true);
