@@ -36,7 +36,7 @@ class OnpubFrontend
     global $onpub_db_host, $onpub_db_name, $onpub_db_user, $onpub_db_pass, $onpub_disp_website;
 
     if (!ini_get("date.timezone")) {
-      date_default_timezone_set ('America/New_York');
+      date_default_timezone_set('America/New_York');
     }
 
     $this->page = 'home';
@@ -1069,7 +1069,12 @@ class OnpubFrontend
         en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=280&f=png', $onpub_dir_phpthumb) . '" align="right" style="margin-right: 0.75em;" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
       }
 
-      en($this->currentArticle->content);
+      if ($onpub_disp_friendly_urls) {
+        en($this->friendlyURLs($this->currentArticle->content));
+      }
+      else {
+        en($this->currentArticle->content);
+      }
       en('</div>');
 
       if ($this->loginStatus) {
@@ -1158,7 +1163,7 @@ class OnpubFrontend
   protected function article()
   {
     global $onpub_inc_article_info, $onpub_dir_phpthumb, $onpub_dir_manage,
-           $onpub_dir_frontend, $onpub_inc_article_foot;
+           $onpub_dir_frontend, $onpub_inc_article_foot, $onpub_disp_friendly_urls;
 
     en('<div class="yui3-g">');
     en('<div class="yui3-u onpub-article">');
@@ -1220,7 +1225,12 @@ class OnpubFrontend
         en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=400&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
       }
 
-      en ($this->currentArticle->content);
+      if ($onpub_disp_friendly_urls) {
+        en($this->friendlyURLs($this->currentArticle->content));
+      }
+      else {
+        en($this->currentArticle->content);
+      }
 
       if ($this->loginStatus) {
         en('<div class="yui3-g">');
@@ -1477,7 +1487,7 @@ class OnpubFrontend
     }
   }
   
-  protected function generateFriendlyURL($section, $article = NULL, $sectionID = NULL)
+  protected function generateFriendlyURL($section, $article = NULL, $sectionID = '')
   {
       $friendlyURL = '';
       
@@ -1504,6 +1514,86 @@ class OnpubFrontend
       }
       
       return $friendlyURL;
+  }
+
+  /**
+   * Replaces all Onpub-style unfriendly URLs in the given $content with their
+   * friendly equivalents.
+   * @param string $content
+   */
+  protected function friendlyURLs($content) {
+    $unfriendlyURLRegex = '%';
+    $unfriendlyURLRegex .= '(';
+    $unfriendlyURLRegex .= '[">](' . $this->website->url . ')?index.php\?';
+    $unfriendlyURLRegex .= 's(ectionID)?=(\d+)';
+    $unfriendlyURLRegex .= '|';
+    $unfriendlyURLRegex .= '[">](' . $this->website->url . ')?index.php\?';
+    $unfriendlyURLRegex .= 'a(rticleID)?=(\d+)';
+    $unfriendlyURLRegex .= ')';
+    $unfriendlyURLRegex .= '(';
+    $unfriendlyURLRegex .= '&(amp;)?';
+    $unfriendlyURLRegex .= '(';
+    $unfriendlyURLRegex .= 's(ectionID)?=(\d+)';
+    $unfriendlyURLRegex .= '|';
+    $unfriendlyURLRegex .= 'a(rticleID)?=(\d+)';
+    $unfriendlyURLRegex .= ')';
+    $unfriendlyURLRegex .= ')?';
+    $unfriendlyURLRegex .= '["<#]';
+    $unfriendlyURLRegex .= '%';
+
+    return preg_replace_callback($unfriendlyURLRegex, array($this, 'friendlyURLsCallback'), $content);
+  }
+
+  protected function friendlyURLsCallback($matches) {
+    static $articles = array();
+    static $sections = array();
+    $queryOptions = new OnpubQueryOptions();
+    $queryOptions->includeContent = FALSE;
+
+    $url = $matches[0];
+    $delimL = substr($url, 0, 1);
+    $delimR = substr($url, -1, 1);
+    $articleID = isset($matches[7]) && $matches[7] ? $matches[7] : '';
+    $sectionID = isset($matches[4]) && $matches[4] ? $matches[4] : '';
+
+    if (!$articleID)
+      $articleID = isset($matches[14]) && $matches[14] ? $matches[14] : '';
+
+    if (!$sectionID)
+      $sectionID = isset($matches[12]) && $matches[12] ? $matches[12] : '';
+
+    if ($articleID && !isset($articles['a' . $articleID])) {
+      if (($article = $this->articles->get($articleID, $queryOptions))) {
+        $articles['a' . $article->ID] = $article;
+      }
+      else {
+        // Article most likely does not exist anymore. Don't rewrite the URL.
+        return $url;
+      }
+    }
+
+    if ($articleID && isset($articles['a' . $articleID])) {
+      $article = $articles['a' . $articleID];
+
+      if (isset($matches[2]) && $matches[2])
+        return $delimL . $matches[2] . $this->generateFriendlyURL(NULL, $article, $sectionID) . $delimR;
+
+      return $delimL . $this->generateFriendlyURL(NULL, $article, $sectionID) . $delimR;
+    }
+
+    if ($sectionID && !isset($sections['s' . $sectionID])) {
+      if (($section = $this->sections->get($sectionID))) {
+        $sections['s' . $section->ID] = $section;
+      }
+    }
+
+    if ($sectionID && isset($sections['s' . $sectionID])) {
+      $section = $sections['s' . $sectionID];
+
+      return $delimL . $this->generateFriendlyURL($section) . $delimR;
+    }
+
+    return $url;
   }
 }
 
