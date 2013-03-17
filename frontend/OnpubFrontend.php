@@ -1530,11 +1530,11 @@ class OnpubFrontend
 
     $unfriendlyURLRegex = '%';
     $unfriendlyURLRegex .= '(';
-    if (!$staticLink) $unfriendlyURLRegex .= '[">]';
+    if (!$staticLink) $unfriendlyURLRegex .= '["]';
     $unfriendlyURLRegex .= '(' . $this->website->url . ')?index.php\?';
     $unfriendlyURLRegex .= 's(ectionID)?=(\d+)';
     $unfriendlyURLRegex .= '|';
-    if (!$staticLink) $unfriendlyURLRegex .= '[">]';
+    if (!$staticLink) $unfriendlyURLRegex .= '["]';
     $unfriendlyURLRegex .= '(' . $this->website->url . ')?index.php\?';
     $unfriendlyURLRegex .= 'a(rticleID)?=(\d+)';
     $unfriendlyURLRegex .= ')';
@@ -1546,7 +1546,7 @@ class OnpubFrontend
     $unfriendlyURLRegex .= 'a(rticleID)?=(\d+)';
     $unfriendlyURLRegex .= ')';
     $unfriendlyURLRegex .= ')?';
-    if (!$staticLink) $unfriendlyURLRegex .= '["<#]';
+    if (!$staticLink) $unfriendlyURLRegex .= '["#]';
     $unfriendlyURLRegex .= '%';
 
     return preg_replace_callback($unfriendlyURLRegex, array($this, 'friendlyURLsCallback'), $content);
