@@ -351,7 +351,7 @@ class OnpubFrontend
     foreach ($subsections as $sub) {
       if ($sub->url) {
         en('<li class="yui3-menuitem">');
-        en('<a class="yui3-menuitem-content" href="' . $sub->url . '">' . $sub->name . '</a>');
+        en('<a class="yui3-menuitem-content" href="' . $this->friendlyURLs($sub->url, true) . '">' . $sub->name . '</a>');
         en('</li>');
       }
       else {
@@ -372,7 +372,7 @@ class OnpubFrontend
 
         foreach ($articles as $a) {
           if ($a->url) {
-            en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $a->url . '">' . $a->title . '</a></li>');
+            en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $this->friendlyURLs($a->url, true) . '">' . $a->title . '</a></li>');
           }
           else {
             if ($onpub_disp_friendly_urls) {
@@ -412,7 +412,7 @@ class OnpubFrontend
           foreach ($sections as $s) {
             if ($s->url) {
               en('<li class="yui3-menuitem">');
-              en('<a class="yui3-menuitem-content" href="' . $s->url . '">' . $s->name . '</a>');                  
+              en('<a class="yui3-menuitem-content" href="' . $this->friendlyURLs($s->url, true) . '">' . $s->name . '</a>');
               en('</li>');
             }
             else {
@@ -433,7 +433,7 @@ class OnpubFrontend
 
               foreach ($articles as $a) {
                 if ($a->url) {
-                  en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $a->url. '">' . $a->title . '</a></li>');
+                  en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="' . $this->friendlyURLs($a->url, true) . '">' . $a->title . '</a></li>');
                 }
                 else {
                   if ($onpub_disp_friendly_urls) {
@@ -521,12 +521,7 @@ class OnpubFrontend
       $this->currentArticle = $this->articles->get($onpub_disp_article);
 
       if ($this->currentArticle) {
-        if ($onpub_disp_friendly_urls) {
-          en($this->friendlyURLs($this->currentArticle->content));
-        }
-        else {
-          en($this->currentArticle->content);
-        }
+        en($this->friendlyURLs($this->currentArticle->content));
       }
       else {
         en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
@@ -561,7 +556,7 @@ class OnpubFrontend
           $visibleSIDs = array_values(array_intersect($websiteSectionIDs, $sectionIDs));
 
           if ($a->url) {
-            $url = $a->url;
+            $url = $this->friendlyURLs($a->url, true);
           }
           else {
             if ($onpub_disp_friendly_urls) {
@@ -638,12 +633,7 @@ class OnpubFrontend
           $this->currentArticle = $this->articles->get($onpub_disp_article);
 
           if ($this->currentArticle) {
-            if ($onpub_disp_friendly_urls) {
-              en($this->friendlyURLs($this->currentArticle->content));
-            }
-            else {
-              en($this->currentArticle->content);
-            }
+            en($this->friendlyURLs($this->currentArticle->content));
           }
           else {
             en('<h2 style="margin-top: 1em;"><a href="' . $onpub_dir_manage . 'index.php?onpub=NewArticle" target="_onpub">Publish a new article</a> to customize this page.</h2>');
@@ -831,7 +821,7 @@ class OnpubFrontend
         $url = '';
 
         if ($a->url) {
-          $url = $a->url;
+          $url = $this->friendlyURLs($a->url, true);
         }
         else {
           if ($onpub_disp_friendly_urls) {
@@ -922,7 +912,7 @@ class OnpubFrontend
 
         if ($this->parentSection) {
           if ($this->parentSection->url) {
-            en('<h1 class="onpub-section-nav"><a href="' . $this->parentSection->url . '" class="onpub-section-nav">' . $this->parentSection->name . '</a></h1>');
+            en('<h1 class="onpub-section-nav"><a href="' . $this->friendlyURLs($this->parentSection->url, true) . '" class="onpub-section-nav">' . $this->parentSection->name . '</a></h1>');
           }
           else {
             if ($onpub_disp_friendly_urls) {
@@ -937,7 +927,7 @@ class OnpubFrontend
 
           foreach ($articles as $a) {
             if ($a->url) {
-              en('<div class="onpub-section-nav-link"><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></div>');
+              en('<div class="onpub-section-nav-link"><a href="' . $this->friendlyURLs($a->url, true) . '" class="onpub-section-nav">' . $a->title . '</a></div>');
             }
             else {
               if ($onpub_disp_friendly_urls) {
@@ -958,7 +948,7 @@ class OnpubFrontend
             }
             else {
               if ($s->url) {
-                en('<div class="onpub-section-nav-link"><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></div>');
+                en('<div class="onpub-section-nav-link"><a href="' . $this->friendlyURLs($s->url, true) . '" class="onpub-section-nav">' . $s->name . '</a></div>');
               }
               else {
                 if ($onpub_disp_friendly_urls) {
@@ -974,7 +964,7 @@ class OnpubFrontend
         else {
           foreach ($sections as $s) {
             if ($s->url) {
-              en('<h1 class="onpub-section-nav"><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></h1>');
+              en('<h1 class="onpub-section-nav"><a href="' . $this->friendlyURLs($s->url, true) . '" class="onpub-section-nav">' . $s->name . '</a></h1>');
             }
             else {
               if ($onpub_disp_friendly_urls) {
@@ -989,7 +979,7 @@ class OnpubFrontend
 
             foreach ($articles as $a) {
               if ($a->url) {
-                en('<div class="onpub-section-nav-link"><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></div>');
+                en('<div class="onpub-section-nav-link"><a href="' . $this->friendlyURLs($a->url, true) . '" class="onpub-section-nav">' . $a->title . '</a></div>');
               }
               else {
                 if ($onpub_disp_friendly_urls) {
@@ -1079,12 +1069,7 @@ class OnpubFrontend
         en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=280&f=png', $onpub_dir_phpthumb) . '" align="right" style="margin-right: 0.75em;" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
       }
 
-      if ($onpub_disp_friendly_urls) {
-        en($this->friendlyURLs($this->currentArticle->content));
-      }
-      else {
-        en($this->currentArticle->content);
-      }
+      en($this->friendlyURLs($this->currentArticle->content));
       en('</div>');
 
       if ($this->loginStatus) {
@@ -1123,7 +1108,7 @@ class OnpubFrontend
         }
         else {
           if ($a->url) {
-            en('<div class="onpub-section-nav-link"><a href="' . $a->url . '" class="onpub-section-nav">' . $a->title . '</a></div>');
+            en('<div class="onpub-section-nav-link"><a href="' . $this->friendlyURLs($a->url, true) . '" class="onpub-section-nav">' . $a->title . '</a></div>');
           }
           else {
             if ($onpub_disp_friendly_urls) {
@@ -1141,7 +1126,7 @@ class OnpubFrontend
 
       foreach ($sections as $s) {
         if ($s->url) {
-          en('<div class="onpub-section-nav-link"><a href="' . $s->url . '" class="onpub-section-nav">' . $s->name . '</a></div>');
+          en('<div class="onpub-section-nav-link"><a href="' . $this->friendlyURLs($s->url, true) . '" class="onpub-section-nav">' . $s->name . '</a></div>');
         }
         else {
           if ($onpub_disp_friendly_urls) {
@@ -1235,12 +1220,7 @@ class OnpubFrontend
         en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=400&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
       }
 
-      if ($onpub_disp_friendly_urls) {
-        en($this->friendlyURLs($this->currentArticle->content));
-      }
-      else {
-        en($this->currentArticle->content);
-      }
+      en($this->friendlyURLs($this->currentArticle->content));
 
       if ($this->loginStatus) {
         en('<div class="yui3-g">');
@@ -1481,12 +1461,7 @@ class OnpubFrontend
         //The parameter is a timestamp for setDate() function
         $newItem->setDate($article->getCreated()->format('c'));
 
-        if ($onpub_disp_friendly_urls) {
-          $newItem->setDescription($this->friendlyURLs($article->content));
-        }
-        else {
-          $newItem->setDescription($article->content);
-        }
+        $newItem->setDescription($this->friendlyURLs($article->content));
 
         if (sizeof($authors)) {
           //Use core addElement() function for other supported optional elements
@@ -1504,31 +1479,31 @@ class OnpubFrontend
   
   protected function generateFriendlyURL($section, $article = NULL, $sectionID = '')
   {
-      $friendlyURL = '';
-      
-      if ($section && $section->name) {
-          $friendlyURL = trim($section->name);
-          $friendlyURL = strtolower($friendlyURL);
-          $friendlyURL = preg_replace('/[\W\s]+/', '-', $friendlyURL);
-          $friendlyURL = $friendlyURL . '-s' . $section->ID;
-      }
-      
-      if ($article && $article->title) {
-          $friendlyURL = trim($article->title);
-          $friendlyURL = strtolower($friendlyURL);
-          $friendlyURL = preg_replace('/[\W\s]+/', '-', $friendlyURL);
+    $friendlyURL = '';
 
-          if ($section && $section->ID) {
-            $friendlyURL = $friendlyURL . '-s' . $section->ID;
-          }
-          elseif ($sectionID) {
-            $friendlyURL = $friendlyURL . '-s' . $sectionID;            
-          }
-          
-          $friendlyURL = $friendlyURL . '-a' . $article->ID;
+    if ($section && $section->name) {
+      $friendlyURL = trim($section->name);
+      $friendlyURL = strtolower($friendlyURL);
+      $friendlyURL = preg_replace('/[\W\s]+/', '-', $friendlyURL);
+      $friendlyURL = $friendlyURL . '-s' . $section->ID;
+    }
+
+    if ($article && $article->title) {
+      $friendlyURL = trim($article->title);
+      $friendlyURL = strtolower($friendlyURL);
+      $friendlyURL = preg_replace('/[\W\s]+/', '-', $friendlyURL);
+
+      if ($section && $section->ID) {
+        $friendlyURL = $friendlyURL . '-s' . $section->ID;
       }
-      
-      return $friendlyURL;
+      elseif ($sectionID) {
+        $friendlyURL = $friendlyURL . '-s' . $sectionID;
+      }
+
+      $friendlyURL = $friendlyURL . '-a' . $article->ID;
+    }
+
+    return $friendlyURL;
   }
 
   /**
@@ -1536,13 +1511,20 @@ class OnpubFrontend
    * friendly equivalents.
    * @param string $content
    */
-  protected function friendlyURLs($content) {
+  protected function friendlyURLs($content, $staticLink = false)
+  {
+    global $onpub_disp_friendly_urls;
+
+    if (!$onpub_disp_friendly_urls) return $content;
+
     $unfriendlyURLRegex = '%';
     $unfriendlyURLRegex .= '(';
-    $unfriendlyURLRegex .= '[">](' . $this->website->url . ')?index.php\?';
+    if (!$staticLink) $unfriendlyURLRegex .= '[">]';
+    $unfriendlyURLRegex .= '(' . $this->website->url . ')?index.php\?';
     $unfriendlyURLRegex .= 's(ectionID)?=(\d+)';
     $unfriendlyURLRegex .= '|';
-    $unfriendlyURLRegex .= '[">](' . $this->website->url . ')?index.php\?';
+    if (!$staticLink) $unfriendlyURLRegex .= '[">]';
+    $unfriendlyURLRegex .= '(' . $this->website->url . ')?index.php\?';
     $unfriendlyURLRegex .= 'a(rticleID)?=(\d+)';
     $unfriendlyURLRegex .= ')';
     $unfriendlyURLRegex .= '(';
@@ -1553,21 +1535,27 @@ class OnpubFrontend
     $unfriendlyURLRegex .= 'a(rticleID)?=(\d+)';
     $unfriendlyURLRegex .= ')';
     $unfriendlyURLRegex .= ')?';
-    $unfriendlyURLRegex .= '["<#]';
+    if (!$staticLink) $unfriendlyURLRegex .= '["<#]';
     $unfriendlyURLRegex .= '%';
 
     return preg_replace_callback($unfriendlyURLRegex, array($this, 'friendlyURLsCallback'), $content);
   }
 
-  protected function friendlyURLsCallback($matches) {
+  protected function friendlyURLsCallback($matches)
+  {
     static $articles = array();
     static $sections = array();
     $queryOptions = new OnpubQueryOptions();
     $queryOptions->includeContent = FALSE;
 
     $url = $matches[0];
+
     $delimL = substr($url, 0, 1);
+    if ($delimL != '"' || $delimL != '>') $delimL = '';
+
     $delimR = substr($url, -1, 1);
+    if ($delimR != '"' || $delimR != '<') $delimR = '';
+
     $articleID = isset($matches[7]) && $matches[7] ? $matches[7] : '';
     $sectionID = isset($matches[4]) && $matches[4] ? $matches[4] : '';
 
