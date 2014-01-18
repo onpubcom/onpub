@@ -250,8 +250,7 @@ class OnpubFrontend
   protected function meta()
   {
     en('<meta name="viewport" content="width=device-width; initial-scale=1.0">');
-    en('<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">');
-    en('<meta http-equiv="Content-Style-Type" content="text/css">');
+    en('<meta charset="ISO-8859-1">');
 
     if ($this->currentArticle) {
       // Add the meta description tag for article pages.
@@ -1277,7 +1276,7 @@ class OnpubFrontend
       $this->loginStatus = true;
     }
 
-    en('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">');
+    en('<!DOCTYPE html>');
     en('<html>');
     en('<head>');
 
@@ -1290,19 +1289,19 @@ class OnpubFrontend
     }
 
     if (file_exists($onpub_dir_yui)) {
-      en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssreset/cssreset-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssnormalize/cssnormalize-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssfonts/cssfonts-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssgrids/cssgrids-min.css">');
-      en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssbase/cssbase-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssgrids-responsive/cssgrids-responsive-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'node-menunav/assets/skins/sam/node-menunav.css">');
     }
     else {
       $onpub_dir_yui = null;
       en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' .
-        $onpub_yui_version . '/build/cssreset/cssreset-min.css&' . $onpub_yui_version .
+        $onpub_yui_version . '/build/cssnormalize/cssnormalize-min.css&' . $onpub_yui_version .
         '/build/cssfonts/cssfonts-min.css&' . $onpub_yui_version .
         '/build/cssgrids/cssgrids-min.css&' . $onpub_yui_version .
-        '/build/cssbase/cssbase-min.css&' . $onpub_yui_version .
+        '/build/cssgrids-responsive/cssgrids-responsive-min.css&' . $onpub_yui_version .
         '/build/node-menunav/assets/skins/sam/node-menunav.css">');
     }
 
