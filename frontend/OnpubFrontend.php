@@ -1159,7 +1159,7 @@ class OnpubFrontend
     global $onpub_inc_article_info, $onpub_dir_phpthumb, $onpub_dir_manage,
            $onpub_dir_frontend, $onpub_inc_article_foot, $onpub_disp_friendly_urls;
 
-    en('<div class="yui3-g">');
+    en('<div class="yui3-g-r">');
     en('<div class="yui3-u onpub-article">');
 
     if ($this->currentArticle) {
