@@ -669,7 +669,7 @@ class OnpubEditSections
     }
     else {
       if ($this->keywords) {
-        en('Your search did not yield any results. <a href="javascript:clearSearchField(); submitForm();">Display all sections</a>.');
+        en('<p>Your search did not yield any results. <a href="javascript:clearSearchField(); submitForm();">Display all sections</a>.</p>');
       }
       else {
         if ($this->websiteID) {
@@ -678,10 +678,10 @@ class OnpubEditSections
 
           br(2);
 
-          en('There are 0 sections in the selected website. <a href="index.php?onpub=EditSections&amp;websiteID=">Display all sections</a>.');
+          en('<p>There are 0 sections in the selected website. <a href="index.php?onpub=EditSections&amp;websiteID=">Display all sections</a>.</p>');
         }
         else {
-          en('There are 0 sections in the database. <a href="index.php?onpub=NewSection">New Section</a>.');
+          en('<p>There are 0 sections in the database. <a href="index.php?onpub=NewSection">New Section</a>.</p>');
         }
       }
     }

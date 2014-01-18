@@ -596,12 +596,12 @@ class OnpubEditImages
     }
     else {
       if ($this->keywords) {
-        en('Your search did not yield any results. <a href="javascript:clearSearchField(); submitForm();">Display all images</a>.');
+        en('<p>Your search did not yield any results. <a href="javascript:clearSearchField(); submitForm();">Display all images</a>.</p>');
       }
       else {
         if ($this->sectionID) { }
         else {
-          en('There are 0 images on file. <a href="index.php?onpub=UploadImages">Upload Images</a>.');
+          en('<p>There are 0 images on file. <a href="index.php?onpub=UploadImages">Upload Images</a>.</p>');
         }
       }
     }

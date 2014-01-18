@@ -69,7 +69,7 @@ class OnpubNewArticle
 
     en('</div>');
 
-    en('<p><textarea rows="25" cols="100" name="content">' . htmlentities($this->oarticle->content) . '</textarea></p>');
+    en('<p><textarea rows="25" name="content" style="width: 100%;">' . htmlentities($this->oarticle->content) . '</textarea></p>');
 
     if (file_exists('ckeditor/ckeditor_php5.php')) {
       include './ckeditor/ckeditor_php5.php';

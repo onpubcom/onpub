@@ -578,12 +578,12 @@ class OnpubEditWebsites
     }
     else {
       if ($this->keywords) {
-        en('Your search did not yield any results. <a href="javascript:clearSearchField(); submitForm();">Display all websites</a>.');
+        en('<p>Your search did not yield any results. <a href="javascript:clearSearchField(); submitForm();">Display all websites</a>.</p>');
       }
       else {
         if ($this->sectionID) { }
         else {
-          en('There are 0 websites in the database. <a href="index.php?onpub=NewWebsite">New Website</a>.');
+          en('<p>There are 0 websites in the database. <a href="index.php?onpub=NewWebsite">New Website</a>.</p>');
         }
       }
     }
