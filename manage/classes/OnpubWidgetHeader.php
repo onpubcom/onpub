@@ -30,10 +30,10 @@ class OnpubWidgetHeader
     en('<title>' . strip_tags("Onpub (on " . $_SERVER['SERVER_NAME'] . ") - " . $this->title) . '</title>');
 
     if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
-      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssnormalize/cssnormalize-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssreset/cssreset-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssfonts/cssfonts-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssgrids/cssgrids-min.css">');
-      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssgrids-responsive/cssgrids-responsive-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssbase/cssbase-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'node-menunav/assets/skins/sam/node-menunav.css">');
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'widget-base/assets/skins/sam/widget-base.css">');
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'widget-stack/assets/skins/sam/widget-stack.css">');
@@ -41,9 +41,9 @@ class OnpubWidgetHeader
     }
     else {
       en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' .
-         ONPUBGUI_YUI_VERSION . '/build/cssnormalize/cssnormalize-min.css&' . ONPUBGUI_YUI_VERSION .
+         ONPUBGUI_YUI_VERSION . '/build/cssreset/cssreset-min.css&' . ONPUBGUI_YUI_VERSION .
          '/build/cssfonts/cssfonts-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/cssgrids-min.css&' .
-         ONPUBGUI_YUI_VERSION . '/build/cssgrids-responsive/cssgrids-responsive-min.css&' . ONPUBGUI_YUI_VERSION .
+         ONPUBGUI_YUI_VERSION . '/build/cssbase/cssbase-min.css&' . ONPUBGUI_YUI_VERSION .
          '/build/node-menunav/assets/skins/sam/node-menunav.css&' . ONPUBGUI_YUI_VERSION .
          '/build/widget-base/assets/skins/sam/widget-base.css&' . ONPUBGUI_YUI_VERSION .
          '/build/widget-stack/assets/skins/sam/widget-stack.css&' . ONPUBGUI_YUI_VERSION .
