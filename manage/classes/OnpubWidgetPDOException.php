@@ -36,15 +36,16 @@ class OnpubWidgetPDOException
 
     en('<h3 class="onpub-field-header">SQLSTATE Code</h3><p>' . $sqlstate . '</p>');
 
-    en('<h3 class="onpub-field-header">Trace 0</h3><p>File: ' . $this->exception->getFile() . 'Line: ' . $this->exception->getLine() . '</p>');
+    en('<h3 class="onpub-field-header">Trace 0</h3><p>File: ' . $this->exception->getFile() . '. Line: ' . $this->exception->getLine() . '.</p>');
 
     $trace = $this->exception->getTrace();
 
     for ($i = 0; $i < sizeof($trace); $i++) {
       en('<h3 class="onpub-field-header">Trace ' . ($i + 1) . '</h3>', 0);
-      en('<p>File: ' . $trace[$i]['file'], 0);
-      en(' Line: ' . $trace[$i]['line'], 0);
-      en(' Method: ' . $trace[$i]['class'] . $trace[$i]['type'] . $trace[$i]['function'] . '()</p>');
+      en('<p>Method: ' . $trace[$i]['class'] . $trace[$i]['type'] . $trace[$i]['function'] . '().');
+      en('File: ' . $trace[$i]['file'] . '.', 0);
+      en(' Line: ' . $trace[$i]['line'] . '.</p>', 0);
+
     }
 
     if ($this->footer) {

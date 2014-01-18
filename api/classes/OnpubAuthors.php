@@ -99,6 +99,8 @@ class OnpubAuthors
 
   private function getQuery($ID)
   {
+    if ($ID) $ID = ctype_digit($ID) ? $ID : $this->pdo->quote($ID);
+
     return "SELECT * FROM OnpubAuthors WHERE ID = $ID";
   }
 

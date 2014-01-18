@@ -82,6 +82,8 @@ class OnpubArticles
 
   private function countQuery($sectionID = NULL)
   {
+    if ($sectionID) $sectionID = ctype_digit($sectionID) ? $sectionID : $this->pdo->quote($sectionID);
+
     if ($sectionID) {
       return "SELECT COUNT(articles.ID) AS count FROM OnpubArticles AS articles LEFT JOIN OnpubSAMaps as samaps ON articles.ID = samaps.articleID WHERE sectionID = $sectionID";
     }
@@ -270,7 +272,7 @@ class OnpubArticles
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 
-    $keywords = OnpubDatabase::utf8Decode(trim($keywords));
+    $keywords = $this->pdo->quote(OnpubDatabase::utf8Decode(trim($keywords)));
     $where = "";
 
     if ($keywords) {
@@ -443,6 +445,8 @@ class OnpubArticles
 
   private function getQuery($ID, OnpubQueryOptions $queryOptions = NULL)
   {
+    if ($ID) $ID = ctype_digit($ID) ? $ID : $this->pdo->quote($ID);
+
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 
@@ -757,6 +761,9 @@ class OnpubArticles
 
   private function selectQuery(OnpubQueryOptions $queryOptions = NULL, $sectionID = NULL, $websiteID = NULL)
   {
+    if ($sectionID) $sectionID = ctype_digit($sectionID) ? $sectionID : $this->pdo->quote($sectionID);
+    if ($websiteID) $websiteID = ctype_digit($websiteID) ? $websiteID : $this->pdo->quote($websiteID);
+
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 

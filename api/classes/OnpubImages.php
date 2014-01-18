@@ -185,6 +185,8 @@ class OnpubImages
 
   private function getQuery($ID)
   {
+    if ($ID) $ID = ctype_digit($ID) ? $ID : $this->pdo->quote($ID);
+
     return "SELECT images.ID, images.websiteID, images.fileName, " .
            "images.description, images.url, images.created, images.modified, " .
            "website.imageID as websiteImageID, website.name as websiteName, " .

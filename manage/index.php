@@ -28,6 +28,7 @@ $loginStatus = FALSE;
 $dsn = "";
 $username = "";
 $password = "";
+$pdo_options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES latin1 COLLATE latin1_general_ci');
 
 if (isset($_SESSION['PDO_HOST']) && isset($_SESSION['PDO_USER']) && isset($_SESSION['PDO_PASSWORD']) && isset($_SESSION['PDO_DATABASE'])) {
   $loginStatus = TRUE;
@@ -66,7 +67,7 @@ if (isset($_POST['onpub'])) {
 
   if ($loginStatus) {
     try {
-      $pdo = new PDO($dsn, $username, $password);
+      $pdo = new PDO($dsn, $username, $password, $pdo_options);
     }
     catch (PDOException $e) {
       // PDO init error, bounce user back to Dashboard page.
@@ -808,7 +809,7 @@ if (isset($_POST['onpub'])) {
 else {
   if ($loginStatus) {
     try {
-      $pdo = new PDO($dsn, $username, $password);
+      $pdo = new PDO($dsn, $username, $password, $pdo_options);
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
     }
     catch (PDOException $e) {

@@ -146,6 +146,9 @@ class OnpubWSMaps
 
   private function selectQuery(OnpubQueryOptions $queryOptions = NULL, $websiteID, $sectionID)
   {
+    if ($websiteID) $websiteID = ctype_digit($websiteID) ? $websiteID : $this->pdo->quote($websiteID);
+    if ($sectionID) $sectionID = ctype_digit($sectionID) ? $sectionID : $this->pdo->quote($sectionID);
+
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 

@@ -501,6 +501,8 @@ class OnpubWebsites
 
   private function getQuery($ID, OnpubQueryOptions $queryOptions = NULL)
   {
+    if ($ID) $ID = ctype_digit($ID) ? $ID : $this->pdo->quote($ID);
+
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 

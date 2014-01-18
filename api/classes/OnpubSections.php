@@ -318,6 +318,9 @@ class OnpubSections
 
   private function selectQuery(OnpubQueryOptions $queryOptions = NULL, $websiteID, $parentID)
   {
+    if ($websiteID) $websiteID = ctype_digit($websiteID) ? $websiteID : $this->pdo->quote($websiteID);
+    if ($parentID) $parentID = ctype_digit($parentID) ? $parentID : $this->pdo->quote($parentID);
+
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 
@@ -534,6 +537,8 @@ class OnpubSections
 
   private function getQuery($ID, OnpubQueryOptions $queryOptions = NULL)
   {
+    if ($ID) $ID = ctype_digit($ID) ? $ID : $this->pdo->quote($ID);
+
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 

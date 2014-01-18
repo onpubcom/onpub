@@ -146,6 +146,9 @@ class OnpubSAMaps
 
   private function selectQuery(OnpubQueryOptions $queryOptions = NULL, $sectionID = NULL, $articleID = NULL)
   {
+    if ($sectionID) $sectionID = ctype_digit($sectionID) ? $sectionID : $this->pdo->quote($sectionID);
+    if ($articleID) $articleID = ctype_digit($articleID) ? $articleID : $this->pdo->quote($articleID);
+
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 
