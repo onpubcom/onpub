@@ -71,33 +71,25 @@ class OnpubNewArticle
 
     en('<p><textarea rows="25" name="content" style="width: 100%;">' . htmlentities($this->oarticle->content) . '</textarea></p>');
 
-    if (file_exists('ckeditor/ckeditor_php5.php')) {
-      include './ckeditor/ckeditor_php5.php';
-      $config = array();
-      $events = array();
-
-      $ck = new CKEditor();
-      $ck->basePath = 'ckeditor/';
-
-      $config['height'] = 350;
-      $config['uiColor'] = '#eff0f0';
-      $config['resize_dir'] = 'vertical';
-
-      if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
-        $config['contentsCss'] = array('ckeditor/contents.css', ONPUBGUI_YUI_DIRECTORY . 'cssgrids/grids-min.css', 'css/ckeditor.css');
-      }
-      else {
-        $config['contentsCss'] = array('ckeditor/contents.css', 'http://yui.yahooapis.com/' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/grids-min.css', 'css/ckeditor.css');
-      }
-
-      $events['instanceReady'] = 'function (ev) {
-        var w = ev.editor.dataProcessor.writer;
-        w.indentationChars = "  ";
-        w.selfClosingEnd = ">";
-        w.setRules("div", {breakBeforeClose: true});
-      }';
-
-      $ck->replace('content', $config, $events);
+    if (file_exists('ckeditor/ckeditor.js')) {
+      ?>
+      <script type="text/javascript">
+        CKEDITOR.replace('content', {
+          'height': 350,
+          'uiColor': '#eff0f0',
+          'resize_dir': 'vertical',
+          'dataIndentationChars': '  ',
+          <?php
+          if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
+            en("'contentsCss': ['ckeditor/contents.css', '" . ONPUBGUI_YUI_DIRECTORY . "cssgrids/cssgrids-min.css', 'css/ckeditor.css']");
+          }
+          else {
+            en("'contentsCss': ['ckeditor/contents.css', 'http://yui.yahooapis.com/" . ONPUBGUI_YUI_VERSION . "/build/cssgrids/cssgrids-min.css', 'css/ckeditor.css']");
+          }
+          ?>
+        });
+      </script>
+      <?php
     }
 
     $widget = new OnpubWidgetDateCreated($this->oarticle->getCreated());

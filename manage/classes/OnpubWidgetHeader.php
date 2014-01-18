@@ -54,6 +54,10 @@ class OnpubWidgetHeader
     en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
     en('<link rel="stylesheet" type="text/css" href="css/onpub-menu.css">');
 
+    if (file_exists('ckeditor/ckeditor.js')) {
+      en('<script type="text/javascript" src="ckeditor/ckeditor.js"></script>');
+    }
+
     en('<script type="text/javascript">');
     en('document.documentElement.className = "yui3-loading";');
 
