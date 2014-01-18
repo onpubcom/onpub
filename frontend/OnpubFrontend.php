@@ -1008,7 +1008,7 @@ class OnpubFrontend
            $onpub_dir_manage, $onpub_dir_frontend, $onpub_disp_friendly_urls;
 
     if ($this->currentSection && $this->currentArticle) {
-      en('<div class="yui3-g">');
+      en('<div class="yui3-g-r">');
       en('<div class="yui3-u-3-4 onpub-article">');
 
       en('<h1>' . $this->currentArticle->title . '</h1>');
