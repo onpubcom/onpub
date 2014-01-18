@@ -272,15 +272,15 @@ class OnpubArticles
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 
-    $keywords = $this->pdo->quote(OnpubDatabase::utf8Decode(trim($keywords)));
+    $keywords = $this->pdo->quote('%' . OnpubDatabase::utf8Decode(trim($keywords)) . '%');
     $where = "";
 
     if ($keywords) {
       if ($queryOptions->fullTextSearch) {
-        $where = "WHERE articles.title LIKE '%$keywords%' OR authors.displayAS LIKE '%$keywords%' OR articles.created LIKE '%$keywords%' OR articles.modified LIKE '%$keywords%' OR articles.ID LIKE '%$keywords%' OR articles.content LIKE '%$keywords%' OR articles.url LIKE '%$keywords%'";
+        $where = "WHERE articles.title LIKE $keywords OR authors.displayAS LIKE $keywords OR articles.created LIKE $keywords OR articles.modified LIKE $keywords OR articles.ID LIKE $keywords OR articles.content LIKE $keywords OR articles.url LIKE $keywords";
       }
       else {
-        $where = "WHERE articles.title LIKE '%$keywords%' OR authors.displayAS LIKE '%$keywords%' OR articles.created LIKE '%$keywords%' OR articles.modified LIKE '%$keywords%' OR articles.ID LIKE '%$keywords%' OR articles.url LIKE '%$keywords%'";
+        $where = "WHERE articles.title LIKE $keywords OR authors.displayAS LIKE $keywords OR articles.created LIKE $keywords OR articles.modified LIKE $keywords OR articles.ID LIKE $keywords OR articles.url LIKE $keywords";
       }
     }
 

@@ -50,7 +50,7 @@ class OnpubFrontend
       $this->pdoInstalled = true;
 
       try {
-        $onpub_pdo = new PDO('mysql:host=' . $onpub_db_host . ';dbname=' . $onpub_db_name, $onpub_db_user, $onpub_db_pass);
+        $onpub_pdo = new PDO('mysql:host=' . $onpub_db_host . ';dbname=' . $onpub_db_name, $onpub_db_user, $onpub_db_pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES latin1 COLLATE latin1_general_ci'));
         $this->lastPDOException = null;
       }
       catch (PDOException $e) {

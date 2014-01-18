@@ -14,6 +14,7 @@ class OnpubLogin
   private $pdoHost;
   private $pdoUser;
   private $pdoPassword;
+  private $pdoOptions;
   public $logout;
   private $target;
   private $rememberLogin;
@@ -25,6 +26,7 @@ class OnpubLogin
     $this->pdoHost = trim($pdoHost);
     $this->pdoUser = trim($pdoUser);
     $this->pdoPassword = trim($pdoPassword);
+    $this->pdoOptions = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES latin1 COLLATE latin1_general_ci');
     $this->logout = $logout;
     $this->target = $target;
     $this->rememberLogin = $rememberLogin;
@@ -170,7 +172,7 @@ class OnpubLogin
   {
     if (class_exists('PDO')) {
       try {
-        $pdo = new PDO("mysql:host=" . $this->pdoHost, $this->pdoUser, $this->pdoPassword);
+        $pdo = new PDO("mysql:host=" . $this->pdoHost, $this->pdoUser, $this->pdoPassword, $this->pdoOptions);
       }
       catch (PDOException $e) {
         throw $e;
