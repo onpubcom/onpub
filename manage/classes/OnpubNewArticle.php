@@ -79,6 +79,7 @@ class OnpubNewArticle
           'uiColor': '#eff0f0',
           'resize_dir': 'vertical',
           'dataIndentationChars': '  ',
+          'allowedContent': true,
           <?php
           if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
             en("'contentsCss': ['ckeditor/contents.css', '" . ONPUBGUI_YUI_DIRECTORY . "cssgrids/cssgrids-min.css', 'css/ckeditor.css']");

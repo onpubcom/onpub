@@ -1008,7 +1008,7 @@ class OnpubFrontend
            $onpub_dir_manage, $onpub_dir_frontend, $onpub_disp_friendly_urls;
 
     if ($this->currentSection && $this->currentArticle) {
-      en('<div class="yui3-g-r">');
+      en('<div class="yui3-g">');
       en('<div class="yui3-u-3-4 onpub-article">');
 
       en('<h1>' . $this->currentArticle->title . '</h1>');
@@ -1159,7 +1159,7 @@ class OnpubFrontend
     global $onpub_inc_article_info, $onpub_dir_phpthumb, $onpub_dir_manage,
            $onpub_dir_frontend, $onpub_inc_article_foot, $onpub_disp_friendly_urls;
 
-    en('<div class="yui3-g-r">');
+    en('<div class="yui3-g">');
     en('<div class="yui3-u onpub-article">');
 
     if ($this->currentArticle) {

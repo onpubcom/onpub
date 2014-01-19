@@ -465,7 +465,7 @@ YUI(
     // YUI onbeforeunload handler does not work properly in all browsers.
     // User native DOM handler instead for better browser compatibility.
     window.onbeforeunload = checkUnsavedChanges;
-  }, ".cke_button_save");
+  }, ".cke_button__save");
 
   Y.on("contentready", function () {
     if (Y.one(".cke_button_newpage")) {
