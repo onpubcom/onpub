@@ -1013,7 +1013,7 @@ class OnpubFrontend
 
       en('<h1>' . $this->currentArticle->title . '</h1>');
 
-      en('<div class="yui3-g">');
+      en('<div class="yui3-g-r">');
       en('<div class="yui3-u-1-2">');
       en('<p class="onpub-article-info">');
 
