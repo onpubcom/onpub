@@ -16,8 +16,8 @@
   <property name="dir.yui.tests" value="${dir.yui}/tests"/>
   <property name="dir.yui.build" value="${dir.yui}/build"/>
   <property name="dir.phpthumb" value="${dir.build}/phpThumb"/>
-  <property name="url.ckeditor" value="http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.3.1/ckeditor_4.3.1_full.zip"/>
-  <property name="url.yui" value="http://yui.zenfs.com/releases/yui3/yui_3.14.1.zip"/>
+  <property name="url.ckeditor" value="http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.3.3/ckeditor_4.3.3_full.zip"/>
+  <property name="url.yui" value="http://yui.zenfs.com/releases/yui3/yui_3.15.0.zip"/>
   <property name="url.phpthumb" value="http://sourceforge.net/projects/phpthumb/files/latest/download"/>
   <property name="ver" value="1.6"/>
 
