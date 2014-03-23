@@ -8,7 +8,7 @@
   <property name="dir.onpub.manage" value="${dir.onpub}/manage"/>
   <property name="dir.onpub.local" value="${dir.onpub}/local"/>  
   <property name="dir.ckeditor" value="${dir.build}/ckeditor"/>
-  <property name="dir.ckeditor.samples" value="${dir.ckeditor}/_samples"/>
+  <property name="dir.ckeditor.samples" value="${dir.ckeditor}/samples"/>
   <property name="dir.yui" value="${dir.build}/yui"/>
   <property name="dir.yui.api" value="${dir.yui}/api"/>
   <property name="dir.yui.docs" value="${dir.yui}/docs"/>
