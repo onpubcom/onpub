@@ -18,7 +18,7 @@
 #
 # RewriteEngine On
 
-RewriteEngine Off
+RewriteEngine On
 
 # If request matches a file, symlink or a directory, don't do any re-writing
 # of the URL and allow Apache to serve the response directly.

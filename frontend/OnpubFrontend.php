@@ -1256,9 +1256,10 @@ class OnpubFrontend
     header("Content-Type: text/html; charset=iso-8859-1");
 
     if ($onpub_disp_friendly_urls) {
-      $friendlyURL = $this->friendlyURLs($_SERVER['REQUEST_URI'], true);
+      $friendlyURL = $this->generateFriendlyURL($this->currentSection, $this->currentArticle);
+      $baseName = pathinfo(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), PATHINFO_BASENAME);
 
-      if ($_SERVER['REQUEST_URI'] != $friendlyURL) {
+      if ($friendlyURL && $baseName && $friendlyURL != $baseName) {
         // Received a request for a non-friendly URL.
         // Re-direct permanently to the friendly equivalent.
         header('Location: ' . $friendlyURL, true, 301);
