@@ -12,6 +12,10 @@ a:visited { color: #0D72BA; text-decoration: none; }
 a:hover { color: #0D72BA; text-decoration: underline; }
 a:active { color: #0D72BA; text-decoration: underline; }
 
+body {
+  margin-top: 0;
+}
+
 table {
   margin-bottom: 1em;
 }
@@ -31,22 +35,13 @@ th {
 h1 {
   color: #3F4247;
   border-bottom: 1px solid #DADFE5;
-}
-
-h2, h3 {
-  margin-top: 0;
+  margin-right: .5em;
+  font-weight: bold;
 }
 
 h2, h3, h4, h5, h6 {
   color: #3F4247;
-}
-
-h4, h5, h6 {
-  margin-bottom: 1em;
-}
-
-h3.onpub-field-header {
-  margin-bottom: 0;
+  font-weight: bold;
 }
 
 b, strong {

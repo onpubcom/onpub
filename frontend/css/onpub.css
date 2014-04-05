@@ -138,30 +138,24 @@ h1 {
   color: #3F4247;
   border-bottom: 1px solid #DADFE5;
   margin-right: .5em;
-}
-
-h2, h3 {
-  margin-top: 0;
+  font-weight: bold;
 }
 
 h2, h3, h4, h5, h6 {
   color: #3F4247;
-}
-
-h4, h5, h6 {
-  margin-bottom: 1em;
-}
-
-h3.onpub-field-header {
-  margin-bottom: 0;
+  font-weight: bold;
 }
 
 b, strong {
   color: #3F4247;
 }
 
+h3.onpub-field-header {
+  margin-bottom: 0;
+}
+
 h2.onpub-article-link {
-  margin-bottom: 0em;
+  margin-top: 0;
 }
 
 table {

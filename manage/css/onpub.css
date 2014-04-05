@@ -45,7 +45,7 @@ body {
 }
 
 #onpub-logo {
-  width: 98%;
+  width: 1250px;
   margin: auto;
   font-weight: normal;
   padding-top: .25em;
@@ -56,7 +56,7 @@ body {
 }
 
 #onpub-page {
-  width: 98%;
+  width: 1250px;
   margin: auto;
 }
 
@@ -77,7 +77,7 @@ body {
 }
 
 #onpub-footer-content {
-  width: 98%;
+  width: 1250px;
   margin: auto;
   font-size: 85%;
   color: #F7F7F7;
@@ -138,30 +138,24 @@ h1 {
   color: #3F4247;
   border-bottom: 1px solid #DADFE5;
   margin-right: .5em;
-}
-
-h2, h3 {
-  margin-top: 0;
+  font-weight: bold;
 }
 
 h2, h3, h4, h5, h6 {
   color: #3F4247;
-}
-
-h4, h5, h6 {
-  margin-bottom: 1em;
-}
-
-h3.onpub-field-header {
-  margin-bottom: 0;
+  font-weight: bold;
 }
 
 b, strong {
   color: #3F4247;
 }
 
+h3.onpub-field-header {
+  margin-bottom: 0;
+}
+
 h2.onpub-article-link {
-  margin-bottom: 0em;
+  margin-top: 0;
 }
 
 table {
@@ -256,34 +250,4 @@ p.onpub-image-preview-name {
 img {
   height: auto;
   max-width: 100%;
-}
-
-@media screen and (min-width: 980px) {
-  /* Client's device at least 980px, fix layout widths to 970px */
-  #onpub-logo {
-    width: 970px;
-  }
-
-  #onpub-page {
-    width: 970px;
-  }
-
-  #onpub-footer-content {
-    width: 970px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  /* Client's device is at most 480px, hide right-column section navigation */
-  div.onpub-section-nav {
-    display: none;
-  }
-
-  div.onpub-section {
-    width: 100%;
-  }
-
-  div.onpub-article {
-    width: 100%;
-  }
 }
