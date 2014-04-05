@@ -1256,6 +1256,30 @@ class OnpubFrontend
     header("Content-Type: text/html; charset=iso-8859-1");
 
     if ($onpub_disp_friendly_urls) {
+      if ($this->currentArticle) {
+        $sectionMaps = $this->samaps->select(null, null, $this->currentArticle->ID);
+        $articleInSection = false;
+
+        if ($this->currentSection) {
+          foreach ($sectionMaps as $sectionMap) {
+            if ($sectionMap->sectionID == $this->currentSection->ID) {
+              $articleInSection = true;
+              break;
+            }
+          }
+        }
+
+        if (!$articleInSection) {
+          if (sizeof($sectionMaps)) {
+            $sectionMap = $sectionMaps[0];
+            $this->currentSection = $this->sections->get($sectionMap->sectionID);
+          }
+          else {
+            $this->currentSection = null;
+          }
+        }
+      }
+
       $friendlyURL = $this->generateFriendlyURL($this->currentSection, $this->currentArticle);
       $baseName = pathinfo(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), PATHINFO_BASENAME);
 
