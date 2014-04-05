@@ -137,7 +137,7 @@ div.onpub-section-nav-link {
 }
 
 h1.onpub-section-nav {
-  padding-left: 1em;
+  padding-left: .75em;
   background: none;
   border-bottom-style: none;
   font-weight: bold;
@@ -146,6 +146,7 @@ h1.onpub-section-nav {
 h1 {
   color: #3F4247;
   border-bottom: 1px solid #DADFE5;
+  margin-right: .5em;
 }
 
 h2, h3 {
@@ -199,8 +200,8 @@ td.onpub-highlight2 {
 p.onpub-article-info {
   font-size: 85%;
   color: #7A8087;
-  margin-bottom: 1.75em;
   font-weight: bold;
+  margin-top: 0;
 }
 
 p.onpub-article-summary {

@@ -82,7 +82,7 @@ class OnpubWidgetHeader
     en('</div>');
 
     en('<div class="yui3-u-3-4">');
-    en('<div id="onpub-menubar" class="yui3-menu yui3-menu-horizontal yui3-menubuttonnav" style="float: right;">');
+    en('<div id="onpub-menubar" class="yui3-menu yui3-menu-horizontal yui3-menubuttonnav" style="float: right; margin-top: 2.25em;">');
     en('<div class="yui3-menu-content">');
     en('<ul>');
 
