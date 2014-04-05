@@ -59,7 +59,7 @@ class OnpubWelcome
           en('<div>');
           en('<input type="hidden" name="onpub" value="EditArticles">');
           en('<input type="hidden" name="fullTextSearch" value="1">');
-          en('<p><input type="text" name="keywords" style="width: 18.5em;"> <input type="submit" value="Search Articles"></p>');
+          en('<p style="margin-top: 0;"><input type="text" name="keywords" style="width: 18.5em;"> <input type="submit" value="Search Articles"></p>');
           //en(' For what: <select name="onpub"><option value="EditArticles">Articles</option><option value="EditSections">Sections</option><option value="EditWebsites">Websites</option></select>');
           en('</div>');
           en('</form>');
@@ -73,7 +73,7 @@ class OnpubWelcome
 
         if (sizeof($articles)) {
           en('<table style="width: 100%;" colspan="2">');
-          en('<tr><th style="text-align: left; width: 75%;">Recent Articles</th><th style="text-align: left;">Created</th></tr>');
+          en('<tr><th style="text-align: left; width: 75%;">Recent Articles</th><th>Created</th></tr>');
 
           foreach ($articles as $article) {
             en('<tr><td><a href="index.php?onpub=EditArticle&amp;articleID=' . $article->ID . '" title="Edit">' . $article->title . '</a></td><td>' . $article->getCreated()->format("M j, Y") . '</td></tr>');
@@ -95,7 +95,7 @@ class OnpubWelcome
       
       en('<div class="yui3-u-1-2">');
       en('<table style="float: right;">');
-      en('<tr><th colspan="2" style="text-align: left;">Content Stats</th></tr>');
+      en('<tr><th colspan="2">Content Stats</th></tr>');
       en('<tr><td><a href="index.php?onpub=EditArticles">Articles</a>:</td><td>' . $numarticles . '</td></tr>');
       //en('<tr><td>Authors:</td><td>' . $oauthors->count() . '</td></tr>');
       en('<tr><td><a href="index.php?onpub=EditImages">Images</a>:</td><td>' . $oimages->count() . '</td></tr>');
@@ -202,7 +202,7 @@ class OnpubWelcome
 
     if ($this->pdo) {
       en('<table>');
-      en('<tr><th colspan="2" style="text-align: left;">Database Connection</th></tr>');
+      en('<tr><th colspan="2">Database Connection</th></tr>');
       en('<tr style="vertical-align: top;"><td>MySQL Host:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CONNECTION_STATUS) . '</td></tr>');
       en('<tr style="vertical-align: top;"><td>MySQL Client:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_CLIENT_VERSION) . '</td></tr>');
       en('<tr style="vertical-align: top;"><td>MySQL Server:</td><td>' . $this->pdo->getAttribute(PDO::ATTR_SERVER_VERSION) . '</td></tr>');
@@ -220,7 +220,7 @@ class OnpubWelcome
       en('</table>');
 
       en('<table>');
-      en('<tr><th colspan="2" style="text-align: left;">PHP Configuration</th></tr>');
+      en('<tr><th colspan="2">PHP Configuration</th></tr>');
 
       if (function_exists("gd_info")) {
         $gdinfo = gd_info();

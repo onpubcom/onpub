@@ -742,7 +742,7 @@ class OnpubFrontend
     }
 
     en('</div>');
-    en('<div class="yui3-u-1-4" style="text-align: right;">');
+    en('<div class="yui3-u-1-4">');
 
     if ($onpub_disp_login) {
       if ($this->loginStatus) {
@@ -1289,9 +1289,8 @@ class OnpubFrontend
     }
 
     if (file_exists($onpub_dir_yui)) {
-      en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssreset/cssreset-min.css">');
+      en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssnormalize/cssnormalize-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssfonts/cssfonts-min.css">');
-      en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssbase/cssbase-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssgrids/cssgrids-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'cssgrids-responsive/cssgrids-responsive-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . $onpub_dir_yui . 'node-menunav/assets/skins/sam/node-menunav.css">');
@@ -1299,9 +1298,8 @@ class OnpubFrontend
     else {
       $onpub_dir_yui = null;
       en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' .
-        $onpub_yui_version . '/build/cssreset/cssreset-min.css&' . $onpub_yui_version .
+        $onpub_yui_version . '/build/cssnormalize/cssnormalize-min.css&' . $onpub_yui_version .
         '/build/cssfonts/cssfonts-min.css&' . $onpub_yui_version .
-        '/build/cssbase/cssbase-min.css&' . $onpub_yui_version .
         '/build/cssgrids/cssgrids-min.css&' . $onpub_yui_version .
         '/build/cssgrids-responsive/cssgrids-responsive-min.css&' . $onpub_yui_version .
         '/build/node-menunav/assets/skins/sam/node-menunav.css">');

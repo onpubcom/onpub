@@ -77,10 +77,10 @@ class OnpubEditArticle
           'allowedContent': true,
           <?php
           if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
-            en("'contentsCss': ['ckeditor/contents.css', '" . ONPUBGUI_YUI_DIRECTORY . "cssgrids/cssgrids-min.css', 'css/ckeditor.css']");
+            en("'contentsCss': ['" . ONPUBGUI_YUI_DIRECTORY . "cssnormalize/cssnormalize-min.css', '" . ONPUBGUI_YUI_DIRECTORY . "cssfonts/cssfonts-min.css', '" . ONPUBGUI_YUI_DIRECTORY . "cssgrids/cssgrids-min.css', 'ckeditor/contents.css', 'css/ckeditor.css']");
           }
           else {
-            en("'contentsCss': ['ckeditor/contents.css', 'http://yui.yahooapis.com/" . ONPUBGUI_YUI_VERSION . "/build/cssgrids/cssgrids-min.css', 'css/ckeditor.css']");
+            en("'contentsCss': ['http://yui.yahooapis.com/" . ONPUBGUI_YUI_VERSION . "/build/cssnormalize/cssnormalize-min.css', 'http://yui.yahooapis.com/" . ONPUBGUI_YUI_VERSION . "/build/cssfonts/cssfonts-min.css', 'http://yui.yahooapis.com/" . ONPUBGUI_YUI_VERSION . "/build/cssgrids/cssgrids-min.css', 'ckeditor/contents.css', 'css/ckeditor.css']");
           }
           ?>
         });

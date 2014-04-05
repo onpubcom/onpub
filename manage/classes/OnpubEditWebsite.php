@@ -63,11 +63,11 @@ class OnpubEditWebsite
 
     if ($this->owebsite->url) {
       $go = ' <a href="' . $this->owebsite->url . '" target="_blank"><img src="' . ONPUBGUI_IMAGE_DIRECTORY . 'world_go.png" border="0" align="top" alt="Go" title="Go" width="16" height="16"></a>';
-      $message = '<small>This URL should be set to the Frontend address for this website.</small>';
+      $message = '<small>Frontend URL for this website.</small>';
     }
     else {
       $go = '';
-      $message = '<small>This URL should be set to the Frontend address for this website, example: http://onpub.com/tryonpub.</small>';
+      $message = '<small>Frontend URL for this website. Example: http://onpub.com/tryonpub.</small>';
     }
 
     en('<h3 class="onpub-field-header">Frontend URL</h3><p>' . $message . '<br><input type="text" maxlength="255" size="40" name="url" value="' . htmlentities($this->owebsite->url) . '">' . $go . '</p>');
