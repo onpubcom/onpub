@@ -28,11 +28,11 @@ html {
 
 body {
   background-color: #7F8387;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .yui3-g [class*="yui3-u"], .yui3-g-r [class*="yui3-u"] {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 #onpub-banner {

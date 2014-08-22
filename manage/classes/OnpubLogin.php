@@ -51,6 +51,7 @@ class OnpubLogin
       en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' . ONPUBGUI_YUI_VERSION . '/build/cssnormalize/cssnormalize-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssfonts/cssfonts-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/cssgrids-min.css">');
     }
 
+    en("<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>");
     en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
     en('</head>');
     en('<body>');

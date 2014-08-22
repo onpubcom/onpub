@@ -49,6 +49,7 @@ class OnpubWidgetHeader
          '/build/overlay/assets/skins/sam/overlay.css">');
     }
 
+    en("<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>");
     en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
     en('<link rel="stylesheet" type="text/css" href="css/onpub-menu.css">');
 
