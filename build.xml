@@ -28,7 +28,7 @@
   <target name="dldeps" depends="clean">
     <mkdir dir="${dir.build}"/>
     <httpget url="${url.ckeditor}" dir="${dir.build}"/>
-    <httpget url="${url.yui}" dir="${dir.build}"/>
+    <!-- <httpget url="${url.yui}" dir="${dir.build}"/> -->
     <exec command="curl -L http://sourceforge.net/projects/phpthumb/files/latest/download -o ${dir.build}/phpThumb.zip --silent"/>
   </target>
 
@@ -44,24 +44,24 @@
   </target>
 
   <target name="devdeps" depends="unzipdeps, rmdeps">
-    <move file="${dir.yui}" todir="${dir.dev}/api"/>
+    <!-- <move file="${dir.yui}" todir="${dir.dev}/api"/> -->
     <move file="${dir.phpthumb}" todir="${dir.dev}/api"/>
     <move file="${dir.ckeditor}" todir="${dir.dev}/manage"/>    
   </target>
 
   <target name="rmdeps">
-    <delete dir="${dir.dev}/api/yui"/>
+    <!-- <delete dir="${dir.dev}/api/yui"/> -->
     <delete dir="${dir.dev}/api/phpThumb"/>
     <delete dir="${dir.dev}/manage/ckeditor"/>
   </target>
 
   <target name="prunedeps" depends="unzipdeps">
     <delete dir="${dir.ckeditor.samples}"/>
-    <delete dir="${dir.yui.api}"/>
-    <delete dir="${dir.yui.docs}"/>
-    <delete dir="${dir.yui.releasenotes}"/>
-    <delete dir="${dir.yui.tests}"/>
-    <exec command="find ${dir.yui.build} -type f -name '*.js' | grep -v '\-min\.js' | grep -v 'lang/' | xargs /bin/rm"/>
+    <!-- <delete dir="${dir.yui.api}"/> -->
+    <!-- <delete dir="${dir.yui.docs}"/> -->
+    <!-- <delete dir="${dir.yui.releasenotes}"/> -->
+    <!-- <delete dir="${dir.yui.tests}"/> -->
+    <!-- <exec command="find ${dir.yui.build} -type f -name '*.js' | grep -v '\-min\.js' | grep -v 'lang/' | xargs /bin/rm"/> -->
   </target>
 
   <target name="package" depends="prunedeps">
@@ -71,7 +71,7 @@
     <delete file="${dir.onpub}/build.xml"/>
     <delete file="${dir.onpub}/.gitignore"/>
     <delete dir="${dir.onpub}/.git"/>
-    <move file="${dir.yui}" todir="${dir.onpub.api}"/>
+    <!-- <move file="${dir.yui}" todir="${dir.onpub.api}"/> -->
     <move file="${dir.phpthumb}" todir="${dir.onpub.api}"/>
     <move file="${dir.ckeditor}" todir="${dir.onpub.manage}"/>
     <zip destfile="${dir.build}/onpub-${ver}.zip" basedir="${dir.onpub}" prefix="onpub/"/>
