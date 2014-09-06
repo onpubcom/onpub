@@ -82,7 +82,8 @@ if (!isset($onpub_dir_api))
 /*
 Path to YUI directory. This directory contains the YUI 3 distribution. Rename
 or delete this directory if you'd like to include the YUI files from Yahoo!'s
-CDN instead.
+CDN instead. You can also set the value of this config variable to FALSE to
+force the Onpub frontend to use the YUI CDN.
 */
 if (!isset($onpub_dir_yui))
   $onpub_dir_yui = $onpub_dir_api . 'yui/build/';
