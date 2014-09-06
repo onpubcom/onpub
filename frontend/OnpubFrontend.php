@@ -1085,7 +1085,32 @@ class OnpubFrontend
     en('<div class="yui3-u onpub-article">');
 
     if ($this->currentArticle) {
-      en('<h1 style="margin-right: 0;">' . $this->currentArticle->title . '</h1>');
+      if ($this->page == 'home') {
+        $visibleSIDs = $this->getVisibleSIDs();
+        $url = '';
+
+        if ($this->currentArticle->url) {
+          $url = $this->friendlyURLs($this->currentArticle->url, true);
+        }
+        elseif (sizeof($visibleSIDs)) {
+          if ($onpub_disp_friendly_urls) {
+            $url = $this->generateFriendlyURL(NULL, $this->currentArticle, $visibleSIDs[0]);
+          }
+          else {
+            $url = 'index.php?s=' . $visibleSIDs[0] . '&amp;a=' . $this->currentArticle->ID;
+          }
+        }
+
+        if ($url) {
+          en('<h1 style="margin-right: 0;"><a href="' . $url . '">' . $this->currentArticle->title . '</a></h1>');
+        }
+        else {
+          en('<h1 style="margin-right: 0;">' . $this->currentArticle->title . '</h1>');
+        }
+      }
+      else {
+        en('<h1 style="margin-right: 0;">' . $this->currentArticle->title . '</h1>');
+      }
 
       en('<div class="yui3-g">');
       en('<div class="yui3-u-1-2">');
