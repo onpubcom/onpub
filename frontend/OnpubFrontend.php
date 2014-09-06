@@ -1281,7 +1281,7 @@ class OnpubFrontend
               '/build/node-menunav/assets/skins/sam/node-menunav.css">');
     }
 
-    en("<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>");
+    en("<link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>");
 
     if (file_exists($onpub_inc_css)) {
       en('<link rel="stylesheet" type="text/css" href="' . $onpub_inc_css . '">');
