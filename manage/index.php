@@ -1,7 +1,7 @@
 <?php
 
 /* Onpub (TM)
- * Copyright (C) 2012 Onpub.com <http://onpub.com/>
+ * Copyright (C) 2015 Onpub.com <http://onpub.com/>
  * Author: Corey H.M. Taylor <corey@onpub.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -841,7 +841,7 @@ else {
 
       case "Disconnect":
         $_SESSION['PDO_DATABASE'] = '';
-        
+
         header("Location: index.php");
         return;
         break;

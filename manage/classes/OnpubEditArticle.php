@@ -2,7 +2,7 @@
 
 /**
  * @author {@link mailto:corey@onpub.com Corey H.M. Taylor}
- * @copyright Onpub (TM). Copyright 2012, Onpub.com.
+ * @copyright Onpub (TM). Copyright 2015, Onpub.com.
  * {@link http://onpub.com/}
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * Version 2
@@ -177,7 +177,7 @@ class OnpubEditArticle
         {
           $section = $sections[$i];
           $website = $websitesMap["{$section->websiteID}"];
-          
+
           $frontendURL = addTrailingSlash($website->url) . 'index.php?s=' . $section->ID . '&amp;a=' . $articleIDs[$i];
           en('&bull; <a href="' . $frontendURL . '" target="_blank">' . $frontendURL . '</a>');
 

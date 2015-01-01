@@ -2,7 +2,7 @@
 
 /**
  * @author {@link mailto:corey@onpub.com Corey H.M. Taylor}
- * @copyright Onpub (TM). Copyright 2012, Onpub.com.
+ * @copyright Onpub (TM). Copyright 2015, Onpub.com.
  * {@link http://onpub.com/}
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * Version 2
@@ -92,7 +92,7 @@ class OnpubWelcome
       en('<li><a href="index.php?onpub=UploadImages">Upload Images</a></li>');
       en('</ul>');
       en('</div>');
-      
+
       en('<div class="yui3-u-1-2">');
       en('<table style="float: right;">');
       en('<tr><th colspan="2">Content Stats</th></tr>');

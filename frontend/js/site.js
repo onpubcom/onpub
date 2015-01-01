@@ -1,5 +1,5 @@
 /* Onpub (TM)
- * Copyright (C) 2012 Onpub.com <http://onpub.com/>
+ * Copyright (C) 2015 Onpub.com <http://onpub.com/>
  * Author: Corey H.M. Taylor <corey@onpub.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,7 +20,7 @@ YUI(
       var div = li.get("children").item(1);
       node.get("parentNode").set("href", "#" + div.get("id"));
     };
-      
+
     // Render the nav menu.
     Y.on("contentready", function () {
       if (Y.UA.touchEnabled) {
@@ -30,10 +30,10 @@ YUI(
       }
       else {
         // Make menu bar mouse-friendly.
-        this.plug(Y.Plugin.NodeMenuNav);          
+        this.plug(Y.Plugin.NodeMenuNav);
       }
 
-      this.get("ownerDocument").get("documentElement").removeClass("yui3-loading");      
+      this.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
     }, "#onpub-menubar");
   }
 });

@@ -4,7 +4,7 @@
  * Manage websites in an Onpub database.
  *
  * @author {@link mailto:corey@onpub.com Corey H.M. Taylor}
- * @copyright Onpub (TM). Copyright 2012, Onpub.com.
+ * @copyright Onpub (TM). Copyright 2015, Onpub.com.
  * {@link http://onpub.com/}
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * Version 2
@@ -232,7 +232,7 @@ class OnpubWebsites
    * @return OnpubWebsite An {@link OnpubWebsite} object. NULL if the website does not exist in the database.
    */
   public function get($ID, OnpubQueryOptions $queryOptions = NULL, $flatArticleList = FALSE)
-  {    
+  {
     if ($queryOptions === NULL)
       $queryOptions = new OnpubQueryOptions();
 
@@ -337,7 +337,7 @@ class OnpubWebsites
     // vice-versa.
     for ($i = 0; $i < sizeof($sections); $i++) {
       $section = $sections[$i];
-      
+
       if ($section->parentID) {
         $parentID = $section->parentID;
 

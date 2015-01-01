@@ -7,7 +7,7 @@
  * {@link http://onpub.com/pdfs/onpub_schema.pdf OnpubArticles table}.
  *
  * @author {@link mailto:corey@onpub.com Corey H.M. Taylor}
- * @copyright Onpub (TM). Copyright 2012, Onpub.com.
+ * @copyright Onpub (TM). Copyright 2015, Onpub.com.
  * {@link http://onpub.com/}
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * Version 2
@@ -732,14 +732,14 @@ class OnpubArticles
 
         if ($row["imageID"]) {
           $image = new OnpubImage();
-    
+
           $image->ID = $row["imageID"];
           $image->websiteID = $row["imageWebsiteID"];
           $image->fileName = $row["imageFileName"];
           $image->description = $row["imageDescription"];
           $image->setCreated(new DateTime($row["imageCreated"]));
           $image->setModified(new DateTime($row["imageModified"]));
-    
+
           $article->image = $image;
         }
 

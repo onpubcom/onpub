@@ -4,7 +4,7 @@
  * Manage images in an Onpub database.
  *
  * @author {@link mailto:corey@onpub.com Corey H.M. Taylor}
- * @copyright Onpub (TM). Copyright 2012, Onpub.com.
+ * @copyright Onpub (TM). Copyright 2015, Onpub.com.
  * {@link http://onpub.com/}
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * Version 2

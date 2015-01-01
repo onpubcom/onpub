@@ -2,7 +2,7 @@
 
 /**
  * @author {@link mailto:corey@onpub.com Corey H.M. Taylor}
- * @copyright Onpub (TM). Copyright 2012, Onpub.com.
+ * @copyright Onpub (TM). Copyright 2015, Onpub.com.
  * {@link http://onpub.com/}
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * Version 2
@@ -132,11 +132,11 @@ class OnpubWidgetHeader
         en('<div id="edit" class="yui3-menu">');
         en('<div class="yui3-menu-content">');
         en('<ul>');
-  
+
         foreach ($articles as $a) {
           en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?onpub=EditArticle&articleID=' . $a->ID . '">' . $a->title . '</a></li>');
         }
-  
+
         en('<li class="yui3-menuitem"><a class="yui3-menuitem-content" href="index.php?onpub=EditArticles">All Articles..</a></li>');
         en('</ul>');
         en('</div>');
@@ -157,7 +157,7 @@ class OnpubWidgetHeader
       en('</li>');
       en('<li class="yui3-menuitem">');
       en('<a class="yui3-menuitem-content" href="index.php?onpub=EditWebsites">Websites</a>');
-      en('</li>');      
+      en('</li>');
       en('<li>');
       en('<a class="yui3-menu-label" href="#upload"><em>Upload</em></a>');
       en('<div id="upload" class="yui3-menu">');
