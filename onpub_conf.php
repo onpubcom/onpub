@@ -174,7 +174,7 @@ un-comment the Apache URL rewriting rules within the included .htaccess (located
 within the root of your onpub install directory).
 */
 if (!isset($onpub_disp_friendly_urls))
-  $onpub_disp_friendly_urls = false;
+  $onpub_disp_friendly_urls = true;
 
 // Local File Includes Config
 
