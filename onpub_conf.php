@@ -125,7 +125,7 @@ if (!isset($onpub_disp_website))
   $onpub_disp_website = 1;
 
 /*
-ID of Onpub Article to display on the home page. Set this to null if you don't
+ID of Onpub Article to display on the home page. Set this to FALSE if you don't
 want to display an article on the home page. Or change this to the ID of the
 Onpub article you want to display on the frontend home/index page. By default,
 the first article you create with Onpub is displayed on the frontend home page
