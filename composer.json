@@ -6,6 +6,7 @@
     "license": "GPL-2.0",
     "keywords": ["cms", "onpub"],
     "require": {
-        "php": ">=5.4.36"
+        "php": ">=5.4.36",
+        "onpubcom/onpubapi": "dev-master"
     }
 }

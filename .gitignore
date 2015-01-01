@@ -5,3 +5,6 @@ manage/ckeditor/
 local/
 onpub_conf_local.php
 nbproject/
+vendor/
+composer.lock
+

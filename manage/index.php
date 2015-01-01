@@ -9,7 +9,7 @@
  * as published by the Free Software Foundation; version 2.
  */
 
-include("../api/onpubapi.php");
+include("../vendor/autoload.php");
 
 include("onpubgui.php");
 

@@ -24,8 +24,11 @@ if (file_exists('./onpub_conf_local.php')) {
 // file included above.
 include './onpub_conf.php';
 
+// Composer autoloader.
+require 'vendor/autoload.php';
+
 // Include all OnpubAPI classes.
-include $onpub_dir_api . 'onpubapi.php';
+//include $onpub_dir_api . 'onpubapi.php';
 
 // Include frontend class.
 include $onpub_dir_frontend . 'OnpubFrontend.php';
