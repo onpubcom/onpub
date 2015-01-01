@@ -14,24 +14,18 @@ This is the Onpub website frontend index file.
 See http://onpub.com/index.php?s=8&a=96 for more information.
 */
 
+// Composer autoloader.
+require 'vendor/autoload.php';
+
 // Include local config customizations if file exists.
-if (file_exists('./onpub_conf_local.php')) {
-  include './onpub_conf_local.php';
+if (file_exists('local/onpub_conf.php')) {
+  include 'local/onpub_conf.php';
 }
 
 // Include default Onpub config. Variables in this file will only be defined
 // if their equivalents have not already been defined in the local configuration
 // file included above.
 include './onpub_conf.php';
-
-// Composer autoloader.
-require 'vendor/autoload.php';
-
-// Include all OnpubAPI classes.
-//include $onpub_dir_api . 'onpubapi.php';
-
-// Include frontend class.
-include $onpub_dir_frontend . 'OnpubFrontend.php';
 
 if (file_exists($onpub_dir_local . 'OnpubFrontendCustom.php'))
 {

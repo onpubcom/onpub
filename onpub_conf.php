@@ -105,7 +105,7 @@ create a totally custom layout/design while still using the Onpub content
 management interface to keep your site updated.
 */
 if (!isset($onpub_dir_frontend))
-  $onpub_dir_frontend = $onpub_dir_root . 'frontend/';
+  $onpub_dir_frontend = $onpub_dir_root;
 
 /*
 Path to the Onpub management interface. It is recommended that you leave this
