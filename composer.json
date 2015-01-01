@@ -4,7 +4,7 @@
     "type": "project",
     "homepage": "http://onpub.com/",
     "license": "GPL-2.0",
-    "keywords": ["cms"],
+    "keywords": ["cms", "onpub"],
     "require": {
         "php": ">=5.4.36"
     }
