@@ -8,7 +8,9 @@
     "require": {
         "php": ">=5.4.36",
         "onpubcom/onpubapi": "dev-master",
-        "onpubcom/onpubmanage": "dev-master",
-        "onpubcom/onpubfrontend": "dev-master"
+        "onpubcom/onpubmanage": "dev-master"
+    },
+    "autoload": {
+        "classmap": ["classes/"]
     }
 }

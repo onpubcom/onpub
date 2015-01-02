@@ -1,0 +1,283 @@
+/* Onpub (TM)
+ * Copyright (C) 2015 Onpub.com <http://onpub.com/>
+ * Author: Corey H.M. Taylor <corey@onpub.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2.
+ */
+
+a:link { color: #0D72BA; text-decoration: none; }
+a:visited { color: #0D72BA; text-decoration: none; }
+a:hover { color: #0D72BA; text-decoration: underline; }
+a:active { color: #0D72BA; text-decoration: underline; }
+
+a.onpub-section-nav:link { color: #0D72BA; text-decoration: none; }
+a.onpub-section-nav:visited { color: #0D72BA; text-decoration: none; }
+a.onpub-section-nav:hover { color: #0D72BA; text-decoration: underline; }
+a.onpub-section-nav:active { color: #0D72BA; text-decoration: underline; }
+
+a.onpub-footer-nav:link { color: #F4D777; text-decoration: none; }
+a.onpub-footer-nav:visited { color: #F4D777; text-decoration: none; }
+a.onpub-footer-nav:hover { color: #F4D777; text-decoration: underline; }
+a.onpub-footer-nav:active { color: #F4D777; text-decoration: underline; }
+
+html {
+  background-color: #7F8387;
+}
+
+body {
+  background-color: #7F8387;
+  font-family: 'Roboto', sans-serif;
+}
+
+.yui3-g [class*="yui3-u"], .yui3-g-r [class*="yui3-u"] {
+  font-family: 'Roboto', sans-serif;
+}
+
+#onpub-banner {
+  text-align: center;
+}
+
+#onpub-header {
+  background-color: #64696D;
+  border-bottom: 1px dotted #555B60;
+}
+
+#onpub-logo {
+  width: 98%;
+  margin: auto;
+  font-weight: normal;
+  padding-top: .25em;
+}
+
+#onpub-menubar {
+  margin-top: 0.75em;
+}
+
+#onpub-page {
+  width: 98%;
+  margin: auto;
+}
+
+#onpub-body {
+  color: #3F4247;
+  background-color: #FCFCFC;
+  border: 1px solid #727A82;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  margin-top: .75em;
+}
+
+#onpub-footer {
+  margin-top: 1em;
+  padding-bottom: .5em;
+  background-color: transparent;
+}
+
+#onpub-footer-content {
+  width: 98%;
+  margin: auto;
+  font-size: 85%;
+  color: #F7F7F7;
+}
+
+.yui3-loading #onpub-menubar {
+  visibility: hidden;
+}
+
+.onpub-error {
+  color: red;
+}
+
+textarea, select {
+  color: #3F4247;
+  font-size: 108%;
+  width:auto;*width:auto;
+}
+
+input[type=text], input[type=password] {
+  color: #3F4247;
+  background-color: #FCE69C;
+  border: 1px dotted #EDCC61;
+  padding: 0.2em;
+  font-size: 108%;
+  width:auto;*width:auto;
+}
+
+input[type=submit], input[type=button], input[type=file] {
+  color: #3F4247;
+  padding: 0.1em;
+  font-size: 116%;
+}
+
+div.onpub-section-nav {
+  background-color: #FCE69C;
+  color: #3F4247;
+  padding-bottom: 1em;
+}
+
+div.onpub-section-nav-link {
+  font-size: 93%;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  margin-bottom: .5em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid #F4D777;
+}
+
+h1.onpub-section-nav {
+  padding-left: .75em;
+  background: none;
+  border-bottom-style: none;
+  font-weight: bold;
+}
+
+h1 {
+  color: #3F4247;
+  border-bottom: 1px solid #DADFE5;
+  margin-right: .5em;
+  font-weight: bold;
+}
+
+h2, h3, h4, h5, h6 {
+  color: #3F4247;
+  font-weight: bold;
+}
+
+b, strong {
+  color: #3F4247;
+}
+
+h3.onpub-field-header {
+  margin-bottom: 0;
+}
+
+h2.onpub-article-link {
+  margin-top: 0;
+}
+
+table {
+  margin-bottom: 1em;
+}
+
+th, td {
+  border-color: #E6EAEF;
+  border: 1px solid #E6EAEF;
+  padding: .5em;
+}
+
+th {
+  font-size: 108%;
+  font-weight: bold;
+  text-align: left;
+}
+
+td.onpub-highlight1 {
+  background-color: #EFEFEF;
+}
+
+td.onpub-highlight2 {
+  background-color: #DFDFDF;
+}
+
+p.onpub-article-info {
+  font-size: 85%;
+  color: #7A8087;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+p.onpub-article-summary {
+  font-size: 85%;
+  color: #7A8087;
+}
+
+span.onpub-article-summary-date {
+  color: #5E6670;
+  font-weight: bold;
+}
+
+span.onpub-edit {
+  font-size: 93%;
+  padding: 0.25em;
+  padding-top: .75em;
+  border: 1px solid #F4D777;
+  background-color: #FCE69C;
+}
+
+span.onpub-login {
+  padding: 0.5em;
+  border: 1px dotted #555B60;
+  float: right;
+  background-color: #64696D;
+}
+
+span.onpub-field-header {
+  font-size: 108%;
+  font-weight: bold;
+}
+
+div.onpub-save-overlay {
+  width: 15em;
+  font-size: 93%;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5em;
+  background-color: #FCE69C;
+  color: #3F4247;
+  border: 1px solid #D3D3D3;
+}
+
+img.onpub-image-preview {
+  border: 1px solid #BEBEBE;
+  -moz-box-shadow: 0px 0px 2px #BEBEBE;
+  -webkit-box-shadow: 0px 0px 2px #BEBEBE;
+  box-shadow: 0px 0px 2px #BEBEBE;
+}
+
+p.onpub-image-preview-name {
+  text-align: center;
+  font-size: 85%;
+  background-color: #D4D4D4;
+  border: 1px solid #BEBEBE;
+  -moz-box-shadow: 0px 0px 2px #BEBEBE;
+  -webkit-box-shadow: 0px 0px 2px #BEBEBE;
+  box-shadow: 0px 0px 2px #BEBEBE;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 980px) {
+  /* Client's device at least 980px, fix layout widths to 970px */
+  #onpub-logo {
+    width: 970px;
+  }
+
+  #onpub-page {
+    width: 970px;
+  }
+
+  #onpub-footer-content {
+    width: 970px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Client's device is at most 480px, hide right-column section navigation */
+  div.onpub-section-nav {
+    display: none;
+  }
+
+  div.onpub-section {
+    width: 100%;
+  }
+
+  div.onpub-article {
+    width: 100%;
+  }
+}
