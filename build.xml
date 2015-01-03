@@ -6,7 +6,7 @@
   <property name="dir.onpub" value="${dir.build}/onpub"/>
   <property name="dir.onpub.api" value="${dir.onpub}/api"/>
   <property name="dir.onpub.manage" value="${dir.onpub}/manage"/>
-  <property name="dir.onpub.local" value="${dir.onpub}/local"/>  
+  <property name="dir.onpub.local" value="${dir.onpub}/local"/>
   <property name="dir.ckeditor" value="${dir.build}/ckeditor"/>
   <property name="dir.ckeditor.samples" value="${dir.ckeditor}/samples"/>
   <property name="dir.yui" value="${dir.build}/yui"/>
@@ -46,7 +46,7 @@
   <target name="devdeps" depends="unzipdeps, rmdeps">
     <move file="${dir.yui}" todir="${dir.dev}/api"/>
     <move file="${dir.phpthumb}" todir="${dir.dev}/api"/>
-    <move file="${dir.ckeditor}" todir="${dir.dev}/manage"/>    
+    <move file="${dir.ckeditor}" todir="${dir.dev}/manage"/>
   </target>
 
   <target name="rmdeps">
@@ -67,7 +67,7 @@
   <target name="package" depends="prunedeps">
     <mkdir dir="${dir.onpub}"/>
     <exec command="git clone git://github.com/onpubcom/onpub.git ${dir.onpub}"/>
-    <mkdir dir="${dir.onpub.local}"/>    
+    <mkdir dir="${dir.onpub.local}"/>
     <delete file="${dir.onpub}/build.xml"/>
     <delete file="${dir.onpub}/.gitignore"/>
     <delete dir="${dir.onpub}/.git"/>

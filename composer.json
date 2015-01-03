@@ -8,6 +8,7 @@
     "require": {
         "php": ">=5.4.36",
         "onpubcom/onpubapi": "dev-master",
+        "james-heinrich/phpthumb": "dev-master",
         "onpubcom/onpubmanage": "dev-master"
     },
     "autoload": {
