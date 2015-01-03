@@ -1,10 +1,5 @@
-api/phpThumb/
-api/yui/
 build/
-manage/ckeditor/
 local/
-onpub_conf_local.php
 nbproject/
 vendor/
 composer.lock
-

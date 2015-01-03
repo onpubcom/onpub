@@ -237,7 +237,6 @@ class OnpubFrontend
 
     switch ($this->page) {
       case 'rss':
-        include $onpub_dir_frontend . 'libs/FeedWriter.php';
         $this->rss();
         break;
 
