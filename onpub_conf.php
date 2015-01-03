@@ -77,7 +77,7 @@ Path to OnpubAPI directory. It is recommended that you leave this value
 unchanged.
 */
 if (!isset($onpub_dir_api))
-  $onpub_dir_api = $onpub_dir_root . 'api/';
+  $onpub_dir_api = $onpub_dir_root . 'vendor/onpubcom/onpubapi/';
 
 /*
 Path to YUI directory. This directory contains the YUI 3 distribution. Rename
@@ -92,7 +92,7 @@ if (!isset($onpub_dir_yui))
 Path to the phpThumb installation directory.
 */
 if (!isset($onpub_dir_phpthumb))
-  $onpub_dir_phpthumb = $onpub_dir_api . 'phpThumb/';
+  $onpub_dir_phpthumb = $onpub_dir_root . 'vendor/james-heinrich/phpthumb/';
 
 /*
 Path to default Onpub frontend directory. This variable is useful for pointing
