@@ -3,3 +3,5 @@ local/
 nbproject/
 vendor/
 composer.lock
+bower_components/
+

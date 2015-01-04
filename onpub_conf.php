@@ -86,7 +86,7 @@ CDN instead. You can also set the value of this config variable to FALSE to
 force the Onpub frontend to use the YUI CDN.
 */
 if (!isset($onpub_dir_yui))
-  $onpub_dir_yui = $onpub_dir_api . 'yui/build/';
+  $onpub_dir_yui = $onpub_dir_root . 'bower_components/yui3/build/';
 
 /*
 Path to the phpThumb installation directory.
