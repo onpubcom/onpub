@@ -1081,7 +1081,7 @@ class OnpubFrontend
     $onpub_dir_frontend, $onpub_inc_article_foot, $onpub_disp_friendly_urls;
 
     en('<div class="yui3-g">');
-    en('<div class="yui3-u onpub-article">');
+    en('<div class="yui3-u onpub-article" itemscope itemtype="http://schema.org/Article">');
 
     if ($this->currentArticle) {
       if ($this->page == 'home') {
@@ -1101,14 +1101,14 @@ class OnpubFrontend
         }
 
         if ($url) {
-          en('<h1 style="margin-right: 0;"><a href="' . $url . '">' . $this->currentArticle->title . '</a></h1>');
+          en('<h1 style="margin-right: 0;" itemprop="name"><a href="' . $url . '" itemprop="url">' . $this->currentArticle->title . '</a></h1>');
         }
         else {
-          en('<h1 style="margin-right: 0;">' . $this->currentArticle->title . '</h1>');
+          en('<h1 style="margin-right: 0;" itemprop="name">' . $this->currentArticle->title . '</h1>');
         }
       }
       else {
-        en('<h1 style="margin-right: 0;">' . $this->currentArticle->title . '</h1>');
+        en('<h1 style="margin-right: 0;" itemprop="name">' . $this->currentArticle->title . '</h1>');
       }
 
       en('<div class="yui3-g">');
