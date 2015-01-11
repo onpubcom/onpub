@@ -10,8 +10,7 @@
 /* Menu background */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-content {
 background-image: none;
-background-color: #1B8CDF;
-border: 1px solid #095C8C;
+background-color: transparent;
 }
 
 /* Menu borders */
