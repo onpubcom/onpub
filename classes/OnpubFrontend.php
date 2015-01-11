@@ -1164,7 +1164,7 @@ class OnpubFrontend
 
       if ($this->currentArticle->imageID) {
         $this->currentArticle->image->website = $this->website;
-        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=400&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
+        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=400&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '" itemprop="thumbnailUrl">');
       }
 
       en('<div itemprop="articleBody">');
