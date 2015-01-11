@@ -27,7 +27,7 @@ class OnpubWidgetFooter
     en('<div class="yui3-g">');
     en('<div class="yui3-u-3-4">');
 
-    en('<p>Onpub ' . ONPUBAPI_VERSION . '. &copy; ' . date('Y') . ' <a class="onpub-footer-nav" href="http://onpub.com/" target="_blank">Onpub.com</a> | <a class="onpub-footer-nav" href="http://onpub.com/index.php?s=8" target="_blank">User Guide</a></p>');
+    en('<p class="onpub-copyright">Onpub ' . ONPUBAPI_VERSION . '. &copy; ' . date('Y') . ' <a class="onpub-footer-nav" href="http://onpub.com/" target="_blank">Onpub.com</a> | <a class="onpub-footer-nav" href="http://onpub.com/index.php?s=8" target="_blank">User Guide</a></p>');
 
     en('</div>');
     en('<div class="yui3-u-1-4" style="text-align: right;">');

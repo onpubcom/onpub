@@ -23,11 +23,11 @@ a.onpub-footer-nav:hover { color: #F4D777; text-decoration: underline; }
 a.onpub-footer-nav:active { color: #F4D777; text-decoration: underline; }
 
 html {
-  background-color: #7F8387;
+  background-color: #595B5E;
 }
 
 body {
-  background-color: #7F8387;
+  background-color: #595B5E;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -40,15 +40,16 @@ body {
 }
 
 #onpub-header {
-  background-color: #64696D;
-  border-bottom: 1px dotted #555B60;
+  background-color: #3B3D3F;
+  border-bottom: 1px dotted #27292B;
 }
 
 #onpub-logo {
   width: 1250px;
   margin: auto;
   font-weight: normal;
-  padding-top: .25em;
+  padding-top: .5em;
+  padding-bottom: .5em;
 }
 
 #onpub-menubar {
@@ -63,7 +64,7 @@ body {
 #onpub-body {
   color: #3F4247;
   background-color: #FCFCFC;
-  border: 1px solid #727A82;
+  border: 1px solid #4C5156;
   padding-left: 1em;
   padding-right: 1em;
   padding-bottom: 1em;
@@ -71,7 +72,7 @@ body {
 }
 
 #onpub-footer {
-  margin-top: 1em;
+  margin-top: .75em;
   padding-bottom: .5em;
   background-color: transparent;
 }
@@ -207,11 +208,15 @@ span.onpub-edit {
   background-color: #FCE69C;
 }
 
+p.onpub-copyright {
+  margin-top: 0.5em;
+}
+
 span.onpub-login {
   padding: 0.5em;
-  border: 1px dotted #555B60;
+  border: 1px dotted #27292B;
   float: right;
-  background-color: #64696D;
+  background-color: #3B3D3F;
 }
 
 span.onpub-field-header {
