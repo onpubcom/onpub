@@ -1125,10 +1125,10 @@ class OnpubFrontend
           $author = $this->currentArticle->authors[0];
 
           if ($diff->days > 0) {
-            en('By ' . $author->displayAs . ' on <time datetime="' . $created->format('Y-m-d') . '" itemprop="datePublished">' . $created->format('M j, Y') . '</time>. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
+            en('By <span itemprop="author">' . $author->displayAs . '</span> on <time datetime="' . $created->format('Y-m-d') . '" itemprop="datePublished">' . $created->format('M j, Y') . '</time>. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
           }
           else {
-            en('By ' . $author->displayAs . ' on <time datetime="' . $created->format('Y-m-d') . '" itemprop="datePublished">' . $created->format('M j, Y') . '</time>.');
+            en('By <span itemprop="author">' . $author->displayAs . '</span> on <time datetime="' . $created->format('Y-m-d') . '" itemprop="datePublished">' . $created->format('M j, Y') . '</time>.');
           }
         }
         else {
@@ -1144,7 +1144,7 @@ class OnpubFrontend
         if (sizeof($this->currentArticle->authors)) {
           $author = $this->currentArticle->authors[0];
 
-          en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
+          en('By <span itemprop="author">' . $author->displayAs . '</span> on ' . $created->format('M j, Y') . '. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
         }
         else {
           en('Published: ' . $created->format('M j, Y') . '. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
