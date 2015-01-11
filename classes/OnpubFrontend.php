@@ -1125,18 +1125,18 @@ class OnpubFrontend
           $author = $this->currentArticle->authors[0];
 
           if ($diff->days > 0) {
-            en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '. Updated: ' . $modified->format('M j, Y') . '.');
+            en('By ' . $author->displayAs . ' on <time datetime="' . $created->format('Y-m-d') . '" itemprop="datePublished">' . $created->format('M j, Y') . '</time>. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
           }
           else {
-            en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '.');
+            en('By ' . $author->displayAs . ' on <time datetime="' . $created->format('Y-m-d') . '" itemprop="datePublished">' . $created->format('M j, Y') . '</time>.');
           }
         }
         else {
           if ($diff->days > 0) {
-            en('Published: ' . $created->format('M j, Y') . '. Updated: ' . $modified->format('M j, Y') . '.');
+            en('Published: <time datetime="' . $created->format('Y-m-d') . '" itemprop="datePublished">' . $created->format('M j, Y') . '</time>. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
           }
           else {
-            en('Published: ' . $created->format('M j, Y') . '.');
+            en('Published: <time datetime="' . $created->format('Y-m-d') . '" itemprop="datePublished">' . $created->format('M j, Y') . '</time>.');
           }
         }
       }
@@ -1144,10 +1144,10 @@ class OnpubFrontend
         if (sizeof($this->currentArticle->authors)) {
           $author = $this->currentArticle->authors[0];
 
-          en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '. Updated: ' . $modified->format('M j, Y') . '.');
+          en('By ' . $author->displayAs . ' on ' . $created->format('M j, Y') . '. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
         }
         else {
-          en('Published: ' . $created->format('M j, Y') . '. Updated: ' . $modified->format('M j, Y') . '.');
+          en('Published: ' . $created->format('M j, Y') . '. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
         }
       }
 
@@ -1167,7 +1167,9 @@ class OnpubFrontend
         en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=400&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
       }
 
+      en('<div itemprop="articleBody">');
       en($this->friendlyURLs($this->currentArticle->content));
+      en('</div>');
 
       if ($this->loginStatus) {
         en('<div class="yui3-g">');
