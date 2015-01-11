@@ -793,7 +793,7 @@ class OnpubFrontend
       }
 
       if ($this->loginStatus) {
-        en('<div class="yui3-g">');
+        en('<div class="yui3-g" style="margin-top: 2em">');
         en('<div class="yui3-u-1">');
         en('<span class="onpub-edit">');
         en('<a href="' . $onpub_dir_manage .
@@ -978,7 +978,7 @@ class OnpubFrontend
       en('</div>');
 
       if ($this->loginStatus) {
-        en('<div class="yui3-g">');
+        en('<div class="yui3-g" style="margin-top: 2em">');
         en('<div class="yui3-u-1">');
         en('<span class="onpub-edit">');
         en('<a href="' . $onpub_dir_manage .
@@ -1174,7 +1174,7 @@ class OnpubFrontend
       en('</div>');
 
       if ($this->loginStatus) {
-        en('<div class="yui3-g">');
+        en('<div class="yui3-g" style="margin-top: 2em">');
         en('<div class="yui3-u-1">');
         en('<span class="onpub-edit">');
         en('<a href="' . $onpub_dir_manage .
