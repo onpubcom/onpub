@@ -637,24 +637,26 @@ class OnpubFrontend
     en('<div class="yui3-u-3-4">');
 
     if ($this->website) {
-      en('<p>&copy; ' . $dt->format('Y') . ' <a class="onpub-footer-nav" href="index.php">' . $this->website->name . '</a>. All rights reserved.</p>');
+      en('<p class="onpub-copyright">&copy; ' . $dt->format('Y') . ' <a class="onpub-footer-nav" href="index.php">' . $this->website->name . '</a>. All rights reserved.</p>');
     }
     else {
-      en('<p>Onpub ' . ONPUBAPI_VERSION . ', &copy; 2012 <a class="onpub-footer-nav" href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
+      en('<p class="onpub-copyright">Onpub ' . ONPUBAPI_VERSION . ', &copy; 2012 <a class="onpub-footer-nav" href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
     }
 
     en('</div>');
     en('<div class="yui3-u-1-4">');
+    en('<span class="onpub-login">');
 
     if ($onpub_disp_login) {
       if ($this->loginStatus) {
-        en('<span class="onpub-login"><a class="onpub-footer-nav" href="' . $onpub_dir_manage . 'index.php?onpub=Logout" target="_onpub">Logout</a></span>');
+        en('<a class="onpub-footer-nav" href="' . $onpub_dir_manage . 'index.php?onpub=Logout" target="_onpub">Logout</a>');
       }
       else {
-        en('<span class="onpub-login"><a class="onpub-footer-nav" href="' . $onpub_dir_manage . 'index.php" target="_onpub">Login</a></span>');
+        en('<a class="onpub-footer-nav" href="' . $onpub_dir_manage . 'index.php" target="_onpub">Login</a>');
       }
     }
 
+    en('</span>');
     en('</div>');
     en('</div>');
   }
@@ -1147,7 +1149,7 @@ class OnpubFrontend
           en('By <span itemprop="author">' . $author->displayAs . '</span> on ' . $created->format('M j, Y') . '. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
         }
         else {
-          en('Published: ' . $created->format('M j, Y') . '. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
+          en('Published: <time datetime="' . $created->format('Y-m-d') . '" itemprop="datePublished">' . $created->format('M j, Y') . '</time>. Updated: <time datetime="' . $modified->format('Y-m-d') . '" itemprop="dateModified">' . $modified->format('M j, Y') . '</time>.');
         }
       }
 

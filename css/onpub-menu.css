@@ -10,13 +10,14 @@
 /* Menu background */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-content {
 background-image: none;
-background-color: transparent;
+background-color: #1B8CDF;
+border: 1px solid #0A649B;
 }
 
 /* Menu borders */
 .yui3-skin-sam .yui3-menu-content {
 border: none;
-border-left: 1px solid #0C73B7;
+border-left: 1px solid #0A649B;
 }
 
 /* Menu buttons background */
@@ -54,24 +55,24 @@ font-size: 108%;
 
 /* Menu buttons top and bottom borders */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label, .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-content {
-border-color: #0C73B7;
+border-color: #0A649B;
 border-top-width: 1px;
 border-bottom-width: 1px;
 }
 
 /* Menu buttons right border */
 .yui3-skin-sam .yui3-menubuttonnav li {
-border-right: 1px solid #0C73B7;
+border-right: 1px solid #0A649B;
 }
 
 /* Submenu borders */
 .yui3-skin-sam .yui3-menu .yui3-menu .yui3-menu-content {
-border: 1px solid #0C73B7;
+border: 1px solid #0A649B;
 }
 
 /* Menu buttons mouseover borders and background */
 .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label-active, .yui3-skin-sam .yui3-menu-horizontal .yui3-menuitem-active .yui3-menuitem-content, .yui3-skin-sam .yui3-menu-horizontal .yui3-menu-label-menuvisible {
-border-color: #0C73B7;
+border-color: #0A649B;
 background-image: none;
 background-color: #3EABF9;
 }
