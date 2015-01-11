@@ -1,0 +1,49 @@
+/* Onpub (TM)
+ * Copyright (C) 2015 Onpub.com <http://onpub.com/>
+ * Author: Corey H.M. Taylor <corey@onpub.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; version 2.
+ */
+
+a:link { color: #0D72BA; text-decoration: none; }
+a:visited { color: #0D72BA; text-decoration: none; }
+a:hover { color: #0D72BA; text-decoration: underline; }
+a:active { color: #0D72BA; text-decoration: underline; }
+
+body {
+  margin-top: 0;
+}
+
+table {
+  margin-bottom: 1em;
+}
+
+th, td {
+  border-color: #E6EAEF;
+  border: 1px solid #E6EAEF;
+  padding: .5em;
+}
+
+th {
+  font-size: 108%;
+  font-weight: bold;
+  text-align: left;
+}
+
+h1 {
+  color: #3F4247;
+  border-bottom: 1px solid #DADFE5;
+  margin-right: .5em;
+  font-weight: bold;
+}
+
+h2, h3, h4, h5, h6 {
+  color: #3F4247;
+  font-weight: bold;
+}
+
+b, strong {
+  color: #3F4247;
+}

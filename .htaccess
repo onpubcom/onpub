@@ -44,9 +44,3 @@ RewriteRule [\w-]*(-s(\d+)){1}$ index.php?s=$2 [L]
 # And rewrites to: http://localhost/onpub/index.php?a=5
 
 RewriteRule [\w-]*(-a(\d+)){1}$ index.php?a=$2 [L]
-
-# Matches a URL like: http://localhost/onpub/manage
-# And rewrites to: http://localhost/onpub/vendor/onpubcom/onpubmanage
-
-RewriteRule ^manage$ vendor/onpubcom/onpubmanage [L]
-RewriteRule ^manage/(.*)$ vendor/onpubcom/onpubmanage/$1 [L]
