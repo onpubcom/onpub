@@ -9,7 +9,7 @@
         "php": ">=5.4.36",
         "onpubcom/onpubapi": "dev-master",
         "james-heinrich/phpthumb": "dev-master",
-        "ckeditor/ckeditor": "4.4.6"
+        "ckeditor/ckeditor": "dev-full/stable"
     },
     "autoload": {
         "classmap": ["classes/", "manage/classes/"],
