@@ -1,0 +1,26 @@
+{
+  "name": "onpub",
+  "version": "1.7.0",
+  "homepage": "http://onpub.com/",
+  "authors": [
+    "onpubcom <info@onpub.com>"
+  ],
+  "description": "The Onpub Content Management System",
+  "main": "js/site.js",
+  "keywords": [
+    "cms",
+    "onpub"
+  ],
+  "license": "GPL-2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "yui3": "~3.18.1"
+  }
+}
