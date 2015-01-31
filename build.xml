@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <project name="Onpub" default="package">
-  <property name="dir.dev" value="."/>
   <property name="dir.build" value="build"/>
   <property name="dir.onpub" value="${dir.build}/onpub"/>
-  <property name="dir.onpub.api" value="${dir.onpub}/api"/>
-  <property name="dir.onpub.manage" value="${dir.onpub}/manage"/>
   <property name="dir.onpub.local" value="${dir.onpub}/local"/>
-  <property name="dir.ckeditor" value="${dir.build}/ckeditor"/>
-  <property name="dir.ckeditor.samples" value="${dir.ckeditor}/samples"/>
-  <property name="dir.yui" value="${dir.build}/yui"/>
-  <property name="dir.yui.api" value="${dir.yui}/api"/>
-  <property name="dir.yui.docs" value="${dir.yui}/docs"/>
-  <property name="dir.yui.releasenotes" value="${dir.yui}/releasenotes"/>
-  <property name="dir.yui.tests" value="${dir.yui}/tests"/>
+  <property name="dir.yui" value="${dir.onpub}/bower_components/yui3"/>
+  <property name="dir.yui.src" value="${dir.yui}/src"/>
   <property name="dir.yui.build" value="${dir.yui}/build"/>
-  <property name="dir.phpthumb" value="${dir.build}/phpThumb"/>
-  <property name="url.ckeditor" value="http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.4.4/ckeditor_4.4.4_full.zip"/>
-  <property name="url.yui" value="http://yui.zenfs.com/releases/yui3/yui_3.17.2.zip"/>
-  <property name="url.phpthumb" value="http://sourceforge.net/projects/phpthumb/files/latest/download"/>
   <property name="ver" value="1.6"/>
 
   <target name="clean">
@@ -27,53 +15,25 @@
 
   <target name="dldeps" depends="clean">
     <mkdir dir="${dir.build}"/>
-    <httpget url="${url.ckeditor}" dir="${dir.build}"/>
-    <httpget url="${url.yui}" dir="${dir.build}"/>
-    <exec command="curl -L http://sourceforge.net/projects/phpthumb/files/latest/download -o ${dir.build}/phpThumb.zip --silent"/>
-  </target>
-
-  <target name="unzipdeps" depends="dldeps">
-    <unzip file="${dir.build}/phpThumb.zip" todir="${dir.phpthumb}"/>
-    <copy file="${dir.phpthumb}/phpThumb.config.php.default" tofile="${dir.phpthumb}/phpThumb.config.php"/>
-    <unzip todir="${dir.build}">
-      <fileset dir="${dir.build}">
-        <include name="*.zip"/>
-        <exclude name="phpThumb.zip"/>
-      </fileset>
-    </unzip>
-  </target>
-
-  <target name="devdeps" depends="unzipdeps, rmdeps">
-    <move file="${dir.yui}" todir="${dir.dev}/api"/>
-    <move file="${dir.phpthumb}" todir="${dir.dev}/api"/>
-    <move file="${dir.ckeditor}" todir="${dir.dev}/manage"/>
-  </target>
-
-  <target name="rmdeps">
-    <delete dir="${dir.dev}/api/yui"/>
-    <delete dir="${dir.dev}/api/phpThumb"/>
-    <delete dir="${dir.dev}/manage/ckeditor"/>
-  </target>
-
-  <target name="prunedeps" depends="unzipdeps">
-    <delete dir="${dir.ckeditor.samples}"/>
-    <delete dir="${dir.yui.api}"/>
-    <delete dir="${dir.yui.docs}"/>
-    <delete dir="${dir.yui.releasenotes}"/>
-    <delete dir="${dir.yui.tests}"/>
-    <exec command="find ${dir.yui.build} -type f -name '*.js' | grep -v '\-min\.js' | grep -v 'lang/' | xargs /bin/rm"/>
-  </target>
-
-  <target name="package" depends="prunedeps">
     <mkdir dir="${dir.onpub}"/>
     <exec command="git clone git://github.com/onpubcom/onpub.git ${dir.onpub}"/>
-    <mkdir dir="${dir.onpub.local}"/>
+    <exec command="cd ${dir.onpub} &amp;&amp; composer update"/>
+    <exec command="cd ${dir.onpub} &amp;&amp; bower update"/>
+  </target>
+
+  <target name="prunedeps">
+    <delete dir="${dir.yui.src}"/>
+    <exec command="find ${dir.yui.build} -type f -name '*.js' | grep -v '\-min\.js' | grep -v 'lang/' | xargs rm"/>
+    <exec command="find ${dir.onpub} -type d -name '.git' | xargs rm -r"/>
+    <exec command="find ${dir.onpub} -type f -name '.gitignore' | xargs rm"/>
     <delete file="${dir.onpub}/build.xml"/>
-    <delete file="${dir.onpub}/.gitignore"/>
-    <delete dir="${dir.onpub}/.git"/>
-    <move file="${dir.yui}" todir="${dir.onpub.api}"/>
-    <move file="${dir.phpthumb}" todir="${dir.onpub.api}"/>
-    <move file="${dir.ckeditor}" todir="${dir.onpub.manage}"/>
+    <delete file="${dir.onpub}/bower.json"/>
+    <delete file="${dir.onpub}/composer.json"/>
+    <delete file="${dir.onpub}/composer.lock"/>
+  </target>
+
+  <target name="package" depends="dldeps,prunedeps">
+    <mkdir dir="${dir.onpub.local}"/>
     <zip destfile="${dir.build}/onpub-${ver}.zip" basedir="${dir.onpub}" prefix="onpub/"/>
   </target>
 </project>
