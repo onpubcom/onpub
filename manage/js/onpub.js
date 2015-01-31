@@ -482,8 +482,8 @@ YUI(
   if (Y.one("#widgetimagepreview")) {
     // Setup the image preview overlay.
     var overlay = new Y.Overlay({
-      headerContent: '<a href=""><img id="widgetimage" src="" alt="Edit" title="Edit" class="onpub-image-preview">' +
-                     '<p id="widgetimagename" class="onpub-image-preview-name"></p></a>',
+      headerContent: '<a href=""><img id="widgetimage" src="" alt="Edit" title="Edit" class="onpub-image-preview"></a>' +
+                     '<p id="widgetimagename" class="onpub-image-preview-name"></p>',
       visible: false,
       align: {
         node: "#widgetimagepreview",

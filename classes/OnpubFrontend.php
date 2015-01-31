@@ -562,7 +562,7 @@ class OnpubFrontend
       en('<h1 style="margin-right: 0;">Welcome to Onpub</h1>');
 
       if ($this->lastPDOException) {
-        en('<h3><span class="onpub-error">PDOException:</span> ' . $this->lastPDOException->getMessage() . '</h3>');
+        //en('<h3><span class="onpub-error">PDOException:</span> ' . $this->lastPDOException->getMessage() . '</h3>');
 
         switch ($this->lastPDOException->getCode()) {
           case 1044: // Bad database name.
@@ -594,6 +594,10 @@ class OnpubFrontend
             en('<p>Onpub is unable to connect to the specified MySQL database server host.</p>');
             en('<p>Please make sure the Onpub frontend database configuration is correct.</p>');
             en('<p>Read <a href="http://onpub.com/index.php?s=8&a=96#activate" target="_blank">How to Activate the Onpub Frontend</a> for more information.</p>');
+            break;
+
+          default:
+            en('<p><span class="onpub-error">PDOException:</span> ' . $this->lastPDOException->getMessage() . '</p>');
             break;
         }
 
@@ -971,7 +975,7 @@ class OnpubFrontend
       en('<div style="padding-right: 1em;">');
       if ($this->currentArticle->image) {
         $this->currentArticle->image->website = $this->website;
-        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=200&f=png', $onpub_dir_phpthumb) . '" align="right" style="margin-right: 0.75em;" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
+        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=280&f=png', $onpub_dir_phpthumb) . '" align="right" style="margin-right: 0.75em;" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
       }
 
       en($this->friendlyURLs($this->currentArticle->content));
@@ -1166,7 +1170,7 @@ class OnpubFrontend
 
       if ($this->currentArticle->imageID) {
         $this->currentArticle->image->website = $this->website;
-        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=200&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '" itemprop="thumbnailUrl">');
+        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=400&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '" itemprop="thumbnailUrl">');
       }
 
       en('<div itemprop="articleBody">');

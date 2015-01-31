@@ -50,7 +50,7 @@ class OnpubWelcome
       en('<div style="padding-right: 1em;">');
 
       if ($numsites == 0) {
-        en('<h3>You are ready to start publishing content with Onpub.</h3>');
+        en('<h3 style="margin-top: 0;">You are ready to start publishing content with Onpub.</h3>');
         en('<p><b><a href="index.php?onpub=NewWebsite">Create a website</a></b> to get started.</p>');
       }
       else {
@@ -85,7 +85,7 @@ class OnpubWelcome
 
       en('<div class="yui3-g">');
       en('<div class="yui3-u-1-2">');
-      en('<h3>Quick Links</h3>');
+      en('<h3 style="margin-top: 0;">Quick Links</h3>');
       en('<ul>');
       en('<li><a href="index.php?onpub=NewArticle">New Article</a></li>');
       en('<li><a href="index.php?onpub=NewSection">New Section</a></li>');
@@ -152,7 +152,7 @@ class OnpubWelcome
     else {
       // Onpub schema is not installed yet. Prompt user to install.
       en('<div class="yui3-u-1-2">');
-      en('<h2>Welcome to Onpub</h2>');
+      en('<h2 style="margin-top: 0;">Welcome to Onpub</h2>');
 
       if ($odatabase->current())
       {
