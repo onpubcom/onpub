@@ -42,6 +42,7 @@ class OnpubLogin
     en('<meta charset="ISO-8859-1">');
     en('<title>Onpub (on ' . $_SERVER['SERVER_NAME'] . ')</title>');
 
+    /*
     if (file_exists(ONPUBGUI_YUI_DIRECTORY)) {
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssnormalize/cssnormalize-min.css">');
       en('<link rel="stylesheet" type="text/css" href="' . ONPUBGUI_YUI_DIRECTORY . 'cssfonts/cssfonts-min.css">');
@@ -50,8 +51,10 @@ class OnpubLogin
     else {
       en('<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?' . ONPUBGUI_YUI_VERSION . '/build/cssnormalize/cssnormalize-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssfonts/cssfonts-min.css&' . ONPUBGUI_YUI_VERSION . '/build/cssgrids/cssgrids-min.css">');
     }
+    */
 
-    en("<link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>");
+    en('<link rel="stylesheet" type="text/css" href="css/yui-combo-min.css">');
+    en('<link href="//fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">');
     en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
     en('</head>');
     en('<body>');

@@ -250,6 +250,7 @@ p.onpub-image-preview-name {
   -moz-box-shadow: 0px 0px 2px #BEBEBE;
   -webkit-box-shadow: 0px 0px 2px #BEBEBE;
   box-shadow: 0px 0px 2px #BEBEBE;
+  margin: 0;
 }
 
 img {

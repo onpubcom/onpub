@@ -253,7 +253,7 @@ class OnpubFrontend
 
     if ($this->currentArticle) {
       // Add the meta description tag for article pages.
-      $description = $this->currentArticle->getSummary();
+      $description = $this->currentArticle->getSummary(20);
 
       if ($description) {
         if (substr($description, -1, 1) == '.') {
@@ -1285,7 +1285,7 @@ class OnpubFrontend
               '/build/node-menunav/assets/skins/sam/node-menunav.css">');
     }
 
-    en("<link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>");
+    en('<link href="//fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">');
 
     if (file_exists($onpub_inc_css)) {
       en('<link rel="stylesheet" type="text/css" href="' . $onpub_inc_css . '">');

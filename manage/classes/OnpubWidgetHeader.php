@@ -52,7 +52,7 @@ class OnpubWidgetHeader
     */
 
     en('<link rel="stylesheet" type="text/css" href="css/yui-combo-min.css">');
-    en("<link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>");
+    en('<link href="//fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">');
     en('<link rel="stylesheet" type="text/css" href="css/onpub.css">');
     en('<link rel="stylesheet" type="text/css" href="css/onpub-menu.css">');
 
