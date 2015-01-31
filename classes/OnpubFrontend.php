@@ -971,7 +971,7 @@ class OnpubFrontend
       en('<div style="padding-right: 1em;">');
       if ($this->currentArticle->image) {
         $this->currentArticle->image->website = $this->website;
-        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=280&f=png', $onpub_dir_phpthumb) . '" align="right" style="margin-right: 0.75em;" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
+        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=200&f=png', $onpub_dir_phpthumb) . '" align="right" style="margin-right: 0.75em;" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '">');
       }
 
       en($this->friendlyURLs($this->currentArticle->content));
@@ -1166,7 +1166,7 @@ class OnpubFrontend
 
       if ($this->currentArticle->imageID) {
         $this->currentArticle->image->website = $this->website;
-        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=400&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '" itemprop="thumbnailUrl">');
+        en('<img src="' . OnpubImages::getThumbURL('src=' . urlencode($this->currentArticle->image->getFullPath()) . '&w=200&f=png', $onpub_dir_phpthumb) . '" align="right" alt="' . $this->currentArticle->image->fileName . '" title="' . $this->currentArticle->image->description . '" itemprop="thumbnailUrl">');
       }
 
       en('<div itemprop="articleBody">');
