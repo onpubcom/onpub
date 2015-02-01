@@ -125,26 +125,8 @@ if (!isset($onpub_disp_website))
   $onpub_disp_website = 1;
 
 /*
-ID of Onpub Article to display on the home page. Set this to FALSE if you don't
-want to display an article on the home page. Or change this to the ID of the
-Onpub article you want to display on the frontend home/index page. By default,
-the first article you create with Onpub is displayed on the frontend home page
-(index.php).
-*/
-if (!isset($onpub_disp_article))
-  $onpub_disp_article = false;
-
-/*
-Set this to false if you do not want to display the "What's New" section on the
-home page.
-*/
-if (!isset($onpub_disp_updates))
-  $onpub_disp_updates = true;
-
-/*
-Number of "What's New" articles to display on the home page if
-$onpub_disp_updates is true. This also controls the number of items generated
-within the RSS feed if $onpub_disp_rss is true.
+Number of articles to display on the home page. This also controls the number
+of items generated within the RSS feed if $onpub_disp_rss is true.
 */
 if (!isset($onpub_disp_updates_num))
   $onpub_disp_updates_num = 5;

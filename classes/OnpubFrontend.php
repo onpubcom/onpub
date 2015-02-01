@@ -492,43 +492,27 @@ class OnpubFrontend
 
   protected function news()
   {
-    global $onpub_disp_article, $onpub_disp_updates_num, $onpub_inc_article_updates,
-    $onpub_dir_phpthumb, $onpub_dir_manage, $onpub_disp_friendly_urls;
+    global $onpub_disp_updates_num, $onpub_inc_article_updates,
+    $onpub_dir_phpthumb, $onpub_dir_manage, $onpub_disp_friendly_urls, $onpub_dir_frontend;
 
     $qo = new OnpubQueryOptions();
     $qo->includeContent = true;
     $qo->includeAuthors = true;
     $qo->orderBy = 'created';
     $qo->order = 'DESC';
-    $qo->rowLimit = $onpub_disp_updates_num + 1;
+    $qo->rowLimit = $onpub_disp_updates_num;
 
-    $articles = $this->articles->select($qo, null, $this->website->ID);
+    $articles = $this->articles->select($qo);
 
-    $isNews = sizeof($articles) && !(sizeof($articles) == 1 && $articles[0]->ID == $onpub_disp_article);
-
-    if ($onpub_disp_article) {
-      $qo = new OnpubQueryOptions();
-      $qo->includeAuthors = true;
-      $this->currentArticle = $this->articles->get($onpub_disp_article, $qo);
-
-      $this->article();
-    }
-
-    if ($isNews) {
+    if (sizeof($articles)) {
       $i = 0;
 
       foreach ($articles as $a) {
-        if ($i == $onpub_disp_updates_num) {
-          break;
-        }
+        $qo = new OnpubQueryOptions();
+        $qo->includeAuthors = true;
+        $this->currentArticle = $this->articles->get($a->ID, $qo);
 
-        if ($a->ID != $onpub_disp_article) {
-          $qo = new OnpubQueryOptions();
-          $qo->includeAuthors = true;
-          $this->currentArticle = $this->articles->get($a->ID, $qo);
-
-          $this->article();
-        }
+        $this->article();
       }
 
       if (file_exists($onpub_inc_article_updates)) {
@@ -537,26 +521,30 @@ class OnpubFrontend
         en('</div>');
       }
     }
+    else {
+      if ($this->loginStatus) {
+        en('<div class="yui3-g" style="margin-top: 2em">');
+        en('<div class="yui3-u-1">');
+        en('<span class="onpub-edit">');
+        en('<a href="' . $onpub_dir_manage .
+                'index.php?onpub=NewArticle" target="_onpub"><img src="' . $onpub_dir_frontend .
+                'images/page_edit.png" width="16" height="16" alt="New Article" title="New Article"></a> ' .
+                '<a href="' . $onpub_dir_manage .
+                'index.php?onpub=NewArticle" target="_onpub" title="New Article">NEW</a>');
+        en('</span>');
+        en('</div>');
+        en('</div>');
+      }
+    }
   }
 
   protected function home()
   {
-    global $onpub_disp_updates, $onpub_disp_article, $onpub_dir_frontend,
+    global $onpub_dir_frontend,
     $onpub_dir_manage, $onpub_disp_friendly_urls;
 
     if ($this->website) {
-      if ($onpub_disp_updates) {
-        $this->news();
-      }
-      else {
-        if ($onpub_disp_article) {
-          $qo = new OnpubQueryOptions();
-          $qo->includeAuthors = true;
-          $this->currentArticle = $this->articles->get($onpub_disp_article, $qo);
-
-          $this->article();
-        }
-      }
+      $this->news();
     }
     else {
       en('<h1 style="margin-right: 0;">Welcome to Onpub</h1>');
