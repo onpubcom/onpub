@@ -644,7 +644,7 @@ class OnpubFrontend
       en('<p class="onpub-copyright">&copy; ' . $dt->format('Y') . ' <a class="onpub-footer-nav" href="index.php">' . $this->website->name . '</a>. All rights reserved.</p>');
     }
     else {
-      en('<p class="onpub-copyright">Onpub ' . ONPUBAPI_VERSION . ', &copy; 2012 <a class="onpub-footer-nav" href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
+      en('<p class="onpub-copyright">Onpub ' . ONPUBAPI_VERSION . '. &copy; ' . $dt->format('Y') . ' <a class="onpub-footer-nav" href="http://onpub.com/" target="_blank">Onpub.com</a>.</p>');
     }
 
     en('</div>');
