@@ -7,7 +7,7 @@
   <property name="dir.yui" value="${dir.onpub}/bower_components/yui3"/>
   <property name="dir.yui.src" value="${dir.yui}/src"/>
   <property name="dir.yui.build" value="${dir.yui}/build"/>
-  <property name="ver" value="1.6"/>
+  <property name="ver" value="1.7"/>
 
   <target name="clean">
     <delete dir="${dir.build}"/>
