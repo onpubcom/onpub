@@ -132,7 +132,7 @@ the first article you create with Onpub is displayed on the frontend home page
 (index.php).
 */
 if (!isset($onpub_disp_article))
-  $onpub_disp_article = 1;
+  $onpub_disp_article = false;
 
 /*
 Set this to false if you do not want to display the "What's New" section on the
