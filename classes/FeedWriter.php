@@ -242,7 +242,7 @@
   {
     if($this->version == RSS2)
     {
-      echo '</channel>' . PHP_EOL . '</rss>';
+      echo '</channel>' , PHP_EOL , '</rss>';
     }
     elseif($this->version == RSS1)
     {
@@ -314,7 +314,7 @@
     switch ($this->version)
     {
        case RSS2:
-        echo '<channel>' . PHP_EOL;
+        echo '<channel>' , PHP_EOL;
         break;
        case RSS1:
         echo (isset($this->data['ChannelAbout']))? "<channel rdf:about=\"{$this->data['ChannelAbout']}\">" : "<channel rdf:about=\"{$this->channels['link']}\">";
@@ -341,13 +341,13 @@
     //RSS 1.0 have special tag <rdf:Seq> with channel
     if($this->version == RSS1)
     {
-      echo "<items>" . PHP_EOL . "<rdf:Seq>" . PHP_EOL;
+      echo "<items>" , PHP_EOL , "<rdf:Seq>" , PHP_EOL;
       foreach ($this->items as $item)
       {
         $thisItems = $item->getElements();
         echo "<rdf:li resource=\"{$thisItems['link']['content']}\"/>" . PHP_EOL;
       }
-      echo "</rdf:Seq>" . PHP_EOL . "</items>" . PHP_EOL . "</channel>" . PHP_EOL;
+      echo "</rdf:Seq>" , PHP_EOL , "</items>" , PHP_EOL , "</channel>" , PHP_EOL;
     }
   }
 
@@ -385,7 +385,7 @@
   {
     if($this->version == RSS2)
     {
-      echo '<item>' . PHP_EOL;
+      echo '<item>' , PHP_EOL;
     }
     elseif($this->version == RSS1)
     {
@@ -400,7 +400,7 @@
     }
     else if($this->version == ATOM)
     {
-      echo "<entry>" . PHP_EOL;
+      echo "<entry>" , PHP_EOL;
     }
   }
 
@@ -414,11 +414,11 @@
   {
     if($this->version == RSS2 || $this->version == RSS1)
     {
-      echo '</item>' . PHP_EOL;
+      echo '</item>' , PHP_EOL;
     }
     else if($this->version == ATOM)
     {
-      echo "</entry>" . PHP_EOL;
+      echo "</entry>" , PHP_EOL;
     }
   }
 
